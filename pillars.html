@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Three Pillars — College Funding Solutions</title>
+  <meta name="description" content="Academic Strategy, Social Strategy, and Financial Strategy — three integrated disciplines that define the College Funding Solutions approach to college planning." />
+
+  <!-- Google Fonts: Cormorant Garamond (display) + DM Sans (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet" />
+
+  <style>
+
+    /* ============================================================
+       CSS CUSTOM PROPERTIES — Identical across all site pages
+    ============================================================ */
+    :root {
+      --navy:             #064E3B;
+      --navy-mid:         #0a3528;
+      --navy-light:       #0f4535;
+      --gold:             #C4963A;
+      --gold-light:       #D4A84B;
+      --gold-pale:        #F0E2C4;
+
+      --ivory:            #F7F4EE;
+      --ivory-warm:       #EDE9DF;
+      --white:            #FFFFFF;
+
+      --text-dark:        #1A1A2E;
+      --text-body:        #3A3A4A;
+      --text-muted:       #6B6B7E;
+      --text-light:       #9A9AAA;
+
+      --border:           #E2DDD4;
+
+      --shadow-sm:        0 2px 12px rgba(13, 27, 46, 0.08);
+      --shadow-md:        0 8px 32px rgba(13, 27, 46, 0.12);
+      --shadow-lg:        0 20px 60px rgba(13, 27, 46, 0.18);
+      --shadow-gold:      0 4px 18px rgba(196, 150, 58, 0.38);
+
+      --font-display:     'Cormorant Garamond', Georgia, serif;
+      --font-body:        'DM Sans', system-ui, -apple-system, sans-serif;
+
+      --radius-sm:        6px;
+      --radius-md:        12px;
+      --radius-lg:        20px;
+
+      --section-pad:      96px 0;
+
+      --container-max:    1080px;
+      --container-narrow: 740px;
+      --gutter:           24px;
+
+      --transition:       all 0.25s ease;
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text-body);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ============================================================
+       LAYOUT UTILITIES
+    ============================================================ */
+    .container {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+    .container--narrow {
+      max-width: var(--container-narrow);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    /* ============================================================
+       TYPOGRAPHY UTILITIES
+    ============================================================ */
+    .section-label {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 14px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(28px, 4vw, 40px);
+      line-height: 1.15;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+    }
+    .gold-rule {
+      display: block;
+      width: 48px;
+      height: 2px;
+      background: var(--gold);
+      border-radius: 2px;
+      margin-bottom: 28px;
+    }
+    .gold-rule--center { margin-left: auto; margin-right: auto; }
+
+    /* ============================================================
+       BUTTON STYLES — Identical across all site pages
+    ============================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      padding: 16px 34px;
+      border-radius: var(--radius-sm);
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+      white-space: nowrap;
+      line-height: 1;
+    }
+    .btn--primary {
+      background: var(--gold);
+      color: var(--white);
+      box-shadow: var(--shadow-gold);
+    }
+    .btn--primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(196, 150, 58, 0.48);
+    }
+    .btn--outline {
+      background: transparent;
+      color: var(--gold);
+      border: 1.5px solid var(--gold);
+    }
+    .btn--outline:hover {
+      background: var(--gold);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+    .btn--white {
+      background: var(--white);
+      color: var(--navy);
+      box-shadow: var(--shadow-md);
+    }
+    .btn--white:hover {
+      background: var(--ivory);
+      transform: translateY(-2px);
+    }
+    .btn--white-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1.5px solid rgba(255,255,255,0.45);
+    }
+    .btn--white-outline:hover {
+      border-color: var(--white);
+      background: rgba(255,255,255,0.08);
+      transform: translateY(-2px);
+    }
+    .btn--large { font-size: 16px; padding: 18px 42px; }
+    .btn--small { font-size: 13px; padding: 10px 22px; }
+    .btn--arrow::after {
+      content: '→';
+      font-size: 17px;
+      line-height: 1;
+      transition: transform 0.2s ease;
+    }
+    .btn--arrow:hover::after { transform: translateX(4px); }
+
+    /* ============================================================
+       ═══════════════════════════════════════════════════════════
+       NAVIGATION — Identical across all site pages
+       ═══════════════════════════════════════════════════════════
+    ============================================================ */
+    .nav {
+      background: var(--navy);
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      box-shadow: 0 2px 20px rgba(6, 78, 59, 0.3);
+    }
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+      gap: 24px;
+    }
+    .nav__brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      flex-shrink: 0;
+      text-decoration: none;
+    }
+    .nav__brand-name {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.01em;
+      line-height: 1.2;
+    }
+    .nav__brand-tagline {
+      font-family: var(--font-body);
+      font-size: 9.5px;
+      font-weight: 400;
+      color: var(--gold-pale);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      opacity: 0.7;
+    }
+    .nav__links {
+      display: none;
+      align-items: center;
+      gap: 2px;
+      flex: 1;
+      justify-content: center;
+    }
+    @media (min-width: 960px) { .nav__links { display: flex; } }
+    .nav__link {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.72);
+      padding: 6px 14px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+    .nav__link:hover { color: var(--white); background: rgba(255,255,255,0.07); }
+    .nav__link--active {
+      color: var(--white);
+      position: relative;
+    }
+    .nav__link--active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 14px;
+      right: 14px;
+      height: 2px;
+      background: var(--gold);
+      border-radius: 2px;
+    }
+    .nav__ctas { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .nav__cta-webinar { display: none; }
+    @media (min-width: 640px) { .nav__cta-webinar { display: inline-flex; } }
+    .nav__hamburger {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 36px;
+      height: 36px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+    }
+    .nav__hamburger:hover { background: rgba(255,255,255,0.08); }
+    .nav__hamburger span {
+      display: block;
+      height: 1.5px;
+      width: 100%;
+      background: var(--gold);
+      border-radius: 2px;
+    }
+    @media (min-width: 960px) { .nav__hamburger { display: none; } }
+
+    /* Mobile Drawer */
+    .nav__drawer {
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      pointer-events: none;
+    }
+    .nav__drawer-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(6,20,46,0.65);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .nav__drawer-panel {
+      position: absolute;
+      top: 0; right: 0; bottom: 0;
+      width: min(320px, 85vw);
+      background: var(--navy-mid);
+      padding: 28px 28px 40px;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+      box-shadow: var(--shadow-lg);
+    }
+    .nav__drawer.is-open { pointer-events: all; }
+    .nav__drawer.is-open .nav__drawer-overlay { opacity: 1; }
+    .nav__drawer.is-open .nav__drawer-panel { transform: translateX(0); }
+    .nav__drawer-close {
+      align-self: flex-end;
+      width: 36px; height: 36px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(255,255,255,0.07);
+      border: none; border-radius: 50%;
+      color: var(--white); font-size: 20px;
+      cursor: pointer; margin-bottom: 32px;
+      transition: var(--transition);
+    }
+    .nav__drawer-close:hover { background: rgba(255,255,255,0.14); }
+    .nav__drawer-links {
+      display: flex; flex-direction: column;
+      gap: 4px; flex: 1;
+    }
+    .nav__drawer-link {
+      font-size: 16px; font-weight: 500;
+      color: rgba(255,255,255,0.8);
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+    }
+    .nav__drawer-link:hover { color: var(--white); background: rgba(255,255,255,0.07); }
+    .nav__drawer-ctas {
+      display: flex; flex-direction: column; gap: 10px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .nav__drawer-ctas .btn { width: 100%; justify-content: center; }
+
+    /* ============================================================
+       ═══════════════════════════════════════════════════════════
+       PAGE HERO — Navy, clean, centered
+       ═══════════════════════════════════════════════════════════
+    ============================================================ */
+    .page-hero {
+      background: var(--navy);
+      padding: 80px 0 88px;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Ambient glow */
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -5%;
+      width: 55%;
+      height: 140%;
+      background: radial-gradient(ellipse at center, rgba(196,150,58,0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    /* Subtle noise texture */
+    .page-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0.022;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .page-hero__inner {
+      position: relative;
+      z-index: 2;
+      animation: fadeUp 0.65s ease both;
+    }
+    .page-hero__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .page-hero__eyebrow-line {
+      display: block;
+      width: 32px;
+      height: 1.5px;
+      background: var(--gold);
+      border-radius: 2px;
+    }
+    .page-hero__eyebrow-text {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .page-hero__headline {
+      font-family: var(--font-display);
+      font-size: clamp(38px, 6vw, 64px);
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      color: var(--white);
+      max-width: 760px;
+      margin-bottom: 24px;
+    }
+    .page-hero__headline em {
+      font-style: italic;
+      color: var(--gold-pale);
+    }
+    .page-hero__subheadline {
+      font-size: clamp(16px, 2vw, 19px);
+      line-height: 1.72;
+      color: rgba(255,255,255,0.65);
+      max-width: 640px;
+      margin-bottom: 44px;
+    }
+    /* Pillar quick-nav anchors */
+    .page-hero__pillar-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding-top: 36px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .page-hero__pillar-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.5);
+      padding: 8px 18px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 100px;
+      transition: var(--transition);
+    }
+    .page-hero__pillar-link:hover {
+      color: var(--white);
+      border-color: rgba(196,150,58,0.5);
+      background: rgba(196,150,58,0.07);
+    }
+    .page-hero__pillar-num {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-style: italic;
+      color: var(--gold);
+      opacity: 0.8;
+    }
+
+    /* ============================================================
+       ═══════════════════════════════════════════════════════════
+       INTEGRATION INTRO — White, narrow centered prose
+       ═══════════════════════════════════════════════════════════
+    ============================================================ */
+    .integration-intro {
+      background: var(--white);
+      padding: var(--section-pad);
+    }
+    .integration-intro__inner {
+      max-width: var(--container-narrow);
+      margin: 0 auto;
+    }
+    .integration-intro__body {
+      font-size: 17px;
+      line-height: 1.82;
+      color: var(--text-body);
+    }
+    .integration-intro__body p + p { margin-top: 22px; }
+    .integration-intro__pull {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-style: italic;
+      color: var(--navy);
+      line-height: 1.55;
+      border-left: 3px solid var(--gold);
+      padding: 6px 0 6px 28px;
+      margin: 40px 0;
+    }
+
+    /* ============================================================
+       ═══════════════════════════════════════════════════════════
+       PILLAR SECTIONS — Shared layout, alternating backgrounds
+       ═══════════════════════════════════════════════════════════
+    ============================================================ */
+    .pillar-section {
+      padding: var(--section-pad);
+      position: relative;
+      overflow: hidden;
+    }
+    .pillar-section--light { background: var(--ivory); }
+    .pillar-section--white { background: var(--white); }
+
+    /* Giant faint background numeral — visual signature */
+    .pillar-section__numeral {
+      position: absolute;
+      bottom: -0.1em;
+      right: -0.02em;
+      font-family: var(--font-display);
+      font-size: clamp(180px, 22vw, 280px);
+      font-weight: 700;
+      line-height: 1;
+      color: var(--navy);
+      opacity: 0.04;
+      pointer-events: none;
+      user-select: none;
+      letter-spacing: -0.04em;
+    }
+
+    /* Two-column layout: left label + intro / right content */
+    .pillar-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 56px;
+      position: relative;
+      z-index: 2;
+    }
+    @media (min-width: 860px) {
+      .pillar-layout {
+        grid-template-columns: 300px 1fr;
+        gap: 80px;
+        align-items: start;
+      }
+    }
+
+    /* Left column — pillar identity */
+    .pillar-identity {}
+
+    .pillar-identity__number {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-style: italic;
+      font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .pillar-identity__title {
+      font-family: var(--font-display);
+      font-size: clamp(34px, 4vw, 46px);
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.12;
+      margin-bottom: 20px;
+      letter-spacing: -0.01em;
+    }
+    .pillar-identity__subtitle {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-style: italic;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 28px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--border);
+    }
+    .pillar-identity__intro {
+      font-size: 15.5px;
+      line-height: 1.78;
+      color: var(--text-body);
+    }
+    .pillar-identity__intro p + p { margin-top: 16px; }
+
+    /* Right column — content */
+    .pillar-content {}
+
+    /* Sub-section within a pillar */
+    .pillar-item {
+      padding: 28px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .pillar-item:first-child { padding-top: 0; }
+    .pillar-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .pillar-item__header {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+    .pillar-item__gold-rule {
+      display: block;
+      width: 28px;
+      height: 2px;
+      background: var(--gold);
+      border-radius: 2px;
+      flex-shrink: 0;
+      margin-top: 11px; /* aligns with cap-height of the title */
+    }
+    .pillar-item__title {
+      font-family: var(--font-display);
+      font-size: clamp(19px, 2.2vw, 22px);
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.25;
+    }
+    .pillar-item__body {
+      font-size: 15.5px;
+      line-height: 1.75;
+      color: var(--text-body);
+      padding-left: 44px; /* aligns under title, past the gold-rule + gap */
+    }
+
+    /* Special callout note within a pillar */
+    .pillar-note {
+      margin-top: 36px;
+      padding: 24px 28px;
+      background: rgba(196,150,58,0.07);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    }
+    .pillar-section--white .pillar-note {
+      background: rgba(196,150,58,0.06);
+    }
+    .pillar-note__label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 8px;
+    }
+    .pillar-note__text {
+      font-size: 15px;
+      line-height: 1.72;
+      color: var(--text-body);
+    }
+
+    /* ============================================================
+       ═══════════════════════════════════════════════════════════
+       HOW THE PILLARS WORK TOGETHER — Navy dark anchor
+       ═══════════════════════════════════════════════════════════
+    ============================================================ */
+    .integration-close {
+      background: var(--navy);
+      padding: var(--section-pad);
+      position: relative;
+      overflow: hidden;
+    }
+    /* Ambient glow */
+    .integration-close::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      left: -10%;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(196,150,58,0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .integration-close__inner {
+      position: relative;
+      z-index: 2;
+      max-width: var(--container-narrow);
+      margin: 0 auto;
+    }
+    .integration-close .section-label { color: var(--gold); }
+    .integration-close .gold-rule { margin-left: 0; }
+    .integration-close__title {
+      font-family: var(--font-display);
+      font-size: clamp(30px, 4.5vw, 46px);
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 28px;
+    }
+    .integration-close__body {
+      font-size: 17px;
+      line-height: 1.82;
+      color: rgba(255,255,255,0.62);
+    }
+    .integration-close__body p + p { margin-top: 20px; }
+    .integration-close__body strong {
+      color: rgba(255,255,255,0.88);
+      font-weight: 500;
+    }
+
+    /* Three-column summary grid inside the integration section */
+    .integration-summary {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 48px;
+    }
+    @media (min-width: 600px) {
+      .integration-summary { grid-template-columns: repeat(3, 1fr); }
+    }
+    .integration-summary__item {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-top: 2px solid rgba(196,150,58,0.5);
+      border-radius: var(--radius-md);
+      padding: 24px 22px;
+      transition: var(--transition);
+    }
+    .integration-summary__item:hover {
+      background: rgba(196,150,58,0.06);
+      border-color: rgba(196,150,58,0.22);
+      border-top-color: var(--gold);
+    }
+    .integration-summary__num {
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-style: italic;
+      color: var(--gold);
+      opacity: 0.7;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .integration-summary__title {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .integration-summary__desc {
+      font-size: 13.5px;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* ============================================================
+       ═══════════════════════════════════════════════════════════
+       FINAL PAGE CTA — White, centered, confident
+       ═══════════════════════════════════════════════════════════
+    ============================================================ */
+    .page-cta {
+      background: var(--white);
+      padding: var(--section-pad);
+    }
+    .page-cta__inner {
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .page-cta .section-label {
+      display: block;
+      text-align: center;
+    }
+    .page-cta__title {
+      font-family: var(--font-display);
+      font-size: clamp(30px, 4.5vw, 46px);
+      font-weight: 600;
+      color: var(--text-dark);
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .page-cta__body {
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--text-body);
+      margin-bottom: 36px;
+    }
+    .page-cta__ctas {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    /* ============================================================
+       ═══════════════════════════════════════════════════════════
+       FOOTER — Identical across all site pages
+       ═══════════════════════════════════════════════════════════
+    ============================================================ */
+    .footer {
+      background: var(--navy-mid);
+      padding: 64px 0 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    @media (min-width: 640px) { .footer__grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 960px) { .footer__grid { grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 48px; } }
+
+    .footer__brand-name {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .footer__brand-tagline {
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold-pale);
+      opacity: 0.6;
+      margin-bottom: 16px;
+    }
+    .footer__brand-desc {
+      font-size: 14px;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.4);
+      max-width: 280px;
+    }
+    .footer__col-label {
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+      display: block;
+    }
+    .footer__links { display: flex; flex-direction: column; gap: 4px; }
+    .footer__link {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      padding: 5px 0;
+      transition: var(--transition);
+    }
+    .footer__link:hover { color: var(--white); }
+    .footer__contact-line {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .footer__contact-icon {
+      font-size: 14px;
+      color: var(--gold);
+      opacity: 0.7;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .footer__contact-text {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.5;
+    }
+    .footer__cta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--gold);
+      margin-top: 16px;
+      transition: var(--transition);
+    }
+    .footer__cta-link:hover { color: var(--gold-light); }
+    .footer__cta-link::after { content: '→'; transition: transform 0.2s ease; }
+    .footer__cta-link:hover::after { transform: translateX(3px); }
+    .footer__bottom {
+      margin-top: 56px;
+      padding: 24px 0;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .footer__copyright { font-size: 12px; color: rgba(255,255,255,0.3); }
+    .footer__legal-links { display: flex; gap: 20px; }
+    .footer__legal-link {
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+      transition: var(--transition);
+    }
+    .footer__legal-link:hover { color: rgba(255,255,255,0.6); }
+
+    /* ============================================================
+       RESPONSIVE OVERRIDES
+    ============================================================ */
+    @media (max-width: 599px) {
+      :root { --section-pad: 56px 0; }
+
+      .page-hero { padding: 56px 0 64px; }
+      .page-hero__pillar-nav { gap: 8px; }
+      .page-hero__pillar-link { font-size: 12px; padding: 7px 14px; }
+
+      .pillar-layout { gap: 36px; }
+      .pillar-identity__title { font-size: 34px; }
+
+      .pillar-item { padding: 22px 0; }
+      .pillar-item__body { padding-left: 0; }
+      .pillar-item__header { gap: 12px; }
+
+      .pillar-section__numeral { font-size: 140px; opacity: 0.035; }
+
+      .integration-summary { grid-template-columns: 1fr; }
+
+      .page-cta__ctas { flex-direction: column; align-items: stretch; }
+      .page-cta__ctas .btn { justify-content: center; }
+
+      .footer__bottom { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (max-width: 859px) {
+      .pillar-item__body { padding-left: 0; }
+    }
+
+    /* ============================================================
+       ENTRANCE ANIMATION
+    ============================================================ */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+  </style>
+</head>
+
+<body id="top">
+
+  <!-- ============================================================
+       NAVIGATION — Sticky; "The 3 Pillars" marked active
+  ============================================================ -->
+  <header class="nav" role="banner">
+    <div class="container">
+      <div class="nav__inner">
+
+        <a href="cfs_homepage.html" class="nav__brand" aria-label="College Funding Solutions — Home">
+          <span class="nav__brand-name">College Funding Solutions</span>
+          <span class="nav__brand-tagline">Strategic College Planning</span>
+        </a>
+
+        <nav class="nav__links" aria-label="Primary navigation">
+          <a href="how-it-works.html" class="nav__link">How It Works</a>
+          <a href="cfs_our_process.html" class="nav__link">Our Process</a>
+          <a href="#top" class="nav__link nav__link--active" aria-current="page">The 3 Pillars</a>
+          <a href="resources.html" class="nav__link">Resources</a>
+          <a href="about.html" class="nav__link">About</a>
+        </nav>
+
+        <div class="nav__ctas">
+          <a href="webinar.html" class="btn btn--outline btn--small nav__cta-webinar">Free Webinar</a>
+          <a href="contact.html" class="btn btn--primary btn--small">Schedule a Consultation</a>
+        </div>
+
+        <button class="nav__hamburger" id="nav-toggle" aria-label="Open navigation menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="nav__drawer" id="nav-drawer" role="dialog" aria-label="Navigation menu" aria-modal="true">
+    <div class="nav__drawer-overlay" id="nav-overlay"></div>
+    <div class="nav__drawer-panel">
+      <button class="nav__drawer-close" id="nav-close" aria-label="Close navigation">✕</button>
+      <nav class="nav__drawer-links" aria-label="Mobile navigation">
+        <a href="cfs_homepage.html" class="nav__drawer-link">Home</a>
+        <a href="how-it-works.html" class="nav__drawer-link">How It Works</a>
+        <a href="cfs_our_process.html" class="nav__drawer-link">Our Process</a>
+        <a href="#top" class="nav__drawer-link">The 3 Pillars</a>
+        <a href="resources.html" class="nav__drawer-link">Resources</a>
+        <a href="about.html" class="nav__drawer-link">About</a>
+        <a href="contact.html" class="nav__drawer-link">Contact</a>
+      </nav>
+      <div class="nav__drawer-ctas">
+        <a href="webinar.html" class="btn btn--outline">Free Webinar</a>
+        <a href="contact.html" class="btn btn--primary">Schedule a Consultation</a>
+      </div>
+    </div>
+  </div>
+
+
+  <main>
+
+    <!-- ============================================================
+         PAGE HERO — Clean navy; quick-nav anchors to each pillar
+    ============================================================ -->
+    <section class="page-hero" aria-labelledby="page-hero-heading">
+      <div class="container">
+        <div class="page-hero__inner">
+
+          <div class="page-hero__eyebrow">
+            <span class="page-hero__eyebrow-line" aria-hidden="true"></span>
+            <span class="page-hero__eyebrow-text">Our Framework</span>
+          </div>
+
+          <h1 class="page-hero__headline" id="page-hero-heading">
+            Three Disciplines.<br>
+            <em>One Integrated Strategy.</em>
+          </h1>
+
+          <p class="page-hero__subheadline">
+            College planning has three dimensions that most families treat separately — if they address them at all. We bring them together into a single, coordinated strategy designed around your student and your family.
+          </p>
+
+          <!-- Pillar quick-jump nav -->
+          <nav class="page-hero__pillar-nav" aria-label="Jump to pillar section">
+            <a href="#pillar-academic" class="page-hero__pillar-link">
+              <span class="page-hero__pillar-num">01</span>
+              Academic Strategy
+            </a>
+            <a href="#pillar-social" class="page-hero__pillar-link">
+              <span class="page-hero__pillar-num">02</span>
+              Social Strategy
+            </a>
+            <a href="#pillar-financial" class="page-hero__pillar-link">
+              <span class="page-hero__pillar-num">03</span>
+              Financial Strategy
+            </a>
+          </nav>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         INTEGRATION INTRO — White; sets the conceptual frame
+    ============================================================ -->
+    <section class="integration-intro" aria-labelledby="intro-heading">
+      <div class="container">
+        <div class="integration-intro__inner">
+
+          <span class="section-label">Why Integration Matters</span>
+          <span class="gold-rule" aria-hidden="true"></span>
+          <h2 class="section-title" id="intro-heading">
+            The College Process Has Three Dimensions. Most Families Only See One.
+          </h2>
+
+          <div class="integration-intro__body">
+            <p>Academic positioning, social development, and financial planning are not independent conversations. The schools your student can realistically attend depend on their academic profile. The scholarships they qualify for depend on both their academic and personal record. The financial aid your family receives depends on planning decisions made years before applications open.</p>
+            <p>Most families work with a college counselor for admissions help and separately, maybe, try to figure out financial aid on their own. These two tracks rarely connect — and the result is often a process that is less efficient, more stressful, and less effective than it could be.</p>
+          </div>
+
+          <blockquote class="integration-intro__pull">
+            "At College Funding Solutions, the three pillars are integrated by design — because that is how the college process actually works."
+          </blockquote>
+
+          <div class="integration-intro__body">
+            <p>What follows is a detailed look at each of the three pillars — what each involves, why it matters, and how it connects to the others. We share this not to overwhelm, but to give you a clear picture of what a thorough, advisor-led college planning process actually looks like.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         PILLAR 1 — ACADEMIC STRATEGY
+         Background: Ivory (light)
+    ============================================================ -->
+    <section class="pillar-section pillar-section--light" id="pillar-academic" aria-labelledby="pillar1-heading">
+
+      <!-- Faint background numeral -->
+      <div class="pillar-section__numeral" aria-hidden="true">01</div>
+
+      <div class="container">
+        <div class="pillar-layout">
+
+          <!-- Left: Pillar identity -->
+          <div class="pillar-identity">
+            <span class="pillar-identity__number">Pillar One</span>
+            <h2 class="pillar-identity__title" id="pillar1-heading">Academic Strategy</h2>
+            <p class="pillar-identity__subtitle">Building the Profile That Opens Doors</p>
+            <div class="pillar-identity__intro">
+              <p>Academic strategy is not about pressuring students to achieve perfection. It is about helping families understand how academic records are evaluated by colleges — and making informed decisions that give students the strongest possible foundation.</p>
+              <p>The difference between a reactive approach to academics and a strategic one is often significant. It shows in course selection, in testing outcomes, and in how broadly or narrowly a student's college options remain as senior year approaches.</p>
+            </div>
+          </div>
+
+          <!-- Right: Detailed sub-items -->
+          <div class="pillar-content" role="list" aria-label="Academic strategy components">
+
+            <div class="pillar-item" role="listitem">
+              <div class="pillar-item__header">
+                <span class="pillar-item__gold-rule" aria-hidden="true"></span>
+                <h3 class="pillar-item__title">Course Selection and Pathway Planning</h3>
+              </div>
+              <p class="pillar-item__body">Colleges evaluate not just GPA, but the rigor of the courses behind it. We help families understand what course trajectories signal to admissions offices — and how to build a four-year academic plan that reflects both ambition and sound judgment. The choices made in 9th grade set the range of options available in 11th and 12th grade, and we help families see that arc clearly from the beginning.</p>
+            </div>
+
+            <div class="pillar-item" role="listitem">
+              <div class="pillar-item__header">
+                <span class="pillar-item__gold-rule" aria-hidden="true"></span>
+                <h3 class="pillar-item__title">Standardized Testing — SAT and ACT</h3>
+              </div>
+              <p class="pillar-item__body">We help families determine which test is the better fit for their student, establish a realistic score target based on their college list and scholarship goals, and develop a preparation and testing timeline that allows for proper preparation without unnecessary pressure. Our families have access to unlimited SAT and ACT preparation resources through our process — because we believe preparation, not luck, determines outcomes.</p>
+            </div>
+
+            <div class="pillar-item" role="listitem">
+              <div class="pillar-item__header">
+                <span class="pillar-item__gold-rule" aria-hidden="true"></span>
+                <h3 class="pillar-item__title">GPA Trend and Academic Positioning</h3>
+              </div>
+              <p class="pillar-item__body">Colleges pay attention not just to where a GPA lands, but to whether it is trending upward, holding steady, or declining. We help families understand this nuance — and what it may mean for their student's positioning at different types of institutions. A rising trajectory, accompanied by increasing course rigor, tells a more compelling story than a flat number in isolation.</p>
+            </div>
+
+            <div class="pillar-item" role="listitem">
+              <div class="pillar-item__header">
+                <span class="pillar-item__gold-rule" aria-hidden="true"></span>
+                <h3 class="pillar-item__title">Transcript Review and Application Narrative</h3>
+              </div>
+              <p class="pillar-item__body">By the time applications open, the academic story has largely been written. Our job, when we begin early, is to help families write that story intentionally. When we begin later, our job is to help them present it in the strongest possible light — identifying the context and framing that allows a complete picture of the student's academic record to come through clearly.</p>
+            </div>
+
+            <!-- Callout note -->
+            <div class="pillar-note" role="note">
+              <span class="pillar-note__label">Our Approach to Testing</span>
+              <p class="pillar-note__text">Standardized testing, approached strategically and with adequate preparation time, remains a meaningful tool for both admissions positioning and scholarship eligibility at a significant number of institutions. We help families navigate the test-optional landscape honestly — understanding when submitting scores strengthens an application and when a test-optional strategy may serve the student better.</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         PILLAR 2 — SOCIAL STRATEGY
+         Background: White (alternating)
+    ============================================================ -->
+    <section class="pillar-section pillar-section--white" id="pillar-social" aria-labelledby="pillar2-heading">
+
+      <div class="pillar-section__numeral" aria-hidden="true">02</div>
+
+      <div class="container">
+        <div class="pillar-layout">
+
+          <!-- Left: Pillar identity -->
+          <div class="pillar-identity">
+            <span class="pillar-identity__number">Pillar Two</span>
+            <h2 class="pillar-identity__title" id="pillar2-heading">Social Strategy</h2>
+            <p class="pillar-identity__subtitle">Character, Leadership, and the Story Your Student Tells</p>
+            <div class="pillar-identity__intro">
+              <p>Admissions officers read thousands of transcripts. What separates candidates who stand out is not always grades — it is the evidence of who a student is beyond the classroom. How they spend their time. What they care about. What they have contributed to their community, their team, their school.</p>
+              <p>This dimension of college planning is the most frequently overlooked — and it is one of the most genuinely developmental parts of our process.</p>
+            </div>
+          </div>
+
+          <!-- Right: Detailed sub-items -->
+          <div class="pillar-content" role="list" aria-label="Social strategy components">
+
+            <div class="pillar-item" role="listitem">
+              <div class="pillar-item__header">
+                <span class="pillar-item__gold-rule" aria-hidden="true"></span>
+                <h3 class="pillar-item__title">Extracurricular Profile Development</h3>
+              </div>
+              <p class="pillar-item__body">We help students think deliberately about how they invest their time outside of class — not to manufacture an impressive-sounding activity list, but to pursue involvement that is authentic, meaningful, and capable of being articulated compellingly in applications. Depth and genuine commitment are far more valuable than breadth for its own sake, and colleges can tell the difference.</p>
+            </div>
+
+            <div class="pillar-item" role="listitem">
+              <div class="pillar-item__header">
+                <span class="pillar-item__gold-rule" aria-hidden="true"></span>
+                <h3 class="pillar-item__title">Leadership and Contribution</h3>
+              </div>
+              <p class="pillar-item__body">Colleges are not simply looking for students who participated — they are looking for students who led, contributed, and made things better. We help families understand this distinction and encourage students to find genuine opportunities to demonstrate initiative and impact. The goal is not a title on a résumé. It is evidence of character, sustained over time.</p>
+            </div>
+
+            <div class="pillar-item" role="listitem">
+              <div class="pillar-item__header">
+                <span class="pillar-item__gold-rule" aria-hidden="true"></span>
+                <h3 class="pillar-item__title">Community Engagement</h3>
+              </div>
+              <p class="pillar-item__body">Service and civic involvement remain meaningful signals in college admissions — particularly when they reflect genuine interest rather than a requirement to fulfill. We help students identify opportunities that align with their actual interests and support the broader narrative their application will tell. Sustained engagement in a single cause carries more weight than a scattered list of one-time volunteer hours.</p>
+            </div>
+
+            <div class="pillar-item" role="listitem">
+              <div class="pillar-item__header">
+                <span class="pillar-item__gold-rule" aria-hidden="true"></span>
+                <h3 class="pillar-item__title">The Personal Essay and Application Narrative</h3>
+              </div>
+              <p class="pillar-item__body">By the time applications open, a student's social profile should have given them real material to draw from. Our process ensures that when it is time to write, there is something authentic and substantive to say. We help students find the essay topic that is genuinely theirs — not the topic they think sounds impressive — and develop it into a piece that gives admissions officers a clear, human picture of who this student is.</p>
+            </div>
+
+            <!-- Callout note -->
+            <div class="pillar-note" role="note">
+              <span class="pillar-note__label">A Note on Authenticity</span>
+              <p class="pillar-note__text">We do not manufacture profiles. We help students develop genuinely, and we help them communicate what they have done and who they are with clarity and confidence. Colleges can tell the difference between a student whose activities reflect real engagement and one whose activities were assembled for the application. Our goal is always the former.</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         PILLAR 3 — FINANCIAL STRATEGY
+         Background: Ivory (alternating)
+    ============================================================ -->
+    <section class="pillar-section pillar-section--light" id="pillar-financial" aria-labelledby="pillar3-heading">
+
+      <div class="pillar-section__numeral" aria-hidden="true">03</div>
+
+      <div class="container">
+        <div class="pillar-layout">
+
+          <!-- Left: Pillar identity -->
+          <div class="pillar-identity">
+            <span class="pillar-identity__number">Pillar Three</span>
+            <h2 class="pillar-identity__title" id="pillar3-heading">Financial Strategy</h2>
+            <p class="pillar-identity__subtitle">What You Pay for College Is Not an Accident</p>
+            <div class="pillar-identity__intro">
+              <p>The sticker price of a college is rarely what a family pays. The gap between those two numbers — and whether it is bridged by merit scholarships, need-based aid, loans, or out-of-pocket cost — depends on a combination of factors that families can influence.</p>
+              <p>Financial strategy is the most concrete and, for many families, the most urgent part of our work together. It is also the area where the cost of uninformed decisions is most clearly quantifiable.</p>
+            </div>
+          </div>
+
+          <!-- Right: Detailed sub-items -->
+          <div class="pillar-content" role="list" aria-label="Financial strategy components">
+
+            <div class="pillar-item" role="listitem">
+              <div class="pillar-item__header">
+                <span class="pillar-item__gold-rule" aria-hidden="true"></span>
+                <h3 class="pillar-item__title">Understanding Financial Aid — Need-Based and Merit-Based</h3>
+              </div>
+              <p class="pillar-item__body">Most families don't have a working understanding of the difference between need-based and merit-based financial aid — how each is calculated, which schools offer which, and how to build a college list that maximizes your family's realistic aid potential. We make this clear early, because the distinction shapes every other financial decision in the process. A school that appears unaffordable by sticker price may become highly competitive once merit aid is factored in.</p>
+            </div>
+
+            <div class="pillar-item" role="listitem">
+              <div class="pillar-item__header">
+                <span class="pillar-item__gold-rule" aria-hidden="true"></span>
+                <h3 class="pillar-item__title">FAFSA and CSS Profile Guidance</h3>
+              </div>
+              <p class="pillar-item__body">The Free Application for Federal Student Aid is the foundation of need-based aid eligibility. The CSS Profile, required by many private institutions, goes significantly deeper — asking questions about assets, home equity, business ownership, and more. We guide families through both forms, helping ensure they are filed accurately, on time, and with an understanding of how the information provided affects the outcome. Filing errors and missed deadlines have real, lasting financial consequences.</p>
+            </div>
+
+            <div class="pillar-item" role="listitem">
+              <div class="pillar-item__header">
+                <span class="pillar-item__gold-rule" aria-hidden="true"></span>
+                <h3 class="pillar-item__title">Expected Family Contribution and Aid Eligibility</h3>
+              </div>
+              <p class="pillar-item__body">Understanding how your family's financial profile translates into aid eligibility — and what financial decisions made before filing can influence that calculation — is an important and frequently overlooked part of the planning process. We help families understand what they can and cannot control, and where legal, ethical planning can make a meaningful difference in what a family is expected to contribute.</p>
+            </div>
+
+            <div class="pillar-item" role="listitem">
+              <div class="pillar-item__header">
+                <span class="pillar-item__gold-rule" aria-hidden="true"></span>
+                <h3 class="pillar-item__title">College List Financial Analysis</h3>
+              </div>
+              <p class="pillar-item__body">Not all schools price the same way, and not all schools fund the same way. We help families evaluate the financial architecture of their college list — identifying schools that are likely to be more generous, schools that offer strong merit aid for your student's profile, and schools where the actual cost of attendance is likely to be lower than it appears. A well-constructed list serves both academic goals and financial ones.</p>
+            </div>
+
+            <div class="pillar-item" role="listitem">
+              <div class="pillar-item__header">
+                <span class="pillar-item__gold-rule" aria-hidden="true"></span>
+                <h3 class="pillar-item__title">Award Letter Review and Comparison</h3>
+              </div>
+              <p class="pillar-item__body">When financial aid award letters arrive, they are not always easy to read — and they are not always what they appear to be. Grants and loans are frequently listed together without clear distinction. We review every award letter with families, translate the numbers into real, comparable costs, and help families understand what they are actually being offered before they make any decisions. This step alone is often where the most significant financial clarity is achieved.</p>
+            </div>
+
+            <div class="pillar-item" role="listitem">
+              <div class="pillar-item__header">
+                <span class="pillar-item__gold-rule" aria-hidden="true"></span>
+                <h3 class="pillar-item__title">Financial Aid Appeals</h3>
+              </div>
+              <p class="pillar-item__body">In some circumstances, financial aid packages can be revised through a formal appeal process. We help families understand when an appeal is appropriate — typically when there has been a change in family circumstances, or when a competing offer from a comparable institution exists — how to approach it professionally, and what documentation and communication is most likely to be effective. An appeal conducted thoughtfully is not an aggressive act; it is an informed, professional conversation.</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         HOW THE PILLARS WORK TOGETHER — Navy, synthesis and landing
+    ============================================================ -->
+    <section class="integration-close" id="integration" aria-labelledby="integration-heading">
+      <div class="container">
+        <div class="integration-close__inner">
+
+          <span class="section-label">The Integration Is the Strategy</span>
+          <span class="gold-rule" aria-hidden="true"></span>
+
+          <h2 class="integration-close__title" id="integration-heading">
+            Three Pillars. One Coordinated Strategy.
+          </h2>
+
+          <div class="integration-close__body">
+            <p>Many families work with a college counselor for admissions help and separately, maybe, try to figure out financial aid on their own. These two tracks rarely connect — and the result is often a process that is less efficient, more stressful, and less effective than it could be.</p>
+            <p>At College Funding Solutions, <strong>the three pillars are integrated by design.</strong> Academic positioning affects scholarship eligibility. Social development affects application strength. Financial planning affects which schools belong on the list in the first place. These are not three separate conversations — they are three dimensions of a single, coordinated strategy.</p>
+            <p>That integration is what makes our process different. And it is why families who work with us from the beginning tend to arrive at enrollment day with more options, more confidence, and a clearer understanding of exactly what they are paying and why.</p>
+          </div>
+
+          <!-- Three-pillar summary recap -->
+          <div class="integration-summary" role="list" aria-label="The three pillars summary">
+
+            <div class="integration-summary__item" role="listitem">
+              <span class="integration-summary__num">Pillar One</span>
+              <h3 class="integration-summary__title">Academic Strategy</h3>
+              <p class="integration-summary__desc">Course selection, GPA positioning, standardized testing, and transcript narrative — building the profile that opens doors.</p>
+            </div>
+
+            <div class="integration-summary__item" role="listitem">
+              <span class="integration-summary__num">Pillar Two</span>
+              <h3 class="integration-summary__title">Social Strategy</h3>
+              <p class="integration-summary__desc">Activities, leadership, community engagement, and personal narrative — building the story that communicates character.</p>
+            </div>
+
+            <div class="integration-summary__item" role="listitem">
+              <span class="integration-summary__num">Pillar Three</span>
+              <h3 class="integration-summary__title">Financial Strategy</h3>
+              <p class="integration-summary__desc">FAFSA, CSS Profile, aid eligibility, award letter review, and appeals — understanding and influencing what college actually costs.</p>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         FINAL PAGE CTA — White, centered, confident close
+    ============================================================ -->
+    <section class="page-cta" aria-labelledby="page-cta-heading">
+      <div class="container">
+        <div class="page-cta__inner">
+
+          <span class="section-label">Ready to Bring All Three Pillars Together?</span>
+          <span class="gold-rule gold-rule--center" aria-hidden="true"></span>
+
+          <h2 class="page-cta__title" id="page-cta-heading">
+            Ready to Bring All Three Pillars Together for Your Family?
+          </h2>
+
+          <p class="page-cta__body">
+            The first step is a conversation. We'll listen to where your family is, where your student is in the high school process, and what your goals and concerns are — and we'll give you a clear picture of what a structured, three-pillar strategy would look like for you specifically.
+          </p>
+
+          <div class="page-cta__ctas">
+            <a href="contact.html" class="btn btn--primary btn--large btn--arrow">Schedule a Consultation</a>
+            <a href="webinar.html" class="btn btn--outline btn--large">Register for Our Free Webinar</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ============================================================
+       FOOTER — Identical across all site pages
+  ============================================================ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+
+      <div class="footer__grid">
+
+        <div class="footer__brand">
+          <div class="footer__brand-name">College Funding Solutions</div>
+          <div class="footer__brand-tagline">Strategic College Planning</div>
+          <p class="footer__brand-desc">
+            Expert, advisor-led guidance for families navigating the college planning process — from freshman year through enrollment.
+          </p>
+        </div>
+
+        <div class="footer__col">
+          <span class="footer__col-label">Navigate</span>
+          <nav class="footer__links" aria-label="Footer navigation">
+            <a href="cfs_homepage.html" class="footer__link">Home</a>
+            <a href="how-it-works.html" class="footer__link">How It Works</a>
+            <a href="cfs_our_process.html" class="footer__link">Our Process</a>
+            <a href="#top" class="footer__link">The 3 Pillars</a>
+            <a href="about.html" class="footer__link">About</a>
+          </nav>
+        </div>
+
+        <div class="footer__col">
+          <span class="footer__col-label">Resources</span>
+          <nav class="footer__links" aria-label="Resources navigation">
+            <a href="resources.html" class="footer__link">Resource Library</a>
+            <a href="resources.html#guidebook" class="footer__link">Free Guidebook</a>
+            <a href="resources.html#articles" class="footer__link">Articles &amp; Guides</a>
+            <a href="webinar.html" class="footer__link">Free Webinar</a>
+            <a href="contact.html" class="footer__link">Contact Us</a>
+          </nav>
+        </div>
+
+        <div class="footer__col">
+          <span class="footer__col-label">Get in Touch</span>
+          <div class="footer__contact-line">
+            <span class="footer__contact-icon" aria-hidden="true">✉</span>
+            <span class="footer__contact-text">info@collegefundingsolutions.com</span>
+          </div>
+          <div class="footer__contact-line">
+            <span class="footer__contact-icon" aria-hidden="true">◎</span>
+            <span class="footer__contact-text">Serving families nationwide<br>via virtual consultation</span>
+          </div>
+          <a href="contact.html" class="footer__cta-link">Schedule a Consultation</a>
+        </div>
+
+      </div>
+
+      <div class="footer__bottom">
+        <span class="footer__copyright">
+          &copy; <span id="footer-year"></span> College Funding Solutions. All rights reserved.
+        </span>
+        <div class="footer__legal-links">
+          <a href="privacy.html" class="footer__legal-link">Privacy Policy</a>
+          <a href="terms.html" class="footer__legal-link">Terms of Use</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- ============================================================
+       JAVASCRIPT — Navigation drawer + copyright year
+  ============================================================ -->
+  <script>
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+    const toggle   = document.getElementById('nav-toggle');
+    const drawer   = document.getElementById('nav-drawer');
+    const overlay  = document.getElementById('nav-overlay');
+    const closeBtn = document.getElementById('nav-close');
+
+    function openDrawer() {
+      drawer.classList.add('is-open');
+      toggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeDrawer() {
+      drawer.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    toggle.addEventListener('click', openDrawer);
+    closeBtn.addEventListener('click', closeDrawer);
+    overlay.addEventListener('click', closeDrawer);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && drawer.classList.contains('is-open')) closeDrawer();
+    });
+    drawer.querySelectorAll('.nav__drawer-link, .nav__drawer-ctas .btn').forEach(link => {
+      link.addEventListener('click', closeDrawer);
+    });
+  </script>
+
+</body>
+</html>
