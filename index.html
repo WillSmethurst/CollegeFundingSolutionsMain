@@ -487,13 +487,16 @@
 
     /* Placeholder for hero photography — replace with actual img or background-image */
     .hero__photo-placeholder {
-      position: absolute;
-      inset: 0;
-      /* Replace this gradient with: background-image: url('your-photo.jpg'); background-size: cover; background-position: center; */
-      background:
-        linear-gradient(160deg, rgba(6,78,59,0.0) 0%, rgba(6,78,59,0.72) 60%, var(--navy) 100%),
-        linear-gradient(to bottom right, #0d2b1e 0%, #0a1f3a 100%);
-    }
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(160deg, rgba(6,78,59,0.18) 0%, rgba(6,78,59,0.72) 58%, rgba(6,78,59,0.88) 100%),
+    linear-gradient(to right, rgba(6,78,59,0.58) 0%, rgba(6,78,59,0.28) 38%, rgba(6,78,59,0.62) 100%),
+    url('/images/college-hero-bg.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
 
     /* Subtle gold ambient glow */
     .hero::before {
