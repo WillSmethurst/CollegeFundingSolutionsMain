@@ -1,0 +1,1957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Process — College Funding Solutions</title>
+  <meta name="description" content="A structured, year-by-year college planning process — from 9th grade through enrollment. See exactly what happens when and why it matters." />
+
+  <!-- Google Fonts: Cormorant Garamond (display) + DM Sans (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet" />
+
+  <style>
+
+    /* ============================================================
+       CSS CUSTOM PROPERTIES — Identical to homepage
+    ============================================================ */
+    :root {
+      --navy:             #064E3B;
+      --navy-mid:         #0a3528;
+      --navy-light:       #0f4535;
+      --gold:             #C4963A;
+      --gold-light:       #D4A84B;
+      --gold-pale:        #F0E2C4;
+
+      --ivory:            #F7F4EE;
+      --ivory-warm:       #EDE9DF;
+      --white:            #FFFFFF;
+
+      --text-dark:        #1A1A2E;
+      --text-body:        #3A3A4A;
+      --text-muted:       #6B6B7E;
+      --text-light:       #9A9AAA;
+
+      --border:           #E2DDD4;
+
+      --shadow-sm:        0 2px 12px rgba(13, 27, 46, 0.08);
+      --shadow-md:        0 8px 32px rgba(13, 27, 46, 0.12);
+      --shadow-lg:        0 20px 60px rgba(13, 27, 46, 0.18);
+      --shadow-gold:      0 4px 18px rgba(196, 150, 58, 0.38);
+
+      --font-display:     'Cormorant Garamond', Georgia, serif;
+      --font-body:        'DM Sans', system-ui, -apple-system, sans-serif;
+
+      --radius-sm:        6px;
+      --radius-md:        12px;
+      --radius-lg:        20px;
+
+      --section-pad:      96px 0;
+      --section-pad-md:   64px 0;
+      --section-pad-sm:   48px 0;
+
+      --container-max:    1080px;
+      --container-narrow: 740px;
+      --gutter:           24px;
+
+      --transition:       all 0.25s ease;
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text-body);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ============================================================
+       LAYOUT UTILITIES
+    ============================================================ */
+    .container {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    .container--narrow {
+      max-width: var(--container-narrow);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    /* ============================================================
+       TYPOGRAPHY UTILITIES
+    ============================================================ */
+    .section-label {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(28px, 4vw, 40px);
+      line-height: 1.15;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+    }
+
+    .gold-rule {
+      display: block;
+      width: 48px;
+      height: 2px;
+      background: var(--gold);
+      border-radius: 2px;
+      margin-bottom: 28px;
+    }
+
+    .gold-rule--center { margin-left: auto; margin-right: auto; }
+
+    /* ============================================================
+       BUTTON STYLES — Identical to homepage
+    ============================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      padding: 16px 34px;
+      border-radius: var(--radius-sm);
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+      white-space: nowrap;
+      line-height: 1;
+    }
+
+    .btn--primary {
+      background: var(--gold);
+      color: var(--white);
+      box-shadow: var(--shadow-gold);
+    }
+    .btn--primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(196, 150, 58, 0.48);
+    }
+
+    .btn--outline {
+      background: transparent;
+      color: var(--gold);
+      border: 1.5px solid var(--gold);
+    }
+    .btn--outline:hover {
+      background: var(--gold);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .btn--white {
+      background: var(--white);
+      color: var(--navy);
+      box-shadow: var(--shadow-md);
+    }
+    .btn--white:hover {
+      background: var(--ivory);
+      transform: translateY(-2px);
+    }
+
+    .btn--white-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1.5px solid rgba(255,255,255,0.45);
+    }
+    .btn--white-outline:hover {
+      border-color: var(--white);
+      background: rgba(255,255,255,0.08);
+      transform: translateY(-2px);
+    }
+
+    .btn--large { font-size: 16px; padding: 18px 42px; }
+    .btn--small { font-size: 13px; padding: 10px 22px; }
+
+    .btn--arrow::after {
+      content: '→';
+      font-size: 17px;
+      line-height: 1;
+      transition: transform 0.2s ease;
+    }
+    .btn--arrow:hover::after { transform: translateX(4px); }
+
+    /* ============================================================
+       ═══════════════════════════════════════════════════════════
+       NAVIGATION — Identical to homepage
+       ═══════════════════════════════════════════════════════════
+    ============================================================ */
+    .nav {
+      background: var(--navy);
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      box-shadow: 0 2px 20px rgba(6, 78, 59, 0.3);
+    }
+
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+      gap: 24px;
+    }
+
+    .nav__brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      flex-shrink: 0;
+      text-decoration: none;
+    }
+
+    .nav__brand-name {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.01em;
+      line-height: 1.2;
+    }
+
+    .nav__brand-tagline {
+      font-family: var(--font-body);
+      font-size: 9.5px;
+      font-weight: 400;
+      color: var(--gold-pale);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      opacity: 0.7;
+    }
+
+    .nav__links {
+      display: none;
+      align-items: center;
+      gap: 2px;
+      flex: 1;
+      justify-content: center;
+    }
+
+    @media (min-width: 960px) { .nav__links { display: flex; } }
+
+    .nav__link {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.72);
+      padding: 6px 14px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .nav__link:hover { color: var(--white); background: rgba(255,255,255,0.07); }
+
+    /* Active state for current page */
+    .nav__link--active {
+      color: var(--white);
+      position: relative;
+    }
+
+    .nav__link--active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 14px;
+      right: 14px;
+      height: 2px;
+      background: var(--gold);
+      border-radius: 2px;
+    }
+
+    .nav__ctas { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+
+    .nav__cta-webinar { display: none; }
+    @media (min-width: 640px) { .nav__cta-webinar { display: inline-flex; } }
+
+    .nav__hamburger {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 36px;
+      height: 36px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+    }
+    .nav__hamburger:hover { background: rgba(255,255,255,0.08); }
+    .nav__hamburger span {
+      display: block;
+      height: 1.5px;
+      width: 100%;
+      background: var(--gold);
+      border-radius: 2px;
+    }
+    @media (min-width: 960px) { .nav__hamburger { display: none; } }
+
+    /* Drawer */
+    .nav__drawer {
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      pointer-events: none;
+    }
+    .nav__drawer-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(6,20,46,0.65);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .nav__drawer-panel {
+      position: absolute;
+      top: 0; right: 0; bottom: 0;
+      width: min(320px, 85vw);
+      background: var(--navy-mid);
+      padding: 28px 28px 40px;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+      box-shadow: var(--shadow-lg);
+    }
+    .nav__drawer.is-open { pointer-events: all; }
+    .nav__drawer.is-open .nav__drawer-overlay { opacity: 1; }
+    .nav__drawer.is-open .nav__drawer-panel { transform: translateX(0); }
+
+    .nav__drawer-close {
+      align-self: flex-end;
+      width: 36px; height: 36px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(255,255,255,0.07);
+      border: none; border-radius: 50%;
+      color: var(--white); font-size: 20px;
+      cursor: pointer; margin-bottom: 32px;
+      transition: var(--transition);
+    }
+    .nav__drawer-close:hover { background: rgba(255,255,255,0.14); }
+
+    .nav__drawer-links {
+      display: flex; flex-direction: column;
+      gap: 4px; flex: 1;
+    }
+    .nav__drawer-link {
+      font-size: 16px; font-weight: 500;
+      color: rgba(255,255,255,0.8);
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+    }
+    .nav__drawer-link:hover { color: var(--white); background: rgba(255,255,255,0.07); }
+
+    .nav__drawer-ctas {
+      display: flex; flex-direction: column; gap: 10px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .nav__drawer-ctas .btn { width: 100%; justify-content: center; }
+
+    /* ============================================================
+       ═══════════════════════════════════════════════════════════
+       PAGE HERO — Clean navy, no photo overlay needed
+       ═══════════════════════════════════════════════════════════
+    ============================================================ */
+    .page-hero {
+      background: var(--navy);
+      padding: 80px 0 88px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Ambient glow — top right */
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -5%;
+      width: 55%;
+      height: 140%;
+      background: radial-gradient(ellipse at center, rgba(196,150,58,0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    /* Subtle noise texture */
+    .page-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0.022;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    .page-hero__inner {
+      position: relative;
+      z-index: 2;
+    }
+
+    .page-hero__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .page-hero__eyebrow-line {
+      display: block;
+      width: 32px;
+      height: 1.5px;
+      background: var(--gold);
+      border-radius: 2px;
+    }
+
+    .page-hero__eyebrow-text {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .page-hero__headline {
+      font-family: var(--font-display);
+      font-size: clamp(38px, 6vw, 64px);
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      color: var(--white);
+      max-width: 760px;
+      margin-bottom: 24px;
+    }
+
+    .page-hero__headline em {
+      font-style: italic;
+      color: var(--gold-pale);
+    }
+
+    .page-hero__subheadline {
+      font-size: clamp(16px, 2vw, 19px);
+      line-height: 1.72;
+      color: rgba(255,255,255,0.65);
+      max-width: 620px;
+      margin-bottom: 40px;
+    }
+
+    /* Grade nav anchors — quick jump links */
+    .page-hero__grade-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding-top: 36px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .page-hero__grade-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.5);
+      padding: 8px 16px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 100px;
+      transition: var(--transition);
+    }
+
+    .page-hero__grade-link:hover {
+      color: var(--white);
+      border-color: rgba(196,150,58,0.5);
+      background: rgba(196,150,58,0.07);
+    }
+
+    .page-hero__grade-link-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    /* ============================================================
+       ═══════════════════════════════════════════════════════════
+       PROCESS PHILOSOPHY SECTION
+       ═══════════════════════════════════════════════════════════
+    ============================================================ */
+    .philosophy {
+      background: var(--white);
+      padding: var(--section-pad);
+    }
+
+    .philosophy__inner {
+      max-width: var(--container-narrow);
+      margin: 0 auto;
+    }
+
+    .philosophy__body {
+      font-size: 17px;
+      line-height: 1.82;
+      color: var(--text-body);
+    }
+
+    .philosophy__body p + p { margin-top: 22px; }
+
+    .philosophy__pull {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-style: italic;
+      color: var(--navy);
+      line-height: 1.55;
+      border-left: 3px solid var(--gold);
+      padding: 6px 0 6px 28px;
+      margin: 40px 0;
+    }
+
+    /* Three-column philosophy pillars */
+    .philosophy__pillars {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 48px;
+    }
+
+    @media (min-width: 620px) {
+      .philosophy__pillars { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .philosophy__pillar {
+      background: var(--ivory);
+      border-radius: var(--radius-md);
+      padding: 24px 22px;
+      border-top: 3px solid var(--gold);
+      text-align: center;
+    }
+
+    .philosophy__pillar-title {
+      font-family: var(--font-display);
+      font-size: 19px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    .philosophy__pillar-body {
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--text-muted);
+    }
+
+    /* ============================================================
+       ═══════════════════════════════════════════════════════════
+       YEAR-BY-YEAR TIMELINE WRAPPER
+       ═══════════════════════════════════════════════════════════
+    ============================================================ */
+
+    /* The timeline lives inside alternating background sections.
+       The left spine runs visually through all four grade sections.
+       We simulate it with a persistent left border on the timeline layout. */
+
+    .timeline-section {
+      padding: 80px 0;
+      position: relative;
+      overflow: hidden; /* clips the ::after spine so it never bleeds past the section boundary */
+    }
+
+    /* Alternating backgrounds */
+    .timeline-section--light  { background: var(--ivory); }
+    .timeline-section--white  { background: var(--white); }
+
+    /* ── DESKTOP: Two-column layout — year label left / card right ─── */
+    .timeline-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    @media (min-width: 780px) {
+      .timeline-layout {
+        grid-template-columns: 200px 1fr;
+        gap: 0 56px;
+        align-items: start;
+      }
+    }
+
+    /* Left: Year marker column */
+    .timeline-year-col {
+      display: none;
+      flex-direction: column;
+      align-items: flex-end;
+      padding-top: 6px;
+      position: relative;
+    }
+
+    @media (min-width: 780px) { .timeline-year-col { display: flex; } }
+
+    .timeline-year-badge {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      text-align: right;
+      position: relative;
+    }
+
+    /* The connecting vertical spine on desktop */
+    .timeline-year-badge::after {
+      content: '';
+      position: absolute;
+      top: 52px;
+      right: -28px;       /* sits between the two columns */
+      width: 2px;
+      bottom: -9999px;    /* extends downward — clipped by section overflow:hidden */
+      background: linear-gradient(to bottom, var(--border) 0%, var(--border) 100%);
+    }
+
+    /* The gold dot node on the spine */
+    .timeline-year-badge__node {
+      position: absolute;
+      top: 4px;
+      right: -37px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 2.5px solid var(--gold);
+      z-index: 2;
+      transition: var(--transition);
+      box-shadow: 0 0 0 4px var(--ivory);
+    }
+
+    /* Node dot fill */
+    .timeline-year-badge__node::after {
+      content: '';
+      position: absolute;
+      inset: 3px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+
+    /* White sections get white ring around node */
+    .timeline-section--white .timeline-year-badge__node {
+      background: var(--white);
+      box-shadow: 0 0 0 4px var(--white);
+    }
+
+    .timeline-year-badge__grade {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-style: italic;
+      font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 0.03em;
+      margin-bottom: 4px;
+    }
+
+    .timeline-year-badge__number {
+      font-family: var(--font-display);
+      font-size: clamp(48px, 5vw, 64px);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 0.9;
+      opacity: 0.12;
+      margin-bottom: 8px;
+    }
+
+    .timeline-year-badge__label {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* Right: Main content card */
+    .timeline-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--gold);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .timeline-section--white .timeline-card {
+      background: var(--ivory);
+    }
+
+    .timeline-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-3px);
+    }
+
+    /* Mobile year header — shown only on small screens */
+    .timeline-mobile-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 24px 28px 0;
+    }
+
+    @media (min-width: 780px) { .timeline-mobile-header { display: none; } }
+
+    .timeline-mobile-header__dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .timeline-mobile-header__grade {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* Card header area */
+    .timeline-card__header {
+      padding: 32px 36px 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    @media (max-width: 599px) {
+      .timeline-card__header { padding: 20px 24px 18px; }
+    }
+
+    .timeline-card__headline {
+      font-family: var(--font-display);
+      font-size: clamp(24px, 3vw, 30px);
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+
+    .timeline-card__intro {
+      font-size: 16px;
+      line-height: 1.78;
+      color: var(--text-body);
+    }
+
+    /* Card body area */
+    .timeline-card__body {
+      padding: 28px 36px 36px;
+    }
+
+    @media (max-width: 599px) {
+      .timeline-card__body { padding: 20px 24px 28px; }
+    }
+
+    .timeline-card__body-text {
+      font-size: 16px;
+      line-height: 1.78;
+      color: var(--text-body);
+      margin-bottom: 28px;
+    }
+
+    /* Focus areas list */
+    .timeline-focus__label {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 18px;
+    }
+
+    .timeline-focus__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    @media (min-width: 520px) {
+      .timeline-focus__grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .timeline-focus__item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 16px;
+      background: var(--ivory);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      transition: var(--transition);
+    }
+
+    .timeline-section--white .timeline-focus__item {
+      background: var(--white);
+    }
+
+    .timeline-focus__item:hover {
+      border-color: rgba(196,150,58,0.3);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .timeline-focus__item-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+      margin-top: 5px;
+    }
+
+    .timeline-focus__item-text {
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--text-body);
+      font-weight: 400;
+    }
+
+    .timeline-focus__item-text strong {
+      display: block;
+      font-weight: 600;
+      color: var(--text-dark);
+      font-size: 13.5px;
+      margin-bottom: 2px;
+    }
+
+    /* Special callout note inside a card (e.g., "A Note on Testing") */
+    .timeline-note {
+      margin-top: 28px;
+      padding: 22px 26px;
+      background: rgba(196,150,58,0.07);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    }
+
+    .timeline-note__label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .timeline-note__text {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text-body);
+    }
+
+    /* Mindset / closing statement at bottom of a grade card */
+    .timeline-mindset {
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+
+    .timeline-mindset__label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .timeline-mindset__text {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-style: italic;
+      color: var(--navy);
+      line-height: 1.55;
+    }
+
+    /* ============================================================
+       ═══════════════════════════════════════════════════════════
+       "STARTING LATE?" CALLOUT SECTION
+       ═══════════════════════════════════════════════════════════
+    ============================================================ */
+    .late-start {
+      background: var(--ivory-warm);
+      padding: var(--section-pad);
+    }
+
+    .late-start__inner {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .late-start__card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: clamp(36px, 5vw, 64px);
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    @media (min-width: 680px) {
+      .late-start__card { grid-template-columns: 1fr auto; gap: 52px; }
+    }
+
+    .late-start__text {}
+
+    .late-start__title {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 3.5vw, 34px);
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .late-start__body {
+      font-size: 16px;
+      line-height: 1.78;
+      color: var(--text-body);
+    }
+
+    .late-start__body p + p { margin-top: 14px; }
+
+    .late-start__cta {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex-shrink: 0;
+      align-items: flex-start;
+    }
+
+    @media (min-width: 680px) {
+      .late-start__cta { align-items: center; }
+    }
+
+    .late-start__cta-note {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    /* ============================================================
+       ═══════════════════════════════════════════════════════════
+       FINAL PAGE CTA — Dark section
+       ═══════════════════════════════════════════════════════════
+    ============================================================ */
+    .page-cta {
+      background: var(--navy);
+      padding: var(--section-pad);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-cta::before {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      right: -10%;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(196,150,58,0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .page-cta__inner {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .page-cta .section-label {
+      display: block;
+      text-align: center;
+    }
+
+    .page-cta__title {
+      font-family: var(--font-display);
+      font-size: clamp(30px, 4.5vw, 46px);
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .page-cta__body {
+      font-size: 17px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.58);
+      margin-bottom: 36px;
+    }
+
+    .page-cta__ctas {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    /* ============================================================
+       ═══════════════════════════════════════════════════════════
+       FOOTER — Identical to homepage
+       ═══════════════════════════════════════════════════════════
+    ============================================================ */
+    .footer {
+      background: var(--navy-mid);
+      padding: 64px 0 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    @media (min-width: 640px) {
+      .footer__grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (min-width: 960px) {
+      .footer__grid { grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 48px; }
+    }
+
+    .footer__brand-name {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .footer__brand-tagline {
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold-pale);
+      opacity: 0.6;
+      margin-bottom: 16px;
+    }
+
+    .footer__brand-desc {
+      font-size: 14px;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.4);
+      max-width: 280px;
+    }
+
+    .footer__col-label {
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .footer__links { display: flex; flex-direction: column; gap: 4px; }
+
+    .footer__link {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      padding: 5px 0;
+      transition: var(--transition);
+    }
+    .footer__link:hover { color: var(--white); }
+
+    .footer__contact-line {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .footer__contact-icon {
+      font-size: 14px;
+      color: var(--gold);
+      opacity: 0.7;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .footer__contact-text {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.5;
+    }
+
+    .footer__cta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--gold);
+      margin-top: 16px;
+      transition: var(--transition);
+    }
+    .footer__cta-link:hover { color: var(--gold-light); }
+    .footer__cta-link::after { content: '→'; transition: transform 0.2s ease; }
+    .footer__cta-link:hover::after { transform: translateX(3px); }
+
+    .footer__bottom {
+      margin-top: 56px;
+      padding: 24px 0;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .footer__copyright { font-size: 12px; color: rgba(255,255,255,0.3); }
+
+    .footer__legal-links { display: flex; gap: 20px; }
+
+    .footer__legal-link {
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+      transition: var(--transition);
+    }
+    .footer__legal-link:hover { color: rgba(255,255,255,0.6); }
+
+    /* ============================================================
+       RESPONSIVE OVERRIDES
+    ============================================================ */
+    @media (max-width: 599px) {
+      :root {
+        --section-pad: 56px 0;
+      }
+
+      .page-hero { padding: 56px 0 64px; }
+      .page-hero__grade-nav { gap: 8px; }
+      .page-hero__grade-link { font-size: 12px; padding: 7px 13px; }
+
+      .philosophy__pull { font-size: 19px; padding-left: 20px; }
+
+      .timeline-section { padding: 56px 0; }
+      .timeline-card:hover { transform: none; }
+
+      .late-start__card { padding: 32px 24px; }
+
+      .page-cta__ctas { flex-direction: column; align-items: stretch; }
+      .page-cta__ctas .btn { justify-content: center; }
+
+      .footer__bottom { flex-direction: column; align-items: flex-start; }
+    }
+
+    /* ============================================================
+       ENTRANCE ANIMATION
+    ============================================================ */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .page-hero__inner { animation: fadeUp 0.65s ease both; }
+
+  </style>
+</head>
+
+<body id="top">
+
+  <!-- ============================================================
+       NAVIGATION — Sticky, identical to homepage
+       Active state applied to "Our Process"
+  ============================================================ -->
+  <header class="nav" role="banner">
+    <div class="container">
+      <div class="nav__inner">
+
+        <a href="cfs_homepage.html" class="nav__brand" aria-label="College Funding Solutions — Home">
+          <span class="nav__brand-name">College Funding Solutions</span>
+          <span class="nav__brand-tagline">Strategic College Planning</span>
+        </a>
+
+        <nav class="nav__links" aria-label="Primary navigation">
+          <a href="how-it-works.html" class="nav__link">How It Works</a>
+          <a href="#top" class="nav__link nav__link--active" aria-current="page">Our Process</a>
+          <a href="cfs_expertise.html" class="nav__link">The 3 Pillars</a>
+          <a href="resources.html" class="nav__link">Resources</a>
+          <a href="about.html" class="nav__link">About</a>
+        </nav>
+
+        <div class="nav__ctas">
+          <a href="webinar.html" class="btn btn--outline btn--small nav__cta-webinar">Free Webinar</a>
+          <a href="contact.html" class="btn btn--primary btn--small">Schedule a Consultation</a>
+        </div>
+
+        <button class="nav__hamburger" id="nav-toggle" aria-label="Open navigation menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="nav__drawer" id="nav-drawer" role="dialog" aria-label="Navigation menu" aria-modal="true">
+    <div class="nav__drawer-overlay" id="nav-overlay"></div>
+    <div class="nav__drawer-panel">
+      <button class="nav__drawer-close" id="nav-close" aria-label="Close navigation">✕</button>
+      <nav class="nav__drawer-links" aria-label="Mobile navigation">
+        <a href="cfs_homepage.html" class="nav__drawer-link">Home</a>
+        <a href="how-it-works.html" class="nav__drawer-link">How It Works</a>
+        <a href="#top" class="nav__drawer-link">Our Process</a>
+        <a href="cfs_expertise.html" class="nav__drawer-link">The 3 Pillars</a>
+        <a href="resources.html" class="nav__drawer-link">Resources</a>
+        <a href="about.html" class="nav__drawer-link">About</a>
+        <a href="contact.html" class="nav__drawer-link">Contact</a>
+      </nav>
+      <div class="nav__drawer-ctas">
+        <a href="webinar.html" class="btn btn--outline">Free Webinar</a>
+        <a href="contact.html" class="btn btn--primary">Schedule a Consultation</a>
+      </div>
+    </div>
+  </div>
+
+
+  <main>
+
+    <!-- ============================================================
+         PAGE HERO — Clean navy, no photo needed; this page leads
+         with structure and clarity, not atmosphere
+    ============================================================ -->
+    <section class="page-hero" aria-labelledby="page-hero-heading">
+      <div class="container">
+        <div class="page-hero__inner">
+
+          <!-- Eyebrow -->
+          <div class="page-hero__eyebrow">
+            <span class="page-hero__eyebrow-line" aria-hidden="true"></span>
+            <span class="page-hero__eyebrow-text">Year-by-Year Planning</span>
+          </div>
+
+          <!-- Headline -->
+          <h1 class="page-hero__headline" id="page-hero-heading">
+            A Clear Plan for<br>
+            <em>Every Year</em> of High School
+          </h1>
+
+          <!-- Subheadline -->
+          <p class="page-hero__subheadline">
+            College planning is not a senior-year sprint. It is a four-year process — and the families who treat it that way arrive at decision day with better options, more confidence, and less financial stress.
+          </p>
+
+          <!-- Grade nav anchor links — quick-jump to any grade section -->
+          <nav class="page-hero__grade-nav" aria-label="Jump to grade section">
+            <a href="#grade-9" class="page-hero__grade-link">
+              <span class="page-hero__grade-link-dot" aria-hidden="true"></span>
+              9th Grade
+            </a>
+            <a href="#grade-10" class="page-hero__grade-link">
+              <span class="page-hero__grade-link-dot" aria-hidden="true"></span>
+              10th Grade
+            </a>
+            <a href="#grade-11" class="page-hero__grade-link">
+              <span class="page-hero__grade-link-dot" aria-hidden="true"></span>
+              11th Grade
+            </a>
+            <a href="#grade-12" class="page-hero__grade-link">
+              <span class="page-hero__grade-link-dot" aria-hidden="true"></span>
+              12th Grade
+            </a>
+            <a href="#starting-late" class="page-hero__grade-link">
+              <span class="page-hero__grade-link-dot" aria-hidden="true"></span>
+              Starting Late?
+            </a>
+          </nav>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         PROCESS PHILOSOPHY — Sets the intellectual frame
+    ============================================================ -->
+    <section class="philosophy" aria-labelledby="philosophy-heading">
+      <div class="container--narrow">
+
+        <span class="section-label">Why Timing Matters</span>
+        <span class="gold-rule" aria-hidden="true"></span>
+        <h2 class="section-title" id="philosophy-heading">
+          Why Timing Is Everything in College Planning
+        </h2>
+
+        <div class="philosophy__body">
+          <p>The college process has a logic to it that most families never see — because they encounter it too late. Certain academic decisions made in 9th grade affect course options in 11th grade. Certain financial planning decisions made before junior year affect what families qualify for, or don't. Certain choices about activities, testing, and school research affect both admissions competitiveness and scholarship eligibility.</p>
+          <p>None of this is mysterious. But it is sequential, and it rewards families who start with intention.</p>
+        </div>
+
+        <blockquote class="philosophy__pull">
+          "Our process gives families that advantage — not by doing more, but by doing the right things at the right time."
+        </blockquote>
+
+        <div class="philosophy__body">
+          <p>At College Funding Solutions, we have mapped every stage of the high school years to the planning work that matters most at that moment. The result is a structured, sequential process that removes the guesswork — so your family always knows what to focus on, when to act, and what comes next.</p>
+        </div>
+
+        <!-- Three-pillar reminder -->
+        <div class="philosophy__pillars" role="list" aria-label="Planning dimensions">
+          <div class="philosophy__pillar" role="listitem">
+            <h3 class="philosophy__pillar-title">Academic</h3>
+            <p class="philosophy__pillar-body">Courses, GPA, standardized testing, and application positioning.</p>
+          </div>
+          <div class="philosophy__pillar" role="listitem">
+            <h3 class="philosophy__pillar-title">Social</h3>
+            <p class="philosophy__pillar-body">Activities, leadership, character development, and personal narrative.</p>
+          </div>
+          <div class="philosophy__pillar" role="listitem">
+            <h3 class="philosophy__pillar-title">Financial</h3>
+            <p class="philosophy__pillar-body">Aid planning, FAFSA, merit positioning, and award letter strategy.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         9TH GRADE — Foundation building
+         Background: Ivory (light)
+    ============================================================ -->
+    <section class="timeline-section timeline-section--light" id="grade-9" aria-labelledby="grade9-heading">
+      <div class="container">
+        <div class="timeline-layout">
+
+          <!-- Left: Year marker (desktop only) -->
+          <div class="timeline-year-col" aria-hidden="true">
+            <div class="timeline-year-badge">
+              <span class="timeline-year-badge__grade">Freshman Year</span>
+              <span class="timeline-year-badge__number">9</span>
+              <span class="timeline-year-badge__label">Grade</span>
+              <div class="timeline-year-badge__node"></div>
+            </div>
+          </div>
+
+          <!-- Right: Content card -->
+          <div class="timeline-card">
+
+            <!-- Mobile grade header -->
+            <div class="timeline-mobile-header">
+              <div class="timeline-mobile-header__dot" aria-hidden="true"></div>
+              <span class="timeline-mobile-header__grade">9th Grade — Freshman Year</span>
+            </div>
+
+            <div class="timeline-card__header">
+              <h2 class="timeline-card__headline" id="grade9-heading">
+                Freshman Year: Laying the Groundwork
+              </h2>
+              <p class="timeline-card__intro">
+                Most families don't think about college in 9th grade. That's understandable — and it's also one of the most significant missed opportunities in college planning.
+              </p>
+            </div>
+
+            <div class="timeline-card__body">
+              <p class="timeline-card__body-text">
+                The decisions your student makes in freshman year — which courses they take, how seriously they engage academically, what activities they begin to explore — set the trajectory for everything that follows. We help families understand those decisions early and make them with clarity. College planning in 9th grade is not about pressure. It is about awareness.
+              </p>
+
+              <span class="timeline-focus__label">What We Focus On in 9th Grade</span>
+              <div class="timeline-focus__grid" role="list">
+                <div class="timeline-focus__item" role="listitem">
+                  <div class="timeline-focus__item-dot" aria-hidden="true"></div>
+                  <div class="timeline-focus__item-text">
+                    <strong>Academic Baseline Assessment</strong>
+                    Establishing where your student stands and mapping a realistic, ambitious four-year course trajectory.
+                  </div>
+                </div>
+                <div class="timeline-focus__item" role="listitem">
+                  <div class="timeline-focus__item-dot" aria-hidden="true"></div>
+                  <div class="timeline-focus__item-text">
+                    <strong>Course Pathway Planning</strong>
+                    Understanding how course selection in freshman year creates — or forecloses — options in junior and senior year.
+                  </div>
+                </div>
+                <div class="timeline-focus__item" role="listitem">
+                  <div class="timeline-focus__item-dot" aria-hidden="true"></div>
+                  <div class="timeline-focus__item-text">
+                    <strong>Activity Exploration</strong>
+                    Beginning to identify genuine interests and potential areas of involvement — not to manufacture a résumé, but to develop authentically.
+                  </div>
+                </div>
+                <div class="timeline-focus__item" role="listitem">
+                  <div class="timeline-focus__item-dot" aria-hidden="true"></div>
+                  <div class="timeline-focus__item-text">
+                    <strong>Four-Year Framework Introduction</strong>
+                    Giving the whole family a shared understanding of what the college planning process involves and when each stage occurs.
+                  </div>
+                </div>
+                <div class="timeline-focus__item" role="listitem">
+                  <div class="timeline-focus__item-dot" aria-hidden="true"></div>
+                  <div class="timeline-focus__item-text">
+                    <strong>Academic Habit Formation</strong>
+                    Setting realistic, goal-oriented academic expectations and the study practices that support them.
+                  </div>
+                </div>
+                <div class="timeline-focus__item" role="listitem">
+                  <div class="timeline-focus__item-dot" aria-hidden="true"></div>
+                  <div class="timeline-focus__item-text">
+                    <strong>Parent Education</strong>
+                    Ensuring both parents understand the full timeline, key milestones, and how the financial dimension of college planning begins now.
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-mindset">
+                <span class="timeline-mindset__label">The Mindset We Encourage</span>
+                <p class="timeline-mindset__text">
+                  "College planning in 9th grade is not about pressure — it is about awareness. Students who understand where they are going tend to make better decisions along the way."
+                </p>
+              </div>
+            </div>
+
+          </div><!-- /.timeline-card -->
+
+        </div><!-- /.timeline-layout -->
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         10TH GRADE — Building momentum
+         Background: White (alternating)
+    ============================================================ -->
+    <section class="timeline-section timeline-section--white" id="grade-10" aria-labelledby="grade10-heading">
+      <div class="container">
+        <div class="timeline-layout">
+
+          <div class="timeline-year-col" aria-hidden="true">
+            <div class="timeline-year-badge">
+              <span class="timeline-year-badge__grade">Sophomore Year</span>
+              <span class="timeline-year-badge__number">10</span>
+              <span class="timeline-year-badge__label">Grade</span>
+              <div class="timeline-year-badge__node"></div>
+            </div>
+          </div>
+
+          <div class="timeline-card">
+
+            <div class="timeline-mobile-header">
+              <div class="timeline-mobile-header__dot" aria-hidden="true"></div>
+              <span class="timeline-mobile-header__grade">10th Grade — Sophomore Year</span>
+            </div>
+
+            <div class="timeline-card__header">
+              <h2 class="timeline-card__headline" id="grade10-heading">
+                Sophomore Year: Strengthening the Foundation
+              </h2>
+              <p class="timeline-card__intro">
+                Sophomore year is when the academic trajectory begins to crystallize and the college planning work deepens. Testing becomes relevant, course selections grow more consequential, and students begin to develop the profile that colleges will eventually evaluate.
+              </p>
+            </div>
+
+            <div class="timeline-card__body">
+              <p class="timeline-card__body-text">
+                Families who begin structured planning in 10th grade have meaningful time to adjust course before the high-stakes junior year. Those who wait often find their options are more limited than they expected — not because anything is lost forever, but because the window for proactive positioning has narrowed.
+              </p>
+
+              <span class="timeline-focus__label">What We Focus On in 10th Grade</span>
+              <div class="timeline-focus__grid" role="list">
+                <div class="timeline-focus__item" role="listitem">
+                  <div class="timeline-focus__item-dot" aria-hidden="true"></div>
+                  <div class="timeline-focus__item-text">
+                    <strong>Course Selection Review</strong>
+                    Evaluating sophomore-year coursework and planning the advanced course pathway into junior year, including AP and honors considerations.
+                  </div>
+                </div>
+                <div class="timeline-focus__item" role="listitem">
+                  <div class="timeline-focus__item-dot" aria-hidden="true"></div>
+                  <div class="timeline-focus__item-text">
+                    <strong>Testing Introduction</strong>
+                    First exposure to the PSAT and pre-ACT. Understanding timing strategy and what the scores mean for future planning.
+                  </div>
+                </div>
+                <div class="timeline-focus__item" role="listitem">
+                  <div class="timeline-focus__item-dot" aria-hidden="true"></div>
+                  <div class="timeline-focus__item-text">
+                    <strong>GPA Trend Awareness</strong>
+                    Understanding how GPA trajectory — not just GPA level — is read by admissions offices, and what adjustments can be made now.
+                  </div>
+                </div>
+                <div class="timeline-focus__item" role="listitem">
+                  <div class="timeline-focus__item-dot" aria-hidden="true"></div>
+                  <div class="timeline-focus__item-text">
+                    <strong>Leadership Identification</strong>
+                    Moving from broad activity exploration to intentional involvement with genuine depth and growing responsibility.
+                  </div>
+                </div>
+                <div class="timeline-focus__item" role="listitem">
+                  <div class="timeline-focus__item-dot" aria-hidden="true"></div>
+                  <div class="timeline-focus__item-text">
+                    <strong>College Preference Conversations</strong>
+                    First open conversations about college values, goals, size preference, geography, and family expectations.
+                  </div>
+                </div>
+                <div class="timeline-focus__item" role="listitem">
+                  <div class="timeline-focus__item-dot" aria-hidden="true"></div>
+                  <div class="timeline-focus__item-text">
+                    <strong>Financial Planning Awareness</strong>
+                    Introducing key financial aid concepts and the timeline for decisions that affect aid eligibility — while families still have time to act on them.
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-mindset">
+                <span class="timeline-mindset__label">Why This Year Matters</span>
+                <p class="timeline-mindset__text">
+                  "Families who engage with the process in 10th grade consistently arrive at their decision point with a wider range of good choices."
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         11TH GRADE — The critical year
+         Background: Ivory (alternating)
+    ============================================================ -->
+    <section class="timeline-section timeline-section--light" id="grade-11" aria-labelledby="grade11-heading">
+      <div class="container">
+        <div class="timeline-layout">
+
+          <div class="timeline-year-col" aria-hidden="true">
+            <div class="timeline-year-badge">
+              <span class="timeline-year-badge__grade">Junior Year</span>
+              <span class="timeline-year-badge__number">11</span>
+              <span class="timeline-year-badge__label">Grade</span>
+              <div class="timeline-year-badge__node"></div>
+            </div>
+          </div>
+
+          <div class="timeline-card">
+
+            <div class="timeline-mobile-header">
+              <div class="timeline-mobile-header__dot" aria-hidden="true"></div>
+              <span class="timeline-mobile-header__grade">11th Grade — Junior Year</span>
+            </div>
+
+            <div class="timeline-card__header">
+              <h2 class="timeline-card__headline" id="grade11-heading">
+                Junior Year: Where Preparation Meets Planning
+              </h2>
+              <p class="timeline-card__intro">
+                Junior year is the most consequential year in the college planning timeline. Academic records become largely set, testing scores need to be finalized, the college list begins to take shape, and financial planning decisions start to have real, immediate implications.
+              </p>
+            </div>
+
+            <div class="timeline-card__body">
+              <p class="timeline-card__body-text">
+                This is the year when the work done in 9th and 10th grade pays off — or when families who haven't planned begin to feel the pressure of compressed time. For our families, junior year is not a scramble. It is an execution of a plan that has been building since freshman year.
+              </p>
+
+              <span class="timeline-focus__label">What We Focus On in 11th Grade</span>
+              <div class="timeline-focus__grid" role="list">
+                <div class="timeline-focus__item" role="listitem">
+                  <div class="timeline-focus__item-dot" aria-hidden="true"></div>
+                  <div class="timeline-focus__item-text">
+                    <strong>SAT &amp; ACT Preparation</strong>
+                    Structured test prep with access to unlimited SAT and ACT preparation resources. Score goal-setting based on the college list and scholarship targets.
+                  </div>
+                </div>
+                <div class="timeline-focus__item" role="listitem">
+                  <div class="timeline-focus__item-dot" aria-hidden="true"></div>
+                  <div class="timeline-focus__item-text">
+                    <strong>College List Development</strong>
+                    Building a balanced, well-researched list across academic fit, social fit, and financial fit — not based on name recognition or sticker price alone.
+                  </div>
+                </div>
+                <div class="timeline-focus__item" role="listitem">
+                  <div class="timeline-focus__item-dot" aria-hidden="true"></div>
+                  <div class="timeline-focus__item-text">
+                    <strong>Need-Based vs. Merit Aid</strong>
+                    A thorough education on the difference between need-based and merit-based financial aid — and how each type of school on the list approaches awarding both.
+                  </div>
+                </div>
+                <div class="timeline-focus__item" role="listitem">
+                  <div class="timeline-focus__item-dot" aria-hidden="true"></div>
+                  <div class="timeline-focus__item-text">
+                    <strong>FAFSA &amp; CSS Profile Introduction</strong>
+                    Understanding how each form works, what they calculate, and how families can plan ahead to optimize their eligibility before filing season opens.
+                  </div>
+                </div>
+                <div class="timeline-focus__item" role="listitem">
+                  <div class="timeline-focus__item-dot" aria-hidden="true"></div>
+                  <div class="timeline-focus__item-text">
+                    <strong>Application Strategy</strong>
+                    Common App overview, personal essay introduction, teacher recommendation strategy, and early action vs. early decision considerations.
+                  </div>
+                </div>
+                <div class="timeline-focus__item" role="listitem">
+                  <div class="timeline-focus__item-dot" aria-hidden="true"></div>
+                  <div class="timeline-focus__item-text">
+                    <strong>Campus Visit Planning</strong>
+                    A framework for evaluating campus visits effectively — what to observe, what to ask, and how to use visits to refine the college list.
+                  </div>
+                </div>
+                <div class="timeline-focus__item" role="listitem">
+                  <div class="timeline-focus__item-dot" aria-hidden="true"></div>
+                  <div class="timeline-focus__item-text">
+                    <strong>Scholarship Research</strong>
+                    Identifying merit-based scholarship opportunities your student is realistically competitive for — both institution-based and external.
+                  </div>
+                </div>
+                <div class="timeline-focus__item" role="listitem">
+                  <div class="timeline-focus__item-dot" aria-hidden="true"></div>
+                  <div class="timeline-focus__item-text">
+                    <strong>Financial Planning Decisions</strong>
+                    Specific financial decisions that can affect aid eligibility and family contribution calculations — made now, while there is still time to implement them.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Testing callout note -->
+              <div class="timeline-note" role="note">
+                <span class="timeline-note__label">A Note on Standardized Testing</span>
+                <p class="timeline-note__text">
+                  Our families receive access to unlimited SAT and ACT preparation as part of our process. We believe standardized testing, approached strategically and with adequate preparation time, remains a meaningful tool for admissions positioning and scholarship eligibility. We help families determine which test is the better fit, set a realistic score target based on their college list, and develop a testing timeline that allows for proper preparation without unnecessary pressure.
+                </p>
+              </div>
+
+              <div class="timeline-mindset">
+                <span class="timeline-mindset__label">The Compounding Advantage</span>
+                <p class="timeline-mindset__text">
+                  "Junior year is where preparation becomes strategy. For families who have been working with us since 9th or 10th grade, this year feels structured and manageable. For families just beginning, it is still a meaningful starting point — but the urgency is real."
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         12TH GRADE — Execution year
+         Background: White (alternating)
+    ============================================================ -->
+    <section class="timeline-section timeline-section--white" id="grade-12" aria-labelledby="grade12-heading">
+      <div class="container">
+        <div class="timeline-layout">
+
+          <div class="timeline-year-col" aria-hidden="true">
+            <div class="timeline-year-badge">
+              <span class="timeline-year-badge__grade">Senior Year</span>
+              <span class="timeline-year-badge__number">12</span>
+              <span class="timeline-year-badge__label">Grade</span>
+              <div class="timeline-year-badge__node"></div>
+            </div>
+          </div>
+
+          <div class="timeline-card">
+
+            <div class="timeline-mobile-header">
+              <div class="timeline-mobile-header__dot" aria-hidden="true"></div>
+              <span class="timeline-mobile-header__grade">12th Grade — Senior Year</span>
+            </div>
+
+            <div class="timeline-card__header">
+              <h2 class="timeline-card__headline" id="grade12-heading">
+                Senior Year: From Applications to Enrollment
+              </h2>
+              <p class="timeline-card__intro">
+                Senior year is when everything comes together — or, for families without a plan, when everything arrives at once. With the right preparation in place, this year is manageable and even exciting. Without it, it can feel like a series of high-stakes decisions made under time pressure.
+              </p>
+            </div>
+
+            <div class="timeline-card__body">
+              <p class="timeline-card__body-text">
+                Our role in senior year shifts from planning to execution and guidance. The strategic work has been done. Now we walk alongside families through every major milestone — from application submission through award letter review, financial aid appeals, and the final enrollment decision.
+              </p>
+
+              <span class="timeline-focus__label">What We Focus On in 12th Grade</span>
+              <div class="timeline-focus__grid" role="list">
+                <div class="timeline-focus__item" role="listitem">
+                  <div class="timeline-focus__item-dot" aria-hidden="true"></div>
+                  <div class="timeline-focus__item-text">
+                    <strong>Application Completion</strong>
+                    Common App, school-specific applications, personal essay review, and activity list refinement — executed with clarity and confidence.
+                  </div>
+                </div>
+                <div class="timeline-focus__item" role="listitem">
+                  <div class="timeline-focus__item-dot" aria-hidden="true"></div>
+                  <div class="timeline-focus__item-text">
+                    <strong>FAFSA Filing</strong>
+                    Timing, accuracy, and strategic sequencing — ensuring your form is filed correctly and as early as possible to maximize aid consideration.
+                  </div>
+                </div>
+                <div class="timeline-focus__item" role="listitem">
+                  <div class="timeline-focus__item-dot" aria-hidden="true"></div>
+                  <div class="timeline-focus__item-text">
+                    <strong>CSS Profile Completion</strong>
+                    For schools that require it — a thorough, accurate filing with full understanding of how the Profile affects institutional aid awards.
+                  </div>
+                </div>
+                <div class="timeline-focus__item" role="listitem">
+                  <div class="timeline-focus__item-dot" aria-hidden="true"></div>
+                  <div class="timeline-focus__item-text">
+                    <strong>Scholarship Applications</strong>
+                    Identifying and pursuing merit aid opportunities — both from institutions and from external sources your student is genuinely competitive for.
+                  </div>
+                </div>
+                <div class="timeline-focus__item" role="listitem">
+                  <div class="timeline-focus__item-dot" aria-hidden="true"></div>
+                  <div class="timeline-focus__item-text">
+                    <strong>Award Letter Review</strong>
+                    Translating every award letter into real, comparable numbers. Understanding exactly what each school is offering — and what the actual cost of attendance will be.
+                  </div>
+                </div>
+                <div class="timeline-focus__item" role="listitem">
+                  <div class="timeline-focus__item-dot" aria-hidden="true"></div>
+                  <div class="timeline-focus__item-text">
+                    <strong>Financial Aid Appeals</strong>
+                    Identifying when an appeal is appropriate, how to approach it professionally, and what documentation and communication is most likely to be effective.
+                  </div>
+                </div>
+                <div class="timeline-focus__item" role="listitem">
+                  <div class="timeline-focus__item-dot" aria-hidden="true"></div>
+                  <div class="timeline-focus__item-text">
+                    <strong>Final School Selection</strong>
+                    Helping families weigh all factors — academic fit, financial reality, social environment, and long-term value — before committing to a decision.
+                  </div>
+                </div>
+                <div class="timeline-focus__item" role="listitem">
+                  <div class="timeline-focus__item-dot" aria-hidden="true"></div>
+                  <div class="timeline-focus__item-text">
+                    <strong>Enrollment &amp; Pre-Arrival Guidance</strong>
+                    Supporting the transition from decision to enrollment — ensuring nothing falls through the cracks at the finish line.
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-mindset">
+                <span class="timeline-mindset__label">What We Tell Every Senior-Year Family</span>
+                <p class="timeline-mindset__text">
+                  "Even if planning didn't begin in 9th grade, there is meaningful work we can do together. The strategies available in 12th grade are different from those available earlier — but they are real, and we will make the most of them."
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         STARTING LATE — Warm, non-judgmental, action-oriented
+    ============================================================ -->
+    <section class="late-start" id="starting-late" aria-labelledby="late-start-heading">
+      <div class="container">
+        <div class="late-start__inner">
+          <div class="late-start__card">
+
+            <div class="late-start__text">
+              <span class="section-label">Starting in Junior or Senior Year?</span>
+              <h2 class="late-start__title" id="late-start-heading">
+                It's Not Too Late. Here's What We Can Do Together.
+              </h2>
+              <div class="late-start__body">
+                <p>The ideal time to begin college planning is freshman year. But we understand that families come to us at every stage — some in 9th grade, some not until 12th grade with applications already open.</p>
+                <p>Wherever your student is in the process, we will give you an honest assessment of where you stand, what options are available, and what the most strategic path forward looks like from here. We do not work backward to tell you what you should have done. We work forward to help you make the best possible decisions with the time you have.</p>
+              </div>
+            </div>
+
+            <div class="late-start__cta">
+              <a href="contact.html" class="btn btn--primary btn--arrow">Schedule a Consultation</a>
+              <p class="late-start__cta-note">We'll assess where your<br>student is and what's possible.</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         FINAL PAGE CTA — Dark section, confident close
+    ============================================================ -->
+    <section class="page-cta" aria-labelledby="page-cta-heading">
+      <div class="container">
+        <div class="page-cta__inner">
+
+          <span class="section-label">Ready to Begin?</span>
+          <span class="gold-rule gold-rule--center" aria-hidden="true"></span>
+
+          <h2 class="page-cta__title" id="page-cta-heading">
+            See Where Your Family Fits in This Process
+          </h2>
+
+          <p class="page-cta__body">
+            Whether you're in the early stages of planning or deep into the application season, a conversation with our team will give you clarity on where you stand and what a structured strategy could mean for your family.
+          </p>
+
+          <div class="page-cta__ctas">
+            <a href="contact.html" class="btn btn--white btn--large btn--arrow">Schedule a Consultation</a>
+            <a href="webinar.html" class="btn btn--white-outline btn--large">Register for Our Free Webinar</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ============================================================
+       FOOTER — Identical to homepage
+  ============================================================ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+
+      <div class="footer__grid">
+
+        <div class="footer__brand">
+          <div class="footer__brand-name">College Funding Solutions</div>
+          <div class="footer__brand-tagline">Strategic College Planning</div>
+          <p class="footer__brand-desc">
+            Expert, advisor-led guidance for families navigating the college planning process — from freshman year through enrollment.
+          </p>
+        </div>
+
+        <div class="footer__col">
+          <span class="footer__col-label">Navigate</span>
+          <nav class="footer__links" aria-label="Footer navigation">
+            <a href="cfs_homepage.html" class="footer__link">Home</a>
+            <a href="how-it-works.html" class="footer__link">How It Works</a>
+            <a href="#top" class="footer__link">Our Process</a>
+            <a href="cfs_expertise.html" class="footer__link">The 3 Pillars</a>
+            <a href="about.html" class="footer__link">About</a>
+          </nav>
+        </div>
+
+        <div class="footer__col">
+          <span class="footer__col-label">Resources</span>
+          <nav class="footer__links" aria-label="Resources navigation">
+            <a href="resources.html" class="footer__link">Resource Library</a>
+            <a href="resources.html#guidebook" class="footer__link">Free Guidebook</a>
+            <a href="resources.html#articles" class="footer__link">Articles &amp; Guides</a>
+            <a href="webinar.html" class="footer__link">Free Webinar</a>
+            <a href="contact.html" class="footer__link">Contact Us</a>
+          </nav>
+        </div>
+
+        <div class="footer__col">
+          <span class="footer__col-label">Get in Touch</span>
+          <div class="footer__contact-line">
+            <span class="footer__contact-icon" aria-hidden="true">✉</span>
+            <span class="footer__contact-text">info@collegefundingsolutions.com</span>
+          </div>
+          <div class="footer__contact-line">
+            <span class="footer__contact-icon" aria-hidden="true">◎</span>
+            <span class="footer__contact-text">Serving families nationwide<br>via virtual consultation</span>
+          </div>
+          <a href="contact.html" class="footer__cta-link">Schedule a Consultation</a>
+        </div>
+
+      </div>
+
+      <div class="footer__bottom">
+        <span class="footer__copyright">
+          &copy; <span id="footer-year"></span> College Funding Solutions. All rights reserved.
+        </span>
+        <div class="footer__legal-links">
+          <a href="privacy.html" class="footer__legal-link">Privacy Policy</a>
+          <a href="terms.html" class="footer__legal-link">Terms of Use</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- ============================================================
+       JAVASCRIPT — Navigation drawer + copyright year
+  ============================================================ -->
+  <script>
+    // Dynamic copyright year
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+    // Mobile navigation drawer
+    const toggle   = document.getElementById('nav-toggle');
+    const drawer   = document.getElementById('nav-drawer');
+    const overlay  = document.getElementById('nav-overlay');
+    const closeBtn = document.getElementById('nav-close');
+
+    function openDrawer() {
+      drawer.classList.add('is-open');
+      toggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDrawer() {
+      drawer.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    toggle.addEventListener('click', openDrawer);
+    closeBtn.addEventListener('click', closeDrawer);
+    overlay.addEventListener('click', closeDrawer);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && drawer.classList.contains('is-open')) closeDrawer();
+    });
+
+    drawer.querySelectorAll('.nav__drawer-link, .nav__drawer-ctas .btn').forEach(link => {
+      link.addEventListener('click', closeDrawer);
+    });
+  </script>
+
+</body>
+</html>
