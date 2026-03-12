@@ -1,0 +1,2142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How It Works — College Funding Solutions</title>
+  <meta name="description" content="Discover how College Funding Solutions guides families through the college planning process — a structured, advisor-led approach built on Academic, Social, and Financial Strategy." />
+
+  <!-- Google Fonts: Cormorant Garamond (display) + DM Sans (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet" />
+
+  <style>
+
+    /* ============================================================
+       CSS CUSTOM PROPERTIES — Standardized across all site pages
+    ============================================================ */
+    :root {
+      /* Brand Colors */
+      --navy:             #064E3B;
+      --navy-mid:         #0a3528;
+      --navy-light:       #0f4535;
+      --gold:             #C4963A;
+      --gold-light:       #D4A84B;
+      --gold-pale:        #F0E2C4;
+
+      /* Background Colors */
+      --ivory:            #F7F4EE;
+      --ivory-warm:       #EDE9DF;
+      --white:            #FFFFFF;
+
+      /* Text Colors */
+      --text-dark:        #1A1A2E;
+      --text-body:        #3A3A4A;
+      --text-muted:       #6B6B7E;
+      --text-light:       #9A9AAA;
+
+      /* UI */
+      --border:           #E2DDD4;
+
+      /* Shadows */
+      --shadow-sm:        0 2px 12px rgba(13, 27, 46, 0.08);
+      --shadow-md:        0 8px 32px rgba(13, 27, 46, 0.12);
+      --shadow-lg:        0 20px 60px rgba(13, 27, 46, 0.18);
+      --shadow-gold:      0 4px 18px rgba(196, 150, 58, 0.38);
+
+      /* Typography */
+      --font-display:     'Cormorant Garamond', Georgia, serif;
+      --font-body:        'DM Sans', system-ui, -apple-system, sans-serif;
+
+      /* Border Radius */
+      --radius-sm:        6px;
+      --radius-md:        12px;
+      --radius-lg:        20px;
+
+      /* Spacing */
+      --section-pad:      96px 0;
+      --section-pad-md:   64px 0;
+      --section-pad-sm:   48px 0;
+
+      /* Layout */
+      --container-max:    1080px;
+      --container-narrow: 740px;
+      --gutter:           24px;
+
+      /* Transitions */
+      --transition:       all 0.25s ease;
+      --transition-slow:  all 0.4s ease;
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text-body);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ============================================================
+       LAYOUT UTILITIES
+    ============================================================ */
+    .container {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    .container--narrow {
+      max-width: var(--container-narrow);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    /* ============================================================
+       TYPOGRAPHY UTILITIES
+    ============================================================ */
+    .section-label {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(28px, 4vw, 40px);
+      line-height: 1.15;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+    }
+
+    .section-intro {
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--text-body);
+      max-width: 680px;
+    }
+
+    /* Gold decorative rule */
+    .gold-rule {
+      display: block;
+      width: 48px;
+      height: 2px;
+      background: var(--gold);
+      border-radius: 2px;
+      margin-bottom: 28px;
+    }
+
+    .gold-rule--center { margin-left: auto; margin-right: auto; }
+
+    /* ============================================================
+       BUTTON STYLES
+    ============================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      padding: 16px 34px;
+      border-radius: var(--radius-sm);
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+      white-space: nowrap;
+      line-height: 1;
+    }
+
+    /* Primary — Gold Fill */
+    .btn--primary {
+      background: var(--gold);
+      color: var(--white);
+      box-shadow: var(--shadow-gold);
+    }
+    .btn--primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(196, 150, 58, 0.48);
+    }
+    .btn--primary:active { transform: translateY(0); }
+
+    /* Secondary — Gold Outline */
+    .btn--outline {
+      background: transparent;
+      color: var(--gold);
+      border: 1.5px solid var(--gold);
+    }
+    .btn--outline:hover {
+      background: var(--gold);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    /* White Outline — for dark backgrounds */
+    .btn--white-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1.5px solid rgba(255,255,255,0.45);
+    }
+    .btn--white-outline:hover {
+      border-color: var(--white);
+      background: rgba(255,255,255,0.08);
+      transform: translateY(-2px);
+    }
+
+    /* Size variants */
+    .btn--large {
+      font-size: 16px;
+      padding: 18px 42px;
+    }
+
+    .btn--small {
+      font-size: 13px;
+      padding: 10px 22px;
+    }
+
+    /* Arrow suffix */
+    .btn--arrow::after {
+      content: '→';
+      font-size: 17px;
+      line-height: 1;
+      transition: transform 0.2s ease;
+    }
+    .btn--arrow:hover::after { transform: translateX(4px); }
+
+
+    /* ============================================================
+       ═══════════════════════════════════════════════════════════
+       NAVIGATION — Sticky, consistent across all pages
+       ═══════════════════════════════════════════════════════════
+    ============================================================ */
+    .nav {
+      background: var(--navy);
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      box-shadow: 0 2px 20px rgba(6, 78, 59, 0.3);
+    }
+
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+      gap: 24px;
+    }
+
+    /* Brand */
+    .nav__brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      flex-shrink: 0;
+      text-decoration: none;
+    }
+
+    .nav__brand-name {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.01em;
+      line-height: 1.2;
+    }
+
+    .nav__brand-tagline {
+      font-family: var(--font-body);
+      font-size: 9.5px;
+      font-weight: 400;
+      color: var(--gold-pale);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      opacity: 0.7;
+    }
+
+    /* Nav Links */
+    .nav__links {
+      display: none;
+      align-items: center;
+      gap: 2px;
+      flex: 1;
+      justify-content: center;
+    }
+
+    @media (min-width: 960px) {
+      .nav__links { display: flex; }
+    }
+
+    .nav__link {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.72);
+      padding: 6px 14px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .nav__link:hover {
+      color: var(--white);
+      background: rgba(255,255,255,0.07);
+    }
+
+    .nav__link--active {
+      color: var(--white);
+    }
+
+    /* Nav CTA Group */
+    .nav__ctas {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .nav__cta-webinar { display: none; }
+
+    @media (min-width: 640px) {
+      .nav__cta-webinar { display: inline-flex; }
+    }
+
+    /* Mobile Hamburger */
+    .nav__hamburger {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 36px;
+      height: 36px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+    }
+
+    .nav__hamburger:hover { background: rgba(255,255,255,0.08); }
+
+    .nav__hamburger span {
+      display: block;
+      height: 1.5px;
+      width: 100%;
+      background: var(--gold);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    @media (min-width: 960px) {
+      .nav__hamburger { display: none; }
+    }
+
+    /* Mobile Drawer */
+    .nav__drawer {
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      pointer-events: none;
+    }
+
+    .nav__drawer-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(6, 20, 46, 0.65);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .nav__drawer-panel {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: min(320px, 85vw);
+      background: var(--navy-mid);
+      padding: 28px 28px 40px;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .nav__drawer.is-open { pointer-events: all; }
+    .nav__drawer.is-open .nav__drawer-overlay { opacity: 1; }
+    .nav__drawer.is-open .nav__drawer-panel { transform: translateX(0); }
+
+    .nav__drawer-close {
+      align-self: flex-end;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.07);
+      border: none;
+      border-radius: 50%;
+      color: var(--white);
+      font-size: 20px;
+      cursor: pointer;
+      margin-bottom: 32px;
+      transition: var(--transition);
+    }
+
+    .nav__drawer-close:hover { background: rgba(255,255,255,0.14); }
+
+    .nav__drawer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex: 1;
+    }
+
+    .nav__drawer-link {
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.8);
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+    }
+
+    .nav__drawer-link:hover {
+      color: var(--white);
+      background: rgba(255,255,255,0.07);
+    }
+
+    .nav__drawer-ctas {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .nav__drawer-ctas .btn { width: 100%; justify-content: center; }
+
+
+    /* ============================================================
+       ═══════════════════════════════════════════════════════════
+       PAGE HERO — Navy, eyebrow + headline + subheadline
+       ═══════════════════════════════════════════════════════════
+    ============================================================ */
+    .page-hero {
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+      padding: 96px 0 88px;
+    }
+
+    /* Ambient gold glow */
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -5%;
+      width: 55%;
+      height: 130%;
+      background: radial-gradient(ellipse at center, rgba(196,150,58,0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    /* Subtle noise texture */
+    .page-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0.02;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    .page-hero__inner {
+      position: relative;
+      z-index: 2;
+      max-width: 780px;
+    }
+
+    .page-hero__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .page-hero__eyebrow-line {
+      display: block;
+      width: 32px;
+      height: 1.5px;
+      background: var(--gold);
+      border-radius: 2px;
+    }
+
+    .page-hero__eyebrow-text {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .page-hero__headline {
+      font-family: var(--font-display);
+      font-size: clamp(38px, 6vw, 62px);
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      color: var(--white);
+      margin-bottom: 26px;
+    }
+
+    .page-hero__headline em {
+      font-style: italic;
+      color: var(--gold-pale);
+    }
+
+    .page-hero__subheadline {
+      font-size: clamp(16px, 2vw, 19px);
+      line-height: 1.72;
+      color: rgba(255, 255, 255, 0.68);
+      max-width: 620px;
+      margin-bottom: 44px;
+    }
+
+    /* Quick-link nav anchors in hero */
+    .page-hero__anchors {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .page-hero__anchor {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.55);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 100px;
+      padding: 7px 16px;
+      transition: var(--transition);
+    }
+
+    .page-hero__anchor:hover {
+      color: var(--white);
+      border-color: rgba(255,255,255,0.32);
+      background: rgba(255,255,255,0.05);
+    }
+
+    .page-hero__anchor-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+
+    /* ============================================================
+       ═══════════════════════════════════════════════════════════
+       WHAT MAKES CFS DIFFERENT — Light ivory, 2-col
+       ═══════════════════════════════════════════════════════════
+    ============================================================ */
+    .differentiator {
+      background: var(--ivory);
+      padding: var(--section-pad);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .differentiator__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+
+    @media (min-width: 820px) {
+      .differentiator__grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+      }
+    }
+
+    .differentiator__text .section-title {
+      font-size: clamp(26px, 3.5vw, 38px);
+    }
+
+    .differentiator__body {
+      font-size: 17px;
+      line-height: 1.78;
+      color: var(--text-body);
+    }
+
+    .differentiator__body p + p { margin-top: 18px; }
+
+    .differentiator__pull {
+      font-family: var(--font-display);
+      font-size: 19px;
+      font-style: italic;
+      color: var(--navy);
+      line-height: 1.55;
+      border-left: 3px solid var(--gold);
+      padding: 6px 0 6px 22px;
+      margin-top: 32px;
+    }
+
+    /* Right column: distinction cards */
+    .differentiator__cards {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .diff-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 26px 28px;
+      border-left: 3px solid var(--gold);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+
+    .diff-card:hover {
+      transform: translateX(4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .diff-card__title {
+      font-family: var(--font-display);
+      font-size: 19px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .diff-card__body {
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--text-body);
+    }
+
+
+    /* ============================================================
+       ═══════════════════════════════════════════════════════════
+       THE PROBLEM WITH GOING IT ALONE — White background
+       ═══════════════════════════════════════════════════════════
+    ============================================================ */
+    .problem {
+      background: var(--white);
+      padding: var(--section-pad);
+    }
+
+    .problem__inner {
+      max-width: var(--container-narrow);
+      margin: 0 auto;
+    }
+
+    .problem__body {
+      font-size: 17px;
+      line-height: 1.78;
+      color: var(--text-body);
+    }
+
+    .problem__body p + p { margin-top: 18px; }
+
+    /* Reality-check grid */
+    .problem__realities {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-top: 48px;
+    }
+
+    @media (min-width: 600px) {
+      .problem__realities { grid-template-columns: 1fr 1fr; }
+    }
+
+    .reality-item {
+      background: var(--ivory);
+      border-radius: var(--radius-md);
+      padding: 24px 26px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .reality-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--gold);
+      opacity: 0.5;
+    }
+
+    .reality-item__text {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-style: italic;
+      color: var(--navy);
+      line-height: 1.5;
+    }
+
+
+    /* ============================================================
+       ═══════════════════════════════════════════════════════════
+       THE CFS FRAMEWORK — Dark navy, three-pillar overview
+       ═══════════════════════════════════════════════════════════
+    ============================================================ */
+    .framework {
+      background: var(--navy);
+      padding: var(--section-pad);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .framework::before {
+      content: '';
+      position: absolute;
+      bottom: -10%;
+      left: -5%;
+      width: 50%;
+      height: 80%;
+      background: radial-gradient(ellipse at center, rgba(196,150,58,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .framework__header {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 64px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .framework__header .section-label { color: var(--gold); }
+
+    .framework__title {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 18px;
+    }
+
+    .framework__intro {
+      font-size: 17px;
+      line-height: 1.72;
+      color: rgba(255,255,255,0.62);
+    }
+
+    /* Three pillar cards in a row */
+    .framework__pillars {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (min-width: 720px) {
+      .framework__pillars { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .pillar-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: var(--radius-md);
+      padding: 36px 30px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pillar-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--gold);
+      opacity: 0.6;
+      transition: opacity 0.25s ease;
+    }
+
+    .pillar-card:hover {
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(196,150,58,0.25);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+    }
+
+    .pillar-card:hover::before { opacity: 1; }
+
+    .pillar-card__number {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-style: italic;
+      color: var(--gold);
+      opacity: 0.7;
+      letter-spacing: 0.1em;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .pillar-card__title {
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+
+    .pillar-card__desc {
+      font-size: 15px;
+      line-height: 1.68;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 22px;
+    }
+
+    /* Bullet items within each pillar card */
+    .pillar-card__items {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .pillar-card__item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.55;
+    }
+
+    .pillar-card__item-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--gold);
+      margin-top: 7px;
+      flex-shrink: 0;
+      opacity: 0.7;
+    }
+
+    /* Link to full pillars page */
+    .framework__link {
+      text-align: center;
+      margin-top: 48px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .framework__link-text {
+      font-size: 14px;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 14px;
+      display: block;
+    }
+
+
+    /* ============================================================
+       ═══════════════════════════════════════════════════════════
+       WHAT YOU GET — Ivory-warm; deliverables / services list
+       ═══════════════════════════════════════════════════════════
+    ============================================================ */
+    .what-you-get {
+      background: var(--ivory-warm);
+      padding: var(--section-pad);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .what-you-get__header {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 60px;
+    }
+
+    .what-you-get__header .section-title { margin-bottom: 16px; }
+
+    .what-you-get__intro {
+      font-size: 17px;
+      line-height: 1.72;
+      color: var(--text-body);
+    }
+
+    /* Grid of deliverable items */
+    .deliverables-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    @media (min-width: 600px) {
+      .deliverables-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (min-width: 900px) {
+      .deliverables-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .deliverable-item {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 28px 26px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      border-top: 2px solid transparent;
+    }
+
+    .deliverable-item:hover {
+      box-shadow: var(--shadow-md);
+      border-top-color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    .deliverable-item__icon {
+      font-size: 22px;
+      margin-bottom: 14px;
+      line-height: 1;
+    }
+
+    .deliverable-item__title {
+      font-family: var(--font-display);
+      font-size: 19px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .deliverable-item__body {
+      font-size: 14.5px;
+      line-height: 1.65;
+      color: var(--text-muted);
+    }
+
+
+    /* ============================================================
+       ═══════════════════════════════════════════════════════════
+       WHO THIS IS FOR — White background; audience clarity
+       ═══════════════════════════════════════════════════════════
+    ============================================================ */
+    .audience {
+      background: var(--white);
+      padding: var(--section-pad);
+    }
+
+    .audience__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+
+    @media (min-width: 820px) {
+      .audience__grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 72px;
+      }
+    }
+
+    .audience__text .section-title {
+      font-size: clamp(26px, 3.5vw, 38px);
+    }
+
+    .audience__body {
+      font-size: 17px;
+      line-height: 1.78;
+      color: var(--text-body);
+      margin-bottom: 32px;
+    }
+
+    /* Audience fit items */
+    .audience__fits {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .audience__fit-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .audience__fit-item:last-child { border-bottom: none; }
+
+    .audience__fit-check {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .audience__fit-check::after {
+      content: '✓';
+      font-size: 10px;
+      color: var(--gold);
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .audience__fit-text {
+      font-size: 15.5px;
+      line-height: 1.6;
+      color: var(--text-body);
+    }
+
+    .audience__fit-text strong {
+      color: var(--text-dark);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    /* Not a fit — right column */
+    .audience__not-fit {
+      background: var(--ivory);
+      border-radius: var(--radius-lg);
+      padding: 36px 36px;
+    }
+
+    .audience__not-fit-title {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    .audience__not-fit-intro {
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--text-muted);
+      margin-bottom: 26px;
+      padding-bottom: 26px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .audience__not-items {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .audience__not-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .audience__not-dash {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--ivory-warm);
+      border: 1.5px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .audience__not-dash::after {
+      content: '–';
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1;
+      font-weight: 700;
+    }
+
+    .audience__not-text {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--text-muted);
+    }
+
+    .audience__not-cta {
+      margin-top: 28px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+
+    .audience__not-cta p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      font-style: italic;
+    }
+
+
+    /* ============================================================
+       ═══════════════════════════════════════════════════════════
+       WHAT THIS IS NOT — Full-width ivory strip
+       ═══════════════════════════════════════════════════════════
+    ============================================================ */
+    .not-this {
+      background: var(--ivory);
+      padding: var(--section-pad);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .not-this__inner {
+      max-width: var(--container-narrow);
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .not-this .section-title {
+      margin-bottom: 16px;
+    }
+
+    .not-this__intro {
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--text-body);
+      margin-bottom: 48px;
+    }
+
+    .not-this__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      text-align: left;
+    }
+
+    @media (min-width: 600px) {
+      .not-this__grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .not-this__item {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 22px 24px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      border: 1px solid var(--border);
+    }
+
+    .not-this__item-x {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-muted);
+      background: var(--ivory-warm);
+      border-radius: 50%;
+      width: 22px;
+      height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .not-this__item-text {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--text-body);
+    }
+
+    .not-this__item-text strong {
+      display: block;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 3px;
+    }
+
+    .not-this__closing {
+      margin-top: 48px;
+      font-family: var(--font-display);
+      font-size: 21px;
+      font-style: italic;
+      color: var(--navy);
+      line-height: 1.55;
+    }
+
+
+    /* ============================================================
+       ═══════════════════════════════════════════════════════════
+       FINAL CTA — Dark navy, centered
+       ═══════════════════════════════════════════════════════════
+    ============================================================ */
+    .final-cta {
+      background: var(--navy-mid);
+      padding: var(--section-pad);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .final-cta::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 55%;
+      height: 140%;
+      background: radial-gradient(ellipse at center, rgba(196,150,58,0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .final-cta__inner {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .final-cta .section-label { display: block; text-align: center; }
+
+    .final-cta__title {
+      font-family: var(--font-display);
+      font-size: clamp(30px, 4.5vw, 50px);
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.12;
+      margin-bottom: 20px;
+    }
+
+    .final-cta__title em {
+      font-style: italic;
+      color: var(--gold-pale);
+    }
+
+    .final-cta__body {
+      font-size: 17px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.62);
+      margin-bottom: 40px;
+    }
+
+    .final-cta__ctas {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .final-cta__sub {
+      font-size: 14px;
+      color: rgba(255,255,255,0.38);
+    }
+
+    .final-cta__sub a {
+      color: rgba(255,255,255,0.55);
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      transition: var(--transition);
+    }
+
+    .final-cta__sub a:hover {
+      color: var(--white);
+      border-color: rgba(255,255,255,0.5);
+    }
+
+
+    /* ============================================================
+       ═══════════════════════════════════════════════════════════
+       FOOTER — Identical across all site pages
+       ═══════════════════════════════════════════════════════════
+    ============================================================ */
+    .footer {
+      background: var(--navy-mid);
+      padding: 64px 0 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    @media (min-width: 640px) { .footer__grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 960px) { .footer__grid { grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 48px; } }
+
+    .footer__brand-name {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .footer__brand-tagline {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.8;
+      margin-bottom: 14px;
+    }
+
+    .footer__brand-desc {
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.38);
+      max-width: 260px;
+    }
+
+    .footer__col-label {
+      display: block;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.7;
+      margin-bottom: 16px;
+    }
+
+    .footer__links {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .footer__link {
+      font-size: 14px;
+      color: rgba(255,255,255,0.48);
+      transition: color 0.2s ease;
+      line-height: 1.5;
+    }
+
+    .footer__link:hover { color: rgba(255,255,255,0.82); }
+
+    .footer__contact-line {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .footer__contact-icon {
+      font-size: 13px;
+      color: var(--gold);
+      opacity: 0.7;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .footer__contact-text {
+      font-size: 14px;
+      line-height: 1.55;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .footer__cta-link {
+      display: inline-block;
+      margin-top: 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gold);
+      border-bottom: 1px solid rgba(196,150,58,0.35);
+      padding-bottom: 2px;
+      transition: var(--transition);
+    }
+
+    .footer__cta-link:hover {
+      color: var(--gold-light);
+      border-color: var(--gold-light);
+    }
+
+    .footer__bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 28px 0;
+      margin-top: 48px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .footer__copyright {
+      font-size: 13px;
+      color: rgba(255,255,255,0.28);
+    }
+
+    .footer__legal-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer__legal-link {
+      font-size: 13px;
+      color: rgba(255,255,255,0.28);
+      transition: color 0.2s ease;
+    }
+
+    .footer__legal-link:hover { color: rgba(255,255,255,0.55); }
+
+
+    /* ============================================================
+       RESPONSIVE OVERRIDES
+    ============================================================ */
+    @media (max-width: 639px) {
+      .page-hero { padding: 72px 0 64px; }
+
+      .final-cta__ctas { flex-direction: column; align-items: stretch; }
+      .final-cta__ctas .btn { justify-content: center; }
+
+      .footer__bottom { flex-direction: column; align-items: flex-start; }
+
+      .audience__not-fit { padding: 28px 24px; }
+    }
+
+    /* ============================================================
+       ENTRANCE ANIMATION
+    ============================================================ */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+  </style>
+</head>
+
+<body id="top">
+
+  <!-- ============================================================
+       NAVIGATION — Sticky; "How It Works" marked active
+  ============================================================ -->
+  <header class="nav" role="banner">
+    <div class="container">
+      <div class="nav__inner">
+
+        <a href="index.html" class="nav__brand" aria-label="College Funding Solutions — Home">
+          <span class="nav__brand-name">College Funding Solutions</span>
+          <span class="nav__brand-tagline">Strategic College Planning</span>
+        </a>
+
+        <nav class="nav__links" aria-label="Primary navigation">
+          <a href="how-it-works.html" class="nav__link nav__link--active" aria-current="page">How It Works</a>
+          <a href="our-process.html" class="nav__link">Our Process</a>
+          <a href="pillars.html" class="nav__link">The 3 Pillars</a>
+          <a href="resources.html" class="nav__link">Resources</a>
+          <a href="about.html" class="nav__link">About</a>
+        </nav>
+
+        <div class="nav__ctas">
+          <a href="webinar.html" class="btn btn--outline btn--small nav__cta-webinar">Free Webinar</a>
+          <a href="contact.html" class="btn btn--primary btn--small">Schedule a Consultation</a>
+        </div>
+
+        <button class="nav__hamburger" id="nav-toggle" aria-label="Open navigation menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="nav__drawer" id="nav-drawer" role="dialog" aria-label="Navigation menu" aria-modal="true">
+    <div class="nav__drawer-overlay" id="nav-overlay"></div>
+    <div class="nav__drawer-panel">
+      <button class="nav__drawer-close" id="nav-close" aria-label="Close navigation">✕</button>
+      <nav class="nav__drawer-links" aria-label="Mobile navigation">
+        <a href="index.html" class="nav__drawer-link">Home</a>
+        <a href="how-it-works.html" class="nav__drawer-link">How It Works</a>
+        <a href="our-process.html" class="nav__drawer-link">Our Process</a>
+        <a href="pillars.html" class="nav__drawer-link">The 3 Pillars</a>
+        <a href="resources.html" class="nav__drawer-link">Resources</a>
+        <a href="about.html" class="nav__drawer-link">About</a>
+        <a href="contact.html" class="nav__drawer-link">Contact</a>
+      </nav>
+      <div class="nav__drawer-ctas">
+        <a href="webinar.html" class="btn btn--outline">Free Webinar</a>
+        <a href="contact.html" class="btn btn--primary">Schedule a Consultation</a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- ============================================================
+         PAGE HERO — Navy background; sets the tone and scope
+    ============================================================ -->
+    <section class="page-hero" aria-labelledby="page-hero-heading">
+      <div class="container">
+        <div class="page-hero__inner">
+
+          <div class="page-hero__eyebrow">
+            <span class="page-hero__eyebrow-line" aria-hidden="true"></span>
+            <span class="page-hero__eyebrow-text">The CFS Approach</span>
+          </div>
+
+          <h1 class="page-hero__headline" id="page-hero-heading">
+            A Structured Approach to<br>
+            <em>Every Dimension</em> of College Planning
+          </h1>
+
+          <p class="page-hero__subheadline">
+            College planning is not a single decision — it is a sequence of connected decisions made over four years. At College Funding Solutions, we give families the structure, strategy, and expert guidance to navigate that process with clarity and confidence.
+          </p>
+
+          <!-- Quick-jump anchor links -->
+          <nav class="page-hero__anchors" aria-label="Page sections">
+            <a href="#what-makes-us-different" class="page-hero__anchor">
+              <span class="page-hero__anchor-dot" aria-hidden="true"></span>
+              What Makes CFS Different
+            </a>
+            <a href="#the-problem" class="page-hero__anchor">
+              <span class="page-hero__anchor-dot" aria-hidden="true"></span>
+              Going It Alone
+            </a>
+            <a href="#the-framework" class="page-hero__anchor">
+              <span class="page-hero__anchor-dot" aria-hidden="true"></span>
+              Our Framework
+            </a>
+            <a href="#what-you-get" class="page-hero__anchor">
+              <span class="page-hero__anchor-dot" aria-hidden="true"></span>
+              What You Get
+            </a>
+            <a href="#who-this-is-for" class="page-hero__anchor">
+              <span class="page-hero__anchor-dot" aria-hidden="true"></span>
+              Who This Is For
+            </a>
+          </nav>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         WHAT MAKES CFS DIFFERENT — Two-column: copy + distinction cards
+    ============================================================ -->
+    <section class="differentiator" id="what-makes-us-different" aria-labelledby="diff-heading">
+      <div class="container">
+        <div class="differentiator__grid">
+
+          <!-- Left: Text -->
+          <div class="differentiator__text">
+            <span class="section-label">What Sets Us Apart</span>
+            <span class="gold-rule" aria-hidden="true"></span>
+            <h2 class="section-title" id="diff-heading">
+              Guidance That Goes Beyond Admissions Prep
+            </h2>
+
+            <div class="differentiator__body">
+              <p>
+                Most college planning resources focus narrowly on one piece of the puzzle — test scores, essays, school lists. Families are left to figure out the financial side on their own, and the two strategies rarely connect.
+              </p>
+              <p>
+                College Funding Solutions is built differently. We treat the college planning process as what it actually is: a multi-year, multi-dimensional challenge that requires coordinated strategy across academics, activities, and finances — simultaneously.
+              </p>
+              <p>
+                Our advisors work with your family as a whole, not just your student's application. The result is a plan that is coherent, proactive, and built around your specific goals and circumstances.
+              </p>
+            </div>
+
+            <blockquote class="differentiator__pull">
+              "We don't start a conversation about financial strategy at the end of senior year. We start it at the beginning of the process — because that's where it actually matters."
+            </blockquote>
+          </div>
+
+          <!-- Right: Distinction cards -->
+          <div class="differentiator__cards">
+
+            <div class="diff-card">
+              <h3 class="diff-card__title">Integrated, not siloed</h3>
+              <p class="diff-card__body">Academic positioning, school selection, and financial planning are developed in coordination — not handled separately and hoped to align later.</p>
+            </div>
+
+            <div class="diff-card">
+              <h3 class="diff-card__title">Proactive, not reactive</h3>
+              <p class="diff-card__body">We plan around important deadlines and decision windows before they arrive. Families who wait often find their options have narrowed by the time they engage.</p>
+            </div>
+
+            <div class="diff-card">
+              <h3 class="diff-card__title">Family-level, not just student-level</h3>
+              <p class="diff-card__body">The financial aid system evaluates the entire family. Smart planning accounts for that — including income, assets, tax strategy, and family structure.</p>
+            </div>
+
+            <div class="diff-card">
+              <h3 class="diff-card__title">Grounded in expertise, not guesswork</h3>
+              <p class="diff-card__body">Our guidance is based on deep, current knowledge of how admissions, financial aid, and merit scholarships actually work — not generalized advice pulled from online resources.</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         THE PROBLEM WITH GOING IT ALONE — Narrow column + reality check grid
+    ============================================================ -->
+    <section class="problem" id="the-problem" aria-labelledby="problem-heading">
+      <div class="container">
+        <div class="problem__inner">
+
+          <span class="section-label">Why Families Struggle</span>
+          <span class="gold-rule" aria-hidden="true"></span>
+          <h2 class="section-title" id="problem-heading">
+            The Problem with Going It Alone
+          </h2>
+
+          <div class="problem__body">
+            <p>
+              The college planning landscape is genuinely complex — and it has grown more so in recent years. Financial aid formulas have changed. Admissions processes vary significantly between schools. Scholarship and merit aid strategies differ depending on the institution, the student profile, and the timing of the application.
+            </p>
+            <p>
+              Most families don't realize how much they don't know — until they receive an award letter that surprises them, or until they look back and realize a decision made in 10th grade quietly closed a door in 12th.
+            </p>
+            <p>
+              The challenge is not effort. Families who struggle are not families who didn't care or didn't try. They simply lacked the framework to see the full picture and the expertise to act on it at the right time.
+            </p>
+          </div>
+
+          <!-- Reality check — common pain points -->
+          <div class="problem__realities" role="list" aria-label="Common planning challenges">
+
+            <div class="reality-item" role="listitem">
+              <p class="reality-item__text">"We assumed the financial aid process would just work itself out. It didn't."</p>
+            </div>
+
+            <div class="reality-item" role="listitem">
+              <p class="reality-item__text">"No one told us that the FAFSA is only one piece of the financial picture."</p>
+            </div>
+
+            <div class="reality-item" role="listitem">
+              <p class="reality-item__text">"Our student was qualified — we just hadn't applied to the right schools for merit."</p>
+            </div>
+
+            <div class="reality-item" role="listitem">
+              <p class="reality-item__text">"By the time we started planning, several of the best options were already off the table."</p>
+            </div>
+
+            <div class="reality-item" role="listitem">
+              <p class="reality-item__text">"We compared award letters but didn't know what we were actually comparing."</p>
+            </div>
+
+            <div class="reality-item" role="listitem">
+              <p class="reality-item__text">"Our student's narrative never quite came together into a coherent application story."</p>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         THE CFS FRAMEWORK — Dark navy; three pillar cards
+    ============================================================ -->
+    <section class="framework" id="the-framework" aria-labelledby="framework-heading">
+      <div class="container">
+
+        <div class="framework__header">
+          <span class="section-label">Our Three-Pillar System</span>
+          <span class="gold-rule gold-rule--center" aria-hidden="true"></span>
+          <h2 class="framework__title" id="framework-heading">
+            One Integrated Framework.<br>Three Coordinated Disciplines.
+          </h2>
+          <p class="framework__intro">
+            Every family we work with benefits from all three pillars — because the college planning process touches all three simultaneously. Strength in one area does not compensate for weakness in another.
+          </p>
+        </div>
+
+        <!-- Three pillar cards -->
+        <div class="framework__pillars" role="list">
+
+          <!-- Pillar 1: Academic -->
+          <div class="pillar-card" role="listitem">
+            <span class="pillar-card__number">Pillar One</span>
+            <h3 class="pillar-card__title">Academic Strategy</h3>
+            <p class="pillar-card__desc">
+              The academic record your student builds in high school is the foundation of both admissions competitiveness and scholarship eligibility. We help families understand what strong academic positioning actually looks like — and how to build it deliberately.
+            </p>
+            <div class="pillar-card__items" role="list" aria-label="Academic strategy focus areas">
+              <div class="pillar-card__item" role="listitem">
+                <span class="pillar-card__item-dot" aria-hidden="true"></span>
+                Course selection and rigor by grade level
+              </div>
+              <div class="pillar-card__item" role="listitem">
+                <span class="pillar-card__item-dot" aria-hidden="true"></span>
+                GPA trajectory and academic recovery
+              </div>
+              <div class="pillar-card__item" role="listitem">
+                <span class="pillar-card__item-dot" aria-hidden="true"></span>
+                Standardized test strategy and timing
+              </div>
+              <div class="pillar-card__item" role="listitem">
+                <span class="pillar-card__item-dot" aria-hidden="true"></span>
+                School list development and fit analysis
+              </div>
+            </div>
+          </div>
+
+          <!-- Pillar 2: Social -->
+          <div class="pillar-card" role="listitem">
+            <span class="pillar-card__number">Pillar Two</span>
+            <h3 class="pillar-card__title">Social Strategy</h3>
+            <p class="pillar-card__desc">
+              Admissions readers are evaluating who your student is, not just what they have achieved. We help families develop a coherent, authentic student narrative — one that translates naturally into compelling applications.
+            </p>
+            <div class="pillar-card__items" role="list" aria-label="Social strategy focus areas">
+              <div class="pillar-card__item" role="listitem">
+                <span class="pillar-card__item-dot" aria-hidden="true"></span>
+                Extracurricular depth and leadership development
+              </div>
+              <div class="pillar-card__item" role="listitem">
+                <span class="pillar-card__item-dot" aria-hidden="true"></span>
+                Community engagement and character positioning
+              </div>
+              <div class="pillar-card__item" role="listitem">
+                <span class="pillar-card__item-dot" aria-hidden="true"></span>
+                Personal narrative and application story
+              </div>
+              <div class="pillar-card__item" role="listitem">
+                <span class="pillar-card__item-dot" aria-hidden="true"></span>
+                Essay strategy and interview preparation
+              </div>
+            </div>
+          </div>
+
+          <!-- Pillar 3: Financial -->
+          <div class="pillar-card" role="listitem">
+            <span class="pillar-card__number">Pillar Three</span>
+            <h3 class="pillar-card__title">Financial Strategy</h3>
+            <p class="pillar-card__desc">
+              Understanding how financial aid and merit scholarships actually work — and positioning your family accordingly — can meaningfully change what college costs. We help families navigate this process with clarity and intention.
+            </p>
+            <div class="pillar-card__items" role="list" aria-label="Financial strategy focus areas">
+              <div class="pillar-card__item" role="listitem">
+                <span class="pillar-card__item-dot" aria-hidden="true"></span>
+                Financial aid system education and FAFSA strategy
+              </div>
+              <div class="pillar-card__item" role="listitem">
+                <span class="pillar-card__item-dot" aria-hidden="true"></span>
+                Merit aid positioning and school selection strategy
+              </div>
+              <div class="pillar-card__item" role="listitem">
+                <span class="pillar-card__item-dot" aria-hidden="true"></span>
+                Award letter analysis and comparison
+              </div>
+              <div class="pillar-card__item" role="listitem">
+                <span class="pillar-card__item-dot" aria-hidden="true"></span>
+                Appeal process and enrollment decision guidance
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Link to full pillars page -->
+        <div class="framework__link">
+          <span class="framework__link-text">Want the complete breakdown of each pillar?</span>
+          <a href="pillars.html" class="btn btn--outline btn--arrow">Explore the Three Pillars</a>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         WHAT YOU GET — Deliverables grid on ivory-warm background
+    ============================================================ -->
+    <section class="what-you-get" id="what-you-get" aria-labelledby="wyg-heading">
+      <div class="container">
+
+        <div class="what-you-get__header">
+          <span class="section-label">Working With Us</span>
+          <span class="gold-rule gold-rule--center" aria-hidden="true"></span>
+          <h2 class="section-title" id="wyg-heading">
+            What Working with CFS Looks Like
+          </h2>
+          <p class="what-you-get__intro">
+            Our work with families is structured, advisor-led, and built around your student's actual situation — not a generic checklist. Here is what that includes in practice.
+          </p>
+        </div>
+
+        <div class="deliverables-grid" role="list">
+
+          <div class="deliverable-item" role="listitem">
+            <div class="deliverable-item__icon" aria-hidden="true">◈</div>
+            <h3 class="deliverable-item__title">Initial Family Assessment</h3>
+            <p class="deliverable-item__body">A comprehensive review of where your family stands — academically, financially, and in terms of timeline — so we begin with an accurate picture rather than assumptions.</p>
+          </div>
+
+          <div class="deliverable-item" role="listitem">
+            <div class="deliverable-item__icon" aria-hidden="true">◈</div>
+            <h3 class="deliverable-item__title">Customized Planning Roadmap</h3>
+            <p class="deliverable-item__body">A clear, sequenced action plan tied to your student's grade level and your family's goals — so you always know what needs to happen and when.</p>
+          </div>
+
+          <div class="deliverable-item" role="listitem">
+            <div class="deliverable-item__icon" aria-hidden="true">◈</div>
+            <h3 class="deliverable-item__title">School List Development</h3>
+            <p class="deliverable-item__body">A balanced, researched list of schools that reflects both your student's academic profile and your family's financial parameters — including merit aid analysis.</p>
+          </div>
+
+          <div class="deliverable-item" role="listitem">
+            <div class="deliverable-item__icon" aria-hidden="true">◈</div>
+            <h3 class="deliverable-item__title">Financial Aid & FAFSA Guidance</h3>
+            <p class="deliverable-item__body">Step-by-step support through the financial aid process — including FAFSA preparation, CSS Profile guidance, and an explanation of what each form actually determines.</p>
+          </div>
+
+          <div class="deliverable-item" role="listitem">
+            <div class="deliverable-item__icon" aria-hidden="true">◈</div>
+            <h3 class="deliverable-item__title">Merit Aid Positioning</h3>
+            <p class="deliverable-item__body">Identification of merit scholarship opportunities aligned to your student's profile, and guidance on how to position applications to maximize eligibility.</p>
+          </div>
+
+          <div class="deliverable-item" role="listitem">
+            <div class="deliverable-item__icon" aria-hidden="true">◈</div>
+            <h3 class="deliverable-item__title">Award Letter Analysis</h3>
+            <p class="deliverable-item__body">A detailed comparison of your student's financial aid award letters — so you understand the real cost of each offer and can make an informed enrollment decision.</p>
+          </div>
+
+          <div class="deliverable-item" role="listitem">
+            <div class="deliverable-item__icon" aria-hidden="true">◈</div>
+            <h3 class="deliverable-item__title">Application Strategy & Narrative</h3>
+            <p class="deliverable-item__body">Guidance on how to present your student's story in a way that is authentic, coherent, and compelling — from the activity list to the personal statement.</p>
+          </div>
+
+          <div class="deliverable-item" role="listitem">
+            <div class="deliverable-item__icon" aria-hidden="true">◈</div>
+            <h3 class="deliverable-item__title">Deadline & Timeline Management</h3>
+            <p class="deliverable-item__body">A clear calendar of every important date and decision — so nothing is missed, and your family is never scrambling to meet a deadline you didn't know was coming.</p>
+          </div>
+
+          <div class="deliverable-item" role="listitem">
+            <div class="deliverable-item__icon" aria-hidden="true">◈</div>
+            <h3 class="deliverable-item__title">Ongoing Advisor Access</h3>
+            <p class="deliverable-item__body">Consistent, responsive access to an advisor who knows your student's situation and can answer questions as they arise — not a call center or a chatbot.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         WHO THIS IS FOR — Left: checklist of fit; Right: not-a-fit panel
+    ============================================================ -->
+    <section class="audience" id="who-this-is-for" aria-labelledby="audience-heading">
+      <div class="container">
+        <div class="audience__grid">
+
+          <!-- Left: Who is a good fit -->
+          <div class="audience__text">
+            <span class="section-label">The Right Fit</span>
+            <span class="gold-rule" aria-hidden="true"></span>
+            <h2 class="section-title" id="audience-heading">
+              Who This Is For
+            </h2>
+            <p class="audience__body">
+              College Funding Solutions works best for families who are ready to approach the college process with intention. If any of these describe your family, we are likely a strong fit.
+            </p>
+
+            <div class="audience__fits" role="list" aria-label="Who College Funding Solutions serves">
+
+              <div class="audience__fit-item" role="listitem">
+                <div class="audience__fit-check" aria-hidden="true"></div>
+                <div class="audience__fit-text">
+                  <strong>Parents of students in 9th through 12th grade</strong>
+                  Whether you're just beginning to think about college or already in the application process, there is meaningful planning work we can do together.
+                </div>
+              </div>
+
+              <div class="audience__fit-item" role="listitem">
+                <div class="audience__fit-check" aria-hidden="true"></div>
+                <div class="audience__fit-text">
+                  <strong>Families who want to reduce the cost of college</strong>
+                  You are focused not just on where your student gets in, but on making the outcome financially responsible for your family.
+                </div>
+              </div>
+
+              <div class="audience__fit-item" role="listitem">
+                <div class="audience__fit-check" aria-hidden="true"></div>
+                <div class="audience__fit-text">
+                  <strong>Families who want a clear plan, not more noise</strong>
+                  You've encountered plenty of conflicting information. You want guidance you can trust, delivered in a way that makes sense.
+                </div>
+              </div>
+
+              <div class="audience__fit-item" role="listitem">
+                <div class="audience__fit-check" aria-hidden="true"></div>
+                <div class="audience__fit-text">
+                  <strong>Families who value proactive, structured support</strong>
+                  You prefer to plan ahead rather than react to problems. You want a partner who is organized, knowledgeable, and a step ahead.
+                </div>
+              </div>
+
+              <div class="audience__fit-item" role="listitem">
+                <div class="audience__fit-check" aria-hidden="true"></div>
+                <div class="audience__fit-text">
+                  <strong>Students across a broad range of profiles</strong>
+                  We work with students from strong academic profiles to those still finding their footing. Our approach adapts to where your student actually is.
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Right: What this is not / not a fit -->
+          <div>
+            <div class="audience__not-fit">
+              <h3 class="audience__not-fit-title">What This Is Not</h3>
+              <p class="audience__not-fit-intro">
+                We want every family who works with us to get genuine value from the engagement. In the interest of that, here is an honest look at what CFS is not.
+              </p>
+
+              <div class="audience__not-items" role="list">
+
+                <div class="audience__not-item" role="listitem">
+                  <div class="audience__not-dash" aria-hidden="true"></div>
+                  <p class="audience__not-text">
+                    <strong style="color: var(--text-dark); font-weight: 600;">Not a guarantee of admission or outcomes.</strong>
+                    No ethical advisor promises specific admissions results, scholarship amounts, or financial aid awards. We cannot and do not make those promises.
+                  </p>
+                </div>
+
+                <div class="audience__not-item" role="listitem">
+                  <div class="audience__not-dash" aria-hidden="true"></div>
+                  <p class="audience__not-text">
+                    <strong style="color: var(--text-dark); font-weight: 600;">Not a quick fix for senior year.</strong>
+                    Much of the most valuable planning work happens before 12th grade. Families who engage late will still benefit — but earlier is better.
+                  </p>
+                </div>
+
+                <div class="audience__not-item" role="listitem">
+                  <div class="audience__not-dash" aria-hidden="true"></div>
+                  <p class="audience__not-text">
+                    <strong style="color: var(--text-dark); font-weight: 600;">Not a test prep or tutoring service.</strong>
+                    We guide strategy around standardized testing, but we do not provide direct tutoring or academic subject support.
+                  </p>
+                </div>
+
+                <div class="audience__not-item" role="listitem">
+                  <div class="audience__not-dash" aria-hidden="true"></div>
+                  <p class="audience__not-text">
+                    <strong style="color: var(--text-dark); font-weight: 600;">Not a one-size-fits-all program.</strong>
+                    Every family's situation, goals, and student profile are different. We do not offer cookie-cutter packages — we offer guidance built around you.
+                  </p>
+                </div>
+
+              </div>
+
+              <div class="audience__not-cta">
+                <p>Questions about whether CFS is the right fit for your family? A consultation is the right place to start — and there is no obligation attached.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         FINAL CTA — Dark navy; two conversion paths
+    ============================================================ -->
+    <section class="final-cta" aria-labelledby="final-cta-heading">
+      <div class="container">
+        <div class="final-cta__inner">
+
+          <span class="section-label">Ready to Get Started?</span>
+          <span class="gold-rule gold-rule--center" aria-hidden="true"></span>
+
+          <h2 class="final-cta__title" id="final-cta-heading">
+            The First Step Is<br><em>A Conversation</em>
+          </h2>
+
+          <p class="final-cta__body">
+            Whether your student is in 9th grade just beginning to think about college, or in 12th grade navigating applications and award letters right now, we can help. Tell us where you are — and we'll show you what a clear plan looks like from here.
+          </p>
+
+          <div class="final-cta__ctas">
+            <a href="contact.html" class="btn btn--primary btn--large btn--arrow">Schedule a Consultation</a>
+            <a href="webinar.html" class="btn btn--white-outline btn--large">Join the Free Webinar</a>
+          </div>
+
+          <p class="final-cta__sub">
+            Not ready to schedule? <a href="our-process.html">See the year-by-year planning timeline →</a>
+          </p>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ============================================================
+       FOOTER — Identical structure across all site pages
+  ============================================================ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+
+      <div class="footer__grid">
+
+        <!-- Column 1: Brand -->
+        <div class="footer__brand">
+          <div class="footer__brand-name">College Funding Solutions</div>
+          <div class="footer__brand-tagline">Strategic College Planning</div>
+          <p class="footer__brand-desc">
+            Expert, advisor-led guidance for families navigating the college planning process — from freshman year through enrollment.
+          </p>
+        </div>
+
+        <!-- Column 2: Site Pages -->
+        <div class="footer__col">
+          <span class="footer__col-label">Navigate</span>
+          <nav class="footer__links" aria-label="Footer navigation">
+            <a href="index.html" class="footer__link">Home</a>
+            <a href="how-it-works.html" class="footer__link">How It Works</a>
+            <a href="our-process.html" class="footer__link">Our Process</a>
+            <a href="pillars.html" class="footer__link">The 3 Pillars</a>
+            <a href="about.html" class="footer__link">About</a>
+          </nav>
+        </div>
+
+        <!-- Column 3: Resources -->
+        <div class="footer__col">
+          <span class="footer__col-label">Resources</span>
+          <nav class="footer__links" aria-label="Resources navigation">
+            <a href="resources.html" class="footer__link">Resource Library</a>
+            <a href="resources.html#guidebook" class="footer__link">Free Guidebook</a>
+            <a href="resources.html#articles" class="footer__link">Articles &amp; Guides</a>
+            <a href="webinar.html" class="footer__link">Free Webinar</a>
+            <a href="contact.html" class="footer__link">Contact Us</a>
+          </nav>
+        </div>
+
+        <!-- Column 4: Contact -->
+        <div class="footer__col">
+          <span class="footer__col-label">Get in Touch</span>
+
+          <div class="footer__contact-line">
+            <span class="footer__contact-icon" aria-hidden="true">✉</span>
+            <span class="footer__contact-text">info@collegefundingsolutions.com</span>
+          </div>
+
+          <div class="footer__contact-line">
+            <span class="footer__contact-icon" aria-hidden="true">◎</span>
+            <span class="footer__contact-text">
+              Serving families nationwide<br>via virtual consultation
+            </span>
+          </div>
+
+          <a href="contact.html" class="footer__cta-link">Schedule a Consultation</a>
+        </div>
+
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="footer__bottom">
+        <span class="footer__copyright">
+          &copy; <span id="footer-year"></span> College Funding Solutions. All rights reserved.
+        </span>
+        <div class="footer__legal-links">
+          <a href="privacy.html" class="footer__legal-link">Privacy Policy</a>
+          <a href="terms.html" class="footer__legal-link">Terms of Use</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- ============================================================
+       JAVASCRIPT — Navigation drawer + dynamic copyright year
+  ============================================================ -->
+  <script>
+    // Dynamic copyright year
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+    // Mobile navigation drawer
+    const toggle   = document.getElementById('nav-toggle');
+    const drawer   = document.getElementById('nav-drawer');
+    const overlay  = document.getElementById('nav-overlay');
+    const closeBtn = document.getElementById('nav-close');
+
+    function openDrawer() {
+      drawer.classList.add('is-open');
+      toggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDrawer() {
+      drawer.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    toggle.addEventListener('click', openDrawer);
+    closeBtn.addEventListener('click', closeDrawer);
+    overlay.addEventListener('click', closeDrawer);
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && drawer.classList.contains('is-open')) closeDrawer();
+    });
+
+    // Close drawer when a link is tapped
+    drawer.querySelectorAll('.nav__drawer-link, .nav__drawer-ctas .btn').forEach(link => {
+      link.addEventListener('click', closeDrawer);
+    });
+  </script>
+
+</body>
+</html>
