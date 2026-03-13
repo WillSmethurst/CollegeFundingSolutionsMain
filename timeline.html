@@ -1,0 +1,1817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>College Planning Timeline — College Funding Solutions</title>
+  <meta name="description" content="A year-by-year strategic roadmap for families navigating the college planning process — from 8th grade course selection through senior year enrollment decisions." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       CSS CUSTOM PROPERTIES — Site-wide design system
+    ============================================================ */
+    :root {
+      --navy:           #064E3B;
+      --navy-mid:       #152540;
+      --navy-light:     #1E3357;
+      --gold:           #C4963A;
+      --gold-light:     #D4A84B;
+      --gold-pale:      #F0E2C4;
+      --ivory:          #F7F4EE;
+      --ivory-warm:     #EDE9DF;
+      --white:          #FFFFFF;
+      --text-dark:      #1A1A2E;
+      --text-body:      #3A3A4A;
+      --text-muted:     #6B6B7E;
+      --text-light:     #9A9AAA;
+      --border:         #E2DDD4;
+      --shadow-sm:      0 2px 12px rgba(13,27,46,0.08);
+      --shadow-md:      0 8px 32px rgba(13,27,46,0.12);
+      --shadow-lg:      0 20px 60px rgba(13,27,46,0.18);
+      --shadow-gold:    0 4px 18px rgba(196,150,58,0.38);
+      --font-display:   'Cormorant Garamond', Georgia, serif;
+      --font-body:      'DM Sans', system-ui, -apple-system, sans-serif;
+      --radius-sm:      6px;
+      --radius-md:      12px;
+      --radius-lg:      20px;
+      --section-pad:    96px 0;
+      --container-max:  1080px;
+      --gutter:         24px;
+      --transition:     all 0.25s ease;
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text-body);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ============================================================
+       LAYOUT
+    ============================================================ */
+    .container {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    /* ============================================================
+       TYPOGRAPHY UTILITIES
+    ============================================================ */
+    .section-label {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 14px;
+    }
+    .gold-rule {
+      display: block; width: 48px; height: 2px;
+      background: var(--gold); border-radius: 2px; margin-bottom: 28px;
+    }
+    .gold-rule--center { margin-left: auto; margin-right: auto; }
+
+    /* ============================================================
+       BUTTONS
+    ============================================================ */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 8px; font-family: var(--font-body); font-size: 15px;
+      font-weight: 600; letter-spacing: 0.02em; padding: 16px 34px;
+      border-radius: var(--radius-sm); border: none; cursor: pointer;
+      transition: var(--transition); text-decoration: none;
+      white-space: nowrap; line-height: 1;
+    }
+    .btn--primary { background: var(--gold); color: var(--white); box-shadow: var(--shadow-gold); }
+    .btn--primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(196,150,58,0.48); }
+    .btn--outline { background: transparent; color: var(--gold); border: 1.5px solid var(--gold); }
+    .btn--outline:hover { background: var(--gold); color: var(--white); transform: translateY(-2px); }
+    .btn--white-outline { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,0.45); }
+    .btn--white-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.08); transform: translateY(-2px); }
+    .btn--large { font-size: 16px; padding: 18px 42px; }
+    .btn--small { font-size: 13px; padding: 10px 22px; }
+    .btn--arrow::after { content: '→'; font-size: 17px; line-height: 1; transition: transform 0.2s ease; }
+    .btn--arrow:hover::after { transform: translateX(4px); }
+
+    /* ============================================================
+       NAVIGATION
+    ============================================================ */
+    .nav {
+      background: var(--navy); position: sticky; top: 0; z-index: 200;
+      box-shadow: 0 2px 20px rgba(6,78,59,0.3);
+    }
+    .nav__inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px; gap: 24px;
+    }
+    .nav__brand { display: flex; flex-direction: column; gap: 2px; flex-shrink: 0; text-decoration: none; }
+    .nav__brand-name { font-family: var(--font-display); font-size: 18px; font-weight: 600; color: var(--white); letter-spacing: 0.01em; line-height: 1.2; }
+    .nav__brand-tagline { font-family: var(--font-body); font-size: 9.5px; font-weight: 400; color: var(--gold-pale); letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.7; }
+    .nav__links { display: none; align-items: center; gap: 2px; flex: 1; justify-content: center; }
+    @media (min-width: 960px) { .nav__links { display: flex; } }
+    .nav__link { font-family: var(--font-body); font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.72); padding: 6px 14px; border-radius: var(--radius-sm); transition: var(--transition); white-space: nowrap; }
+    .nav__link:hover { color: var(--white); background: rgba(255,255,255,0.07); }
+    .nav__ctas { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .nav__cta-webinar { display: none; }
+    @media (min-width: 640px) { .nav__cta-webinar { display: inline-flex; } }
+    .nav__hamburger { display: flex; flex-direction: column; justify-content: center; gap: 5px; width: 36px; height: 36px; background: none; border: none; cursor: pointer; padding: 6px; border-radius: var(--radius-sm); transition: var(--transition); }
+    .nav__hamburger:hover { background: rgba(255,255,255,0.08); }
+    .nav__hamburger span { display: block; height: 1.5px; width: 100%; background: var(--gold); border-radius: 2px; }
+    @media (min-width: 960px) { .nav__hamburger { display: none; } }
+
+    /* Dropdown */
+    .nav__dropdown { position: relative; }
+    .nav__dropdown-trigger { display: inline-flex; align-items: center; gap: 5px; font-family: var(--font-body); font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.72); padding: 6px 14px; border-radius: var(--radius-sm); background: none; border: none; cursor: pointer; transition: var(--transition); white-space: nowrap; line-height: 1.7; }
+    .nav__dropdown-trigger:hover, .nav__dropdown:hover .nav__dropdown-trigger, .nav__dropdown:focus-within .nav__dropdown-trigger { color: var(--white); background: rgba(255,255,255,0.07); }
+    .nav__dropdown-chevron { display: inline-block; width: 10px; height: 10px; flex-shrink: 0; opacity: 0.55; transition: transform 0.22s ease, opacity 0.22s ease; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23ffffff' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: center; background-size: contain; }
+    .nav__dropdown:hover .nav__dropdown-chevron, .nav__dropdown:focus-within .nav__dropdown-chevron { transform: rotate(180deg); opacity: 0.9; }
+    .nav__dropdown-panel { position: absolute; top: calc(100% + 10px); left: 50%; transform: translateX(-50%) translateY(-4px); min-width: 180px; background: var(--navy); border: 1px solid rgba(255,255,255,0.09); border-radius: var(--radius-md); box-shadow: 0 12px 40px rgba(6,20,46,0.38); padding: 8px; opacity: 0; pointer-events: none; transition: opacity 0.2s ease, transform 0.2s ease; z-index: 400; }
+    .nav__dropdown-panel::before { content: ''; position: absolute; top: -5px; left: 50%; transform: translateX(-50%); width: 10px; height: 10px; background: var(--navy); border-left: 1px solid rgba(255,255,255,0.09); border-top: 1px solid rgba(255,255,255,0.09); clip-path: polygon(0 100%, 50% 0, 100% 100%); }
+    .nav__dropdown:hover .nav__dropdown-panel, .nav__dropdown:focus-within .nav__dropdown-panel { opacity: 1; pointer-events: all; transform: translateX(-50%) translateY(0); }
+    .nav__dropdown-link { display: block; font-family: var(--font-body); font-size: 14px; font-weight: 400; color: rgba(255,255,255,0.68); padding: 9px 16px; border-radius: var(--radius-sm); transition: var(--transition); white-space: nowrap; }
+    .nav__dropdown-link:hover { color: var(--white); background: rgba(255,255,255,0.07); padding-left: 20px; border-left: 2px solid var(--gold); margin-left: -2px; }
+    .nav__dropdown-link--active { color: var(--white); background: rgba(255,255,255,0.05); }
+    .nav__dropdown-divider { height: 1px; background: rgba(255,255,255,0.06); margin: 4px 8px; }
+
+    /* Mobile Accordion */
+    .nav__accordion { width: 100%; }
+    .nav__accordion-trigger { display: flex; align-items: center; justify-content: space-between; width: 100%; font-family: var(--font-body); font-size: 16px; font-weight: 500; color: rgba(255,255,255,0.8); padding: 12px 16px; border-radius: var(--radius-sm); background: none; border: none; cursor: pointer; transition: var(--transition); text-align: left; }
+    .nav__accordion-trigger:hover { color: var(--white); background: rgba(255,255,255,0.07); }
+    .nav__accordion-chevron { display: inline-block; width: 12px; height: 12px; flex-shrink: 0; opacity: 0.45; transition: transform 0.25s ease; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23ffffff' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: center; background-size: contain; }
+    .nav__accordion-trigger[aria-expanded="true"] .nav__accordion-chevron { transform: rotate(180deg); opacity: 0.85; }
+    .nav__accordion-panel { display: none; padding: 4px 0 4px 12px; }
+    .nav__accordion-panel.is-open { display: block; }
+    .nav__accordion-links { display: flex; flex-direction: column; gap: 2px; padding: 4px 0; }
+    .nav__accordion-link { font-family: var(--font-body); font-size: 14.5px; font-weight: 400; color: rgba(255,255,255,0.6); padding: 8px 12px; border-radius: var(--radius-sm); transition: var(--transition); display: block; }
+    .nav__accordion-link:hover { color: var(--white); background: rgba(255,255,255,0.06); }
+
+    /* Drawer */
+    .nav__drawer { position: fixed; inset: 0; z-index: 300; pointer-events: none; }
+    .nav__drawer-overlay { position: absolute; inset: 0; background: rgba(6,20,46,0.65); opacity: 0; transition: opacity 0.3s ease; }
+    .nav__drawer-panel { position: absolute; top: 0; right: 0; bottom: 0; width: min(320px, 85vw); background: var(--navy); padding: 28px 28px 40px; display: flex; flex-direction: column; transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); box-shadow: var(--shadow-lg); }
+    .nav__drawer.is-open { pointer-events: all; }
+    .nav__drawer.is-open .nav__drawer-overlay { opacity: 1; }
+    .nav__drawer.is-open .nav__drawer-panel { transform: translateX(0); }
+    .nav__drawer-close { align-self: flex-end; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.07); border: none; border-radius: 50%; color: var(--white); font-size: 20px; cursor: pointer; margin-bottom: 32px; transition: var(--transition); }
+    .nav__drawer-close:hover { background: rgba(255,255,255,0.14); }
+    .nav__drawer-links { display: flex; flex-direction: column; gap: 4px; flex: 1; }
+    .nav__drawer-link { font-family: var(--font-body); font-size: 16px; font-weight: 500; color: rgba(255,255,255,0.8); padding: 12px 16px; border-radius: var(--radius-sm); transition: var(--transition); }
+    .nav__drawer-link:hover { color: var(--white); background: rgba(255,255,255,0.07); }
+    .nav__drawer-ctas { display: flex; flex-direction: column; gap: 10px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); }
+    .nav__drawer-ctas .btn { width: 100%; justify-content: center; }
+
+    /* ============================================================
+       PAGE HEADER
+    ============================================================ */
+    .page-header {
+      background: var(--navy); position: relative; overflow: hidden;
+      padding: 72px 0 80px;
+    }
+    .page-header::before { content: ''; position: absolute; top: -30%; right: -10%; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(196,150,58,0.07) 0%, transparent 65%); pointer-events: none; }
+    .page-header::after { content: ''; position: absolute; inset: 0; opacity: 0.02; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); pointer-events: none; }
+    .page-header__inner { position: relative; z-index: 2; }
+    .page-header__eyebrow { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+    .page-header__eyebrow-line { display: block; width: 28px; height: 1.5px; background: var(--gold); border-radius: 2px; }
+    .page-header__eyebrow-text { font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+    .page-header__title { font-family: var(--font-display); font-size: clamp(36px, 5vw, 58px); font-weight: 600; line-height: 1.1; color: var(--white); margin-bottom: 18px; letter-spacing: -0.01em; }
+    .page-header__subtitle { font-size: clamp(15px, 1.8vw, 17px); line-height: 1.72; color: rgba(255,255,255,0.62); max-width: 580px; margin-bottom: 36px; }
+    .page-header__finder {
+      display: inline-flex; align-items: center; gap: 16px;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-md); padding: 16px 24px;
+    }
+    .page-header__finder-label { font-size: 13px; color: rgba(255,255,255,0.55); }
+    .page-header__finder-links { display: flex; flex-wrap: wrap; gap: 8px; }
+    .page-header__finder-btn {
+      font-size: 12.5px; font-weight: 600; letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.8); background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12); border-radius: 100px;
+      padding: 6px 14px; cursor: pointer; transition: var(--transition);
+      font-family: var(--font-body);
+    }
+    .page-header__finder-btn:hover { background: var(--gold); border-color: var(--gold); color: var(--white); }
+
+    /* ============================================================
+       TIMELINE SECTION WRAPPER
+    ============================================================ */
+    .timeline-section {
+      background: var(--ivory);
+      padding: var(--section-pad);
+    }
+
+    /* ============================================================
+       DESKTOP TAB NAVIGATION
+       Hidden on mobile; visible from 820px up
+    ============================================================ */
+    .timeline-tabs-wrap {
+      display: none;
+    }
+    @media (min-width: 820px) {
+      .timeline-tabs-wrap { display: block; margin-bottom: 56px; }
+    }
+
+    /* Stage selector bar */
+    .timeline-tabs {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .timeline-tab {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 24px 12px 20px;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      border-right: 1px solid var(--border);
+      transition: background 0.2s ease, color 0.2s ease;
+      position: relative;
+      gap: 6px;
+    }
+    .timeline-tab:last-child { border-right: none; }
+
+    .timeline-tab__num {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--gold);
+      opacity: 0.6;
+      line-height: 1;
+      transition: opacity 0.2s ease;
+    }
+
+    .timeline-tab__name {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text-dark);
+      line-height: 1.2;
+      transition: color 0.2s ease;
+    }
+
+    .timeline-tab__tag {
+      font-size: 11px;
+      color: var(--text-light);
+      line-height: 1.3;
+      transition: color 0.2s ease;
+    }
+
+    /* Gold indicator bar at bottom */
+    .timeline-tab::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transition: transform 0.25s ease;
+      border-radius: 2px 2px 0 0;
+    }
+
+    .timeline-tab:hover { background: var(--ivory); }
+    .timeline-tab:hover .timeline-tab__name { color: var(--navy); }
+
+    .timeline-tab.is-active {
+      background: var(--navy);
+    }
+    .timeline-tab.is-active .timeline-tab__num { color: var(--gold); opacity: 1; }
+    .timeline-tab.is-active .timeline-tab__name { color: var(--white); }
+    .timeline-tab.is-active .timeline-tab__tag { color: rgba(255,255,255,0.5); }
+    .timeline-tab.is-active::after { transform: scaleX(1); }
+
+    /* ============================================================
+       DESKTOP CONTENT PANELS
+    ============================================================ */
+    .timeline-panels {
+      display: none;
+    }
+    @media (min-width: 820px) {
+      .timeline-panels { display: block; }
+    }
+
+    .timeline-panel {
+      display: none;
+      animation: panelReveal 0.4s ease both;
+    }
+    .timeline-panel.is-active { display: block; }
+
+    @keyframes panelReveal {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Two-column layout inside each panel */
+    .panel-grid {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    /* Left: Stage overview card */
+    .panel-overview {
+      background: var(--navy);
+      border-radius: var(--radius-lg);
+      padding: 36px 28px;
+      position: sticky;
+      top: 88px; /* clears nav */
+    }
+
+    .panel-overview__num {
+      font-family: var(--font-display);
+      font-size: 64px;
+      font-weight: 700;
+      color: rgba(196,150,58,0.25);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .panel-overview__stage {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .panel-overview__title {
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .panel-overview__desc {
+      font-size: 14px;
+      line-height: 1.68;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 24px;
+    }
+
+    .panel-overview__focus {
+      background: rgba(196,150,58,0.1);
+      border: 1px solid rgba(196,150,58,0.25);
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+    }
+
+    .panel-overview__focus-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .panel-overview__focus-text {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-style: italic;
+      color: var(--gold-pale);
+      line-height: 1.5;
+    }
+
+    /* Right: Sections */
+    .panel-sections {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .panel-section {
+      padding: 32px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .panel-section:first-child { padding-top: 0; }
+    .panel-section:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .panel-section__header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .panel-section__icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--gold-pale);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 15px;
+    }
+
+    .panel-section__title {
+      font-family: var(--font-display);
+      font-size: 21px;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.2;
+    }
+
+    .panel-section__items {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .panel-section__item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--text-body);
+    }
+
+    .panel-section__item-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+      margin-top: 9px;
+      opacity: 0.7;
+    }
+
+    /* Advisor callout — "What Families Often Miss" */
+    .advisor-callout {
+      background: var(--ivory-warm);
+      border-radius: var(--radius-md);
+      border-left: 3px solid var(--gold);
+      padding: 24px 26px;
+      margin-top: 8px;
+    }
+
+    .advisor-callout__label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .advisor-callout__label::before {
+      content: '◆';
+      font-size: 8px;
+    }
+
+    .advisor-callout__text {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-style: italic;
+      color: var(--navy);
+      line-height: 1.6;
+    }
+
+    /* ============================================================
+       MOBILE ACCORDION
+       Hidden on desktop; visible below 820px
+    ============================================================ */
+    .timeline-accordion {
+      display: block;
+    }
+    @media (min-width: 820px) {
+      .timeline-accordion { display: none; }
+    }
+
+    .accordion-item {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      margin-bottom: 10px;
+      overflow: hidden;
+      transition: box-shadow 0.25s ease;
+    }
+
+    .accordion-item.is-open {
+      box-shadow: var(--shadow-md);
+      border-color: rgba(196,150,58,0.3);
+    }
+
+    .accordion-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 22px;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      width: 100%;
+      text-align: left;
+      transition: background 0.2s ease;
+    }
+
+    .accordion-header:hover { background: var(--ivory); }
+    .accordion-item.is-open .accordion-header { background: var(--navy); }
+
+    .accordion-header__num {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--gold);
+      opacity: 0.45;
+      line-height: 1;
+      flex-shrink: 0;
+      width: 36px;
+      transition: opacity 0.2s ease;
+    }
+
+    .accordion-item.is-open .accordion-header__num { opacity: 0.7; color: var(--gold); }
+
+    .accordion-header__text { flex: 1; }
+
+    .accordion-header__stage {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .accordion-header__name {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text-dark);
+      line-height: 1.2;
+    }
+
+    .accordion-item.is-open .accordion-header__name { color: var(--white); }
+    .accordion-item.is-open .accordion-header__stage { color: var(--gold); }
+
+    .accordion-header__tag {
+      font-size: 11.5px;
+      color: var(--text-light);
+      margin-top: 2px;
+      display: block;
+    }
+
+    .accordion-item.is-open .accordion-header__tag { color: rgba(255,255,255,0.45); }
+
+    .accordion-chevron {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+      opacity: 0.4;
+      transition: transform 0.3s ease, opacity 0.2s ease;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23064E3B' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: center; background-size: contain;
+    }
+
+    .accordion-item.is-open .accordion-chevron {
+      transform: rotate(180deg);
+      opacity: 0.8;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23C4963A' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    }
+
+    /* Accordion body */
+    .accordion-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .accordion-item.is-open .accordion-body {
+      max-height: 2400px;
+    }
+
+    .accordion-content {
+      padding: 0 22px 28px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* Mobile section blocks inside accordion */
+    .mob-section {
+      padding: 22px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .mob-section:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .mob-section__title {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .mob-section__title-icon { font-size: 14px; }
+
+    .mob-section__items {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .mob-section__item {
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+      font-size: 14.5px;
+      line-height: 1.62;
+      color: var(--text-body);
+    }
+
+    .mob-section__item-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+      margin-top: 9px;
+      opacity: 0.65;
+    }
+
+    .mob-advisor-callout {
+      background: var(--ivory-warm);
+      border-left: 3px solid var(--gold);
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+      margin-top: 20px;
+    }
+
+    .mob-advisor-callout__label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .mob-advisor-callout__text {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-style: italic;
+      color: var(--navy);
+      line-height: 1.58;
+    }
+
+    /* ============================================================
+       DOWNLOAD / PRINT STRIP
+    ============================================================ */
+    .timeline-tools {
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 28px 0;
+    }
+
+    .timeline-tools__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .timeline-tools__text { font-size: 15px; color: var(--text-muted); }
+    .timeline-tools__text strong { color: var(--text-dark); font-weight: 600; }
+
+    .timeline-tools__actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+    /* ============================================================
+       CTA STRIP
+    ============================================================ */
+    .timeline-cta {
+      background: var(--navy);
+      padding: 72px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .timeline-cta::before { content: ''; position: absolute; bottom: -30%; right: -10%; width: 420px; height: 420px; border-radius: 50%; background: radial-gradient(circle, rgba(196,150,58,0.06) 0%, transparent 65%); pointer-events: none; }
+    .timeline-cta__inner { position: relative; z-index: 2; max-width: 620px; margin: 0 auto; text-align: center; }
+    .timeline-cta .section-label { display: block; text-align: center; margin-bottom: 14px; }
+    .timeline-cta__title { font-family: var(--font-display); font-size: clamp(26px,3.5vw,38px); font-weight: 600; color: var(--white); line-height: 1.2; margin-bottom: 16px; }
+    .timeline-cta__body { font-size: 16px; line-height: 1.72; color: rgba(255,255,255,0.55); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .timeline-cta__ctas { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px; }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    .footer { background: var(--navy); padding: 64px 0 0; border-top: 1px solid rgba(255,255,255,0.06); }
+    .footer__grid { display: grid; grid-template-columns: 1fr; gap: 40px; }
+    @media (min-width: 640px) { .footer__grid { grid-template-columns: repeat(2,1fr); } }
+    @media (min-width: 960px) { .footer__grid { grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 48px; } }
+    .footer__brand-name { font-family: var(--font-display); font-size: 20px; font-weight: 600; color: var(--white); margin-bottom: 4px; letter-spacing: 0.01em; }
+    .footer__brand-tagline { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-pale); opacity: 0.6; margin-bottom: 16px; }
+    .footer__brand-desc { font-size: 14px; line-height: 1.65; color: rgba(255,255,255,0.4); max-width: 280px; }
+    .footer__col-label { font-size: 10.5px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; display: block; }
+    .footer__links { display: flex; flex-direction: column; gap: 4px; }
+    .footer__link { font-size: 14px; color: rgba(255,255,255,0.55); padding: 5px 0; transition: var(--transition); }
+    .footer__link:hover { color: var(--white); }
+    .footer__contact-line { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; }
+    .footer__contact-icon { font-size: 14px; color: var(--gold); opacity: 0.7; flex-shrink: 0; margin-top: 2px; }
+    .footer__contact-text { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.5; }
+    .footer__cta-link { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 500; color: var(--gold); margin-top: 16px; transition: var(--transition); }
+    .footer__cta-link:hover { color: var(--gold-light); }
+    .footer__cta-link::after { content: '→'; transition: transform 0.2s ease; }
+    .footer__cta-link:hover::after { transform: translateX(3px); }
+    .footer__bottom { margin-top: 56px; padding: 24px 0; border-top: 1px solid rgba(255,255,255,0.07); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+    .footer__copyright { font-size: 12px; color: rgba(255,255,255,0.3); }
+    .footer__legal-links { display: flex; gap: 20px; }
+    .footer__legal-link { font-size: 12px; color: rgba(255,255,255,0.3); transition: var(--transition); }
+    .footer__legal-link:hover { color: rgba(255,255,255,0.6); }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 599px) {
+      :root { --section-pad: 56px 0; }
+      .page-header { padding: 52px 0 60px; }
+      .page-header__finder { flex-direction: column; align-items: flex-start; }
+      .timeline-cta__ctas { flex-direction: column; align-items: stretch; }
+      .timeline-cta__ctas .btn { justify-content: center; }
+      .timeline-tools__inner { flex-direction: column; align-items: flex-start; }
+      .footer__grid { gap: 32px; }
+      .footer__bottom { flex-direction: column; align-items: flex-start; }
+    }
+
+    /* ============================================================
+       ENTRANCE ANIMATION
+    ============================================================ */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+    .page-header__inner { animation: fadeUp 0.65s ease both; }
+
+  </style>
+</head>
+
+<body id="top">
+
+  <!-- ============================================================
+       NAVIGATION
+  ============================================================ -->
+  <header class="nav" role="banner">
+    <div class="container">
+      <div class="nav__inner">
+        <a href="index.html" class="nav__brand" aria-label="College Funding Solutions — Home">
+          <span class="nav__brand-name">College Funding Solutions</span>
+          <span class="nav__brand-tagline">Strategic College Planning</span>
+        </a>
+
+        <nav class="nav__links" aria-label="Primary navigation">
+          <a href="how-it-works.html" class="nav__link">How It Works</a>
+          <a href="our-process.html"  class="nav__link">Our Process</a>
+          <a href="pillars.html"      class="nav__link">The 3 Pillars</a>
+
+          <!-- Resources Dropdown — Timeline now active -->
+          <div class="nav__dropdown" role="navigation" aria-label="Resources submenu">
+            <button class="nav__dropdown-trigger" aria-haspopup="true" aria-expanded="false" id="resources-dropdown-btn" type="button">
+              Resources <span class="nav__dropdown-chevron" aria-hidden="true"></span>
+            </button>
+            <div class="nav__dropdown-panel" role="menu" aria-labelledby="resources-dropdown-btn">
+              <a href="blogs.html"    class="nav__dropdown-link" role="menuitem">Blogs</a>
+              <a href="articles.html" class="nav__dropdown-link" role="menuitem">Articles</a>
+              <div class="nav__dropdown-divider" role="separator" aria-hidden="true"></div>
+              <a href="timeline.html" class="nav__dropdown-link nav__dropdown-link--active" role="menuitem">Timeline</a>
+              <a href="#"             class="nav__dropdown-link" role="menuitem">Packages</a>
+              <div class="nav__dropdown-divider" role="separator" aria-hidden="true"></div>
+              <a href="webinar.html"  class="nav__dropdown-link" role="menuitem">Webinars</a>
+            </div>
+          </div>
+
+          <a href="about.html" class="nav__link">About</a>
+        </nav>
+
+        <div class="nav__ctas">
+          <a href="webinar.html" class="btn btn--outline btn--small nav__cta-webinar">Free Webinar</a>
+          <a href="contact.html" class="btn btn--primary btn--small">Schedule a Consultation</a>
+        </div>
+
+        <button class="nav__hamburger" id="nav-toggle" aria-label="Open navigation menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="nav__drawer" id="nav-drawer" role="dialog" aria-label="Navigation menu" aria-modal="true">
+    <div class="nav__drawer-overlay" id="nav-overlay"></div>
+    <div class="nav__drawer-panel">
+      <button class="nav__drawer-close" id="nav-close" aria-label="Close navigation">✕</button>
+      <nav class="nav__drawer-links" aria-label="Mobile navigation">
+        <a href="index.html"        class="nav__drawer-link">Home</a>
+        <a href="how-it-works.html" class="nav__drawer-link">How It Works</a>
+        <a href="our-process.html"  class="nav__drawer-link">Our Process</a>
+        <a href="pillars.html"      class="nav__drawer-link">The 3 Pillars</a>
+        <div class="nav__accordion">
+          <button class="nav__accordion-trigger" aria-expanded="false" aria-controls="resources-accordion-panel" id="resources-accordion-btn" type="button">
+            Resources <span class="nav__accordion-chevron" aria-hidden="true"></span>
+          </button>
+          <div class="nav__accordion-panel" id="resources-accordion-panel" role="region" aria-labelledby="resources-accordion-btn">
+            <div class="nav__accordion-links">
+              <a href="blogs.html"    class="nav__accordion-link nav__drawer-link">Blogs</a>
+              <a href="articles.html" class="nav__accordion-link nav__drawer-link">Articles</a>
+              <a href="timeline.html" class="nav__accordion-link nav__drawer-link">Timeline</a>
+              <a href="#"             class="nav__accordion-link nav__drawer-link">Packages</a>
+              <a href="webinar.html"  class="nav__accordion-link nav__drawer-link">Webinars</a>
+            </div>
+          </div>
+        </div>
+        <a href="about.html"  class="nav__drawer-link">About</a>
+        <a href="contact.html" class="nav__drawer-link">Contact</a>
+      </nav>
+      <div class="nav__drawer-ctas">
+        <a href="webinar.html"  class="btn btn--outline">Free Webinar</a>
+        <a href="contact.html"  class="btn btn--primary">Schedule a Consultation</a>
+      </div>
+    </div>
+  </div>
+
+
+  <main>
+
+    <!-- ============================================================
+         PAGE HEADER
+    ============================================================ -->
+    <section class="page-header" aria-label="College Planning Timeline">
+      <div class="container">
+        <div class="page-header__inner">
+          <div class="page-header__eyebrow">
+            <span class="page-header__eyebrow-line" aria-hidden="true"></span>
+            <span class="page-header__eyebrow-text">Strategic Roadmap</span>
+          </div>
+          <h1 class="page-header__title">The College Planning Timeline</h1>
+          <p class="page-header__subtitle">
+            A year-by-year strategic roadmap covering every critical milestone from 8th grade through senior year enrollment — so your family knows exactly what to do, when to do it, and why it matters.
+          </p>
+          <!-- Quick-jump finder -->
+          <div class="page-header__finder" aria-label="Jump to your student's current stage">
+            <span class="page-header__finder-label">Jump to your student's year:</span>
+            <div class="page-header__finder-links">
+              <button class="page-header__finder-btn" data-jump="eighth">8th Grade</button>
+              <button class="page-header__finder-btn" data-jump="freshman">Freshman</button>
+              <button class="page-header__finder-btn" data-jump="sophomore">Sophomore</button>
+              <button class="page-header__finder-btn" data-jump="junior">Junior</button>
+              <button class="page-header__finder-btn" data-jump="senior">Senior</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         INTERACTIVE TIMELINE SECTION
+    ============================================================ -->
+    <section class="timeline-section" aria-labelledby="timeline-heading">
+      <div class="container">
+        <h2 class="sr-only" id="timeline-heading">Year-by-Year Planning Timeline</h2>
+
+        <!-- ── DESKTOP: Tab Navigation ── -->
+        <div class="timeline-tabs-wrap" role="tablist" aria-label="Select a planning stage">
+          <div class="timeline-tabs">
+            <button class="timeline-tab is-active" role="tab" aria-selected="true"  aria-controls="panel-eighth"   id="tab-eighth"   data-stage="eighth">
+              <span class="timeline-tab__num">Stage 01</span>
+              <span class="timeline-tab__name">8th Grade</span>
+              <span class="timeline-tab__tag">The Bridge Year</span>
+            </button>
+            <button class="timeline-tab" role="tab" aria-selected="false" aria-controls="panel-freshman"  id="tab-freshman"  data-stage="freshman">
+              <span class="timeline-tab__num">Stage 02</span>
+              <span class="timeline-tab__name">Freshman Year</span>
+              <span class="timeline-tab__tag">Foundation Building</span>
+            </button>
+            <button class="timeline-tab" role="tab" aria-selected="false" aria-controls="panel-sophomore" id="tab-sophomore" data-stage="sophomore">
+              <span class="timeline-tab__num">Stage 03</span>
+              <span class="timeline-tab__name">Sophomore Year</span>
+              <span class="timeline-tab__tag">Deepening Commitment</span>
+            </button>
+            <button class="timeline-tab" role="tab" aria-selected="false" aria-controls="panel-junior"    id="tab-junior"    data-stage="junior">
+              <span class="timeline-tab__num">Stage 04</span>
+              <span class="timeline-tab__name">Junior Year</span>
+              <span class="timeline-tab__tag">The Pivotal Year</span>
+            </button>
+            <button class="timeline-tab" role="tab" aria-selected="false" aria-controls="panel-senior"    id="tab-senior"    data-stage="senior">
+              <span class="timeline-tab__num">Stage 05</span>
+              <span class="timeline-tab__name">Senior Year</span>
+              <span class="timeline-tab__tag">Execution &amp; Decision</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- ── DESKTOP: Content Panels ── -->
+        <div class="timeline-panels">
+
+          <!-- ═══ PANEL: 8th Grade ═══ -->
+          <div class="timeline-panel is-active" id="panel-eighth" role="tabpanel" aria-labelledby="tab-eighth" data-stage="eighth">
+            <div class="panel-grid">
+              <aside class="panel-overview" aria-label="8th Grade overview">
+                <div class="panel-overview__num" aria-hidden="true">01</div>
+                <span class="panel-overview__stage">Stage One</span>
+                <h3 class="panel-overview__title">8th Grade — The Bridge Year</h3>
+                <p class="panel-overview__desc">The decisions made in 8th grade — especially around course selection — can shape the entire high school academic trajectory. Most families underestimate how much this year matters.</p>
+                <div class="panel-overview__focus">
+                  <span class="panel-overview__focus-label">Primary Focus</span>
+                  <p class="panel-overview__focus-text">Course planning conversations and early interest exploration that set the foundation for all four high school years.</p>
+                </div>
+              </aside>
+              <div class="panel-sections">
+                <div class="panel-section">
+                  <div class="panel-section__header">
+                    <div class="panel-section__icon" aria-hidden="true">📋</div>
+                    <h4 class="panel-section__title">Academic &amp; Course Planning</h4>
+                  </div>
+                  <ul class="panel-section__items">
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Meet with your school counselor in February through April for freshman year course selection — this conversation is more consequential than most families realize.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Understand the difference between standard, honors, and AP/IB academic tracks — and what each path opens or closes later.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Aim for the highest appropriate level of rigor — but not at the cost of grades. A strong grade in a moderately rigorous course is better than a weak grade in an advanced one.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Ask what courses are prerequisites for advanced options later — and plan freshman year with sophomore and junior year access in mind.</span></li>
+                  </ul>
+                </div>
+                <div class="panel-section">
+                  <div class="panel-section__header">
+                    <div class="panel-section__icon" aria-hidden="true">🎯</div>
+                    <h4 class="panel-section__title">Activities &amp; Interest Exploration</h4>
+                  </div>
+                  <ul class="panel-section__items">
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Research what clubs, sports, and organizations will be available to you in high school — go in with a plan, not just whatever is convenient.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Identify two to three areas of genuine interest to pursue from freshman year forward — consistency and authenticity matter far more than volume of activities.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Begin thinking about what type of student you want to be — not just academically, but in terms of how you'll spend your time and what you'll build over four years.</span></li>
+                  </ul>
+                </div>
+                <div class="panel-section">
+                  <div class="panel-section__header">
+                    <div class="panel-section__icon" aria-hidden="true">🌅</div>
+                    <h4 class="panel-section__title">Summer Priorities</h4>
+                  </div>
+                  <ul class="panel-section__items">
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Explore enrichment programs, academic camps, or skill-building experiences aligned to emerging interests — even lightweight involvement begins establishing a pattern.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Use this summer to read broadly, explore curiosities, and arrive at high school with momentum rather than ambiguity.</span></li>
+                  </ul>
+                </div>
+                <div class="panel-section">
+                  <div class="panel-section__header">
+                    <div class="panel-section__icon" aria-hidden="true">💡</div>
+                    <h4 class="panel-section__title">What Families Often Miss</h4>
+                  </div>
+                  <div class="advisor-callout">
+                    <span class="advisor-callout__label">Advisor Insight</span>
+                    <p class="advisor-callout__text">8th grade course selection directly affects 9th grade placement — and 9th grade placement can affect access to advanced courses for all four years of high school. The February through April counselor conversation isn't a formality. It's a strategic inflection point, and families who treat it as one arrive at high school with meaningfully more options.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ═══ PANEL: Freshman Year ═══ -->
+          <div class="timeline-panel" id="panel-freshman" role="tabpanel" aria-labelledby="tab-freshman" data-stage="freshman">
+            <div class="panel-grid">
+              <aside class="panel-overview">
+                <div class="panel-overview__num" aria-hidden="true">02</div>
+                <span class="panel-overview__stage">Stage Two</span>
+                <h3 class="panel-overview__title">Freshman Year — Foundation Building</h3>
+                <p class="panel-overview__desc">Freshman year establishes the academic habits, extracurricular story, and personal patterns that will define the next four years. There is no practice round.</p>
+                <div class="panel-overview__focus">
+                  <span class="panel-overview__focus-label">Primary Focus</span>
+                  <p class="panel-overview__focus-text">Start strong academically, explore interests broadly, and begin building a documented record from day one.</p>
+                </div>
+              </aside>
+              <div class="panel-sections">
+                <div class="panel-section">
+                  <div class="panel-section__header">
+                    <div class="panel-section__icon" aria-hidden="true">📋</div>
+                    <h4 class="panel-section__title">Academic Priorities</h4>
+                  </div>
+                  <ul class="panel-section__items">
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Academic year begins in August or September — establish strong habits from the very first week, not after the first grade check.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Assess your courseload in September and make any necessary adjustments before the window closes.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Evaluate academic performance regularly; begin course planning for sophomore year in the spring — don't wait until the last moment.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Consider AP or IB courses where appropriate; sign up for AP/IB exams in January or February if applicable.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Study for and take AP/IB exams in April and May; prepare thoroughly for finals in May and June.</span></li>
+                  </ul>
+                </div>
+                <div class="panel-section">
+                  <div class="panel-section__header">
+                    <div class="panel-section__icon" aria-hidden="true">📝</div>
+                    <h4 class="panel-section__title">Testing</h4>
+                  </div>
+                  <ul class="panel-section__items">
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Take the PSAT if your school offers it — treat it as a completely low-stakes diagnostic and a chance to become familiar with the format.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>No official SAT or ACT testing is expected or recommended yet. Use this year to understand what standardized tests look like, not to prepare intensively for them.</span></li>
+                  </ul>
+                </div>
+                <div class="panel-section">
+                  <div class="panel-section__header">
+                    <div class="panel-section__icon" aria-hidden="true">🎯</div>
+                    <h4 class="panel-section__title">Activities &amp; Involvement</h4>
+                  </div>
+                  <ul class="panel-section__items">
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Attend Club Rush in September — explore broadly, then narrow with intention over the following weeks.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Join two to four activities with clear intention; quality and consistency of engagement matter more than the number of activities on a list.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Begin documenting your activities immediately — a running activity log now makes junior and senior year significantly easier.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Consider a passion project that connects your areas of interest — optional, but increasingly valuable as an application differentiator.</span></li>
+                  </ul>
+                </div>
+                <div class="panel-section">
+                  <div class="panel-section__header">
+                    <div class="panel-section__icon" aria-hidden="true">🏛️</div>
+                    <h4 class="panel-section__title">College Exploration</h4>
+                  </div>
+                  <ul class="panel-section__items">
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Begin campus and virtual college visits — going when school is in session gives you the most accurate picture of student life and campus culture.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Explore college admission requirements broadly — understand what the process looks like before you're in the middle of it.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Attend student development workshops on profile-building, college research, and major exploration if available.</span></li>
+                  </ul>
+                </div>
+                <div class="panel-section">
+                  <div class="panel-section__header">
+                    <div class="panel-section__icon" aria-hidden="true">🌅</div>
+                    <h4 class="panel-section__title">Summer Planning</h4>
+                  </div>
+                  <ul class="panel-section__items">
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Begin searching for summer programs, internships, or courses in January — the best programs fill early.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Apply in February and March; finalize plans by April or May.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Meaningful summer experiences — academic enrichment, community engagement, skill development — begin building your profile from the very start.</span></li>
+                  </ul>
+                </div>
+                <div class="panel-section">
+                  <div class="panel-section__header">
+                    <div class="panel-section__icon" aria-hidden="true">💡</div>
+                    <h4 class="panel-section__title">What Families Often Miss</h4>
+                  </div>
+                  <div class="advisor-callout">
+                    <span class="advisor-callout__label">Advisor Insight</span>
+                    <p class="advisor-callout__text">Freshman year GPA is part of the transcript colleges see — there is no warm-up year. More importantly, the habit of documenting activities from day one makes junior and senior year significantly less stressful. Students who start a simple activity log in September of 9th grade have a measurable advantage when it's time to build their application profile.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ═══ PANEL: Sophomore Year ═══ -->
+          <div class="timeline-panel" id="panel-sophomore" role="tabpanel" aria-labelledby="tab-sophomore" data-stage="sophomore">
+            <div class="panel-grid">
+              <aside class="panel-overview">
+                <div class="panel-overview__num" aria-hidden="true">03</div>
+                <span class="panel-overview__stage">Stage Three</span>
+                <h3 class="panel-overview__title">Sophomore Year — Deepening Commitment</h3>
+                <p class="panel-overview__desc">Sophomore year is when authentic patterns begin to emerge. Deeper involvement, a first diagnostic test, and initial financial awareness all belong here.</p>
+                <div class="panel-overview__focus">
+                  <span class="panel-overview__focus-label">Primary Focus</span>
+                  <p class="panel-overview__focus-text">Go deeper in activities, take your first diagnostic test, and begin thinking seriously about the financial landscape of college.</p>
+                </div>
+              </aside>
+              <div class="panel-sections">
+                <div class="panel-section">
+                  <div class="panel-section__header">
+                    <div class="panel-section__icon" aria-hidden="true">📋</div>
+                    <h4 class="panel-section__title">Academic Priorities</h4>
+                  </div>
+                  <ul class="panel-section__items">
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Continue evaluating courseload — is the level of rigor appropriate and sustainable through junior year?</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Sign up for AP/IB exams in January or February; study in April and take them in May.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Evaluate academic performance regularly and course plan for junior year — junior year course selection is one of the most visible signals in your application.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Prepare for finals in May and June; enter final grades and courses into your profile document.</span></li>
+                  </ul>
+                </div>
+                <div class="panel-section">
+                  <div class="panel-section__header">
+                    <div class="panel-section__icon" aria-hidden="true">📝</div>
+                    <h4 class="panel-section__title">Testing Strategy</h4>
+                  </div>
+                  <ul class="panel-section__items">
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Sign up for and take the PSAT in October if available — this year it provides more meaningful data than freshman year.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Take a full-length diagnostic SAT or ACT — online, in-person, or at home. This is one of the most important and underutilized steps in the entire planning process.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Compare your diagnostic performance to typical score ranges at colleges of interest.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Determine whether the ACT or SAT is a better structural fit based on diagnostic results — this decision shapes your entire prep approach going into junior year.</span></li>
+                  </ul>
+                </div>
+                <div class="panel-section">
+                  <div class="panel-section__header">
+                    <div class="panel-section__icon" aria-hidden="true">🎯</div>
+                    <h4 class="panel-section__title">Activities &amp; Involvement</h4>
+                  </div>
+                  <ul class="panel-section__items">
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Deepen involvement in your two to three core activities — reduce breadth, increase depth and leadership where natural.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Update your activity profile document continuously — keep it current rather than reconstructing it from memory later.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Consider a passion project if not already underway — the best projects connect academic interest with real-world engagement and develop over time.</span></li>
+                  </ul>
+                </div>
+                <div class="panel-section">
+                  <div class="panel-section__header">
+                    <div class="panel-section__icon" aria-hidden="true">🏛️</div>
+                    <h4 class="panel-section__title">College Exploration</h4>
+                  </div>
+                  <ul class="panel-section__items">
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Continue campus and virtual visits — bring friends when possible to get diverse perspectives on what you're observing.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Begin exploring college admission requirements more seriously — understand what selectivity looks like at different types of institutions.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Begin researching majors that connect to your emerging career and academic interests — this shapes school list thinking later.</span></li>
+                  </ul>
+                </div>
+                <div class="panel-section">
+                  <div class="panel-section__header">
+                    <div class="panel-section__icon" aria-hidden="true">🌅</div>
+                    <h4 class="panel-section__title">Summer Planning</h4>
+                  </div>
+                  <ul class="panel-section__items">
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Start looking for programs in January; apply in February; finalize in April; attend in July and August.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Pursue programs that deepen your emerging area of focus — a second summer of thematically consistent involvement begins to tell a coherent story.</span></li>
+                  </ul>
+                </div>
+                <div class="panel-section">
+                  <div class="panel-section__header">
+                    <div class="panel-section__icon" aria-hidden="true">💡</div>
+                    <h4 class="panel-section__title">What Families Often Miss</h4>
+                  </div>
+                  <div class="advisor-callout">
+                    <span class="advisor-callout__label">Advisor Insight</span>
+                    <p class="advisor-callout__text">The diagnostic test is one of the most underutilized sophomore year tools we know of. Families who skip it enter junior year making testing decisions — which test to take, how intensively to prep, how many attempts to plan for — without any real data. That guesswork costs time and money that a two-hour diagnostic could have prevented.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ═══ PANEL: Junior Year ═══ -->
+          <div class="timeline-panel" id="panel-junior" role="tabpanel" aria-labelledby="tab-junior" data-stage="junior">
+            <div class="panel-grid">
+              <aside class="panel-overview">
+                <div class="panel-overview__num" aria-hidden="true">04</div>
+                <span class="panel-overview__stage">Stage Four</span>
+                <h3 class="panel-overview__title">Junior Year — The Pivotal Year</h3>
+                <p class="panel-overview__desc">Junior year is the most consequential year in the entire college planning process. Testing, college list building, financial strategy, and essay preparation all converge here.</p>
+                <div class="panel-overview__focus">
+                  <span class="panel-overview__focus-label">Primary Focus</span>
+                  <p class="panel-overview__focus-text">Complete standardized testing, finalize your school list, begin your essays, and lay the groundwork for a strong senior year launch.</p>
+                </div>
+              </aside>
+              <div class="panel-sections">
+                <div class="panel-section">
+                  <div class="panel-section__header">
+                    <div class="panel-section__icon" aria-hidden="true">📋</div>
+                    <h4 class="panel-section__title">Academic Priorities</h4>
+                  </div>
+                  <ul class="panel-section__items">
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Maintain and aim to elevate your GPA — junior year is the last full academic year colleges see before applications are submitted.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Pursue the most rigorous courseload you can realistically sustain — AP and IB courses where appropriate.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Sign up for AP/IB exams in January or February; study in April and take them in May.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Plan senior year courses carefully — a strong senior year schedule signals continued rigor and intention.</span></li>
+                  </ul>
+                </div>
+                <div class="panel-section">
+                  <div class="panel-section__header">
+                    <div class="panel-section__icon" aria-hidden="true">📝</div>
+                    <h4 class="panel-section__title">Testing Strategy</h4>
+                  </div>
+                  <ul class="panel-section__items">
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Begin ACT or SAT prep program in September or October based on your sophomore diagnostic results.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Sign up for and take the ACT or SAT — plan for at least one attempt, ideally two, spaced several months apart.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Take the PSAT in October — junior year is when PSAT scores qualify for the National Merit Scholarship Program.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Evaluate your scores after each attempt; determine whether additional prep or a final attempt in the fall of senior year makes sense.</span></li>
+                  </ul>
+                </div>
+                <div class="panel-section">
+                  <div class="panel-section__header">
+                    <div class="panel-section__icon" aria-hidden="true">🎯</div>
+                    <h4 class="panel-section__title">Activities &amp; Involvement</h4>
+                  </div>
+                  <ul class="panel-section__items">
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Maintain and demonstrate sustained depth and leadership in your primary commitments — consistency now carries real weight.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Complete and update your Activity Descriptions and Student Profile Sheet — this document becomes the source material for your application.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Identify 10 to 15 career interest areas and narrow to 2 to 4 majors of genuine academic and professional interest.</span></li>
+                  </ul>
+                </div>
+                <div class="panel-section">
+                  <div class="panel-section__header">
+                    <div class="panel-section__icon" aria-hidden="true">🏛️</div>
+                    <h4 class="panel-section__title">School List &amp; College Research</h4>
+                  </div>
+                  <ul class="panel-section__items">
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Review college application requirements in detail — know what's expected at each school you're considering.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Review a suggested college list organized around your major interests and academic profile.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Build and finalize a balanced college list based on projected admission likelihood — likely, possible, and reach schools.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Explore major-specific offerings at each institution on your list; finalize primary and alternate major interests per school.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Continue campus and virtual visits — going while school is in session gives the most authentic read on campus life.</span></li>
+                  </ul>
+                </div>
+                <div class="panel-section">
+                  <div class="panel-section__header">
+                    <div class="panel-section__icon" aria-hidden="true">✍️</div>
+                    <h4 class="panel-section__title">Essays &amp; Application Preparation</h4>
+                  </div>
+                  <ul class="panel-section__items">
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span><strong>August:</strong> Common App essay prompts are released and UC PIQ topics are released — begin brainstorming immediately. This is the ideal time to start, not September.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span><strong>March–May:</strong> Begin drafting your main Common App essay; attend essay development workshops; develop and refine through multiple drafts.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span><strong>May–June:</strong> Begin UC essays; pre-request letters of recommendation from teachers and counselors — give recommenders maximum lead time.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Attend pre-application and application workshops covering student profile, college research, resume, and major selection.</span></li>
+                  </ul>
+                </div>
+                <div class="panel-section">
+                  <div class="panel-section__header">
+                    <div class="panel-section__icon" aria-hidden="true">🌅</div>
+                    <h4 class="panel-section__title">Summer Priorities</h4>
+                  </div>
+                  <ul class="panel-section__items">
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Start looking for programs in January; apply in February and March; finalize in April; attend in July and August.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>This is the last meaningful summer before senior year applications begin — make it count in terms of both what you do and what you write about.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Begin making meaningful progress on your Common App essay over the summer — families who do this arrive in senior year August ahead of the field.</span></li>
+                  </ul>
+                </div>
+                <div class="panel-section">
+                  <div class="panel-section__header">
+                    <div class="panel-section__icon" aria-hidden="true">💡</div>
+                    <h4 class="panel-section__title">What Families Often Miss</h4>
+                  </div>
+                  <div class="advisor-callout">
+                    <span class="advisor-callout__label">Advisor Insight</span>
+                    <p class="advisor-callout__text">The Common App essay prompts are released every August — the summer between junior and senior year is the single best window for making real progress. Most families treat it as vacation time and arrive in September under significant pressure. The students who enter senior year with a completed essay draft are in an entirely different position than those who haven't started.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ═══ PANEL: Senior Year ═══ -->
+          <div class="timeline-panel" id="panel-senior" role="tabpanel" aria-labelledby="tab-senior" data-stage="senior">
+            <div class="panel-grid">
+              <aside class="panel-overview">
+                <div class="panel-overview__num" aria-hidden="true">05</div>
+                <span class="panel-overview__stage">Stage Five</span>
+                <h3 class="panel-overview__title">Senior Year — Execution &amp; Decision</h3>
+                <p class="panel-overview__desc">Senior year is about executing the plan built over the prior three years — submitting strong applications, navigating financial aid season, and making a fully informed enrollment decision.</p>
+                <div class="panel-overview__focus">
+                  <span class="panel-overview__focus-label">Primary Focus</span>
+                  <p class="panel-overview__focus-text">Submit everything on time, evaluate financial aid offers with clarity, appeal when appropriate, and commit by May 1st.</p>
+                </div>
+              </aside>
+              <div class="panel-sections">
+                <div class="panel-section">
+                  <div class="panel-section__header">
+                    <div class="panel-section__icon" aria-hidden="true">📋</div>
+                    <h4 class="panel-section__title">Academic Priorities</h4>
+                  </div>
+                  <ul class="panel-section__items">
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Maintain your grades — colleges can and do rescind admission offers for significant senior year grade drops. This is not hypothetical.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Sign up for AP/IB exams; study in April and take them in May — strong AP scores can earn college credit and validate your academic record.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Send your final high school transcript to your enrolled college in June. Send AP exam scores in July.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Graduation — the finish line. Arrive there with your record, reputation, and enrollment in order.</span></li>
+                  </ul>
+                </div>
+                <div class="panel-section">
+                  <div class="panel-section__header">
+                    <div class="panel-section__icon" aria-hidden="true">✍️</div>
+                    <h4 class="panel-section__title">Application Timeline</h4>
+                  </div>
+                  <ul class="panel-section__items">
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span><strong>August:</strong> Finalize your college list; Common App refreshes and opens; UC Application opens; supplemental essays are released; finalize UC essays.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span><strong>September:</strong> Submit your FERPA waiver and finalized list to your high school counselor; request official transcripts; request counselor recommendations and teacher evaluations; complete parent and student evaluation forms.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span><strong>October–November:</strong> Conduct final application audits; submit Early Action and Early Decision applications; submit UC Application (due November 30); submit CSU Application (due November 30); submit financial aid forms.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span><strong>December:</strong> Receive EA/ED notifications; submit all remaining Regular Decision applications before the holiday break — do not wait until January.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span><strong>January:</strong> Submit any remaining Regular Decision applications; submit additional financial aid documentation as required; check all college portals and send mid-year reports.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span><strong>March:</strong> Receive Regular Decision admission notifications; begin comparing offers carefully.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span><strong>April:</strong> Compare and analyze financial aid award letters; consider appealing offers where appropriate; visit admitted student days.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span><strong>May 1:</strong> Submit your Intent to Enroll — this deadline is firm at most institutions. Sign up for housing and freshman orientation immediately; these fill quickly.</span></li>
+                  </ul>
+                </div>
+                <div class="panel-section">
+                  <div class="panel-section__header">
+                    <div class="panel-section__icon" aria-hidden="true">💰</div>
+                    <h4 class="panel-section__title">Financial Aid Strategy</h4>
+                  </div>
+                  <ul class="panel-section__items">
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Submit the FAFSA and CSS Profile as early as possible — FAFSA opens October 1 and priority deadlines at many schools come before January.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Submit official ACT or SAT scores to your colleges of choice — this is the final opportunity for any standardized test submission.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Check college portals regularly and respond to any requests for additional documentation or mid-year reports promptly.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Compare financial aid award letters carefully — not all aid is equal, and the language used across different letters is intentionally inconsistent. Know what you're actually being offered.</span></li>
+                    <li class="panel-section__item"><span class="panel-section__item-dot" aria-hidden="true"></span><span>Consider appealing financial aid offers where appropriate — families with changed circumstances, additional information, or competing offers from comparable schools can and should engage this process.</span></li>
+                  </ul>
+                </div>
+                <div class="panel-section">
+                  <div class="panel-section__header">
+                    <div class="panel-section__icon" aria-hidden="true">💡</div>
+                    <h4 class="panel-section__title">What Families Often Miss</h4>
+                  </div>
+                  <div class="advisor-callout">
+                    <span class="advisor-callout__label">Advisor Insight</span>
+                    <p class="advisor-callout__text">Financial aid award letters are not final offers — they are opening positions. Families who understand how to appeal respectfully and with supporting documentation regularly see meaningfully improved packages. Additionally, most families don't realize that May 1 is a firm deadline and that housing registration at many schools fills within days. Both of these realities reward families who plan ahead rather than react.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- /timeline-panels -->
+
+
+        <!-- ── MOBILE: Accordion Timeline ── -->
+        <div class="timeline-accordion" aria-label="College planning timeline by stage">
+
+          <!-- ─ Accordion: 8th Grade ─ -->
+          <div class="accordion-item" id="acc-eighth">
+            <button class="accordion-header" aria-expanded="false" aria-controls="acc-body-eighth">
+              <span class="accordion-header__num" aria-hidden="true">01</span>
+              <span class="accordion-header__text">
+                <span class="accordion-header__stage">Stage One</span>
+                <span class="accordion-header__name">8th Grade</span>
+                <span class="accordion-header__tag">The Bridge Year</span>
+              </span>
+              <span class="accordion-chevron" aria-hidden="true"></span>
+            </button>
+            <div class="accordion-body" id="acc-body-eighth">
+              <div class="accordion-content">
+                <div class="mob-section">
+                  <h4 class="mob-section__title"><span class="mob-section__title-icon">📋</span> Academic &amp; Course Planning</h4>
+                  <ul class="mob-section__items">
+                    <li class="mob-section__item"><span class="mob-section__item-dot" aria-hidden="true"></span><span>Meet with your school counselor February–April for freshman year course selection.</span></li>
+                    <li class="mob-section__item"><span class="mob-section__item-dot" aria-hidden="true"></span><span>Understand standard, honors, and AP/IB tracks — and what each path opens or closes later.</span></li>
+                    <li class="mob-section__item"><span class="mob-section__item-dot" aria-hidden="true"></span><span>Ask what courses are prerequisites for advanced options — plan freshman year with junior and senior access in mind.</span></li>
+                  </ul>
+                </div>
+                <div class="mob-section">
+                  <h4 class="mob-section__title"><span class="mob-section__title-icon">🎯</span> Activities &amp; Exploration</h4>
+                  <ul class="mob-section__items">
+                    <li class="mob-section__item"><span class="mob-section__item-dot" aria-hidden="true"></span><span>Research what clubs, sports, and organizations will be available in high school — go in with a plan.</span></li>
+                    <li class="mob-section__item"><span class="mob-section__item-dot" aria-hidden="true"></span><span>Identify 2–3 areas of genuine interest to pursue consistently from freshman year forward.</span></li>
+                  </ul>
+                </div>
+                <div class="mob-section">
+                  <h4 class="mob-section__title"><span class="mob-section__title-icon">🌅</span> Summer Priorities</h4>
+                  <ul class="mob-section__items">
+                    <li class="mob-section__item"><span class="mob-section__item-dot" aria-hidden="true"></span><span>Explore enrichment programs or academic camps aligned to emerging interests.</span></li>
+                    <li class="mob-section__item"><span class="mob-section__item-dot" aria-hidden="true"></span><span>Arrive at high school with momentum and a clear sense of what you want to pursue.</span></li>
+                  </ul>
+                </div>
+                <div class="mob-advisor-callout">
+                  <div class="mob-advisor-callout__label">◆ &nbsp;What Families Often Miss</div>
+                  <p class="mob-advisor-callout__text">8th grade course selection directly affects 9th grade placement — and 9th grade placement can affect access to advanced courses for all four years of high school. The counselor conversation in February is a strategic inflection point, not a formality.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ─ Accordion: Freshman Year ─ -->
+          <div class="accordion-item" id="acc-freshman">
+            <button class="accordion-header" aria-expanded="false" aria-controls="acc-body-freshman">
+              <span class="accordion-header__num" aria-hidden="true">02</span>
+              <span class="accordion-header__text">
+                <span class="accordion-header__stage">Stage Two</span>
+                <span class="accordion-header__name">Freshman Year</span>
+                <span class="accordion-header__tag">Foundation Building</span>
+              </span>
+              <span class="accordion-chevron" aria-hidden="true"></span>
+            </button>
+            <div class="accordion-body" id="acc-body-freshman">
+              <div class="accordion-content">
+                <div class="mob-section">
+                  <h4 class="mob-section__title"><span class="mob-section__title-icon">📋</span> Academic Priorities</h4>
+                  <ul class="mob-section__items">
+                    <li class="mob-section__item"><span class="mob-section__item-dot" aria-hidden="true"></span><span>Start strong from day one — establish habits in September, not after the first grade check.</span></li>
+                    <li class="mob-section__item"><span class="mob-section__item-dot" aria-hidden="true"></span><span>Assess courseload in September; adjust if necessary; course plan for sophomore year in spring.</span></li>
+                    <li class="mob-section__item"><span class="mob-section__item-dot" aria-hidden="true"></span><span>Consider AP/IB where appropriate; sign up in January/February; take exams in May.</span></li>
+                  </ul>
+                </div>
+                <div class="mob-section">
+                  <h4 class="mob-section__title"><span class="mob-section__title-icon">📝</span> Testing</h4>
+                  <ul class="mob-section__items">
+                    <li class="mob-section__item"><span class="mob-section__item-dot" aria-hidden="true"></span><span>Take the PSAT if available — treat it as a completely low-stakes introduction to the format.</span></li>
+                    <li class="mob-section__item"><span class="mob-section__item-dot" aria-hidden="true"></span><span>No official SAT/ACT needed yet — use this year to build familiarity, not pressure.</span></li>
+                  </ul>
+                </div>
+                <div class="mob-section">
+                  <h4 class="mob-section__title"><span class="mob-section__title-icon">🎯</span> Activities</h4>
+                  <ul class="mob-section__items">
+                    <li class="mob-section__item"><span class="mob-section__item-dot" aria-hidden="true"></span><span>Attend Club Rush in September; join 2–4 activities with intention.</span></li>
+                    <li class="mob-section__item"><span class="mob-section__item-dot" aria-hidden="true"></span><span>Begin documenting your activities immediately — this log becomes invaluable in junior and senior year.</span></li>
+                    <li class="mob-section__item"><span class="mob-section__item-dot" aria-hidden="true"></span><span>Consider a passion project connecting your areas of interest.</span></li>
+                  </ul>
+                </div>
+                <div class="mob-section">
+                  <h4 class="mob-section__title"><span class="mob-section__title-icon">🌅</span> Summer Planning</h4>
+                  <ul class="mob-section__items">
+                    <li class="mob-section__item"><span class="mob-section__item-dot" aria-hidden="true"></span><span>Search programs in January; apply February–March; finalize April; attend July–August.</span></li>
+                  </ul>
+                </div>
+                <div class="mob-advisor-callout">
+                  <div class="mob-advisor-callout__label">◆ &nbsp;What Families Often Miss</div>
+                  <p class="mob-advisor-callout__text">Freshman year GPA is on the transcript colleges see — there is no warm-up year. The habit of documenting activities from September of 9th grade makes junior year significantly less stressful and senior year applications far stronger.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ─ Accordion: Sophomore Year ─ -->
+          <div class="accordion-item" id="acc-sophomore">
+            <button class="accordion-header" aria-expanded="false" aria-controls="acc-body-sophomore">
+              <span class="accordion-header__num" aria-hidden="true">03</span>
+              <span class="accordion-header__text">
+                <span class="accordion-header__stage">Stage Three</span>
+                <span class="accordion-header__name">Sophomore Year</span>
+                <span class="accordion-header__tag">Deepening Commitment</span>
+              </span>
+              <span class="accordion-chevron" aria-hidden="true"></span>
+            </button>
+            <div class="accordion-body" id="acc-body-sophomore">
+              <div class="accordion-content">
+                <div class="mob-section">
+                  <h4 class="mob-section__title"><span class="mob-section__title-icon">📋</span> Academic Priorities</h4>
+                  <ul class="mob-section__items">
+                    <li class="mob-section__item"><span class="mob-section__item-dot" aria-hidden="true"></span><span>Evaluate courseload sustainability — is the rigor appropriate heading into junior year?</span></li>
+                    <li class="mob-section__item"><span class="mob-section__item-dot" aria-hidden="true"></span><span>Sign up for AP/IB exams January/February; study April; take May; plan junior year courses carefully.</span></li>
+                  </ul>
+                </div>
+                <div class="mob-section">
+                  <h4 class="mob-section__title"><span class="mob-section__title-icon">📝</span> Testing Strategy</h4>
+                  <ul class="mob-section__items">
+                    <li class="mob-section__item"><span class="mob-section__item-dot" aria-hidden="true"></span><span>Take PSAT in October if available.</span></li>
+                    <li class="mob-section__item"><span class="mob-section__item-dot" aria-hidden="true"></span><span>Take a full diagnostic SAT or ACT — this is the most important and most overlooked step in sophomore year.</span></li>
+                    <li class="mob-section__item"><span class="mob-section__item-dot" aria-hidden="true"></span><span>Determine ACT vs. SAT fit based on diagnostic results — this shapes your entire prep approach.</span></li>
+                  </ul>
+                </div>
+                <div class="mob-section">
+                  <h4 class="mob-section__title"><span class="mob-section__title-icon">🎯</span> Activities</h4>
+                  <ul class="mob-section__items">
+                    <li class="mob-section__item"><span class="mob-section__item-dot" aria-hidden="true"></span><span>Deepen involvement in 2–3 core activities; pursue leadership naturally where it emerges.</span></li>
+                    <li class="mob-section__item"><span class="mob-section__item-dot" aria-hidden="true"></span><span>Keep your activity profile document current.</span></li>
+                  </ul>
+                </div>
+                <div class="mob-section">
+                  <h4 class="mob-section__title"><span class="mob-section__title-icon">🌅</span> Summer Planning</h4>
+                  <ul class="mob-section__items">
+                    <li class="mob-section__item"><span class="mob-section__item-dot" aria-hidden="true"></span><span>Start looking January; apply February; finalize April; attend July–August.</span></li>
+                  </ul>
+                </div>
+                <div class="mob-advisor-callout">
+                  <div class="mob-advisor-callout__label">◆ &nbsp;What Families Often Miss</div>
+                  <p class="mob-advisor-callout__text">Families who skip the diagnostic test enter junior year making testing decisions — which test, how much prep, how many attempts — without any real data. That guesswork is avoidable with a two-hour diagnostic.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ─ Accordion: Junior Year ─ -->
+          <div class="accordion-item" id="acc-junior">
+            <button class="accordion-header" aria-expanded="false" aria-controls="acc-body-junior">
+              <span class="accordion-header__num" aria-hidden="true">04</span>
+              <span class="accordion-header__text">
+                <span class="accordion-header__stage">Stage Four</span>
+                <span class="accordion-header__name">Junior Year</span>
+                <span class="accordion-header__tag">The Pivotal Year</span>
+              </span>
+              <span class="accordion-chevron" aria-hidden="true"></span>
+            </button>
+            <div class="accordion-body" id="acc-body-junior">
+              <div class="accordion-content">
+                <div class="mob-section">
+                  <h4 class="mob-section__title"><span class="mob-section__title-icon">📋</span> Academic Priorities</h4>
+                  <ul class="mob-section__items">
+                    <li class="mob-section__item"><span class="mob-section__item-dot" aria-hidden="true"></span><span>Maintain and aim to elevate GPA — this is the last full year colleges see before applications.</span></li>
+                    <li class="mob-section__item"><span class="mob-section__item-dot" aria-hidden="true"></span><span>Take the most rigorous courseload you can sustain; sign up for AP/IB in Jan/Feb; take exams in May.</span></li>
+                  </ul>
+                </div>
+                <div class="mob-section">
+                  <h4 class="mob-section__title"><span class="mob-section__title-icon">📝</span> Testing</h4>
+                  <ul class="mob-section__items">
+                    <li class="mob-section__item"><span class="mob-section__item-dot" aria-hidden="true"></span><span>Begin ACT/SAT prep September/October; take at least one attempt, ideally two.</span></li>
+                    <li class="mob-section__item"><span class="mob-section__item-dot" aria-hidden="true"></span><span>Take PSAT in October — junior year qualifies for National Merit.</span></li>
+                    <li class="mob-section__item"><span class="mob-section__item-dot" aria-hidden="true"></span><span>Evaluate scores after each attempt and plan accordingly.</span></li>
+                  </ul>
+                </div>
+                <div class="mob-section">
+                  <h4 class="mob-section__title"><span class="mob-section__title-icon">🏛️</span> School List &amp; Research</h4>
+                  <ul class="mob-section__items">
+                    <li class="mob-section__item"><span class="mob-section__item-dot" aria-hidden="true"></span><span>Build and finalize a balanced college list — likely, possible, and reach schools.</span></li>
+                    <li class="mob-section__item"><span class="mob-section__item-dot" aria-hidden="true"></span><span>Explore major-specific offerings; finalize primary and alternate majors per school.</span></li>
+                    <li class="mob-section__item"><span class="mob-section__item-dot" aria-hidden="true"></span><span>Identify 10–15 career interests; narrow to 2–4 majors of genuine interest.</span></li>
+                  </ul>
+                </div>
+                <div class="mob-section">
+                  <h4 class="mob-section__title"><span class="mob-section__title-icon">✍️</span> Essays &amp; Application Prep</h4>
+                  <ul class="mob-section__items">
+                    <li class="mob-section__item"><span class="mob-section__item-dot" aria-hidden="true"></span><span><strong>August:</strong> Common App prompts and UC PIQ topics released — begin brainstorming immediately.</span></li>
+                    <li class="mob-section__item"><span class="mob-section__item-dot" aria-hidden="true"></span><span><strong>March–May:</strong> Begin drafting Common App essay; attend workshops.</span></li>
+                    <li class="mob-section__item"><span class="mob-section__item-dot" aria-hidden="true"></span><span><strong>May–June:</strong> Begin UC essays; pre-request letters of recommendation.</span></li>
+                  </ul>
+                </div>
+                <div class="mob-advisor-callout">
+                  <div class="mob-advisor-callout__label">◆ &nbsp;What Families Often Miss</div>
+                  <p class="mob-advisor-callout__text">The Common App essay prompts are released every August — the summer between junior and senior year is the single best window for making real progress. Students who arrive in senior August with a completed draft are in an entirely different position than those who haven't started.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ─ Accordion: Senior Year ─ -->
+          <div class="accordion-item" id="acc-senior">
+            <button class="accordion-header" aria-expanded="false" aria-controls="acc-body-senior">
+              <span class="accordion-header__num" aria-hidden="true">05</span>
+              <span class="accordion-header__text">
+                <span class="accordion-header__stage">Stage Five</span>
+                <span class="accordion-header__name">Senior Year</span>
+                <span class="accordion-header__tag">Execution &amp; Decision</span>
+              </span>
+              <span class="accordion-chevron" aria-hidden="true"></span>
+            </button>
+            <div class="accordion-body" id="acc-body-senior">
+              <div class="accordion-content">
+                <div class="mob-section">
+                  <h4 class="mob-section__title"><span class="mob-section__title-icon">✍️</span> Application Timeline</h4>
+                  <ul class="mob-section__items">
+                    <li class="mob-section__item"><span class="mob-section__item-dot" aria-hidden="true"></span><span><strong>August:</strong> Finalize college list; Common App opens; UC App opens; supplemental essays released.</span></li>
+                    <li class="mob-section__item"><span class="mob-section__item-dot" aria-hidden="true"></span><span><strong>September:</strong> Submit FERPA; request transcripts, counselor and teacher recommendations.</span></li>
+                    <li class="mob-section__item"><span class="mob-section__item-dot" aria-hidden="true"></span><span><strong>Oct–Nov:</strong> Submit EA/ED apps; UC App due Nov 30; CSU App due Nov 30; submit financial aid forms.</span></li>
+                    <li class="mob-section__item"><span class="mob-section__item-dot" aria-hidden="true"></span><span><strong>December:</strong> Receive EA/ED decisions; submit remaining apps before holiday break.</span></li>
+                    <li class="mob-section__item"><span class="mob-section__item-dot" aria-hidden="true"></span><span><strong>January:</strong> Submit Regular Decision apps; submit additional financial aid documents.</span></li>
+                    <li class="mob-section__item"><span class="mob-section__item-dot" aria-hidden="true"></span><span><strong>March:</strong> Receive Regular Decision notifications.</span></li>
+                    <li class="mob-section__item"><span class="mob-section__item-dot" aria-hidden="true"></span><span><strong>April:</strong> Compare award letters; appeal if appropriate; visit admitted student days.</span></li>
+                    <li class="mob-section__item"><span class="mob-section__item-dot" aria-hidden="true"></span><span><strong>May 1:</strong> Submit Intent to Enroll. Sign up for housing immediately — it fills fast.</span></li>
+                    <li class="mob-section__item"><span class="mob-section__item-dot" aria-hidden="true"></span><span><strong>June–July:</strong> Send final transcript; send AP scores to college; graduation.</span></li>
+                  </ul>
+                </div>
+                <div class="mob-section">
+                  <h4 class="mob-section__title"><span class="mob-section__title-icon">💰</span> Financial Aid</h4>
+                  <ul class="mob-section__items">
+                    <li class="mob-section__item"><span class="mob-section__item-dot" aria-hidden="true"></span><span>Submit FAFSA and CSS Profile as early as possible after October 1.</span></li>
+                    <li class="mob-section__item"><span class="mob-section__item-dot" aria-hidden="true"></span><span>Compare award letters carefully — not all financial aid is equal, and the language varies significantly.</span></li>
+                    <li class="mob-section__item"><span class="mob-section__item-dot" aria-hidden="true"></span><span>Appeal financial aid offers where appropriate with documentation and context.</span></li>
+                  </ul>
+                </div>
+                <div class="mob-advisor-callout">
+                  <div class="mob-advisor-callout__label">◆ &nbsp;What Families Often Miss</div>
+                  <p class="mob-advisor-callout__text">Financial aid award letters are not final offers — they are opening positions. Families who appeal respectfully and with documentation regularly see improved packages. And May 1 is a real deadline: housing at many schools fills within days of that date.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- /timeline-accordion -->
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         TOOLS STRIP — Consultation prompt
+    ============================================================ -->
+    <div class="timeline-tools">
+      <div class="container">
+        <div class="timeline-tools__inner">
+          <p class="timeline-tools__text">
+            <strong>Want a personalized version of this timeline?</strong> Every family's situation is different — our advisors can walk you through what this roadmap looks like for your student specifically.
+          </p>
+          <div class="timeline-tools__actions">
+            <a href="contact.html" class="btn btn--primary btn--arrow">Schedule a Consultation</a>
+            <a href="webinar.html" class="btn btn--outline">Free Webinar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ============================================================
+         CTA STRIP
+    ============================================================ -->
+    <section class="timeline-cta" aria-labelledby="timeline-cta-heading">
+      <div class="container">
+        <div class="timeline-cta__inner">
+          <span class="section-label">Take the Next Step</span>
+          <span class="gold-rule gold-rule--center" aria-hidden="true"></span>
+          <h2 class="timeline-cta__title" id="timeline-cta-heading">
+            A Roadmap Is Only the Beginning.<br>Strategy Is What Makes It Work.
+          </h2>
+          <p class="timeline-cta__body">
+            This timeline shows the full picture. Our advisors help families execute it — identifying what matters most for your student's specific situation, building a strategy around it, and guiding you through every step.
+          </p>
+          <div class="timeline-cta__ctas">
+            <a href="webinar.html"  class="btn btn--primary btn--large btn--arrow">Register for the Free Webinar</a>
+            <a href="contact.html"  class="btn btn--white-outline btn--large">Schedule a Consultation</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__brand-name">College Funding Solutions</div>
+          <div class="footer__brand-tagline">Strategic College Planning</div>
+          <p class="footer__brand-desc">Expert, advisor-led guidance for families navigating the college planning process — from freshman year through enrollment.</p>
+        </div>
+        <div class="footer__col">
+          <span class="footer__col-label">Navigate</span>
+          <nav class="footer__links" aria-label="Footer navigation">
+            <a href="index.html"        class="footer__link">Home</a>
+            <a href="how-it-works.html" class="footer__link">How It Works</a>
+            <a href="our-process.html"  class="footer__link">Our Process</a>
+            <a href="pillars.html"      class="footer__link">The 3 Pillars</a>
+            <a href="about.html"        class="footer__link">About</a>
+          </nav>
+        </div>
+        <div class="footer__col">
+          <span class="footer__col-label">Resources</span>
+          <nav class="footer__links" aria-label="Resources navigation">
+            <a href="blogs.html"    class="footer__link">Blog Library</a>
+            <a href="articles.html" class="footer__link">Articles &amp; Guides</a>
+            <a href="timeline.html" class="footer__link">Planning Timeline</a>
+            <a href="webinar.html"  class="footer__link">Free Webinar</a>
+            <a href="contact.html"  class="footer__link">Contact Us</a>
+          </nav>
+        </div>
+        <div class="footer__col">
+          <span class="footer__col-label">Get in Touch</span>
+          <div class="footer__contact-line">
+            <span class="footer__contact-icon" aria-hidden="true">✉</span>
+            <span class="footer__contact-text">info@collegefundingsolutions.com</span>
+          </div>
+          <div class="footer__contact-line">
+            <span class="footer__contact-icon" aria-hidden="true">◎</span>
+            <span class="footer__contact-text">Serving families nationwide<br>via virtual consultation</span>
+          </div>
+          <a href="contact.html" class="footer__cta-link">Schedule a Consultation</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span class="footer__copyright">&copy; <span id="footer-year"></span> College Funding Solutions. All rights reserved.</span>
+        <div class="footer__legal-links">
+          <a href="privacy.html" class="footer__legal-link">Privacy Policy</a>
+          <a href="terms.html"   class="footer__legal-link">Terms of Use</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ============================================================
+       JAVASCRIPT
+       1. Nav drawer + mobile accordion
+       2. Desktop timeline tab switching
+       3. Mobile timeline accordion (one open at a time)
+       4. Quick-jump buttons in header
+       5. Dynamic footer year
+  ============================================================ -->
+  <script>
+    // ── Footer year ────────────────────────────────────────────────
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+    // ── Nav drawer ────────────────────────────────────────────────
+    const toggle   = document.getElementById('nav-toggle');
+    const drawer   = document.getElementById('nav-drawer');
+    const overlay  = document.getElementById('nav-overlay');
+    const closeBtn = document.getElementById('nav-close');
+    function openDrawer()  { drawer.classList.add('is-open');    toggle.setAttribute('aria-expanded','true');  document.body.style.overflow='hidden'; }
+    function closeDrawer() { drawer.classList.remove('is-open'); toggle.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+    toggle.addEventListener('click', openDrawer);
+    closeBtn.addEventListener('click', closeDrawer);
+    overlay.addEventListener('click', closeDrawer);
+    document.addEventListener('keydown', e => { if (e.key==='Escape' && drawer.classList.contains('is-open')) closeDrawer(); });
+    drawer.querySelectorAll('.nav__drawer-link, .nav__drawer-ctas .btn').forEach(l => l.addEventListener('click', closeDrawer));
+
+    // ── Nav resources accordion ──────────────────────────────────
+    const accBtn   = document.getElementById('resources-accordion-btn');
+    const accPanel = document.getElementById('resources-accordion-panel');
+    if (accBtn && accPanel) {
+      accBtn.addEventListener('click', function () {
+        const open = accPanel.classList.toggle('is-open');
+        accBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }
+
+    // ── Desktop timeline tabs ─────────────────────────────────────
+    (function () {
+      const tabs   = document.querySelectorAll('.timeline-tab');
+      const panels = document.querySelectorAll('.timeline-panel');
+
+      function activateTab(stage) {
+        tabs.forEach(t => {
+          const active = t.dataset.stage === stage;
+          t.classList.toggle('is-active', active);
+          t.setAttribute('aria-selected', active ? 'true' : 'false');
+        });
+        panels.forEach(p => {
+          const active = p.dataset.stage === stage;
+          p.classList.toggle('is-active', active);
+        });
+      }
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => activateTab(tab.dataset.stage));
+      });
+
+      // Expose so quick-jump can use it
+      window._activateTab = activateTab;
+    })();
+
+    // ── Mobile timeline accordion ─────────────────────────────────
+    (function () {
+      const items = document.querySelectorAll('.accordion-item');
+
+      items.forEach(item => {
+        const header = item.querySelector('.accordion-header');
+        const body   = item.querySelector('.accordion-body');
+        if (!header || !body) return;
+
+        header.addEventListener('click', () => {
+          const isOpen = item.classList.contains('is-open');
+
+          // Close all
+          items.forEach(i => {
+            i.classList.remove('is-open');
+            i.querySelector('.accordion-header').setAttribute('aria-expanded', 'false');
+          });
+
+          // Toggle clicked
+          if (!isOpen) {
+            item.classList.add('is-open');
+            header.setAttribute('aria-expanded', 'true');
+            // Smooth scroll so header is visible
+            setTimeout(() => {
+              item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 60);
+          }
+        });
+      });
+
+      // Expose for quick-jump
+      window._openAccordion = function (stageId) {
+        const target = document.getElementById('acc-' + stageId);
+        if (!target) return;
+        items.forEach(i => {
+          i.classList.remove('is-open');
+          i.querySelector('.accordion-header').setAttribute('aria-expanded', 'false');
+        });
+        target.classList.add('is-open');
+        target.querySelector('.accordion-header').setAttribute('aria-expanded', 'true');
+        setTimeout(() => { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 60);
+      };
+    })();
+
+    // ── Quick-jump buttons in page header ────────────────────────
+    document.querySelectorAll('.page-header__finder-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const stage = btn.dataset.jump;
+        const isDesktop = window.innerWidth >= 820;
+
+        if (isDesktop) {
+          // Scroll to timeline section, then activate tab
+          document.querySelector('.timeline-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+          setTimeout(() => { if (window._activateTab) window._activateTab(stage); }, 400);
+        } else {
+          // On mobile, open the corresponding accordion item
+          document.querySelector('.timeline-accordion').scrollIntoView({ behavior: 'smooth', block: 'start' });
+          setTimeout(() => { if (window._openAccordion) window._openAccordion(stage); }, 400);
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
