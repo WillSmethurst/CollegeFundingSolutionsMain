@@ -1898,21 +1898,21 @@
   <a href="pillars.html" class="nav__link">The 3 Pillars</a>
 
   <!-- Resources Dropdown -->
-  <div class="nav__dropdown" role="navigation" aria-label="Resources submenu">
-    <button class="nav__dropdown-trigger" aria-haspopup="true" aria-expanded="false" id="resources-dropdown-btn" type="button">
-      Resources
-      <span class="nav__dropdown-chevron" aria-hidden="true"></span>
-    </button>
-    <div class="nav__dropdown-panel" role="menu" aria-labelledby="resources-dropdown-btn">
-      <a href="#" class="nav__dropdown-link" role="menuitem">Blogs</a>
-      <a href="#" class="nav__dropdown-link" role="menuitem">Articles</a>
-      <div class="nav__dropdown-divider" role="separator" aria-hidden="true"></div>
-      <a href="our-process.html" class="nav__dropdown-link" role="menuitem">Timeline</a>
-      <a href="#" class="nav__dropdown-link" role="menuitem">Packages</a>
-      <div class="nav__dropdown-divider" role="separator" aria-hidden="true"></div>
-      <a href="webinar.html" class="nav__dropdown-link" role="menuitem">Webinars</a>
+  <div class="nav__accordion">
+  <button class="nav__accordion-trigger" aria-expanded="false" aria-controls="resources-accordion-panel" id="resources-accordion-btn" type="button">
+    Resources
+    <span class="nav__accordion-chevron" aria-hidden="true"></span>
+  </button>
+  <div class="nav__accordion-panel" id="resources-accordion-panel" role="region" aria-labelledby="resources-accordion-btn">
+    <div class="nav__accordion-links">
+      <a href="#" class="nav__accordion-link nav__drawer-link">Blogs</a>
+      <a href="#" class="nav__accordion-link nav__drawer-link">Articles</a>
+      <a href="our-process.html" class="nav__accordion-link nav__drawer-link">Timeline</a>
+      <a href="#" class="nav__accordion-link nav__drawer-link">Packages</a>
+      <a href="webinar.html" class="nav__accordion-link nav__drawer-link">Webinars</a>
     </div>
   </div>
+</div>
 
   <a href="about.html" class="nav__link">About</a>
 </nav>
