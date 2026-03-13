@@ -1468,12 +1468,26 @@
           <a href="how-it-works.html" class="nav__link nav__link--active" aria-current="page">How It Works</a>
           <a href="our-process.html" class="nav__link">Our Process</a>
           <a href="pillars.html" class="nav__link">The 3 Pillars</a>
-          <a href="resources.html" class="nav__link">Resources</a>
+          <div class="nav__dropdown" role="navigation" aria-label="Resources submenu">
+  <button class="nav__dropdown-trigger" aria-haspopup="true" aria-expanded="false" id="resources-dropdown-btn" type="button">
+    Resources
+    <span class="nav__dropdown-chevron" aria-hidden="true"></span>
+  </button>
+  <div class="nav__dropdown-panel" role="menu" aria-labelledby="resources-dropdown-btn">
+    <a href="blogs.html" class="nav__dropdown-link" role="menuitem">Blogs</a>
+    <a href="articles.html" class="nav__dropdown-link" role="menuitem">Articles</a>
+    <div class="nav__dropdown-divider" role="separator" aria-hidden="true"></div>
+    <a href="timeline.html" class="nav__dropdown-link" role="menuitem">Timeline</a>
+    <a href="packages.html" class="nav__dropdown-link" role="menuitem">Packages</a>
+    <div class="nav__dropdown-divider" role="separator" aria-hidden="true"></div>
+    <a href="webinar-library.html" class="nav__dropdown-link" role="menuitem">Webinars</a>
+  </div>
+</div>
           <a href="about.html" class="nav__link">About</a>
         </nav>
 
         <div class="nav__ctas">
-          <a href="webinar.html" class="btn btn--outline btn--small nav__cta-webinar">Free Webinar</a>
+          <a href="webinar-library.html" class="btn btn--outline btn--small nav__cta-webinar">Free Webinar</a>
           <a href="contact.html" class="btn btn--primary btn--small">Schedule a Consultation</a>
         </div>
 
@@ -1495,12 +1509,26 @@
         <a href="how-it-works.html" class="nav__drawer-link">How It Works</a>
         <a href="our-process.html" class="nav__drawer-link">Our Process</a>
         <a href="pillars.html" class="nav__drawer-link">The 3 Pillars</a>
-        <a href="resources.html" class="nav__drawer-link">Resources</a>
+        <div class="nav__accordion">
+  <button class="nav__accordion-trigger" aria-expanded="false" aria-controls="resources-accordion-panel" id="resources-accordion-btn" type="button">
+    Resources
+    <span class="nav__accordion-chevron" aria-hidden="true"></span>
+  </button>
+  <div class="nav__accordion-panel" id="resources-accordion-panel" role="region" aria-labelledby="resources-accordion-btn">
+    <div class="nav__accordion-links">
+      <a href="blogs.html" class="nav__accordion-link nav__drawer-link">Blogs</a>
+      <a href="articles.html" class="nav__accordion-link nav__drawer-link">Articles</a>
+      <a href="timeline.html" class="nav__accordion-link nav__drawer-link">Timeline</a>
+      <a href="packages.html" class="nav__accordion-link nav__drawer-link">Packages</a>
+      <a href="webinar-library.html" class="nav__accordion-link nav__drawer-link">Webinars</a>
+    </div>
+  </div>
+</div>
         <a href="about.html" class="nav__drawer-link">About</a>
         <a href="contact.html" class="nav__drawer-link">Contact</a>
       </nav>
       <div class="nav__drawer-ctas">
-        <a href="webinar.html" class="btn btn--outline">Free Webinar</a>
+        <a href="webinar-library.html" class="btn btn--outline">Free Webinar</a>
         <a href="contact.html" class="btn btn--primary">Schedule a Consultation</a>
       </div>
     </div>
@@ -2007,7 +2035,7 @@
 
           <div class="final-cta__ctas">
             <a href="contact.html" class="btn btn--primary btn--large btn--arrow">Schedule a Consultation</a>
-            <a href="webinar.html" class="btn btn--white-outline btn--large">Join the Free Webinar</a>
+            <a href="webinar-library.html" class="btn btn--white-outline btn--large">Join the Free Webinar</a>
           </div>
 
           <p class="final-cta__sub">
@@ -2057,7 +2085,7 @@
             <a href="resources.html" class="footer__link">Resource Library</a>
             <a href="resources.html#guidebook" class="footer__link">Free Guidebook</a>
             <a href="resources.html#articles" class="footer__link">Articles &amp; Guides</a>
-            <a href="webinar.html" class="footer__link">Free Webinar</a>
+            <a href="webinar-library.html" class="footer__link">Free Webinar</a>
             <a href="contact.html" class="footer__link">Contact Us</a>
           </nav>
         </div>
