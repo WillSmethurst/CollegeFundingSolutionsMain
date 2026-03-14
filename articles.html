@@ -1,0 +1,1809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Articles &amp; Guides — College Funding Solutions</title>
+  <meta name="description" content="In-depth articles and practical guides on college planning, financial strategy, academic positioning, and school selection — written for families at every stage of the process." />
+
+  <!-- Google Fonts: Cormorant Garamond (display) + DM Sans (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       CSS CUSTOM PROPERTIES — Site-wide design system
+    ============================================================ */
+    :root {
+      --navy:            #064E3B;
+      --navy-mid:        #152540;
+      --navy-light:      #1E3357;
+      --gold:            #C4963A;
+      --gold-light:      #D4A84B;
+      --gold-pale:       #F0E2C4;
+
+      --ivory:           #F7F4EE;
+      --ivory-warm:      #EDE9DF;
+      --white:           #FFFFFF;
+
+      --text-dark:       #1A1A2E;
+      --text-body:       #3A3A4A;
+      --text-muted:      #6B6B7E;
+      --text-light:      #9A9AAA;
+
+      --border:          #E2DDD4;
+
+      --shadow-sm:       0 2px 12px rgba(13, 27, 46, 0.08);
+      --shadow-md:       0 8px 32px rgba(13, 27, 46, 0.12);
+      --shadow-lg:       0 20px 60px rgba(13, 27, 46, 0.18);
+      --shadow-gold:     0 4px 18px rgba(196, 150, 58, 0.38);
+
+      --font-display:    'Cormorant Garamond', Georgia, serif;
+      --font-body:       'DM Sans', system-ui, -apple-system, sans-serif;
+
+      --radius-sm:       6px;
+      --radius-md:       12px;
+      --radius-lg:       20px;
+
+      --section-pad:     96px 0;
+      --section-pad-md:  64px 0;
+      --section-pad-sm:  48px 0;
+
+      --container-max:    1080px;
+      --container-narrow: 740px;
+      --gutter:           24px;
+
+      --transition:       all 0.25s ease;
+      --transition-slow:  all 0.4s ease;
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text-body);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ============================================================
+       LAYOUT UTILITIES
+    ============================================================ */
+    .container {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    .container--narrow {
+      max-width: var(--container-narrow);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    /* ============================================================
+       TYPOGRAPHY UTILITIES
+    ============================================================ */
+    .section-label {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 14px;
+    }
+
+    .gold-rule {
+      display: block;
+      width: 48px;
+      height: 2px;
+      background: var(--gold);
+      border-radius: 2px;
+      margin-bottom: 28px;
+    }
+
+    .gold-rule--center { margin-left: auto; margin-right: auto; }
+
+    /* ============================================================
+       BUTTON STYLES
+    ============================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      padding: 16px 34px;
+      border-radius: var(--radius-sm);
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+      white-space: nowrap;
+      line-height: 1;
+    }
+
+    .btn--primary {
+      background: var(--gold);
+      color: var(--white);
+      box-shadow: var(--shadow-gold);
+    }
+    .btn--primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(196, 150, 58, 0.48);
+    }
+    .btn--primary:active { transform: translateY(0); }
+
+    .btn--outline {
+      background: transparent;
+      color: var(--gold);
+      border: 1.5px solid var(--gold);
+    }
+    .btn--outline:hover {
+      background: var(--gold);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .btn--white {
+      background: var(--white);
+      color: var(--navy);
+      box-shadow: var(--shadow-md);
+    }
+    .btn--white:hover {
+      background: var(--ivory);
+      transform: translateY(-2px);
+    }
+
+    .btn--white-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1.5px solid rgba(255,255,255,0.45);
+    }
+    .btn--white-outline:hover {
+      border-color: var(--white);
+      background: rgba(255,255,255,0.08);
+      transform: translateY(-2px);
+    }
+
+    .btn--ghost {
+      background: transparent;
+      color: var(--navy);
+      border: 1.5px solid var(--border);
+    }
+    .btn--ghost:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    .btn--large  { font-size: 16px; padding: 18px 42px; }
+    .btn--small  { font-size: 13px; padding: 10px 22px; }
+
+    .btn--arrow::after {
+      content: '→';
+      font-size: 17px;
+      line-height: 1;
+      transition: transform 0.2s ease;
+    }
+    .btn--arrow:hover::after { transform: translateX(4px); }
+
+    /* ============================================================
+       NAVIGATION — Identical to index.html
+    ============================================================ */
+    .nav {
+      background: var(--navy);
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      box-shadow: 0 2px 20px rgba(6, 78, 59, 0.3);
+    }
+
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+      gap: 24px;
+    }
+
+    .nav__brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      flex-shrink: 0;
+      text-decoration: none;
+    }
+
+    .nav__brand-name {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.01em;
+      line-height: 1.2;
+    }
+
+    .nav__brand-tagline {
+      font-family: var(--font-body);
+      font-size: 9.5px;
+      font-weight: 400;
+      color: var(--gold-pale);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      opacity: 0.7;
+    }
+
+    .nav__links {
+      display: none;
+      align-items: center;
+      gap: 2px;
+      flex: 1;
+      justify-content: center;
+    }
+
+    @media (min-width: 960px) { .nav__links { display: flex; } }
+
+    .nav__link {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.72);
+      padding: 6px 14px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .nav__link:hover {
+      color: var(--white);
+      background: rgba(255,255,255,0.07);
+    }
+
+    .nav__ctas {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .nav__cta-webinar { display: none; }
+
+    @media (min-width: 640px) { .nav__cta-webinar { display: inline-flex; } }
+
+    .nav__hamburger {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 36px;
+      height: 36px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+    }
+
+    .nav__hamburger:hover { background: rgba(255,255,255,0.08); }
+
+    .nav__hamburger span {
+      display: block;
+      height: 1.5px;
+      width: 100%;
+      background: var(--gold);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    @media (min-width: 960px) { .nav__hamburger { display: none; } }
+
+    /* Desktop Dropdown */
+    .nav__dropdown { position: relative; }
+
+    .nav__dropdown-trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.72);
+      padding: 6px 14px;
+      border-radius: var(--radius-sm);
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      white-space: nowrap;
+      line-height: 1.7;
+    }
+
+    .nav__dropdown-trigger:hover,
+    .nav__dropdown:hover .nav__dropdown-trigger,
+    .nav__dropdown:focus-within .nav__dropdown-trigger {
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .nav__dropdown-chevron {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      flex-shrink: 0;
+      opacity: 0.55;
+      transition: transform 0.22s ease, opacity 0.22s ease;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23ffffff' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+    }
+
+    .nav__dropdown:hover .nav__dropdown-chevron,
+    .nav__dropdown:focus-within .nav__dropdown-chevron {
+      transform: rotate(180deg);
+      opacity: 0.9;
+    }
+
+    .nav__dropdown-panel {
+      position: absolute;
+      top: calc(100% + 10px);
+      left: 50%;
+      transform: translateX(-50%) translateY(-4px);
+      min-width: 180px;
+      background: var(--navy);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: var(--radius-md);
+      box-shadow: 0 12px 40px rgba(6, 20, 46, 0.38), 0 2px 8px rgba(6, 20, 46, 0.18);
+      padding: 8px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      z-index: 400;
+    }
+
+    .nav__dropdown-panel::before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 10px;
+      height: 10px;
+      background: var(--navy);
+      border-left: 1px solid rgba(255, 255, 255, 0.09);
+      border-top: 1px solid rgba(255, 255, 255, 0.09);
+      clip-path: polygon(0 100%, 50% 0, 100% 100%);
+    }
+
+    .nav__dropdown:hover .nav__dropdown-panel,
+    .nav__dropdown:focus-within .nav__dropdown-panel {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .nav__dropdown-link {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.68);
+      padding: 9px 16px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+      white-space: nowrap;
+      text-decoration: none;
+    }
+
+    .nav__dropdown-link:hover {
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.07);
+      padding-left: 20px;
+      border-left: 2px solid var(--gold);
+      margin-left: -2px;
+    }
+
+    .nav__dropdown-link--active {
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .nav__dropdown-divider {
+      height: 1px;
+      background: rgba(255, 255, 255, 0.06);
+      margin: 4px 8px;
+    }
+
+    /* Mobile Accordion */
+    .nav__accordion { width: 100%; }
+
+    .nav__accordion-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.8);
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      text-align: left;
+    }
+
+    .nav__accordion-trigger:hover {
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .nav__accordion-chevron {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      flex-shrink: 0;
+      opacity: 0.45;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23ffffff' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+    }
+
+    .nav__accordion-trigger[aria-expanded="true"] .nav__accordion-chevron {
+      transform: rotate(180deg);
+      opacity: 0.85;
+    }
+
+    .nav__accordion-panel {
+      display: none;
+      padding: 4px 0 4px 12px;
+    }
+
+    .nav__accordion-panel.is-open { display: block; }
+
+    .nav__accordion-links {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding: 4px 0;
+    }
+
+    .nav__accordion-link {
+      font-family: var(--font-body);
+      font-size: 14.5px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.6);
+      padding: 8px 12px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+      text-decoration: none;
+      display: block;
+    }
+
+    .nav__accordion-link:hover {
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    /* Mobile Drawer */
+    .nav__drawer {
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      pointer-events: none;
+    }
+
+    .nav__drawer-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(6, 20, 46, 0.65);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .nav__drawer-panel {
+      position: absolute;
+      top: 0; right: 0; bottom: 0;
+      width: min(320px, 85vw);
+      background: var(--navy);
+      padding: 28px 28px 40px;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .nav__drawer.is-open { pointer-events: all; }
+    .nav__drawer.is-open .nav__drawer-overlay { opacity: 1; }
+    .nav__drawer.is-open .nav__drawer-panel { transform: translateX(0); }
+
+    .nav__drawer-close {
+      align-self: flex-end;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.07);
+      border: none;
+      border-radius: 50%;
+      color: var(--white);
+      font-size: 20px;
+      cursor: pointer;
+      margin-bottom: 32px;
+      transition: var(--transition);
+    }
+
+    .nav__drawer-close:hover { background: rgba(255,255,255,0.14); }
+
+    .nav__drawer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex: 1;
+    }
+
+    .nav__drawer-link {
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.8);
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+    }
+
+    .nav__drawer-link:hover {
+      color: var(--white);
+      background: rgba(255,255,255,0.07);
+    }
+
+    .nav__drawer-ctas {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .nav__drawer-ctas .btn { width: 100%; justify-content: center; }
+
+    /* ============================================================
+       PAGE HEADER — Minimal, intentional; matches blogs.html family
+    ============================================================ */
+    .page-header {
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+      padding: 72px 0 80px;
+    }
+
+    .page-header::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -10%;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(196, 150, 58, 0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .page-header::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0.02;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    .page-header__inner {
+      position: relative;
+      z-index: 2;
+    }
+
+    .page-header__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .page-header__eyebrow-line {
+      display: block;
+      width: 28px;
+      height: 1.5px;
+      background: var(--gold);
+      border-radius: 2px;
+    }
+
+    .page-header__eyebrow-text {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .page-header__title {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 58px);
+      font-weight: 600;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 18px;
+      letter-spacing: -0.01em;
+    }
+
+    .page-header__subtitle {
+      font-size: clamp(15px, 1.8vw, 17px);
+      line-height: 1.72;
+      color: rgba(255, 255, 255, 0.62);
+      max-width: 540px;
+    }
+
+    /* ============================================================
+       ARTICLES SECTION — Centered editorial list
+    ============================================================ */
+    .articles-section {
+      background: var(--ivory);
+      padding: var(--section-pad);
+    }
+
+    /* Constrained center column for editorial feel */
+    .articles-list-wrap {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    /* Section header above list */
+    .articles-list-header {
+      margin-bottom: 52px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .articles-list-header__text {}
+
+    .articles-list-header__title {
+      font-family: var(--font-display);
+      font-size: clamp(24px, 3vw, 32px);
+      font-weight: 600;
+      color: var(--text-dark);
+      line-height: 1.2;
+    }
+
+    .articles-list-header__count {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    .articles-list-header__filter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .filter-tag {
+      display: inline-flex;
+      align-items: center;
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--text-muted);
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 5px 14px;
+      cursor: pointer;
+      transition: var(--transition);
+      user-select: none;
+    }
+
+    .filter-tag:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .filter-tag--active {
+      background: var(--navy);
+      color: var(--white);
+      border-color: var(--navy);
+    }
+
+    .filter-tag--active:hover {
+      color: var(--gold-pale);
+      border-color: var(--navy);
+    }
+
+    /* ============================================================
+       ARTICLE ROW — Stacked editorial layout
+    ============================================================ */
+    .articles-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    /* Hidden state — JS removes this to reveal */
+    .article-row[data-article-hidden] {
+      display: none;
+    }
+
+    /* Reveal animation when shown */
+    .article-row.is-revealed {
+      animation: articleReveal 0.4s ease both;
+    }
+
+    @keyframes articleReveal {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .article-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+      padding: 32px 0;
+      border-bottom: 1px solid var(--border);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    /* Light hover tint */
+    .article-row:hover {
+      background: rgba(196, 150, 58, 0.025);
+    }
+
+    /* First item — no top border needed since header provides it */
+    .article-row:first-child {
+      border-top: none;
+    }
+
+    @media (min-width: 600px) {
+      .article-row {
+        grid-template-columns: auto 1fr;
+        gap: 0 32px;
+        align-items: start;
+        padding: 36px 0;
+      }
+    }
+
+    /* Left column: number + category */
+    .article-row__aside {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    @media (min-width: 600px) {
+      .article-row__aside {
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 8px;
+        min-width: 80px;
+        padding-top: 4px;
+        margin-bottom: 0;
+      }
+    }
+
+    .article-row__number {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gold);
+      opacity: 0.5;
+      line-height: 1;
+      letter-spacing: 0.04em;
+    }
+
+    .article-row__category {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      white-space: nowrap;
+    }
+
+    @media (min-width: 600px) {
+      .article-row__category {
+        writing-mode: horizontal-tb;
+        text-align: right;
+        font-size: 10px;
+      }
+    }
+
+    /* Right column: content */
+    .article-row__content {}
+
+    .article-row__title {
+      font-family: var(--font-display);
+      font-size: clamp(20px, 2.4vw, 26px);
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.28;
+      margin-bottom: 12px;
+      transition: color 0.2s ease;
+    }
+
+    .article-row:hover .article-row__title {
+      color: var(--text-dark);
+    }
+
+    .article-row__excerpt {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      max-width: 580px;
+    }
+
+    .article-row__footer {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .article-row__read-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.02em;
+      transition: var(--transition);
+    }
+
+    .article-row__read-more::after {
+      content: '→';
+      font-size: 14px;
+      transition: transform 0.2s ease;
+    }
+
+    .article-row__read-more:hover { color: var(--gold-light); }
+    .article-row__read-more:hover::after { transform: translateX(4px); }
+
+    /* Placeholder read-more — muted, non-interactive */
+    .article-row__read-more--placeholder {
+      color: var(--text-light);
+      pointer-events: none;
+      cursor: default;
+    }
+
+    .article-row__read-more--placeholder::after { display: none; }
+
+    .article-row__meta {
+      font-size: 12px;
+      color: var(--text-light);
+      letter-spacing: 0.01em;
+    }
+
+    /* Coming Soon pill */
+    .article-row__pill {
+      display: inline-flex;
+      align-items: center;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 3px 10px;
+    }
+
+    /* ============================================================
+       SEE MORE / END OF LIST
+    ============================================================ */
+    .articles-more {
+      max-width: 780px;
+      margin: 0 auto;
+      padding-top: 48px;
+      text-align: center;
+    }
+
+    .articles-more__btn-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .articles-more__sub {
+      font-size: 13px;
+      color: var(--text-light);
+    }
+
+    /* End of list message — hidden until JS shows it */
+    .articles-end {
+      display: none;
+      text-align: center;
+      padding-top: 32px;
+    }
+
+    .articles-end.is-visible { display: block; }
+
+    .articles-end__text {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-style: italic;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .articles-end__rule {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      max-width: 320px;
+      margin: 16px auto 0;
+    }
+
+    .articles-end__rule::before,
+    .articles-end__rule::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .articles-end__rule-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0.5;
+    }
+
+    /* ============================================================
+       CTA STRIP — Navy, matches site-wide pattern
+    ============================================================ */
+    .articles-cta {
+      background: var(--navy);
+      padding: 72px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .articles-cta::before {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      right: -10%;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(196, 150, 58, 0.06) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .articles-cta__inner {
+      position: relative;
+      z-index: 2;
+      max-width: 620px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .articles-cta .section-label {
+      display: block;
+      text-align: center;
+      margin-bottom: 14px;
+    }
+
+    .articles-cta__title {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 3.5vw, 36px);
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .articles-cta__body {
+      font-size: 16px;
+      line-height: 1.72;
+      color: rgba(255, 255, 255, 0.55);
+      margin-bottom: 36px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .articles-cta__ctas {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    /* ============================================================
+       FOOTER — Identical to site-wide standard
+    ============================================================ */
+    .footer {
+      background: var(--navy);
+      padding: 64px 0 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    @media (min-width: 640px)  { .footer__grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 960px)  { .footer__grid { grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 48px; } }
+
+    .footer__brand-name {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 4px;
+      letter-spacing: 0.01em;
+    }
+
+    .footer__brand-tagline {
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold-pale);
+      opacity: 0.6;
+      margin-bottom: 16px;
+    }
+
+    .footer__brand-desc {
+      font-size: 14px;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.4);
+      max-width: 280px;
+    }
+
+    .footer__col-label {
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .footer__links {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .footer__link {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      padding: 5px 0;
+      transition: var(--transition);
+    }
+
+    .footer__link:hover { color: var(--white); }
+
+    .footer__contact-line {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .footer__contact-icon {
+      font-size: 14px;
+      color: var(--gold);
+      opacity: 0.7;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .footer__contact-text {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.5;
+    }
+
+    .footer__cta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--gold);
+      margin-top: 16px;
+      transition: var(--transition);
+    }
+
+    .footer__cta-link:hover { color: var(--gold-light); }
+    .footer__cta-link::after { content: '→'; transition: transform 0.2s ease; }
+    .footer__cta-link:hover::after { transform: translateX(3px); }
+
+    .footer__bottom {
+      margin-top: 56px;
+      padding: 24px 0;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .footer__copyright { font-size: 12px; color: rgba(255,255,255,0.3); }
+
+    .footer__legal-links { display: flex; gap: 20px; }
+
+    .footer__legal-link {
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+      transition: var(--transition);
+    }
+
+    .footer__legal-link:hover { color: rgba(255,255,255,0.6); }
+
+    /* ============================================================
+       RESPONSIVE OVERRIDES
+    ============================================================ */
+    @media (max-width: 599px) {
+      :root { --section-pad: 56px 0; }
+
+      .page-header { padding: 52px 0 60px; }
+
+      .articles-list-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+      }
+
+      .articles-cta__ctas { flex-direction: column; align-items: stretch; }
+      .articles-cta__ctas .btn { justify-content: center; }
+
+      .footer__grid { gap: 32px; }
+      .footer__bottom { flex-direction: column; align-items: flex-start; }
+    }
+
+    /* ============================================================
+       ENTRANCE ANIMATION
+    ============================================================ */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .page-header__inner { animation: fadeUp 0.65s ease both; }
+
+  </style>
+</head>
+
+<body id="top">
+
+  <!-- ============================================================
+       NAVIGATION — Sticky, consistent with site-wide pattern
+  ============================================================ -->
+  <header class="nav" role="banner">
+    <div class="container">
+      <div class="nav__inner">
+
+        <!-- Brand / Logo -->
+        <a href="index.html" class="nav__brand" aria-label="College Funding Solutions — Home">
+          <span class="nav__brand-name">College Funding Solutions</span>
+          <span class="nav__brand-tagline">Strategic College Planning</span>
+        </a>
+
+        <!-- Desktop Nav Links -->
+        <nav class="nav__links" aria-label="Primary navigation">
+          <a href="how-it-works.html" class="nav__link">How It Works</a>
+          <a href="our-process.html" class="nav__link">Our Process</a>
+          <a href="pillars.html" class="nav__link">The 3 Pillars</a>
+
+          <!-- Resources Dropdown — Articles now active/linked -->
+          <div class="nav__dropdown" role="navigation" aria-label="Resources submenu">
+            <button class="nav__dropdown-trigger" aria-haspopup="true" aria-expanded="false" id="resources-dropdown-btn" type="button">
+              Resources
+              <span class="nav__dropdown-chevron" aria-hidden="true"></span>
+            </button>
+            <div class="nav__dropdown-panel" role="menu" aria-labelledby="resources-dropdown-btn">
+              <a href="blogs.html"    class="nav__dropdown-link" role="menuitem">Blogs</a>
+              <a href="articles.html" class="nav__dropdown-link nav__dropdown-link--active" role="menuitem">Articles</a>
+              <div class="nav__dropdown-divider" role="separator" aria-hidden="true"></div>
+              <a href="timeline.html" class="nav__dropdown-link" role="menuitem">Timeline</a>
+              <a href="packages.html" class="nav__dropdown-link" role="menuitem">Packages</a>
+              <div class="nav__dropdown-divider" role="separator" aria-hidden="true"></div>
+              <a href="webinar-library.html" class="nav__dropdown-link" role="menuitem">Webinars</a>
+            </div>
+          </div>
+
+          <a href="about.html" class="nav__link">About</a>
+        </nav>
+
+        <!-- Desktop CTAs -->
+        <div class="nav__ctas">
+          <a href="webinar-library.html" class="btn btn--outline btn--small nav__cta-webinar">Free Webinar</a>
+          <a href="contact.html" class="btn btn--primary btn--small">Schedule a Consultation</a>
+        </div>
+
+        <!-- Mobile Hamburger -->
+        <button class="nav__hamburger" id="nav-toggle" aria-label="Open navigation menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="nav__drawer" id="nav-drawer" role="dialog" aria-label="Navigation menu" aria-modal="true">
+    <div class="nav__drawer-overlay" id="nav-overlay"></div>
+    <div class="nav__drawer-panel">
+      <button class="nav__drawer-close" id="nav-close" aria-label="Close navigation">✕</button>
+      <nav class="nav__drawer-links" aria-label="Mobile navigation">
+        <a href="index.html"       class="nav__drawer-link">Home</a>
+        <a href="how-it-works.html" class="nav__drawer-link">How It Works</a>
+        <a href="our-process.html" class="nav__drawer-link">Our Process</a>
+        <a href="pillars.html"     class="nav__drawer-link">The 3 Pillars</a>
+
+        <!-- Resources Accordion — Articles now linked -->
+        <div class="nav__accordion">
+          <button class="nav__accordion-trigger" aria-expanded="false" aria-controls="resources-accordion-panel" id="resources-accordion-btn" type="button">
+            Resources
+            <span class="nav__accordion-chevron" aria-hidden="true"></span>
+          </button>
+          <div class="nav__accordion-panel" id="resources-accordion-panel" role="region" aria-labelledby="resources-accordion-btn">
+            <div class="nav__accordion-links">
+              <a href="blogs.html"    class="nav__accordion-link nav__drawer-link">Blogs</a>
+              <a href="articles.html" class="nav__accordion-link nav__drawer-link">Articles</a>
+              <a href="our-process.html" class="nav__accordion-link nav__drawer-link">Timeline</a>
+              <a href="#"             class="nav__accordion-link nav__drawer-link">Packages</a>
+              <a href="webinar-library.html"  class="nav__accordion-link nav__drawer-link">Webinars</a>
+            </div>
+          </div>
+        </div>
+
+        <a href="about.html"  class="nav__drawer-link">About</a>
+        <a href="contact.html" class="nav__drawer-link">Contact</a>
+      </nav>
+      <div class="nav__drawer-ctas">
+        <a href="webinar-library.html"  class="btn btn--outline">Free Webinar</a>
+        <a href="contact.html"  class="btn btn--primary">Schedule a Consultation</a>
+      </div>
+    </div>
+  </div>
+
+
+  <main>
+
+    <!-- ============================================================
+         PAGE HEADER — Minimal, intentional; same family as blogs.html
+    ============================================================ -->
+    <section class="page-header" aria-label="Articles and Guides">
+      <div class="container">
+        <div class="page-header__inner">
+
+          <div class="page-header__eyebrow">
+            <span class="page-header__eyebrow-line" aria-hidden="true"></span>
+            <span class="page-header__eyebrow-text">Resources &amp; Insights</span>
+          </div>
+
+          <h1 class="page-header__title">Articles &amp; Guides</h1>
+
+          <p class="page-header__subtitle">
+            In-depth guidance on the topics that matter most to families navigating the college planning process — from financial strategy and academic positioning to school selection and enrollment.
+          </p>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         ARTICLES LIST — Centered editorial layout, progressive reveal
+    ============================================================ -->
+    <section class="articles-section" aria-labelledby="articles-heading">
+      <div class="container">
+
+        <div class="articles-list-wrap">
+
+          <!-- List header -->
+          <div class="articles-list-header">
+            <div class="articles-list-header__text">
+              <span class="section-label" style="margin-bottom:8px;">In-Depth Reading</span>
+              <h2 class="articles-list-header__title" id="articles-heading">All Articles &amp; Guides</h2>
+              <p class="articles-list-header__count" id="articles-count-label">Showing 3 of 12 articles</p>
+            </div>
+            <div class="articles-list-header__filter" role="list" aria-label="Filter by topic">
+              <span class="filter-tag filter-tag--active" role="listitem">All Topics</span>
+              <span class="filter-tag" role="listitem">Financial Aid</span>
+              <span class="filter-tag" role="listitem">Admissions</span>
+              <span class="filter-tag" role="listitem">Planning</span>
+            </div>
+          </div>
+
+          <!-- ──────────────────────────────────────────
+               ARTICLE LIST — 12 placeholders total
+               First 3 visible; 4–12 hidden via data-article-hidden
+          ────────────────────────────────────────── -->
+          <div class="articles-list" id="articles-list" role="list">
+
+            <!-- Article 01 — VISIBLE -->
+            <article class="article-row" role="listitem" aria-label="Article 1">
+              <div class="article-row__aside">
+                <span class="article-row__number">01</span>
+                <span class="article-row__category">Financial Strategy</span>
+              </div>
+              <div class="article-row__content">
+                <h2 class="article-row__title">A Family's Complete Guide to Understanding the FAFSA</h2>
+                <p class="article-row__excerpt">The Free Application for Federal Student Aid is the gateway to most forms of financial assistance — yet many families complete it late, incompletely, or without understanding how their answers affect their aid package. This guide walks through every major section, common errors to avoid, and timing decisions that can materially affect your outcome.</p>
+                <div class="article-row__footer">
+                  <span class="article-row__read-more article-row__read-more--placeholder">Coming Soon</span>
+                  <span class="article-row__pill">Guide</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Article 02 — VISIBLE -->
+            <article class="article-row" role="listitem" aria-label="Article 2">
+              <div class="article-row__aside">
+                <span class="article-row__number">02</span>
+                <span class="article-row__category">School Selection</span>
+              </div>
+              <div class="article-row__content">
+                <h2 class="article-row__title">How to Evaluate a College's Net Price — Not Its Sticker Price</h2>
+                <p class="article-row__excerpt">Published tuition figures are rarely what families pay. The difference between a school's cost of attendance and what your family is expected to contribute — the net price — is the only number that truly matters. This article explains how net price calculators work, why they vary in accuracy, and how to use them as a strategic planning tool.</p>
+                <div class="article-row__footer">
+                  <span class="article-row__read-more article-row__read-more--placeholder">Coming Soon</span>
+                  <span class="article-row__pill">Article</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Article 03 — VISIBLE -->
+            <article class="article-row" role="listitem" aria-label="Article 3">
+              <div class="article-row__aside">
+                <span class="article-row__number">03</span>
+                <span class="article-row__category">Admissions</span>
+              </div>
+              <div class="article-row__content">
+                <h2 class="article-row__title">What Test-Optional Policies Actually Mean for Your Student's Application</h2>
+                <p class="article-row__excerpt">Test-optional admissions changed the landscape for thousands of students — but the implications are more nuanced than headlines suggest. Some institutions use test scores even when they aren't required. Others signal strong preference for submissions. This article clarifies when submitting scores helps, when it doesn't, and how to make that call for your student.</p>
+                <div class="article-row__footer">
+                  <span class="article-row__read-more article-row__read-more--placeholder">Coming Soon</span>
+                  <span class="article-row__pill">Article</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Article 04 — HIDDEN initially -->
+            <article class="article-row" role="listitem" aria-label="Article 4" data-article-hidden>
+              <div class="article-row__aside">
+                <span class="article-row__number">04</span>
+                <span class="article-row__category">Financial Aid</span>
+              </div>
+              <div class="article-row__content">
+                <h2 class="article-row__title">Appealing a Financial Aid Award: What Families Need to Know</h2>
+                <p class="article-row__excerpt">Most families don't realize that financial aid award letters are not final offers. Schools routinely reconsider awards when families provide additional context — a job loss, a change in circumstances, or a competing offer from a comparable institution. This guide explains how and when to appeal, what to say, and what outcomes are realistic.</p>
+                <div class="article-row__footer">
+                  <span class="article-row__read-more article-row__read-more--placeholder">Coming Soon</span>
+                  <span class="article-row__pill">Guide</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Article 05 — HIDDEN initially -->
+            <article class="article-row" role="listitem" aria-label="Article 5" data-article-hidden>
+              <div class="article-row__aside">
+                <span class="article-row__number">05</span>
+                <span class="article-row__category">Planning</span>
+              </div>
+              <div class="article-row__content">
+                <h2 class="article-row__title">The Sophomore Year Roadmap: Setting the Foundation Before Junior Year Rush</h2>
+                <p class="article-row__excerpt">Sophomore year is the most underutilized stretch in the entire college planning timeline. Families who use it well — establishing academic patterns, beginning extracurricular intentionality, and initiating financial planning conversations — enter junior year with options. This article outlines a clear semester-by-semester approach.</p>
+                <div class="article-row__footer">
+                  <span class="article-row__read-more article-row__read-more--placeholder">Coming Soon</span>
+                  <span class="article-row__pill">Article</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Article 06 — HIDDEN initially -->
+            <article class="article-row" role="listitem" aria-label="Article 6" data-article-hidden>
+              <div class="article-row__aside">
+                <span class="article-row__number">06</span>
+                <span class="article-row__category">School Selection</span>
+              </div>
+              <div class="article-row__content">
+                <h2 class="article-row__title">Why School Fit Matters More Than School Rankings</h2>
+                <p class="article-row__excerpt">The annual rankings cycle dominates family conversations — but the institutions that rank highly for a student's specific goals, financial profile, and academic strengths often don't appear in the top 25 nationally. This article reframes the school selection process around strategic fit rather than brand recognition, and explains what that shift looks like in practice.</p>
+                <div class="article-row__footer">
+                  <span class="article-row__read-more article-row__read-more--placeholder">Coming Soon</span>
+                  <span class="article-row__pill">Article</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Article 07 — HIDDEN initially -->
+            <article class="article-row" role="listitem" aria-label="Article 7" data-article-hidden>
+              <div class="article-row__aside">
+                <span class="article-row__number">07</span>
+                <span class="article-row__category">Financial Strategy</span>
+              </div>
+              <div class="article-row__content">
+                <h2 class="article-row__title">529 Plans, Savings Strategies, and What the CSS Profile Sees</h2>
+                <p class="article-row__excerpt">How college savings are structured — in whose name, in what type of account, and distributed in what sequence — can have meaningful implications for institutional aid eligibility. This article explains how different savings vehicles are treated by federal and institutional aid formulas, and where families have room to plan strategically.</p>
+                <div class="article-row__footer">
+                  <span class="article-row__read-more article-row__read-more--placeholder">Coming Soon</span>
+                  <span class="article-row__pill">Guide</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Article 08 — HIDDEN initially -->
+            <article class="article-row" role="listitem" aria-label="Article 8" data-article-hidden>
+              <div class="article-row__aside">
+                <span class="article-row__number">08</span>
+                <span class="article-row__category">Admissions</span>
+              </div>
+              <div class="article-row__content">
+                <h2 class="article-row__title">How Demonstrated Interest Affects Admissions Decisions</h2>
+                <p class="article-row__excerpt">At a growing number of institutions, demonstrated interest — campus visits, email engagement, event attendance, early application timing — is a measurable factor in the admissions process. This article explains which schools track it, how heavily it weighs, and what families can do to signal authentic interest appropriately.</p>
+                <div class="article-row__footer">
+                  <span class="article-row__read-more article-row__read-more--placeholder">Coming Soon</span>
+                  <span class="article-row__pill">Article</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Article 09 — HIDDEN initially -->
+            <article class="article-row" role="listitem" aria-label="Article 9" data-article-hidden>
+              <div class="article-row__aside">
+                <span class="article-row__number">09</span>
+                <span class="article-row__category">Planning</span>
+              </div>
+              <div class="article-row__content">
+                <h2 class="article-row__title">The Senior Year Decision Timeline: From Applications to Enrollment</h2>
+                <p class="article-row__excerpt">Senior year moves fast, and the windows for making informed decisions are shorter than most families expect. This article maps the full calendar — from application deadlines through financial aid award season, National Decision Day, and summer enrollment steps — with clear guidance on what to do, when, and in what order.</p>
+                <div class="article-row__footer">
+                  <span class="article-row__read-more article-row__read-more--placeholder">Coming Soon</span>
+                  <span class="article-row__pill">Guide</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Article 10 — HIDDEN initially -->
+            <article class="article-row" role="listitem" aria-label="Article 10" data-article-hidden>
+              <div class="article-row__aside">
+                <span class="article-row__number">10</span>
+                <span class="article-row__category">Financial Aid</span>
+              </div>
+              <div class="article-row__content">
+                <h2 class="article-row__title">Decoding Your Financial Aid Award Letter: A Line-by-Line Guide</h2>
+                <p class="article-row__excerpt">Award letters from different institutions are not standardized, and the language used to describe grants, loans, and work-study can obscure what a family is truly being offered. This guide teaches families how to parse each line item, convert offers to actual out-of-pocket comparisons, and identify the questions worth asking before committing.</p>
+                <div class="article-row__footer">
+                  <span class="article-row__read-more article-row__read-more--placeholder">Coming Soon</span>
+                  <span class="article-row__pill">Guide</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Article 11 — HIDDEN initially -->
+            <article class="article-row" role="listitem" aria-label="Article 11" data-article-hidden>
+              <div class="article-row__aside">
+                <span class="article-row__number">11</span>
+                <span class="article-row__category">Admissions</span>
+              </div>
+              <div class="article-row__content">
+                <h2 class="article-row__title">Early Decision, Early Action, and Restrictive Early Action: Understanding the Difference</h2>
+                <p class="article-row__excerpt">Early application plans carry real consequences — both strategic and financial. The binding nature of Early Decision, the financial aid tradeoffs, and the nuances of Restrictive Early Action at highly selective schools each require careful consideration. This article helps families understand all three paths before making a commitment that cannot easily be undone.</p>
+                <div class="article-row__footer">
+                  <span class="article-row__read-more article-row__read-more--placeholder">Coming Soon</span>
+                  <span class="article-row__pill">Article</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Article 12 — HIDDEN initially -->
+            <article class="article-row" role="listitem" aria-label="Article 12" data-article-hidden>
+              <div class="article-row__aside">
+                <span class="article-row__number">12</span>
+                <span class="article-row__category">Planning</span>
+              </div>
+              <div class="article-row__content">
+                <h2 class="article-row__title">What Families Wish They Had Done Differently: Lessons From the College Planning Process</h2>
+                <p class="article-row__excerpt">After working with hundreds of families through the full college planning process, the same themes emerge in hindsight conversations: starting too late, building the wrong school list, misunderstanding how financial aid actually works. This article distills the most common patterns into practical guidance for families who still have time to course-correct.</p>
+                <div class="article-row__footer">
+                  <span class="article-row__read-more article-row__read-more--placeholder">Coming Soon</span>
+                  <span class="article-row__pill">Article</span>
+                </div>
+              </div>
+            </article>
+
+          </div>
+          <!-- /articles-list -->
+
+          <!-- See More / End of List -->
+          <div class="articles-more" id="articles-more">
+            <div class="articles-more__btn-wrap" id="see-more-wrap">
+              <button class="btn btn--ghost btn--large" id="see-more-btn" aria-controls="articles-list">
+                See More Articles
+              </button>
+              <p class="articles-more__sub" id="see-more-sub">Showing <span id="visible-count">3</span> of 12 articles</p>
+            </div>
+            <div class="articles-end" id="articles-end" aria-live="polite">
+              <p class="articles-end__text">You've reached the end of our current library.</p>
+              <div class="articles-end__rule" aria-hidden="true">
+                <span class="articles-end__rule-dot"></span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- /articles-list-wrap -->
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         CTA STRIP — Consistent with site-wide bottom conversion
+    ============================================================ -->
+    <section class="articles-cta" aria-labelledby="articles-cta-heading">
+      <div class="container">
+        <div class="articles-cta__inner">
+
+          <span class="section-label">Take the Next Step</span>
+          <span class="gold-rule gold-rule--center" aria-hidden="true"></span>
+
+          <h2 class="articles-cta__title" id="articles-cta-heading">
+            Reading Is a Starting Point.<br>Strategy Is What Moves the Needle.
+          </h2>
+
+          <p class="articles-cta__body">
+            Our free webinar walks families through the full three-pillar planning framework — the same approach that guides every family we work with. Or, if you're ready to talk through your family's specific situation, schedule a consultation directly.
+          </p>
+
+          <div class="articles-cta__ctas">
+            <a href="webinar-library.html"  class="btn btn--primary btn--large btn--arrow">Register for the Free Webinar</a>
+            <a href="contact.html"  class="btn btn--white-outline btn--large">Schedule a Consultation</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ============================================================
+       FOOTER — Identical structure to index.html
+  ============================================================ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+
+      <div class="footer__grid">
+
+        <!-- Column 1: Brand -->
+        <div class="footer__brand">
+          <div class="footer__brand-name">College Funding Solutions</div>
+          <div class="footer__brand-tagline">Strategic College Planning</div>
+          <p class="footer__brand-desc">
+            Expert, advisor-led guidance for families navigating the college planning process — from freshman year through enrollment.
+          </p>
+        </div>
+
+        <!-- Column 2: Site Pages -->
+        <div class="footer__col">
+          <span class="footer__col-label">Navigate</span>
+          <nav class="footer__links" aria-label="Footer navigation">
+            <a href="index.html"        class="footer__link">Home</a>
+            <a href="how-it-works.html" class="footer__link">How It Works</a>
+            <a href="our-process.html"  class="footer__link">Our Process</a>
+            <a href="pillars.html"      class="footer__link">The 3 Pillars</a>
+            <a href="about.html"        class="footer__link">About</a>
+          </nav>
+        </div>
+
+        <!-- Column 3: Resources -->
+        <div class="footer__col">
+          <span class="footer__col-label">Resources</span>
+          <nav class="footer__links" aria-label="Resources navigation">
+            <a href="blogs.html" class="footer__link">Blogs</a>
+            <a href="articles.html" class="footer__link">Articles</a>
+            <a href="timeline.html" class="footer__link">Timeline</a>
+            <a href="packages.html" class="footer__link">Packages</a>
+            <a href="webinar-library.html" class="footer__link">Webinars</a>
+          </nav>
+        </div>
+
+        <!-- Column 4: Contact -->
+        <div class="footer__col">
+          <span class="footer__col-label">Get in Touch</span>
+
+          <div class="footer__contact-line">
+            <span class="footer__contact-icon" aria-hidden="true">✉</span>
+            <span class="footer__contact-text">info@collegefundingsolutions.com</span>
+          </div>
+
+          <div class="footer__contact-line">
+            <span class="footer__contact-icon" aria-hidden="true">◎</span>
+            <span class="footer__contact-text">
+              Serving families nationwide<br>via virtual consultation
+            </span>
+          </div>
+
+          <a href="contact.html" class="footer__cta-link">Schedule a Consultation</a>
+        </div>
+
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="footer__bottom">
+        <span class="footer__copyright">
+          &copy; <span id="footer-year"></span> College Funding Solutions. All rights reserved.
+        </span>
+        <div class="footer__legal-links">
+          <a href="privacy.html" class="footer__legal-link">Privacy Policy</a>
+          <a href="terms.html"   class="footer__legal-link">Terms of Use</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- ============================================================
+       JAVASCRIPT
+       1. Nav drawer open/close
+       2. Mobile accordion
+       3. "See More" progressive reveal (3 at a time)
+       4. Dynamic footer year
+  ============================================================ -->
+  <script>
+    // ── Dynamic copyright year ────────────────────────────────────
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+    // ── Mobile navigation drawer ──────────────────────────────────
+    const toggle   = document.getElementById('nav-toggle');
+    const drawer   = document.getElementById('nav-drawer');
+    const overlay  = document.getElementById('nav-overlay');
+    const closeBtn = document.getElementById('nav-close');
+
+    function openDrawer() {
+      drawer.classList.add('is-open');
+      toggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDrawer() {
+      drawer.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    toggle.addEventListener('click', openDrawer);
+    closeBtn.addEventListener('click', closeDrawer);
+    overlay.addEventListener('click', closeDrawer);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && drawer.classList.contains('is-open')) closeDrawer();
+    });
+
+    drawer.querySelectorAll('.nav__drawer-link, .nav__drawer-ctas .btn').forEach(link => {
+      link.addEventListener('click', closeDrawer);
+    });
+
+    // ── Resources accordion (mobile drawer) ──────────────────────
+    const accordionBtn   = document.getElementById('resources-accordion-btn');
+    const accordionPanel = document.getElementById('resources-accordion-panel');
+
+    if (accordionBtn && accordionPanel) {
+      accordionBtn.addEventListener('click', function () {
+        const isOpen = accordionPanel.classList.toggle('is-open');
+        accordionBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+    }
+
+    // ── "See More" progressive reveal ────────────────────────────
+    (function () {
+      const BATCH_SIZE    = 3;
+      const seeMoreBtn    = document.getElementById('see-more-btn');
+      const seeMoreWrap   = document.getElementById('see-more-wrap');
+      const articlesEnd   = document.getElementById('articles-end');
+      const visibleCount  = document.getElementById('visible-count');
+      const countLabel    = document.getElementById('articles-count-label');
+
+      // Collect all hidden articles at page load
+      const hiddenArticles = Array.from(
+        document.querySelectorAll('.article-row[data-article-hidden]')
+      );
+
+      const total   = document.querySelectorAll('.article-row').length; // 12
+      let revealed  = total - hiddenArticles.length;                    // 3 initially
+
+      // Update the counter text
+      function updateCount() {
+        visibleCount.textContent = revealed;
+        countLabel.textContent   = 'Showing ' + revealed + ' of ' + total + ' articles';
+      }
+
+      seeMoreBtn.addEventListener('click', function () {
+        // Pick next batch from front of hiddenArticles array
+        const batch = hiddenArticles.splice(0, BATCH_SIZE);
+
+        batch.forEach(function (article) {
+          article.removeAttribute('data-article-hidden');
+          // Stagger entrance animation slightly per item
+          const delay = batch.indexOf(article) * 80;
+          article.style.animationDelay = delay + 'ms';
+          article.classList.add('is-revealed');
+        });
+
+        revealed += batch.length;
+        updateCount();
+
+        // If nothing left to show, hide the button and show end message
+        if (hiddenArticles.length === 0) {
+          seeMoreWrap.style.display = 'none';
+          articlesEnd.classList.add('is-visible');
+        }
+
+        // Smoothly scroll to the first newly revealed article
+        if (batch.length > 0) {
+          setTimeout(function () {
+            batch[0].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }, 100);
+        }
+      });
+    })();
+
+  </script>
+
+</body>
+</html>

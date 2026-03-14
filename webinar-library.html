@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Webinar Library — College Funding Solutions</title>
+  <meta name="description" content="Free on-demand webinars from College Funding Solutions. Learn how to navigate college admissions, financial aid, and the full planning process with expert advisor guidance." />
+
+  <!-- Google Fonts: Cormorant Garamond (display) + DM Sans (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       CSS CUSTOM PROPERTIES — Site-wide design system
+    ============================================================ */
+    :root {
+      --navy:           #064E3B;
+      --navy-mid:       #0A3D2E;
+      --navy-light:     #0D5C45;
+      --gold:           #C4963A;
+      --gold-light:     #D4A84B;
+      --gold-pale:      #F0E2C4;
+      --ivory:          #F7F4EE;
+      --ivory-warm:     #EDE9DF;
+      --white:          #FFFFFF;
+      --text-dark:      #1A1A2E;
+      --text-body:      #3A3A4A;
+      --text-muted:     #6B6B7E;
+      --text-light:     #9A9AAA;
+      --border:         #E2DDD4;
+      --shadow-sm:      0 2px 12px rgba(13,27,46,0.07);
+      --shadow-md:      0 8px 32px rgba(13,27,46,0.13);
+      --shadow-lg:      0 20px 60px rgba(13,27,46,0.18);
+      --shadow-gold:    0 4px 18px rgba(196,150,58,0.38);
+      --font-display:   'Cormorant Garamond', Georgia, serif;
+      --font-body:      'DM Sans', system-ui, -apple-system, sans-serif;
+      --radius-sm:      6px;
+      --radius-md:      12px;
+      --radius-lg:      20px;
+      --section-pad:    96px 0;
+      --container-max:  1080px;
+      --gutter:         24px;
+      --transition:     all 0.25s ease;
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text-body);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ============================================================
+       LAYOUT
+    ============================================================ */
+    .container {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    /* ============================================================
+       TYPOGRAPHY UTILITIES
+    ============================================================ */
+    .section-label {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 14px;
+    }
+    .gold-rule {
+      display: block; width: 48px; height: 2px;
+      background: var(--gold); border-radius: 2px; margin-bottom: 28px;
+    }
+    .gold-rule--center { margin-left: auto; margin-right: auto; }
+
+    /* ============================================================
+       BUTTONS
+    ============================================================ */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 8px; font-family: var(--font-body); font-size: 15px;
+      font-weight: 600; letter-spacing: 0.02em; padding: 16px 32px;
+      border-radius: var(--radius-sm); border: none; cursor: pointer;
+      transition: var(--transition); text-decoration: none;
+      white-space: nowrap; line-height: 1;
+    }
+    .btn--primary { background: var(--gold); color: var(--white); box-shadow: var(--shadow-gold); }
+    .btn--primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(196,150,58,0.48); }
+    .btn--primary:active { transform: translateY(0); }
+    .btn--outline { background: transparent; color: var(--gold); border: 1.5px solid var(--gold); }
+    .btn--outline:hover { background: var(--gold); color: var(--white); transform: translateY(-2px); }
+    .btn--white-outline { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,0.45); }
+    .btn--white-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.08); transform: translateY(-2px); }
+    .btn--large { font-size: 16px; padding: 18px 48px; }
+    .btn--small { font-size: 13px; padding: 10px 22px; }
+    .btn--ghost {
+      background: transparent; color: var(--navy);
+      border: 1.5px solid var(--border);
+    }
+    .btn--ghost:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+    .btn--arrow::after { content: '→'; font-size: 17px; line-height: 1; transition: transform 0.2s ease; }
+    .btn--arrow:hover::after { transform: translateX(4px); }
+
+    /* ============================================================
+       NAVIGATION
+    ============================================================ */
+    .nav {
+      background: var(--navy); position: sticky; top: 0; z-index: 200;
+      box-shadow: 0 2px 20px rgba(6,78,59,0.3);
+    }
+    .nav__inner { display: flex; align-items: center; justify-content: space-between; height: 68px; gap: 24px; }
+    .nav__brand { display: flex; flex-direction: column; gap: 2px; flex-shrink: 0; text-decoration: none; }
+    .nav__brand-name { font-family: var(--font-display); font-size: 18px; font-weight: 600; color: var(--white); letter-spacing: 0.01em; line-height: 1.2; }
+    .nav__brand-tagline { font-family: var(--font-body); font-size: 9.5px; font-weight: 400; color: var(--gold-pale); letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.7; }
+    .nav__links { display: none; align-items: center; gap: 2px; flex: 1; justify-content: center; }
+    @media (min-width: 960px) { .nav__links { display: flex; } }
+    .nav__link { font-family: var(--font-body); font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.72); padding: 6px 14px; border-radius: var(--radius-sm); transition: var(--transition); white-space: nowrap; }
+    .nav__link:hover { color: var(--white); background: rgba(255,255,255,0.07); }
+    .nav__ctas { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .nav__cta-webinar { display: none; }
+    @media (min-width: 640px) { .nav__cta-webinar { display: inline-flex; } }
+    .nav__hamburger { display: flex; flex-direction: column; justify-content: center; gap: 5px; width: 36px; height: 36px; background: none; border: none; cursor: pointer; padding: 6px; border-radius: var(--radius-sm); transition: var(--transition); }
+    .nav__hamburger:hover { background: rgba(255,255,255,0.08); }
+    .nav__hamburger span { display: block; height: 1.5px; width: 100%; background: var(--gold); border-radius: 2px; }
+    @media (min-width: 960px) { .nav__hamburger { display: none; } }
+
+    /* ── Desktop Dropdown ── */
+    .nav__dropdown { position: relative; }
+    .nav__dropdown-trigger { display: inline-flex; align-items: center; gap: 5px; font-family: var(--font-body); font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.72); padding: 6px 14px; border-radius: var(--radius-sm); background: none; border: none; cursor: pointer; transition: var(--transition); white-space: nowrap; line-height: 1.7; }
+    .nav__dropdown-trigger:hover, .nav__dropdown:hover .nav__dropdown-trigger, .nav__dropdown:focus-within .nav__dropdown-trigger { color: var(--white); background: rgba(255,255,255,0.07); }
+    .nav__dropdown-chevron { display: inline-block; width: 10px; height: 10px; flex-shrink: 0; opacity: 0.55; transition: transform 0.22s ease, opacity 0.22s ease; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23ffffff' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: center; background-size: contain; }
+    .nav__dropdown:hover .nav__dropdown-chevron, .nav__dropdown:focus-within .nav__dropdown-chevron { transform: rotate(180deg); opacity: 0.9; }
+    .nav__dropdown-panel { position: absolute; top: calc(100% + 10px); left: 50%; transform: translateX(-50%) translateY(-4px); min-width: 180px; background: var(--navy); border: 1px solid rgba(255,255,255,0.09); border-radius: var(--radius-md); box-shadow: 0 12px 40px rgba(6,20,46,0.38); padding: 8px; opacity: 0; pointer-events: none; transition: opacity 0.2s ease, transform 0.2s ease; z-index: 400; }
+    .nav__dropdown-panel::before { content: ''; position: absolute; top: -5px; left: 50%; transform: translateX(-50%); width: 10px; height: 10px; background: var(--navy); border-left: 1px solid rgba(255,255,255,0.09); border-top: 1px solid rgba(255,255,255,0.09); clip-path: polygon(0 100%, 50% 0, 100% 100%); }
+    .nav__dropdown:hover .nav__dropdown-panel, .nav__dropdown:focus-within .nav__dropdown-panel { opacity: 1; pointer-events: all; transform: translateX(-50%) translateY(0); }
+    .nav__dropdown-link { display: block; font-family: var(--font-body); font-size: 14px; font-weight: 400; color: rgba(255,255,255,0.68); padding: 9px 16px; border-radius: var(--radius-sm); transition: var(--transition); white-space: nowrap; }
+    .nav__dropdown-link:hover { color: var(--white); background: rgba(255,255,255,0.07); padding-left: 20px; border-left: 2px solid var(--gold); margin-left: -2px; }
+    .nav__dropdown-link--active { color: var(--white); background: rgba(255,255,255,0.05); }
+    .nav__dropdown-divider { height: 1px; background: rgba(255,255,255,0.06); margin: 4px 8px; }
+
+    /* ── Mobile Accordion ── */
+    .nav__accordion { width: 100%; }
+    .nav__accordion-trigger { display: flex; align-items: center; justify-content: space-between; width: 100%; font-family: var(--font-body); font-size: 16px; font-weight: 500; color: rgba(255,255,255,0.8); padding: 12px 16px; border-radius: var(--radius-sm); background: none; border: none; cursor: pointer; transition: var(--transition); text-align: left; }
+    .nav__accordion-trigger:hover { color: var(--white); background: rgba(255,255,255,0.07); }
+    .nav__accordion-chevron { display: inline-block; width: 12px; height: 12px; flex-shrink: 0; opacity: 0.45; transition: transform 0.25s ease; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23ffffff' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: center; background-size: contain; }
+    .nav__accordion-trigger[aria-expanded="true"] .nav__accordion-chevron { transform: rotate(180deg); opacity: 0.85; }
+    .nav__accordion-panel { display: none; padding: 4px 0 4px 12px; }
+    .nav__accordion-panel.is-open { display: block; }
+    .nav__accordion-links { display: flex; flex-direction: column; gap: 2px; padding: 4px 0; }
+    .nav__accordion-link { font-family: var(--font-body); font-size: 14.5px; font-weight: 400; color: rgba(255,255,255,0.6); padding: 8px 12px; border-radius: var(--radius-sm); transition: var(--transition); display: block; }
+    .nav__accordion-link:hover { color: var(--white); background: rgba(255,255,255,0.06); }
+
+    /* ── Mobile Drawer ── */
+    .nav__drawer { position: fixed; inset: 0; z-index: 300; pointer-events: none; }
+    .nav__drawer-overlay { position: absolute; inset: 0; background: rgba(6,20,46,0.65); opacity: 0; transition: opacity 0.3s ease; }
+    .nav__drawer-panel { position: absolute; top: 0; right: 0; bottom: 0; width: min(320px,85vw); background: var(--navy); padding: 28px 28px 40px; display: flex; flex-direction: column; transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); box-shadow: var(--shadow-lg); }
+    .nav__drawer.is-open { pointer-events: all; }
+    .nav__drawer.is-open .nav__drawer-overlay { opacity: 1; }
+    .nav__drawer.is-open .nav__drawer-panel { transform: translateX(0); }
+    .nav__drawer-close { align-self: flex-end; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.07); border: none; border-radius: 50%; color: var(--white); font-size: 20px; cursor: pointer; margin-bottom: 32px; transition: var(--transition); }
+    .nav__drawer-close:hover { background: rgba(255,255,255,0.14); }
+    .nav__drawer-links { display: flex; flex-direction: column; gap: 4px; flex: 1; overflow-y: auto; }
+    .nav__drawer-link { font-family: var(--font-body); font-size: 16px; font-weight: 500; color: rgba(255,255,255,0.8); padding: 12px 16px; border-radius: var(--radius-sm); transition: var(--transition); display: block; }
+    .nav__drawer-link:hover { color: var(--white); background: rgba(255,255,255,0.07); }
+    .nav__drawer-ctas { display: flex; flex-direction: column; gap: 10px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); flex-shrink: 0; }
+    .nav__drawer-ctas .btn { width: 100%; justify-content: center; }
+
+    /* ============================================================
+       PAGE HEADER — matches Blogs / Articles / Timeline / Packages
+    ============================================================ */
+    .page-header {
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+      padding: 72px 0 80px;
+    }
+    .page-header::before {
+      content: '';
+      position: absolute; top: -30%; right: -10%;
+      width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(196,150,58,0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .page-header::after {
+      content: '';
+      position: absolute; inset: 0; opacity: 0.02;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .page-header__inner { position: relative; z-index: 2; }
+    .page-header__eyebrow { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+    .page-header__eyebrow-line { display: block; width: 28px; height: 1.5px; background: var(--gold); border-radius: 2px; }
+    .page-header__eyebrow-text { font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+    .page-header__title { font-family: var(--font-display); font-size: clamp(36px,5vw,58px); font-weight: 600; line-height: 1.1; color: var(--white); margin-bottom: 18px; letter-spacing: -0.01em; }
+    .page-header__subtitle { font-size: clamp(15px,1.8vw,17px); line-height: 1.72; color: rgba(255,255,255,0.62); max-width: 560px; }
+
+    /* Header stat bar */
+    .page-header__meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 28px;
+      margin-top: 36px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .page-header__meta-item {
+      display: flex; align-items: center; gap: 10px;
+    }
+    .page-header__meta-icon {
+      font-size: 15px; color: var(--gold); opacity: 0.8; flex-shrink: 0; line-height: 1;
+    }
+    .page-header__meta-text {
+      font-size: 13.5px; color: rgba(255,255,255,0.58); line-height: 1.4;
+    }
+
+    /* ============================================================
+       WEBINAR LIBRARY SECTION
+    ============================================================ */
+    .webinar-section {
+      background: var(--ivory);
+      padding: var(--section-pad);
+    }
+
+    /* Section intro */
+    .webinar-intro {
+      max-width: 640px;
+      margin: 0 auto 56px;
+      text-align: center;
+    }
+    .webinar-intro__title {
+      font-family: var(--font-display);
+      font-size: clamp(28px,3.5vw,38px);
+      font-weight: 600; color: var(--text-dark);
+      line-height: 1.2; margin-bottom: 16px;
+    }
+    .webinar-intro__body {
+      font-size: 16px; line-height: 1.75; color: var(--text-muted);
+    }
+
+    /* ── 3-card grid ── */
+    .webinar-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+      margin-bottom: 48px;
+    }
+    @media (min-width: 640px) {
+      .webinar-grid { grid-template-columns: repeat(2,1fr); }
+    }
+    @media (min-width: 960px) {
+      .webinar-grid { grid-template-columns: repeat(3,1fr); }
+    }
+
+    /* ============================================================
+       WEBINAR CARD
+    ============================================================ */
+    .webinar-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.28s ease, transform 0.28s ease, border-color 0.28s ease;
+    }
+    .webinar-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-4px);
+      border-color: rgba(196,150,58,0.3);
+    }
+
+    /* ── Card header — title area ── */
+    .webinar-card__header {
+      padding: 24px 24px 20px;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .webinar-card__eyebrow {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 10px;
+    }
+    .webinar-card__eyebrow-line {
+      display: block; width: 20px; height: 1.5px;
+      background: var(--gold); border-radius: 2px; flex-shrink: 0;
+    }
+    .webinar-card__category {
+      font-size: 10.5px; font-weight: 600; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--gold);
+    }
+    .webinar-card__title {
+      font-family: var(--font-display);
+      font-size: clamp(19px,2vw,22px);
+      font-weight: 600; color: var(--navy);
+      line-height: 1.22; margin-bottom: 0;
+    }
+
+    /* ── Thumbnail / video area ── */
+    /*
+      TO ADD A REAL WEBINAR VIDEO:
+      1. Find the <a class="webinar-card__thumb-link"> for the card you want to update
+      2. Replace href="#" with your video URL (YouTube, Vimeo, or internal page)
+      3. If using a lightbox, add your lightbox data attributes to the <a> tag
+      4. Replace the placeholder <div class="webinar-card__thumb-img"> with a real <img> tag
+         pointing to your thumbnail screenshot
+    */
+    .webinar-card__thumb {
+      position: relative;
+      flex-shrink: 0;
+    }
+    /* Clickable wrapper */
+    .webinar-card__thumb-link {
+      display: block;
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    /* Aspect ratio container — 16:9 */
+    .webinar-card__thumb-ratio {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* 16:9 */
+      background: var(--navy);
+      overflow: hidden;
+    }
+    /* Placeholder fill — replace with <img> when real thumbnails are ready */
+    .webinar-card__thumb-img {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg,
+          rgba(6,78,59,0.95) 0%,
+          rgba(10,61,46,0.88) 50%,
+          rgba(6,42,32,1) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    /* Decorative watermark text — removed once real thumbnail is added */
+    .webinar-card__thumb-watermark {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 20px;
+      text-align: center;
+      pointer-events: none;
+    }
+    .webinar-card__thumb-label {
+      font-family: var(--font-display);
+      font-size: clamp(15px,1.6vw,17px);
+      font-weight: 600;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.35;
+      max-width: 200px;
+      letter-spacing: 0.01em;
+    }
+    .webinar-card__thumb-badge {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--gold); opacity: 0.7;
+      margin-top: 2px;
+    }
+
+    /* Hover overlay darkens thumbnail */
+    .webinar-card__thumb-link::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: rgba(6,20,40,0);
+      transition: background 0.3s ease;
+      pointer-events: none;
+    }
+    .webinar-card__thumb-link:hover::after {
+      background: rgba(6,20,40,0.18);
+    }
+
+    /* ── Play button ── */
+    .webinar-card__play {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      z-index: 2;
+      pointer-events: none; /* parent <a> is the click target */
+    }
+    /* Outer ring */
+    .webinar-card__play-ring {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.12);
+      border: 1.5px solid rgba(255,255,255,0.3);
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+    /* Inner filled circle */
+    .webinar-card__play-inner {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 16px rgba(196,150,58,0.45);
+      transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    /* Play triangle — pure CSS */
+    .webinar-card__play-triangle {
+      width: 0; height: 0;
+      border-top: 7px solid transparent;
+      border-bottom: 7px solid transparent;
+      border-left: 12px solid var(--white);
+      margin-left: 3px; /* optical center */
+    }
+
+    /* Hover state — triggered on the parent link hover via sibling selector isn't possible,
+       so we use a JS class on hover OR override via card hover cascade */
+    .webinar-card:hover .webinar-card__play-ring {
+      background: rgba(255,255,255,0.18);
+      border-color: rgba(255,255,255,0.5);
+      transform: scale(1.05);
+    }
+    .webinar-card:hover .webinar-card__play-inner {
+      background: var(--gold-light);
+      transform: scale(1.08);
+      box-shadow: 0 6px 22px rgba(196,150,58,0.55);
+    }
+
+    /* Duration badge — top-right corner of thumbnail */
+    .webinar-card__duration {
+      position: absolute;
+      bottom: 10px; right: 12px;
+      background: rgba(6,20,40,0.72);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius-sm);
+      padding: 3px 9px;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.04em; color: var(--white);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    /* ── Card body — description ── */
+    .webinar-card__body {
+      padding: 22px 24px 0;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .webinar-card__meta {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 14px;
+    }
+    .webinar-card__meta-item {
+      display: flex; align-items: center; gap: 5px;
+      font-size: 12px; color: var(--text-light);
+      letter-spacing: 0.02em;
+    }
+    .webinar-card__meta-dot {
+      width: 3px; height: 3px; border-radius: 50%;
+      background: var(--border); flex-shrink: 0;
+    }
+    .webinar-card__desc {
+      font-size: 14.5px; line-height: 1.72;
+      color: var(--text-muted); flex: 1;
+    }
+
+    /* ── Card footer ── */
+    .webinar-card__footer {
+      padding: 18px 24px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid var(--border);
+      margin-top: 20px;
+      flex-shrink: 0;
+    }
+    .webinar-card__status {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12px; font-weight: 500; color: var(--text-light);
+      letter-spacing: 0.04em;
+    }
+    .webinar-card__status-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--gold); opacity: 0.5; flex-shrink: 0;
+    }
+    /* Status: "Coming Soon" variant */
+    .webinar-card__status--soon .webinar-card__status-dot {
+      background: var(--text-light);
+    }
+    .webinar-card__watch {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 13px; font-weight: 600; color: var(--navy);
+      transition: var(--transition);
+    }
+    .webinar-card__watch::after { content: '→'; font-size: 14px; transition: transform 0.2s ease; }
+    .webinar-card__watch:hover { color: var(--gold); }
+    .webinar-card__watch:hover::after { transform: translateX(3px); }
+    /* Muted state for "Coming Soon" */
+    .webinar-card__watch--muted {
+      color: var(--text-light); pointer-events: none; cursor: default;
+    }
+    .webinar-card__watch--muted::after { display: none; }
+
+    /* ── "See More Webinars" CTA area ── */
+    .webinar-more {
+      text-align: center;
+      padding-top: 8px;
+    }
+    .webinar-more__note {
+      font-size: 14px; color: var(--text-muted);
+      margin-bottom: 20px; line-height: 1.6;
+    }
+
+    /* ============================================================
+       CTA STRIP
+    ============================================================ */
+    .webinar-cta-strip {
+      background: var(--navy);
+      padding: 72px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .webinar-cta-strip::before { content: ''; position: absolute; bottom: -30%; right: -10%; width: 420px; height: 420px; border-radius: 50%; background: radial-gradient(circle,rgba(196,150,58,0.06) 0%,transparent 65%); pointer-events: none; }
+    .webinar-cta-strip__inner { position: relative; z-index: 2; max-width: 620px; margin: 0 auto; text-align: center; }
+    .webinar-cta-strip .section-label { display: block; text-align: center; margin-bottom: 14px; }
+    .webinar-cta-strip__title { font-family: var(--font-display); font-size: clamp(26px,3.5vw,38px); font-weight: 600; color: var(--white); line-height: 1.2; margin-bottom: 16px; }
+    .webinar-cta-strip__body { font-size: 16px; line-height: 1.72; color: rgba(255,255,255,0.55); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .webinar-cta-strip__ctas { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px; }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    .footer { background: var(--navy); padding: 64px 0 0; border-top: 1px solid rgba(255,255,255,0.06); }
+    .footer__grid { display: grid; grid-template-columns: 1fr; gap: 40px; }
+    @media (min-width: 640px)  { .footer__grid { grid-template-columns: repeat(2,1fr); } }
+    @media (min-width: 960px)  { .footer__grid { grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 48px; } }
+    .footer__brand-name { font-family: var(--font-display); font-size: 20px; font-weight: 600; color: var(--white); margin-bottom: 4px; letter-spacing: 0.01em; }
+    .footer__brand-tagline { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-pale); opacity: 0.6; margin-bottom: 16px; }
+    .footer__brand-desc { font-size: 14px; line-height: 1.65; color: rgba(255,255,255,0.4); max-width: 280px; }
+    .footer__col-label { font-size: 10.5px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; display: block; }
+    .footer__links { display: flex; flex-direction: column; gap: 4px; }
+    .footer__link { font-size: 14px; color: rgba(255,255,255,0.55); padding: 5px 0; transition: var(--transition); }
+    .footer__link:hover { color: var(--white); }
+    .footer__contact-line { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; }
+    .footer__contact-icon { font-size: 14px; color: var(--gold); opacity: 0.7; flex-shrink: 0; margin-top: 2px; }
+    .footer__contact-text { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.5; }
+    .footer__cta-link { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 500; color: var(--gold); margin-top: 16px; transition: var(--transition); }
+    .footer__cta-link:hover { color: var(--gold-light); }
+    .footer__cta-link::after { content: '→'; transition: transform 0.2s ease; }
+    .footer__cta-link:hover::after { transform: translateX(3px); }
+    .footer__bottom { margin-top: 56px; padding: 24px 0; border-top: 1px solid rgba(255,255,255,0.07); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+    .footer__copyright { font-size: 12px; color: rgba(255,255,255,0.3); }
+    .footer__legal-links { display: flex; gap: 20px; }
+    .footer__legal-link { font-size: 12px; color: rgba(255,255,255,0.3); transition: var(--transition); }
+    .footer__legal-link:hover { color: rgba(255,255,255,0.6); }
+
+    /* ============================================================
+       RESPONSIVE OVERRIDES
+    ============================================================ */
+    @media (max-width: 599px) {
+      :root { --section-pad: 56px 0; }
+      .page-header { padding: 52px 0 60px; }
+      .page-header__meta { gap: 16px; }
+      .webinar-cta-strip__ctas { flex-direction: column; align-items: stretch; }
+      .webinar-cta-strip__ctas .btn { justify-content: center; }
+      .footer__grid { gap: 32px; }
+      .footer__bottom { flex-direction: column; align-items: flex-start; }
+    }
+
+    /* On 2-col tablet breakpoint, last card spans full width with max constraint */
+    @media (min-width: 640px) and (max-width: 959px) {
+      .webinar-grid > .webinar-card:nth-child(3) {
+        grid-column: 1 / -1;
+        max-width: 520px;
+        margin: 0 auto;
+        width: 100%;
+      }
+    }
+
+    /* ============================================================
+       ENTRANCE ANIMATION
+    ============================================================ */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .page-header__inner { animation: fadeUp 0.65s ease both; }
+
+  </style>
+</head>
+
+<body id="top">
+
+  <!-- ============================================================
+       NAVIGATION — Sticky, consistent with site-wide pattern
+  ============================================================ -->
+  <header class="nav" role="banner">
+    <div class="container">
+      <div class="nav__inner">
+
+        <a href="index.html" class="nav__brand" aria-label="College Funding Solutions — Home">
+          <span class="nav__brand-name">College Funding Solutions</span>
+          <span class="nav__brand-tagline">Strategic College Planning</span>
+        </a>
+
+        <nav class="nav__links" aria-label="Primary navigation">
+          <a href="how-it-works.html" class="nav__link">How It Works</a>
+          <a href="our-process.html"  class="nav__link">Our Process</a>
+          <a href="pillars.html"      class="nav__link">The 3 Pillars</a>
+
+          <!-- Resources Dropdown — Webinars now active -->
+          <div class="nav__dropdown" role="navigation" aria-label="Resources submenu">
+            <button class="nav__dropdown-trigger" aria-haspopup="true"
+                    aria-expanded="false" id="resources-dropdown-btn" type="button">
+              Resources <span class="nav__dropdown-chevron" aria-hidden="true"></span>
+            </button>
+            <div class="nav__dropdown-panel" role="menu" aria-labelledby="resources-dropdown-btn">
+              <a href="blogs.html"          class="nav__dropdown-link" role="menuitem">Blogs</a>
+              <a href="articles.html"       class="nav__dropdown-link" role="menuitem">Articles</a>
+              <div class="nav__dropdown-divider" role="separator" aria-hidden="true"></div>
+              <a href="timeline.html"       class="nav__dropdown-link" role="menuitem">Timeline</a>
+              <a href="packages.html"       class="nav__dropdown-link" role="menuitem">Packages</a>
+              <div class="nav__dropdown-divider" role="separator" aria-hidden="true"></div>
+              <!-- ACTIVE: Webinars -->
+              <a href="webinar-library.html" class="nav__dropdown-link nav__dropdown-link--active" role="menuitem">Webinars</a>
+            </div>
+          </div>
+
+          <a href="about.html" class="nav__link">About</a>
+        </nav>
+
+        <div class="nav__ctas">
+          <a href="webinar-library.html" class="btn btn--outline btn--small nav__cta-webinar">Free Webinar</a>
+          <a href="contact.html"         class="btn btn--primary btn--small">Schedule a Consultation</a>
+        </div>
+
+        <button class="nav__hamburger" id="nav-toggle"
+                aria-label="Open navigation menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="nav__drawer" id="nav-drawer"
+       role="dialog" aria-label="Navigation menu" aria-modal="true">
+    <div class="nav__drawer-overlay" id="nav-overlay"></div>
+    <div class="nav__drawer-panel">
+      <button class="nav__drawer-close" id="nav-close" aria-label="Close navigation">✕</button>
+      <nav class="nav__drawer-links" aria-label="Mobile navigation">
+        <a href="index.html"        class="nav__drawer-link">Home</a>
+        <a href="how-it-works.html" class="nav__drawer-link">How It Works</a>
+        <a href="our-process.html"  class="nav__drawer-link">Our Process</a>
+        <a href="pillars.html"      class="nav__drawer-link">The 3 Pillars</a>
+        <!-- Resources accordion -->
+        <div class="nav__accordion">
+          <button class="nav__accordion-trigger" aria-expanded="false"
+                  aria-controls="res-accordion-panel" id="res-accordion-btn" type="button">
+            Resources <span class="nav__accordion-chevron" aria-hidden="true"></span>
+          </button>
+          <div class="nav__accordion-panel" id="res-accordion-panel"
+               role="region" aria-labelledby="res-accordion-btn">
+            <div class="nav__accordion-links">
+              <a href="blogs.html"           class="nav__accordion-link">Blogs</a>
+              <a href="articles.html"        class="nav__accordion-link">Articles</a>
+              <a href="timeline.html"        class="nav__accordion-link">Timeline</a>
+              <a href="packages.html"        class="nav__accordion-link">Packages</a>
+              <a href="webinar-library.html" class="nav__accordion-link">Webinars</a>
+            </div>
+          </div>
+        </div>
+        <a href="about.html"   class="nav__drawer-link">About</a>
+        <a href="contact.html" class="nav__drawer-link">Contact</a>
+      </nav>
+      <div class="nav__drawer-ctas">
+        <a href="webinar-library.html" class="btn btn--outline">Free Webinar</a>
+        <a href="contact.html"         class="btn btn--primary">Schedule a Consultation</a>
+      </div>
+    </div>
+  </div>
+
+
+  <main>
+
+    <!-- ============================================================
+         PAGE HEADER
+    ============================================================ -->
+    <section class="page-header" aria-label="Webinar Library">
+      <div class="container">
+        <div class="page-header__inner">
+
+          <div class="page-header__eyebrow">
+            <span class="page-header__eyebrow-line" aria-hidden="true"></span>
+            <span class="page-header__eyebrow-text">Resources &amp; Insights</span>
+          </div>
+
+          <h1 class="page-header__title">Free Webinar Library</h1>
+
+          <p class="page-header__subtitle">
+            On-demand sessions designed to help families understand the college planning process — from financial aid strategy to school selection, admissions timing, and the decisions that matter most.
+          </p>
+
+          <div class="page-header__meta">
+            <div class="page-header__meta-item">
+              <span class="page-header__meta-icon" aria-hidden="true">◎</span>
+              <span class="page-header__meta-text">Free to watch — no sign-up required</span>
+            </div>
+            <div class="page-header__meta-item">
+              <span class="page-header__meta-icon" aria-hidden="true">◆</span>
+              <span class="page-header__meta-text">Presented by our advisor team</span>
+            </div>
+            <div class="page-header__meta-item">
+              <span class="page-header__meta-icon" aria-hidden="true">✦</span>
+              <span class="page-header__meta-text">New sessions added regularly</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         WEBINAR LIBRARY BODY SECTION
+    ============================================================ -->
+    <section class="webinar-section" aria-labelledby="webinar-library-heading">
+      <div class="container">
+
+        <!-- Section intro -->
+        <div class="webinar-intro">
+          <span class="section-label">On-Demand Sessions</span>
+          <span class="gold-rule gold-rule--center" aria-hidden="true"></span>
+          <h2 class="webinar-intro__title" id="webinar-library-heading">
+            The clarity you need,<br>when you need it.
+          </h2>
+          <p class="webinar-intro__body">
+            Each session is built around one of the questions families ask most — and designed to give you a clear, practical answer without the noise. Watch at your own pace, share with your student, and come back anytime.
+          </p>
+        </div>
+
+
+        <!-- ══════════════════════════════════════════════
+             WEBINAR CARD GRID — 3 placeholders
+             
+             To add a real webinar:
+             1. Update webinar-card__title text
+             2. Replace webinar-card__thumb-link href="#" with your video URL
+             3. Replace webinar-card__thumb-img (the placeholder div) with an <img> tag
+             4. Update webinar-card__desc text
+             5. Update webinar-card__duration text
+             6. Change webinar-card__status text and remove --soon modifier if live
+             7. Change webinar-card__watch link and text accordingly
+        ══════════════════════════════════════════════ -->
+        <div class="webinar-grid" role="list">
+
+
+          <!-- ══ WEBINAR 1 ══ -->
+          <article class="webinar-card" role="listitem"
+                   aria-label="Webinar: How the Financial Aid System Really Works">
+
+            <!-- Title area -->
+            <header class="webinar-card__header">
+              <div class="webinar-card__eyebrow">
+                <span class="webinar-card__eyebrow-line" aria-hidden="true"></span>
+                <span class="webinar-card__category">Financial Strategy</span>
+              </div>
+              <h2 class="webinar-card__title">
+                How the Financial Aid System Really Works
+              </h2>
+            </header>
+
+            <!-- Thumbnail / video area -->
+            <div class="webinar-card__thumb">
+              <!--
+                ╔══════════════════════════════════════════╗
+                ║  VIDEO LINK — replace href="#" with      ║
+                ║  your YouTube / Vimeo / page URL here    ║
+                ╚══════════════════════════════════════════╝
+              -->
+              <a href="#"
+                 class="webinar-card__thumb-link"
+                 aria-label="Watch: How the Financial Aid System Really Works"
+                 data-webinar-placeholder="true">
+
+                <div class="webinar-card__thumb-ratio">
+                  <!--
+                    Replace this div with:
+                    <img src="images/webinar-1-thumb.jpg"
+                         alt="Webinar 1 thumbnail"
+                         style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
+                  -->
+                  <div class="webinar-card__thumb-img">
+                    <div class="webinar-card__thumb-watermark">
+                      <span class="webinar-card__thumb-label">How the Financial Aid System Really Works</span>
+                      <span class="webinar-card__thumb-badge">Thumbnail Coming Soon</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Play button overlay -->
+                <div class="webinar-card__play" aria-hidden="true">
+                  <div class="webinar-card__play-ring">
+                    <div class="webinar-card__play-inner">
+                      <div class="webinar-card__play-triangle"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Duration badge -->
+                <div class="webinar-card__duration" aria-label="Duration: Coming soon">
+                  Coming Soon
+                </div>
+
+              </a>
+            </div>
+
+            <!-- Description / teaser -->
+            <div class="webinar-card__body">
+              <div class="webinar-card__meta">
+                <span class="webinar-card__meta-item">Financial Aid</span>
+                <span class="webinar-card__meta-dot" aria-hidden="true"></span>
+                <span class="webinar-card__meta-item">FAFSA &amp; CSS Profile</span>
+              </div>
+              <p class="webinar-card__desc">
+                Most families submit the FAFSA and wait — without understanding how institutions actually use that information to calculate what they'll offer. This session walks through how the financial aid system is structured, what it's actually measuring, and what your family can do to approach it strategically — before and after the submission window.
+              </p>
+            </div>
+
+            <!-- Card footer -->
+            <div class="webinar-card__footer">
+              <span class="webinar-card__status webinar-card__status--soon">
+                <span class="webinar-card__status-dot" aria-hidden="true"></span>
+                Coming Soon
+              </span>
+              <span class="webinar-card__watch webinar-card__watch--muted"
+                    aria-label="Video not yet available">
+                Available Soon
+              </span>
+            </div>
+
+          </article>
+          <!-- /WEBINAR 1 -->
+
+
+          <!-- ══ WEBINAR 2 ══ -->
+          <article class="webinar-card" role="listitem"
+                   aria-label="Webinar: Building a College List That Works for Your Family">
+
+            <!-- Title area -->
+            <header class="webinar-card__header">
+              <div class="webinar-card__eyebrow">
+                <span class="webinar-card__eyebrow-line" aria-hidden="true"></span>
+                <span class="webinar-card__category">Academic Strategy</span>
+              </div>
+              <h2 class="webinar-card__title">
+                Building a College List That Works for Your Family
+              </h2>
+            </header>
+
+            <!-- Thumbnail / video area -->
+            <div class="webinar-card__thumb">
+              <!--
+                ╔══════════════════════════════════════════╗
+                ║  VIDEO LINK — replace href="#" with      ║
+                ║  your YouTube / Vimeo / page URL here    ║
+                ╚══════════════════════════════════════════╝
+              -->
+              <a href="#"
+                 class="webinar-card__thumb-link"
+                 aria-label="Watch: Building a College List That Works for Your Family"
+                 data-webinar-placeholder="true">
+
+                <div class="webinar-card__thumb-ratio">
+                  <!--
+                    Replace this div with:
+                    <img src="images/webinar-2-thumb.jpg"
+                         alt="Webinar 2 thumbnail"
+                         style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
+                  -->
+                  <div class="webinar-card__thumb-img">
+                    <div class="webinar-card__thumb-watermark">
+                      <span class="webinar-card__thumb-label">Building a College List That Works for Your Family</span>
+                      <span class="webinar-card__thumb-badge">Thumbnail Coming Soon</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Play button overlay -->
+                <div class="webinar-card__play" aria-hidden="true">
+                  <div class="webinar-card__play-ring">
+                    <div class="webinar-card__play-inner">
+                      <div class="webinar-card__play-triangle"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Duration badge -->
+                <div class="webinar-card__duration" aria-label="Duration: Coming soon">
+                  Coming Soon
+                </div>
+
+              </a>
+            </div>
+
+            <!-- Description / teaser -->
+            <div class="webinar-card__body">
+              <div class="webinar-card__meta">
+                <span class="webinar-card__meta-item">School Selection</span>
+                <span class="webinar-card__meta-dot" aria-hidden="true"></span>
+                <span class="webinar-card__meta-item">Merit Aid Strategy</span>
+              </div>
+              <p class="webinar-card__desc">
+                A well-built college list is the foundation of a strong application cycle — and most families build theirs too late, too narrowly, or without the financial context that matters most. This session covers how to build a balanced, strategic school list that reflects your student's real profile and your family's real financial parameters, not just rankings and brand names.
+              </p>
+            </div>
+
+            <!-- Card footer -->
+            <div class="webinar-card__footer">
+              <span class="webinar-card__status webinar-card__status--soon">
+                <span class="webinar-card__status-dot" aria-hidden="true"></span>
+                Coming Soon
+              </span>
+              <span class="webinar-card__watch webinar-card__watch--muted"
+                    aria-label="Video not yet available">
+                Available Soon
+              </span>
+            </div>
+
+          </article>
+          <!-- /WEBINAR 2 -->
+
+
+          <!-- ══ WEBINAR 3 ══ -->
+          <article class="webinar-card" role="listitem"
+                   aria-label="Webinar: The 3-Pillar Planning Framework Explained">
+
+            <!-- Title area -->
+            <header class="webinar-card__header">
+              <div class="webinar-card__eyebrow">
+                <span class="webinar-card__eyebrow-line" aria-hidden="true"></span>
+                <span class="webinar-card__category">Full Framework</span>
+              </div>
+              <h2 class="webinar-card__title">
+                The 3-Pillar Planning Framework Explained
+              </h2>
+            </header>
+
+            <!-- Thumbnail / video area -->
+            <div class="webinar-card__thumb">
+              <!--
+                ╔══════════════════════════════════════════╗
+                ║  VIDEO LINK — replace href="#" with      ║
+                ║  your YouTube / Vimeo / page URL here    ║
+                ╚══════════════════════════════════════════╝
+              -->
+              <a href="#"
+                 class="webinar-card__thumb-link"
+                 aria-label="Watch: The 3-Pillar Planning Framework Explained"
+                 data-webinar-placeholder="true">
+
+                <div class="webinar-card__thumb-ratio">
+                  <!--
+                    Replace this div with:
+                    <img src="images/webinar-3-thumb.jpg"
+                         alt="Webinar 3 thumbnail"
+                         style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
+                  -->
+                  <div class="webinar-card__thumb-img">
+                    <div class="webinar-card__thumb-watermark">
+                      <span class="webinar-card__thumb-label">The 3-Pillar Planning Framework Explained</span>
+                      <span class="webinar-card__thumb-badge">Thumbnail Coming Soon</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Play button overlay -->
+                <div class="webinar-card__play" aria-hidden="true">
+                  <div class="webinar-card__play-ring">
+                    <div class="webinar-card__play-inner">
+                      <div class="webinar-card__play-triangle"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Duration badge -->
+                <div class="webinar-card__duration" aria-label="Duration: Coming soon">
+                  Coming Soon
+                </div>
+
+              </a>
+            </div>
+
+            <!-- Description / teaser -->
+            <div class="webinar-card__body">
+              <div class="webinar-card__meta">
+                <span class="webinar-card__meta-item">Academic + Social + Financial</span>
+              </div>
+              <p class="webinar-card__desc">
+                The college process doesn't fail families in one area — it overwhelms them across all three at once. This session walks through the Academic, Social, and Financial pillars that form the foundation of our planning framework: what each one covers, how they interact, and why addressing all three together leads to dramatically better outcomes for students and families alike.
+              </p>
+            </div>
+
+            <!-- Card footer -->
+            <div class="webinar-card__footer">
+              <span class="webinar-card__status webinar-card__status--soon">
+                <span class="webinar-card__status-dot" aria-hidden="true"></span>
+                Coming Soon
+              </span>
+              <span class="webinar-card__watch webinar-card__watch--muted"
+                    aria-label="Video not yet available">
+                Available Soon
+              </span>
+            </div>
+
+          </article>
+          <!-- /WEBINAR 3 -->
+
+
+        </div>
+        <!-- /webinar-grid -->
+
+
+        <!-- ── See More Webinars CTA ── -->
+        <div class="webinar-more" role="note">
+          <p class="webinar-more__note">
+            Additional sessions are being produced and added to this library. Check back soon — or get notified when a new webinar drops by scheduling a consultation.
+          </p>
+          <a href="contact.html" class="btn btn--ghost btn--large btn--arrow">
+            See More Webinars
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         CTA STRIP
+    ============================================================ -->
+    <section class="webinar-cta-strip" aria-labelledby="webinar-cta-heading">
+      <div class="container">
+        <div class="webinar-cta-strip__inner">
+          <span class="section-label">Ready to Go Further?</span>
+          <span class="gold-rule gold-rule--center" aria-hidden="true"></span>
+          <h2 class="webinar-cta-strip__title" id="webinar-cta-heading">
+            The webinar is the start.<br>The strategy is what changes outcomes.
+          </h2>
+          <p class="webinar-cta-strip__body">
+            Families who watch, then act, see the biggest difference. A brief consultation with our team is the fastest way to move from informed to prepared — at no cost and no obligation.
+          </p>
+          <div class="webinar-cta-strip__ctas">
+            <a href="contact.html"         class="btn btn--primary btn--large btn--arrow">Schedule a Free Consultation</a>
+            <a href="packages.html"        class="btn btn--white-outline btn--large">View Our Packages</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+
+        <div class="footer__brand">
+          <div class="footer__brand-name">College Funding Solutions</div>
+          <div class="footer__brand-tagline">Strategic College Planning</div>
+          <p class="footer__brand-desc">Expert, advisor-led guidance for families navigating the college planning process — from freshman year through enrollment.</p>
+        </div>
+
+        <div class="footer__col">
+          <span class="footer__col-label">Navigate</span>
+          <nav class="footer__links" aria-label="Footer navigation">
+            <a href="index.html"        class="footer__link">Home</a>
+            <a href="how-it-works.html" class="footer__link">How It Works</a>
+            <a href="our-process.html"  class="footer__link">Our Process</a>
+            <a href="pillars.html"      class="footer__link">The 3 Pillars</a>
+            <a href="about.html"        class="footer__link">About</a>
+          </nav>
+        </div>
+
+        <div class="footer__col">
+          <span class="footer__col-label">Resources</span>
+          <nav class="footer__links" aria-label="Resources navigation">
+            <a href="blogs.html"           class="footer__link">Blog Library</a>
+            <a href="articles.html"        class="footer__link">Articles &amp; Guides</a>
+            <a href="timeline.html"        class="footer__link">Planning Timeline</a>
+            <a href="packages.html"        class="footer__link">Our Packages</a>
+            <a href="webinar-library.html" class="footer__link">Free Webinars</a>
+            <a href="contact.html"         class="footer__link">Contact Us</a>
+          </nav>
+        </div>
+
+        <div class="footer__col">
+          <span class="footer__col-label">Get in Touch</span>
+          <div class="footer__contact-line">
+            <span class="footer__contact-icon" aria-hidden="true">✉</span>
+            <span class="footer__contact-text">info@collegefundingsolutions.com</span>
+          </div>
+          <div class="footer__contact-line">
+            <span class="footer__contact-icon" aria-hidden="true">◎</span>
+            <span class="footer__contact-text">Serving families nationwide<br>via virtual consultation</span>
+          </div>
+          <a href="contact.html" class="footer__cta-link">Schedule a Consultation</a>
+        </div>
+
+      </div>
+      <div class="footer__bottom">
+        <span class="footer__copyright">&copy; <span id="footer-year"></span> College Funding Solutions. All rights reserved.</span>
+        <div class="footer__legal-links">
+          <a href="privacy.html" class="footer__legal-link">Privacy Policy</a>
+          <a href="terms.html"   class="footer__legal-link">Terms of Use</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ============================================================
+       JAVASCRIPT
+       1. Nav drawer + resources accordion
+       2. Prevent placeholder video links from jumping to page top
+       3. Footer year
+  ============================================================ -->
+  <script>
+    /* ── Footer year ─────────────────────────────────────────── */
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+    /* ── Nav drawer ──────────────────────────────────────────── */
+    var navToggle  = document.getElementById('nav-toggle');
+    var navDrawer  = document.getElementById('nav-drawer');
+    var navOverlay = document.getElementById('nav-overlay');
+    var navClose   = document.getElementById('nav-close');
+
+    function openDrawer()  { navDrawer.classList.add('is-open');    navToggle.setAttribute('aria-expanded','true');  document.body.style.overflow='hidden'; }
+    function closeDrawer() { navDrawer.classList.remove('is-open'); navToggle.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+
+    navToggle.addEventListener('click', openDrawer);
+    navClose.addEventListener('click', closeDrawer);
+    navOverlay.addEventListener('click', closeDrawer);
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape'&&navDrawer.classList.contains('is-open')) closeDrawer(); });
+    navDrawer.querySelectorAll('.nav__drawer-link, .nav__drawer-ctas .btn').forEach(function(l){ l.addEventListener('click', closeDrawer); });
+
+    /* ── Resources accordion (mobile drawer) ─────────────────── */
+    var resBtn   = document.getElementById('res-accordion-btn');
+    var resPanel = document.getElementById('res-accordion-panel');
+    if (resBtn && resPanel) {
+      resBtn.addEventListener('click', function(){
+        var open = resPanel.classList.toggle('is-open');
+        resBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }
+
+    /* ── Placeholder video links ─────────────────────────────────
+       Intercepts clicks on any webinar thumbnail link that still
+       has data-webinar-placeholder="true" and prevents the page
+       from jumping to the top.
+
+       When a real video URL is added to the href, remove the
+       data-webinar-placeholder attribute from that <a> tag and
+       this guard will no longer intercept it.
+    ─────────────────────────────────────────────────────────── */
+    document.querySelectorAll('[data-webinar-placeholder="true"]').forEach(function(link){
+      link.addEventListener('click', function(e){
+        e.preventDefault();
+        /* Optional: show a brief "coming soon" tooltip or toast here */
+        /* For now, the click is silently swallowed for placeholder cards */
+      });
+    });
+  </script>
+
+</body>
+</html>

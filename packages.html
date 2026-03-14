@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Packages — College Funding Solutions</title>
+  <meta name="description" content="Three strategic college planning packages designed for families at every stage of the process — from financial analysis to fully guided, advisor-led partnership." />
+
+  <!-- Google Fonts: Cormorant Garamond (display) + DM Sans (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       CSS CUSTOM PROPERTIES — Site-wide design system
+    ============================================================ */
+    :root {
+      --navy:           #064E3B;
+      --navy-mid:       #0A3D2E;
+      --navy-light:     #0D5C45;
+      --gold:           #C4963A;
+      --gold-light:     #D4A84B;
+      --gold-pale:      #F0E2C4;
+      --ivory:          #F7F4EE;
+      --ivory-warm:     #EDE9DF;
+      --white:          #FFFFFF;
+      --text-dark:      #1A1A2E;
+      --text-body:      #3A3A4A;
+      --text-muted:     #6B6B7E;
+      --text-light:     #9A9AAA;
+      --border:         #E2DDD4;
+      --shadow-sm:      0 2px 12px rgba(13,27,46,0.07);
+      --shadow-md:      0 8px 32px rgba(13,27,46,0.13);
+      --shadow-lg:      0 20px 60px rgba(13,27,46,0.18);
+      --shadow-gold:    0 4px 18px rgba(196,150,58,0.38);
+      --font-display:   'Cormorant Garamond', Georgia, serif;
+      --font-body:      'DM Sans', system-ui, -apple-system, sans-serif;
+      --radius-sm:      6px;
+      --radius-md:      12px;
+      --radius-lg:      20px;
+      --section-pad:    96px 0;
+      --container-max:  1080px;
+      --gutter:         24px;
+      --transition:     all 0.25s ease;
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text-body);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ============================================================
+       LAYOUT
+    ============================================================ */
+    .container {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    /* ============================================================
+       TYPOGRAPHY UTILITIES
+    ============================================================ */
+    .section-label {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 14px;
+    }
+    .gold-rule {
+      display: block; width: 48px; height: 2px;
+      background: var(--gold); border-radius: 2px; margin-bottom: 28px;
+    }
+    .gold-rule--center { margin-left: auto; margin-right: auto; }
+
+    /* ============================================================
+       BUTTONS
+    ============================================================ */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 8px; font-family: var(--font-body); font-size: 15px;
+      font-weight: 600; letter-spacing: 0.02em; padding: 15px 24px;
+      border-radius: var(--radius-sm); border: none; cursor: pointer;
+      transition: var(--transition); text-decoration: none;
+      line-height: 1.35; white-space: normal; text-align: center;
+    }
+    .btn--primary { background: var(--gold); color: var(--white); box-shadow: var(--shadow-gold); }
+    .btn--primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(196,150,58,0.48); }
+    .btn--primary:active { transform: translateY(0); }
+    .btn--outline { background: transparent; color: var(--gold); border: 1.5px solid var(--gold); }
+    .btn--outline:hover { background: var(--gold); color: var(--white); transform: translateY(-2px); }
+    .btn--navy { background: var(--navy); color: var(--white); }
+    .btn--navy:hover { background: var(--navy-mid); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .btn--white-outline { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,0.45); }
+    .btn--white-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.08); transform: translateY(-2px); }
+    .btn--large { font-size: 16px; padding: 18px 42px; }
+    .btn--small { font-size: 13px; padding: 10px 22px; }
+    .btn--full { width: 100%; justify-content: center; }
+    .btn--arrow::after { content: '→'; font-size: 17px; line-height: 1; transition: transform 0.2s ease; flex-shrink: 0; }
+    .btn--arrow:hover::after { transform: translateX(4px); }
+
+    /* ============================================================
+       NAVIGATION
+    ============================================================ */
+    .nav {
+      background: var(--navy); position: sticky; top: 0; z-index: 200;
+      box-shadow: 0 2px 20px rgba(6,78,59,0.3);
+    }
+    .nav__inner { display: flex; align-items: center; justify-content: space-between; height: 68px; gap: 24px; }
+    .nav__brand { display: flex; flex-direction: column; gap: 2px; flex-shrink: 0; text-decoration: none; }
+    .nav__brand-name { font-family: var(--font-display); font-size: 18px; font-weight: 600; color: var(--white); letter-spacing: 0.01em; line-height: 1.2; }
+    .nav__brand-tagline { font-family: var(--font-body); font-size: 9.5px; font-weight: 400; color: var(--gold-pale); letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.7; }
+    .nav__links { display: none; align-items: center; gap: 2px; flex: 1; justify-content: center; }
+    @media (min-width: 960px) { .nav__links { display: flex; } }
+    .nav__link { font-family: var(--font-body); font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.72); padding: 6px 14px; border-radius: var(--radius-sm); transition: var(--transition); white-space: nowrap; }
+    .nav__link:hover { color: var(--white); background: rgba(255,255,255,0.07); }
+    .nav__ctas { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .nav__cta-webinar { display: none; }
+    @media (min-width: 640px) { .nav__cta-webinar { display: inline-flex; } }
+    .nav__hamburger { display: flex; flex-direction: column; justify-content: center; gap: 5px; width: 36px; height: 36px; background: none; border: none; cursor: pointer; padding: 6px; border-radius: var(--radius-sm); transition: var(--transition); }
+    .nav__hamburger:hover { background: rgba(255,255,255,0.08); }
+    .nav__hamburger span { display: block; height: 1.5px; width: 100%; background: var(--gold); border-radius: 2px; }
+    @media (min-width: 960px) { .nav__hamburger { display: none; } }
+
+    /* ── Desktop Dropdown ── */
+    .nav__dropdown { position: relative; }
+    .nav__dropdown-trigger { display: inline-flex; align-items: center; gap: 5px; font-family: var(--font-body); font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.72); padding: 6px 14px; border-radius: var(--radius-sm); background: none; border: none; cursor: pointer; transition: var(--transition); white-space: nowrap; line-height: 1.7; }
+    .nav__dropdown-trigger:hover, .nav__dropdown:hover .nav__dropdown-trigger, .nav__dropdown:focus-within .nav__dropdown-trigger { color: var(--white); background: rgba(255,255,255,0.07); }
+    .nav__dropdown-chevron { display: inline-block; width: 10px; height: 10px; flex-shrink: 0; opacity: 0.55; transition: transform 0.22s ease, opacity 0.22s ease; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23ffffff' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: center; background-size: contain; }
+    .nav__dropdown:hover .nav__dropdown-chevron, .nav__dropdown:focus-within .nav__dropdown-chevron { transform: rotate(180deg); opacity: 0.9; }
+    .nav__dropdown-panel { position: absolute; top: calc(100% + 10px); left: 50%; transform: translateX(-50%) translateY(-4px); min-width: 180px; background: var(--navy); border: 1px solid rgba(255,255,255,0.09); border-radius: var(--radius-md); box-shadow: 0 12px 40px rgba(6,20,46,0.38); padding: 8px; opacity: 0; pointer-events: none; transition: opacity 0.2s ease, transform 0.2s ease; z-index: 400; }
+    .nav__dropdown-panel::before { content: ''; position: absolute; top: -5px; left: 50%; transform: translateX(-50%); width: 10px; height: 10px; background: var(--navy); border-left: 1px solid rgba(255,255,255,0.09); border-top: 1px solid rgba(255,255,255,0.09); clip-path: polygon(0 100%, 50% 0, 100% 100%); }
+    .nav__dropdown:hover .nav__dropdown-panel, .nav__dropdown:focus-within .nav__dropdown-panel { opacity: 1; pointer-events: all; transform: translateX(-50%) translateY(0); }
+    .nav__dropdown-link { display: block; font-family: var(--font-body); font-size: 14px; font-weight: 400; color: rgba(255,255,255,0.68); padding: 9px 16px; border-radius: var(--radius-sm); transition: var(--transition); white-space: nowrap; }
+    .nav__dropdown-link:hover { color: var(--white); background: rgba(255,255,255,0.07); padding-left: 20px; border-left: 2px solid var(--gold); margin-left: -2px; }
+    .nav__dropdown-link--active { color: var(--white); background: rgba(255,255,255,0.05); }
+    .nav__dropdown-divider { height: 1px; background: rgba(255,255,255,0.06); margin: 4px 8px; }
+
+    /* ── Mobile Accordion ── */
+    .nav__accordion { width: 100%; }
+    .nav__accordion-trigger { display: flex; align-items: center; justify-content: space-between; width: 100%; font-family: var(--font-body); font-size: 16px; font-weight: 500; color: rgba(255,255,255,0.8); padding: 12px 16px; border-radius: var(--radius-sm); background: none; border: none; cursor: pointer; transition: var(--transition); text-align: left; }
+    .nav__accordion-trigger:hover { color: var(--white); background: rgba(255,255,255,0.07); }
+    .nav__accordion-chevron { display: inline-block; width: 12px; height: 12px; flex-shrink: 0; opacity: 0.45; transition: transform 0.25s ease; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23ffffff' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: center; background-size: contain; }
+    .nav__accordion-trigger[aria-expanded="true"] .nav__accordion-chevron { transform: rotate(180deg); opacity: 0.85; }
+    .nav__accordion-panel { display: none; padding: 4px 0 4px 12px; }
+    .nav__accordion-panel.is-open { display: block; }
+    .nav__accordion-links { display: flex; flex-direction: column; gap: 2px; padding: 4px 0; }
+    .nav__accordion-link { font-family: var(--font-body); font-size: 14.5px; font-weight: 400; color: rgba(255,255,255,0.6); padding: 8px 12px; border-radius: var(--radius-sm); transition: var(--transition); display: block; }
+    .nav__accordion-link:hover { color: var(--white); background: rgba(255,255,255,0.06); }
+
+    /* ── Mobile Drawer ── */
+    .nav__drawer { position: fixed; inset: 0; z-index: 300; pointer-events: none; }
+    .nav__drawer-overlay { position: absolute; inset: 0; background: rgba(6,20,46,0.65); opacity: 0; transition: opacity 0.3s ease; }
+    .nav__drawer-panel { position: absolute; top: 0; right: 0; bottom: 0; width: min(320px,85vw); background: var(--navy); padding: 28px 28px 40px; display: flex; flex-direction: column; transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); box-shadow: var(--shadow-lg); }
+    .nav__drawer.is-open { pointer-events: all; }
+    .nav__drawer.is-open .nav__drawer-overlay { opacity: 1; }
+    .nav__drawer.is-open .nav__drawer-panel { transform: translateX(0); }
+    .nav__drawer-close { align-self: flex-end; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.07); border: none; border-radius: 50%; color: var(--white); font-size: 20px; cursor: pointer; margin-bottom: 32px; transition: var(--transition); }
+    .nav__drawer-close:hover { background: rgba(255,255,255,0.14); }
+    .nav__drawer-links { display: flex; flex-direction: column; gap: 4px; flex: 1; overflow-y: auto; }
+    .nav__drawer-link { font-family: var(--font-body); font-size: 16px; font-weight: 500; color: rgba(255,255,255,0.8); padding: 12px 16px; border-radius: var(--radius-sm); transition: var(--transition); display: block; }
+    .nav__drawer-link:hover { color: var(--white); background: rgba(255,255,255,0.07); }
+    .nav__drawer-ctas { display: flex; flex-direction: column; gap: 10px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); flex-shrink: 0; }
+    .nav__drawer-ctas .btn { width: 100%; justify-content: center; }
+
+    /* ============================================================
+       PAGE HEADER
+    ============================================================ */
+    .page-header {
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+      padding: 72px 0 80px;
+    }
+    .page-header::before { content: ''; position: absolute; top: -30%; right: -10%; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(196,150,58,0.07) 0%, transparent 65%); pointer-events: none; }
+    .page-header::after { content: ''; position: absolute; inset: 0; opacity: 0.02; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); pointer-events: none; }
+    .page-header__inner { position: relative; z-index: 2; }
+    .page-header__eyebrow { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+    .page-header__eyebrow-line { display: block; width: 28px; height: 1.5px; background: var(--gold); border-radius: 2px; }
+    .page-header__eyebrow-text { font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+    .page-header__title { font-family: var(--font-display); font-size: clamp(36px,5vw,58px); font-weight: 600; line-height: 1.1; color: var(--white); margin-bottom: 18px; letter-spacing: -0.01em; }
+    .page-header__subtitle { font-size: clamp(15px,1.8vw,17px); line-height: 1.72; color: rgba(255,255,255,0.62); max-width: 580px; }
+    .page-header__trust { display: flex; flex-wrap: wrap; align-items: center; gap: 28px; margin-top: 36px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.1); }
+    .page-header__trust-item { display: flex; align-items: center; gap: 10px; }
+    .page-header__trust-icon { flex-shrink: 0; color: var(--gold); opacity: 0.85; font-size: 15px; line-height: 1; }
+    .page-header__trust-text { font-size: 13.5px; color: rgba(255,255,255,0.6); line-height: 1.4; }
+
+    /* ============================================================
+       PACKAGES SECTION
+    ============================================================ */
+    .packages-section {
+      background: var(--ivory);
+      padding: var(--section-pad);
+    }
+
+    /* Section intro */
+    .packages-intro {
+      max-width: 640px;
+      margin: 0 auto 52px;
+      text-align: center;
+    }
+    .packages-intro__title {
+      font-family: var(--font-display);
+      font-size: clamp(28px,3.5vw,38px);
+      font-weight: 600;
+      color: var(--text-dark);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .packages-intro__body {
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--text-muted);
+    }
+
+    /* ============================================================
+       PACKAGE SELECTOR — 3 equal-height summary cards
+    ============================================================ */
+    .pkg-selector {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      margin-bottom: 8px; /* small gap before the caret / detail panel */
+      align-items: stretch;
+    }
+    @media (min-width: 700px) {
+      .pkg-selector {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    /* ── Summary tile ── */
+    .pkg-tile {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      transition: border-color 0.26s ease, box-shadow 0.26s ease, transform 0.26s ease;
+      overflow: hidden;
+      position: relative;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+    .pkg-tile:hover {
+      border-color: rgba(196,150,58,0.4);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+    /* Active / selected */
+    .pkg-tile.is-active {
+      border-color: var(--navy);
+      box-shadow: 0 0 0 3px rgba(6,78,59,0.10), var(--shadow-md);
+      transform: translateY(-3px);
+    }
+
+    /* Gold accent bar at top */
+    .pkg-tile__accent-bar {
+      height: 4px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      flex-shrink: 0;
+    }
+    /* Featured (pkg 3): navy header band */
+    .pkg-tile--featured .pkg-tile__accent-bar {
+      height: auto;
+      background: var(--navy);
+      padding: 14px 22px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .pkg-tile__badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 10px; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--navy);
+      background: var(--gold); border-radius: 100px;
+      padding: 4px 11px;
+    }
+    .pkg-tile__badge-stars { font-size: 11px; color: var(--gold); opacity: 0.5; letter-spacing: 3px; }
+
+    /* Tile body */
+    .pkg-tile__body {
+      padding: 22px 22px 0;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .pkg-tile__num {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--gold); opacity: 0.7;
+      display: block; margin-bottom: 7px;
+    }
+
+    /* Title row with arrow */
+    .pkg-tile__title-row {
+      display: flex; align-items: flex-start;
+      justify-content: space-between; gap: 10px;
+      margin-bottom: 9px;
+    }
+    .pkg-tile__title {
+      font-family: var(--font-display);
+      font-size: clamp(19px,2.1vw,23px);
+      font-weight: 600; color: var(--navy); line-height: 1.18;
+    }
+    /* Arrow circle */
+    .pkg-tile__arrow {
+      display: flex; align-items: center; justify-content: center;
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--ivory); border: 1px solid var(--border);
+      flex-shrink: 0; margin-top: 2px;
+      transition: background 0.25s ease, border-color 0.25s ease, transform 0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+    .pkg-tile__arrow svg { width: 11px; height: 11px; stroke: var(--text-muted); fill: none; transition: stroke 0.2s ease; }
+    .pkg-tile:hover .pkg-tile__arrow { background: var(--gold-pale); border-color: rgba(196,150,58,0.35); }
+    .pkg-tile:hover .pkg-tile__arrow svg { stroke: var(--gold); }
+    .pkg-tile.is-active .pkg-tile__arrow { transform: rotate(180deg); background: var(--navy); border-color: var(--navy); }
+    .pkg-tile.is-active .pkg-tile__arrow svg { stroke: var(--white); }
+
+    /* Subtitle */
+    .pkg-tile__subtitle {
+      font-family: var(--font-display); font-size: 14.5px;
+      font-style: italic; color: var(--text-muted);
+      line-height: 1.5; margin-bottom: 18px;
+    }
+    .pkg-tile__divider { height: 1px; background: var(--border); margin-bottom: 16px; flex-shrink: 0; }
+
+    /* Preview bullets */
+    .pkg-tile__bullets { display: flex; flex-direction: column; gap: 9px; flex: 1; margin-bottom: 16px; }
+    .pkg-tile__bullet { display: flex; align-items: flex-start; gap: 10px; font-size: 13.5px; line-height: 1.5; color: var(--text-body); }
+    .pkg-tile__bullet-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 7px; opacity: 0.65; }
+
+    /* "Who it's for" teaser line */
+    .pkg-tile__teaser {
+      font-size: 12.5px; color: var(--text-light);
+      font-style: italic; line-height: 1.5;
+      padding-top: 12px; border-top: 1px solid var(--border);
+      margin-bottom: 16px;
+    }
+
+    /* Tile footer — CTA */
+    .pkg-tile__footer {
+      padding: 16px 22px 22px;
+      flex-shrink: 0;
+    }
+    .pkg-tile__cta-note {
+      font-size: 11px; color: var(--text-light);
+      letter-spacing: 0.04em; margin-bottom: 9px; text-align: center;
+    }
+    .pkg-tile__footer .btn {
+      font-size: 13px; padding: 12px 16px; width: 100%;
+      justify-content: center; line-height: 1.45;
+    }
+
+    /* ============================================================
+       DETAIL PANEL WRAPPER — sits directly below the card row
+    ============================================================ */
+    .pkg-panel-region {
+      position: relative;
+      margin-top: 0;
+    }
+
+    /* Animated caret — small upward-pointing triangle connecting active card to panel */
+    .pkg-caret {
+      position: absolute;
+      top: 0;
+      width: 22px;
+      height: 12px;
+      left: 50%;              /* overridden by JS */
+      transform: translateX(-50%);
+      transition: left 0.38s cubic-bezier(0.4,0,0.2,1);
+      z-index: 3;
+      pointer-events: none;
+      display: none;          /* shown by JS when a panel is open */
+    }
+    .pkg-caret::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 0;
+      border-left: 11px solid transparent;
+      border-right: 11px solid transparent;
+      border-bottom: 12px solid var(--white);
+      filter: drop-shadow(0 -2px 3px rgba(13,27,46,0.09));
+    }
+
+    /* The shared detail panel */
+    .pkg-detail {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+      margin-top: 12px;
+
+      /* Hidden until activated */
+      opacity: 0;
+      transform: translateY(10px);
+      pointer-events: none;
+      max-height: 0;
+      /* We use JS class toggling — CSS handles animation */
+      transition: opacity 0.32s ease, transform 0.32s ease, max-height 0.01s ease 0.32s;
+    }
+    .pkg-detail.is-open {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: all;
+      max-height: none;
+      transition: opacity 0.32s ease, transform 0.32s ease;
+    }
+    /* Crossfade: content inside fades */
+    .pkg-detail.is-fading {
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.18s ease, transform 0.18s ease;
+    }
+
+    /* Detail inner layout — overview sidebar + content column */
+    .pkg-detail__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 760px) {
+      .pkg-detail__grid {
+        grid-template-columns: 240px 1fr;
+      }
+    }
+    @media (min-width: 960px) {
+      .pkg-detail__grid {
+        grid-template-columns: 272px 1fr;
+      }
+    }
+
+    /* ── Overview sidebar (navy) ── */
+    .pkg-detail__overview {
+      background: var(--navy);
+      padding: 36px 30px 36px;
+      display: flex;
+      flex-direction: column;
+    }
+    @media (min-width: 760px) {
+      .pkg-detail__overview { border-radius: var(--radius-lg) 0 0 var(--radius-lg); }
+    }
+    .pkg-detail__overview-num {
+      font-family: var(--font-display);
+      font-size: 52px; font-weight: 700;
+      color: rgba(196,150,58,0.18); line-height: 1;
+      margin-bottom: 5px;
+    }
+    .pkg-detail__overview-pkg {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 10px;
+    }
+    .pkg-detail__overview-title {
+      font-family: var(--font-display);
+      font-size: 22px; font-weight: 600;
+      color: var(--white); line-height: 1.2; margin-bottom: 14px;
+    }
+    .pkg-detail__overview-desc {
+      font-size: 14px; line-height: 1.68;
+      color: rgba(255,255,255,0.48);
+      margin-bottom: 28px; flex: 1;
+    }
+    .pkg-detail__focus {
+      background: rgba(196,150,58,0.1);
+      border: 1px solid rgba(196,150,58,0.2);
+      border-radius: var(--radius-md);
+      padding: 16px 18px;
+    }
+    .pkg-detail__focus-label {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 7px; display: block;
+    }
+    .pkg-detail__focus-text {
+      font-family: var(--font-display);
+      font-size: 15px; font-style: italic;
+      color: var(--gold-pale); line-height: 1.52;
+    }
+
+    /* ── Content column ── */
+    .pkg-detail__content {
+      padding: 36px 36px 32px;
+      display: flex;
+      flex-direction: column;
+    }
+    @media (max-width: 759px) {
+      .pkg-detail__content { padding: 28px 24px 28px; }
+    }
+
+    /* Expanded bullet items */
+    .pkg-detail__bullets { display: flex; flex-direction: column; margin-bottom: 28px; }
+    .pkg-detail__bullet { padding: 17px 0; border-bottom: 1px solid var(--border); }
+    .pkg-detail__bullet:first-child { padding-top: 0; }
+    .pkg-detail__bullet:last-child { border-bottom: none; }
+    .pkg-detail__bullet-label {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 12px; font-weight: 600; letter-spacing: 0.07em;
+      text-transform: uppercase; color: var(--navy); margin-bottom: 7px;
+    }
+    .pkg-detail__bullet-label::before {
+      content: ''; display: block; width: 16px; height: 1.5px;
+      background: var(--gold); flex-shrink: 0; border-radius: 2px;
+    }
+    .pkg-detail__bullet-body {
+      font-size: 14.5px; line-height: 1.72;
+      color: var(--text-muted); padding-left: 26px;
+    }
+
+    /* "Who This Is For" callout */
+    .pkg-detail__whom {
+      background: var(--ivory-warm);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: 20px 24px; margin-bottom: 28px;
+    }
+    .pkg-detail__whom-label {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 9px;
+      display: flex; align-items: center; gap: 7px;
+    }
+    .pkg-detail__whom-label::before { content: '◆'; font-size: 8px; }
+    .pkg-detail__whom-text {
+      font-family: var(--font-display);
+      font-size: 18px; font-style: italic;
+      color: var(--navy); line-height: 1.65;
+    }
+
+    /* CTA row inside panel */
+    .pkg-detail__cta {
+      display: flex; flex-wrap: wrap;
+      align-items: center; gap: 16px;
+      padding-top: 4px;
+    }
+    .pkg-detail__cta-note {
+      font-size: 12px; color: var(--text-light); letter-spacing: 0.03em;
+    }
+
+    /* ── Featured (pkg 3) overrides inside the panel ── */
+    .pkg-detail[data-pkg="ensemble"] .pkg-detail__whom {
+      background: rgba(6,78,59,0.06);
+      border-left-color: var(--navy);
+    }
+    .pkg-detail[data-pkg="ensemble"] .pkg-detail__whom-label { color: var(--navy); }
+    .pkg-detail[data-pkg="ensemble"] .pkg-detail__whom-text  { color: var(--navy); }
+
+    /* ============================================================
+       COMPARISON NOTE (below the detail panel)
+    ============================================================ */
+    .packages-note {
+      max-width: 700px; margin: 44px auto 0;
+      text-align: center; padding: 32px;
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+    }
+    .packages-note__title {
+      font-family: var(--font-display); font-size: 22px;
+      font-weight: 600; color: var(--navy); margin-bottom: 10px;
+    }
+    .packages-note__body {
+      font-size: 15px; line-height: 1.72;
+      color: var(--text-muted); margin-bottom: 20px;
+    }
+    .packages-note__ctas { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+
+    /* ============================================================
+       CTA STRIP
+    ============================================================ */
+    .packages-cta {
+      background: var(--navy); padding: 72px 0;
+      position: relative; overflow: hidden;
+    }
+    .packages-cta::before { content: ''; position: absolute; bottom: -30%; right: -10%; width: 420px; height: 420px; border-radius: 50%; background: radial-gradient(circle,rgba(196,150,58,0.06) 0%,transparent 65%); pointer-events: none; }
+    .packages-cta__inner { position: relative; z-index: 2; max-width: 620px; margin: 0 auto; text-align: center; }
+    .packages-cta .section-label { display: block; text-align: center; margin-bottom: 14px; }
+    .packages-cta__title { font-family: var(--font-display); font-size: clamp(26px,3.5vw,38px); font-weight: 600; color: var(--white); line-height: 1.2; margin-bottom: 16px; }
+    .packages-cta__body { font-size: 16px; line-height: 1.72; color: rgba(255,255,255,0.55); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .packages-cta__ctas { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px; }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    .footer { background: var(--navy); padding: 64px 0 0; border-top: 1px solid rgba(255,255,255,0.06); }
+    .footer__grid { display: grid; grid-template-columns: 1fr; gap: 40px; }
+    @media (min-width: 640px)  { .footer__grid { grid-template-columns: repeat(2,1fr); } }
+    @media (min-width: 960px)  { .footer__grid { grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 48px; } }
+    .footer__brand-name { font-family: var(--font-display); font-size: 20px; font-weight: 600; color: var(--white); margin-bottom: 4px; letter-spacing: 0.01em; }
+    .footer__brand-tagline { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-pale); opacity: 0.6; margin-bottom: 16px; }
+    .footer__brand-desc { font-size: 14px; line-height: 1.65; color: rgba(255,255,255,0.4); max-width: 280px; }
+    .footer__col-label { font-size: 10.5px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; display: block; }
+    .footer__links { display: flex; flex-direction: column; gap: 4px; }
+    .footer__link { font-size: 14px; color: rgba(255,255,255,0.55); padding: 5px 0; transition: var(--transition); }
+    .footer__link:hover { color: var(--white); }
+    .footer__contact-line { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; }
+    .footer__contact-icon { font-size: 14px; color: var(--gold); opacity: 0.7; flex-shrink: 0; margin-top: 2px; }
+    .footer__contact-text { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.5; }
+    .footer__cta-link { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 500; color: var(--gold); margin-top: 16px; transition: var(--transition); }
+    .footer__cta-link:hover { color: var(--gold-light); }
+    .footer__cta-link::after { content: '→'; transition: transform 0.2s ease; }
+    .footer__cta-link:hover::after { transform: translateX(3px); }
+    .footer__bottom { margin-top: 56px; padding: 24px 0; border-top: 1px solid rgba(255,255,255,0.07); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+    .footer__copyright { font-size: 12px; color: rgba(255,255,255,0.3); }
+    .footer__legal-links { display: flex; gap: 20px; }
+    .footer__legal-link { font-size: 12px; color: rgba(255,255,255,0.3); transition: var(--transition); }
+    .footer__legal-link:hover { color: rgba(255,255,255,0.6); }
+
+    /* ============================================================
+       RESPONSIVE OVERRIDES
+    ============================================================ */
+    @media (max-width: 599px) {
+      :root { --section-pad: 56px 0; }
+      .page-header { padding: 52px 0 60px; }
+      .page-header__trust { gap: 16px; }
+      .packages-cta__ctas { flex-direction: column; align-items: stretch; }
+      .packages-cta__ctas .btn { justify-content: center; }
+      .footer__grid { gap: 32px; }
+      .footer__bottom { flex-direction: column; align-items: flex-start; }
+      .pkg-caret { display: none !important; }
+    }
+
+    /* ============================================================
+       ENTRANCE ANIMATION
+    ============================================================ */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+    .page-header__inner { animation: fadeUp 0.65s ease both; }
+
+  </style>
+</head>
+
+<body id="top">
+
+  <!-- ============================================================
+       NAVIGATION
+  ============================================================ -->
+  <header class="nav" role="banner">
+    <div class="container">
+      <div class="nav__inner">
+
+        <a href="index.html" class="nav__brand" aria-label="College Funding Solutions — Home">
+          <span class="nav__brand-name">College Funding Solutions</span>
+          <span class="nav__brand-tagline">Strategic College Planning</span>
+        </a>
+
+        <nav class="nav__links" aria-label="Primary navigation">
+          <a href="how-it-works.html" class="nav__link">How It Works</a>
+          <a href="our-process.html"  class="nav__link">Our Process</a>
+          <a href="pillars.html"      class="nav__link">The 3 Pillars</a>
+
+          <!-- Resources Dropdown — Packages marked active -->
+          <div class="nav__dropdown" role="navigation" aria-label="Resources submenu">
+            <button class="nav__dropdown-trigger" aria-haspopup="true" aria-expanded="false" id="resources-dropdown-btn" type="button">
+              Resources <span class="nav__dropdown-chevron" aria-hidden="true"></span>
+            </button>
+            <div class="nav__dropdown-panel" role="menu" aria-labelledby="resources-dropdown-btn">
+              <a href="blogs.html"    class="nav__dropdown-link" role="menuitem">Blogs</a>
+              <a href="articles.html" class="nav__dropdown-link" role="menuitem">Articles</a>
+              <div class="nav__dropdown-divider" role="separator" aria-hidden="true"></div>
+              <a href="timeline.html" class="nav__dropdown-link" role="menuitem">Timeline</a>
+              <a href="packages.html" class="nav__dropdown-link nav__dropdown-link--active" role="menuitem">Packages</a>
+              <div class="nav__dropdown-divider" role="separator" aria-hidden="true"></div>
+              <a href="webinar-library.html"  class="nav__dropdown-link" role="menuitem">Webinars</a>
+            </div>
+          </div>
+
+          <a href="about.html" class="nav__link">About</a>
+        </nav>
+
+        <div class="nav__ctas">
+          <a href="webinar-library.html" class="btn btn--outline btn--small nav__cta-webinar">Free Webinar</a>
+          <a href="contact.html" class="btn btn--primary btn--small">Schedule a Consultation</a>
+        </div>
+
+        <button class="nav__hamburger" id="nav-toggle" aria-label="Open navigation menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="nav__drawer" id="nav-drawer" role="dialog" aria-label="Navigation menu" aria-modal="true">
+    <div class="nav__drawer-overlay" id="nav-overlay"></div>
+    <div class="nav__drawer-panel">
+      <button class="nav__drawer-close" id="nav-close" aria-label="Close navigation">✕</button>
+      <nav class="nav__drawer-links" aria-label="Mobile navigation">
+        <a href="index.html"        class="nav__drawer-link">Home</a>
+        <a href="how-it-works.html" class="nav__drawer-link">How It Works</a>
+        <a href="our-process.html"  class="nav__drawer-link">Our Process</a>
+        <a href="pillars.html"      class="nav__drawer-link">The 3 Pillars</a>
+        <!-- Resources accordion -->
+        <div class="nav__accordion">
+          <button class="nav__accordion-trigger" aria-expanded="false"
+                  aria-controls="res-accordion-panel" id="res-accordion-btn" type="button">
+            Resources <span class="nav__accordion-chevron" aria-hidden="true"></span>
+          </button>
+          <div class="nav__accordion-panel" id="res-accordion-panel"
+               role="region" aria-labelledby="res-accordion-btn">
+            <div class="nav__accordion-links">
+              <a href="blogs.html"    class="nav__accordion-link">Blogs</a>
+              <a href="articles.html" class="nav__accordion-link">Articles</a>
+              <a href="timeline.html" class="nav__accordion-link">Timeline</a>
+              <a href="packages.html" class="nav__accordion-link">Packages</a>
+              <a href="webinar-library.html"  class="nav__accordion-link">Webinars</a>
+            </div>
+          </div>
+        </div>
+        <a href="about.html"   class="nav__drawer-link">About</a>
+        <a href="contact.html" class="nav__drawer-link">Contact</a>
+      </nav>
+      <div class="nav__drawer-ctas">
+        <a href="webinar-library.html" class="btn btn--outline">Free Webinar</a>
+        <a href="contact.html" class="btn btn--primary">Schedule a Consultation</a>
+      </div>
+    </div>
+  </div>
+
+
+  <main>
+
+    <!-- ============================================================
+         PAGE HEADER
+    ============================================================ -->
+    <section class="page-header" aria-label="Our Planning Packages">
+      <div class="container">
+        <div class="page-header__inner">
+
+          <div class="page-header__eyebrow">
+            <span class="page-header__eyebrow-line" aria-hidden="true"></span>
+            <span class="page-header__eyebrow-text">Strategic Offerings</span>
+          </div>
+
+          <h1 class="page-header__title">Our Planning Packages</h1>
+
+          <p class="page-header__subtitle">
+            Three distinct levels of advisory support — each designed to meet your family exactly where you are in the planning process, and take you where you need to go. Select any package below to explore what's included.
+          </p>
+
+          <div class="page-header__trust">
+            <div class="page-header__trust-item">
+              <span class="page-header__trust-icon" aria-hidden="true">◎</span>
+              <span class="page-header__trust-text">Serving families nationwide via virtual consultation</span>
+            </div>
+            <div class="page-header__trust-item">
+              <span class="page-header__trust-icon" aria-hidden="true">◆</span>
+              <span class="page-header__trust-text">Advisor-led. Strategy-driven. Family-focused.</span>
+            </div>
+            <div class="page-header__trust-item">
+              <span class="page-header__trust-icon" aria-hidden="true">✦</span>
+              <span class="page-header__trust-text">Families in grades 8 through 12</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         PACKAGES BODY — 3 selector cards + shared detail panel
+    ============================================================ -->
+    <section class="packages-section" aria-labelledby="packages-heading">
+      <div class="container">
+
+        <!-- Section intro -->
+        <div class="packages-intro">
+          <span class="section-label">Choose Your Level of Support</span>
+          <span class="gold-rule gold-rule--center" aria-hidden="true"></span>
+          <h2 class="packages-intro__title" id="packages-heading">
+            Every family's situation is different.<br>So is our approach.
+          </h2>
+          <p class="packages-intro__body">
+            Whether you need targeted financial clarity, a comprehensive planning platform, or a fully guided partnership with a dedicated advisor — there is an offering structured around your needs. Select a package to explore the full details.
+          </p>
+        </div>
+
+
+        <!-- ══════════════════════════════════════════════
+             3-CARD SELECTOR ROW
+        ══════════════════════════════════════════════ -->
+        <div class="pkg-selector" id="pkg-selector" role="tablist" aria-label="Select a package">
+
+
+          <!-- ── CARD 1: Financial Analysis ── -->
+          <article class="pkg-tile" id="pkg-tile-financial" data-pkg="financial"
+                   role="tab" aria-selected="false" aria-controls="pkg-detail"
+                   tabindex="0">
+
+            <div class="pkg-tile__accent-bar" aria-hidden="true"></div>
+
+            <div class="pkg-tile__body">
+              <span class="pkg-tile__num">Package 01</span>
+              <div class="pkg-tile__title-row">
+                <h2 class="pkg-tile__title">Financial Analysis</h2>
+                <span class="pkg-tile__arrow" aria-hidden="true">
+                  <svg viewBox="0 0 12 8" xmlns="http://www.w3.org/2000/svg"
+                       stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6">
+                    <path d="M1 1.5l5 5 5-5"/>
+                  </svg>
+                </span>
+              </div>
+              <p class="pkg-tile__subtitle">Leave Nothing to Chance: A Strategic Blueprint to Ensure You're Not Overpaying for College</p>
+              <div class="pkg-tile__divider" aria-hidden="true"></div>
+              <ul class="pkg-tile__bullets" aria-label="Package highlights">
+                <li class="pkg-tile__bullet"><span class="pkg-tile__bullet-dot" aria-hidden="true"></span><span>FAFSA &amp; CSS Profile Line-by-Line Answer Sheet</span></li>
+                <li class="pkg-tile__bullet"><span class="pkg-tile__bullet-dot" aria-hidden="true"></span><span>Submission Summary Analysis &amp; Verification</span></li>
+                <li class="pkg-tile__bullet"><span class="pkg-tile__bullet-dot" aria-hidden="true"></span><span>Award Letter Evaluation &amp; Appeal Strategy</span></li>
+              </ul>
+              <p class="pkg-tile__teaser">For families who want financial clarity — at any stage of the process.</p>
+            </div>
+
+            <div class="pkg-tile__footer">
+              <p class="pkg-tile__cta-note">One-time investment</p>
+              <a href="contact.html" class="btn btn--primary"
+                 onclick="event.stopPropagation()">
+                Get My Analysis &amp; Funding Report &nbsp;·&nbsp; $249
+              </a>
+            </div>
+
+          </article>
+
+
+          <!-- ── CARD 2: The Essential 3-Pillar Mix ── -->
+          <article class="pkg-tile" id="pkg-tile-essential" data-pkg="essential"
+                   role="tab" aria-selected="false" aria-controls="pkg-detail"
+                   tabindex="0">
+
+            <div class="pkg-tile__accent-bar" aria-hidden="true"></div>
+
+            <div class="pkg-tile__body">
+              <span class="pkg-tile__num">Package 02</span>
+              <div class="pkg-tile__title-row">
+                <h2 class="pkg-tile__title">The Essential 3-Pillar Mix</h2>
+                <span class="pkg-tile__arrow" aria-hidden="true">
+                  <svg viewBox="0 0 12 8" xmlns="http://www.w3.org/2000/svg"
+                       stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6">
+                    <path d="M1 1.5l5 5 5-5"/>
+                  </svg>
+                </span>
+              </div>
+              <p class="pkg-tile__subtitle">Beyond the Financials: Aligning Admissions, Academics, and Aid</p>
+              <div class="pkg-tile__divider" aria-hidden="true"></div>
+              <ul class="pkg-tile__bullets" aria-label="Package highlights">
+                <li class="pkg-tile__bullet"><span class="pkg-tile__bullet-dot" aria-hidden="true"></span><span>Unlimited personalized test prep (PSAT, SAT &amp; ACT)</span></li>
+                <li class="pkg-tile__bullet"><span class="pkg-tile__bullet-dot" aria-hidden="true"></span><span>Best-fit college search &amp; matching</span></li>
+                <li class="pkg-tile__bullet"><span class="pkg-tile__bullet-dot" aria-hidden="true"></span><span>Scholarship search — 3.5M+ opportunities</span></li>
+                <li class="pkg-tile__bullet"><span class="pkg-tile__bullet-dot" aria-hidden="true"></span><span>Career exploration with labor-market data</span></li>
+                <li class="pkg-tile__bullet"><span class="pkg-tile__bullet-dot" aria-hidden="true"></span><span>Includes everything in Financial Analysis</span></li>
+              </ul>
+              <p class="pkg-tile__teaser">For 8th–11th grade families and seniors navigating the final stretch.</p>
+            </div>
+
+            <div class="pkg-tile__footer">
+              <p class="pkg-tile__cta-note">Integrated platform + financial strategy</p>
+              <a href="contact.html" class="btn btn--primary"
+                 onclick="event.stopPropagation()">
+                Get the 3-Pillar Integrated Strategy &nbsp;·&nbsp; $649
+              </a>
+            </div>
+
+          </article>
+
+
+          <!-- ── CARD 3: The Full Ensemble Strategy ── -->
+          <article class="pkg-tile pkg-tile--featured" id="pkg-tile-ensemble"
+                   data-pkg="ensemble" role="tab" aria-selected="false"
+                   aria-controls="pkg-detail" tabindex="0">
+
+            <!-- Navy header band with badge -->
+            <div class="pkg-tile__accent-bar" aria-hidden="true">
+              <span class="pkg-tile__badge">✦ &nbsp;Most Comprehensive</span>
+              <span class="pkg-tile__badge-stars" aria-hidden="true">· · ·</span>
+            </div>
+
+            <div class="pkg-tile__body" style="padding-top:18px;">
+              <span class="pkg-tile__num">Package 03</span>
+              <div class="pkg-tile__title-row">
+                <h2 class="pkg-tile__title">The Full Ensemble Strategy</h2>
+                <span class="pkg-tile__arrow" aria-hidden="true">
+                  <svg viewBox="0 0 12 8" xmlns="http://www.w3.org/2000/svg"
+                       stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6">
+                    <path d="M1 1.5l5 5 5-5"/>
+                  </svg>
+                </span>
+              </div>
+              <p class="pkg-tile__subtitle">The Complete 3-Pillar Partnership: Expert 1-on-1 Guidance for Every Step of the Journey</p>
+              <div class="pkg-tile__divider" aria-hidden="true"></div>
+              <ul class="pkg-tile__bullets" aria-label="Package highlights">
+                <li class="pkg-tile__bullet"><span class="pkg-tile__bullet-dot" aria-hidden="true"></span><span>Dedicated 1-on-1 mentorship with a certified counselor</span></li>
+                <li class="pkg-tile__bullet"><span class="pkg-tile__bullet-dot" aria-hidden="true"></span><span>Strategic student profile &amp; resume building</span></li>
+                <li class="pkg-tile__bullet"><span class="pkg-tile__bullet-dot" aria-hidden="true"></span><span>Professional communication coaching</span></li>
+                <li class="pkg-tile__bullet"><span class="pkg-tile__bullet-dot" aria-hidden="true"></span><span>Application &amp; deadline mastery</span></li>
+                <li class="pkg-tile__bullet"><span class="pkg-tile__bullet-dot" aria-hidden="true"></span><span>Includes everything in Packages 01 &amp; 02</span></li>
+              </ul>
+              <p class="pkg-tile__teaser">For families who want a dedicated expert partner, start to finish.</p>
+            </div>
+
+            <div class="pkg-tile__footer">
+              <p class="pkg-tile__cta-note">Fully guided partnership — let's talk</p>
+              <a href="contact.html" class="btn btn--primary btn--arrow"
+                 onclick="event.stopPropagation()">
+                Start My Personalized Strategy
+              </a>
+            </div>
+
+          </article>
+
+
+        </div>
+        <!-- /pkg-selector -->
+
+
+        <!-- ══════════════════════════════════════════════
+             SHARED DETAIL PANEL REGION
+             (caret + single panel, content swapped by JS)
+        ══════════════════════════════════════════════ -->
+        <div class="pkg-panel-region" id="pkg-panel-region">
+
+          <!-- Caret connector — JS positions it under the active card -->
+          <div class="pkg-caret" id="pkg-caret" aria-hidden="true"></div>
+
+          <!-- Single shared panel — JS injects content and toggles is-open -->
+          <div class="pkg-detail" id="pkg-detail"
+               role="tabpanel" aria-live="polite" aria-label="Package details">
+            <!-- Content injected by JS -->
+          </div>
+
+        </div>
+        <!-- /pkg-panel-region -->
+
+
+        <!-- Comparison note -->
+        <div class="packages-note" role="note">
+          <h3 class="packages-note__title">Not sure which is right for your family?</h3>
+          <p class="packages-note__body">
+            Every family's timeline, financial situation, and planning needs are different. Our free webinar walks through the full framework — and a brief consultation call helps us understand exactly where your family is, so we can recommend the level of support that fits best.
+          </p>
+          <div class="packages-note__ctas">
+            <a href="webinar-library.html" class="btn btn--outline">Watch the Free Webinar</a>
+            <a href="contact.html" class="btn btn--primary btn--arrow">Schedule a Consultation</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         CTA STRIP
+    ============================================================ -->
+    <section class="packages-cta" aria-labelledby="packages-cta-heading">
+      <div class="container">
+        <div class="packages-cta__inner">
+          <span class="section-label">Take the Next Step</span>
+          <span class="gold-rule gold-rule--center" aria-hidden="true"></span>
+          <h2 class="packages-cta__title" id="packages-cta-heading">
+            The Right Guidance at the Right Time<br>Changes Everything.
+          </h2>
+          <p class="packages-cta__body">
+            The families who arrive at enrollment with the least financial stress and the strongest options are the ones who started with a plan. Our webinar is the clearest first step — and it costs nothing.
+          </p>
+          <div class="packages-cta__ctas">
+            <a href="webinar-library.html" class="btn btn--primary btn--large btn--arrow">Register for the Free Webinar</a>
+            <a href="contact.html" class="btn btn--white-outline btn--large">Schedule a Consultation</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__brand-name">College Funding Solutions</div>
+          <div class="footer__brand-tagline">Strategic College Planning</div>
+          <p class="footer__brand-desc">Expert, advisor-led guidance for families navigating the college planning process — from freshman year through enrollment.</p>
+        </div>
+        <div class="footer__col">
+          <span class="footer__col-label">Navigate</span>
+          <nav class="footer__links" aria-label="Footer navigation">
+            <a href="index.html"        class="footer__link">Home</a>
+            <a href="how-it-works.html" class="footer__link">How It Works</a>
+            <a href="our-process.html"  class="footer__link">Our Process</a>
+            <a href="pillars.html"      class="footer__link">The 3 Pillars</a>
+            <a href="about.html"        class="footer__link">About</a>
+          </nav>
+        </div>
+        <div class="footer__col">
+          <span class="footer__col-label">Resources</span>
+          <nav class="footer__links" aria-label="Resources navigation">
+            <a href="blogs.html"    class="footer__link">Blog Library</a>
+            <a href="articles.html" class="footer__link">Articles &amp; Guides</a>
+            <a href="timeline.html" class="footer__link">Planning Timeline</a>
+            <a href="packages.html" class="footer__link">Our Packages</a>
+            <a href="webinar-library.html" class="footer__link">Webinars</a>
+            <a href="contact.html"  class="footer__link">Contact Us</a>
+          </nav>
+        </div>
+        <div class="footer__col">
+          <span class="footer__col-label">Get in Touch</span>
+          <div class="footer__contact-line">
+            <span class="footer__contact-icon" aria-hidden="true">✉</span>
+            <span class="footer__contact-text">info@collegefundingsolutions.com</span>
+          </div>
+          <div class="footer__contact-line">
+            <span class="footer__contact-icon" aria-hidden="true">◎</span>
+            <span class="footer__contact-text">Serving families nationwide<br>via virtual consultation</span>
+          </div>
+          <a href="contact.html" class="footer__cta-link">Schedule a Consultation</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span class="footer__copyright">&copy; <span id="footer-year"></span> College Funding Solutions. All rights reserved.</span>
+        <div class="footer__legal-links">
+          <a href="privacy.html" class="footer__legal-link">Privacy Policy</a>
+          <a href="terms.html"   class="footer__legal-link">Terms of Use</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ============================================================
+       JAVASCRIPT
+       1. Nav drawer + resources accordion
+       2. Package selector: click tile → update shared detail panel
+       3. Caret positioning
+       4. Footer year
+  ============================================================ -->
+  <script>
+    /* ── Footer year ─────────────────────────────────────────── */
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+    /* ── Nav drawer ──────────────────────────────────────────── */
+    var navToggle  = document.getElementById('nav-toggle');
+    var navDrawer  = document.getElementById('nav-drawer');
+    var navOverlay = document.getElementById('nav-overlay');
+    var navClose   = document.getElementById('nav-close');
+
+    function openDrawer()  { navDrawer.classList.add('is-open');    navToggle.setAttribute('aria-expanded','true');  document.body.style.overflow='hidden'; }
+    function closeDrawer() { navDrawer.classList.remove('is-open'); navToggle.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+
+    navToggle.addEventListener('click', openDrawer);
+    navClose.addEventListener('click', closeDrawer);
+    navOverlay.addEventListener('click', closeDrawer);
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape' && navDrawer.classList.contains('is-open')) closeDrawer(); });
+    navDrawer.querySelectorAll('.nav__drawer-link, .nav__drawer-ctas .btn').forEach(function(l){ l.addEventListener('click', closeDrawer); });
+
+    /* ── Resources accordion (mobile drawer) ─────────────────── */
+    var resBtn   = document.getElementById('res-accordion-btn');
+    var resPanel = document.getElementById('res-accordion-panel');
+    if (resBtn && resPanel) {
+      resBtn.addEventListener('click', function(){
+        var open = resPanel.classList.toggle('is-open');
+        resBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }
+
+
+    /* ════════════════════════════════════════════════════════════
+       PACKAGE SELECTOR — selector + shared detail panel logic
+    ════════════════════════════════════════════════════════════ */
+    (function(){
+
+      var tiles       = document.querySelectorAll('.pkg-tile');
+      var panel       = document.getElementById('pkg-detail');
+      var caret       = document.getElementById('pkg-caret');
+      var selector    = document.getElementById('pkg-selector');
+      var panelRegion = document.getElementById('pkg-panel-region');
+      var activePkg   = null;
+      var swapTimer   = null;
+
+      /* ── Package content data ─────────────────────────────── */
+      var pkgData = {
+
+        financial: {
+          num:   '01',
+          pkg:   'Package One',
+          title: 'Financial Analysis',
+          desc:  'The FAFSA and CSS Profile are financial positioning documents that directly affect how institutions calculate your aid eligibility. This package is built around getting those documents right, and making sure the resulting aid offers reflect your family\'s true position.',
+          focus: 'Accurate submission, strategic positioning, and an informed approach to every aid offer you receive.',
+          bullets: [
+            {
+              label: 'FAFSA &amp; CSS Profile Answer Sheet',
+              body:  'Your FAFSA and CSS Profile are not simply forms to be completed — they are financial positioning documents that directly determine how institutions assess your family\'s eligibility for aid. We provide a line-by-line answer sheet tailored to your specific financial circumstances, ensuring every entry is accurate, intentional, and structured to reflect your family\'s true position.'
+            },
+            {
+              label: 'Submission Summary Analysis',
+              body:  'Once your application is submitted, the work isn\'t finished. Our submission summary analysis reviews exactly what was filed and confirms that nothing was omitted, misreported, or left in a state that could trigger an unfavorable institutional review. You\'ll have a clear record of what was submitted — and confidence that it was done correctly.'
+            },
+            {
+              label: 'Award Letter Evaluation &amp; Appeal Strategy',
+              body:  'Financial aid award letters vary significantly in structure, language, and actual value — and most families accept them at face value. We evaluate every line item, translate the real out-of-pocket cost for your family, and where appropriate, develop a professional, data-supported appeal strategy designed to secure the most competitive package your situation can support.'
+            }
+          ],
+          whom: 'This is for families who want to get through the FAFSA without the headache — and without leaving money on the table. We help you share exactly what\'s needed, nothing more and nothing less. Whether you\'re just starting out or already reviewing offer letters, we\'re here to make sure your family isn\'t paying thousands more for college than you actually have to.',
+          ctaHref:  'contact.html',
+          ctaText:  'Get My Full Analysis &amp; Funding Report &nbsp;&middot;&nbsp; $249',
+          ctaNote:  'One-time investment',
+          ctaClass: ''
+        },
+
+        essential: {
+          num:   '02',
+          pkg:   'Package Two',
+          title: 'The Essential 3-Pillar Mix',
+          desc:  'A comprehensive platform that addresses the academic, social, and financial dimensions of the college planning process together — because no single pillar operates in isolation. Built for families who want real tools, real data, and a complete financial strategy under one roof.',
+          focus: 'Academic preparation, college discovery, scholarship access, career clarity, and full financial aid support — integrated.',
+          bullets: [
+            {
+              label: 'Unlimited Personalized Test Prep',
+              body:  'Access a fully personalized, adaptive test preparation platform covering the PSAT, SAT, and ACT — available without limits, on your student\'s schedule. The platform calibrates to your student\'s current performance and focuses preparation precisely where it will have the greatest impact on their score trajectory.'
+            },
+            {
+              label: 'Best-Fit College Search &amp; Matching',
+              body:  'Moving beyond rankings and reputation, our college matching tools identify institutions that genuinely align with your student\'s academic profile, emerging interests, and your family\'s financial parameters — producing a list built around strategic fit rather than name recognition alone.'
+            },
+            {
+              label: 'Scholarship Search — 3.5M+ Opportunities',
+              body:  'Our scholarship database surfaces over 3.5 million merit and need-based opportunities, filtered and matched to your student\'s specific academic profile, background, and areas of interest. This extends your financial strategy well beyond what any single institution\'s aid office offers on its own.'
+            },
+            {
+              label: 'Career Exploration with Labor-Market Data',
+              body:  'Major and career decisions made without real-world context often result in costly course corrections. Our career exploration tools incorporate live labor-market data — salary ranges, employment trends, and industry outlook — so your student can make informed decisions about what they\'re preparing for, not only what interests them today.'
+            },
+            {
+              label: '24/7 Platform Access &amp; Full Financial Analysis',
+              body:  'Every tool and resource is available to your student around the clock without session limits. This package also incorporates the complete Financial Analysis — the line-by-line FAFSA and CSS Profile answer sheet, submission verification, award letter evaluation, and appeal strategy — so the financial dimension of your planning receives the same rigor as the academic and admissions dimensions.'
+            }
+          ],
+          whom: 'For 8th through 11th grade families who refuse to choose between their student\'s dream school and their own financial security — and for seniors who need an immediate, integrated strategy during the final stretch of the application process.',
+          ctaHref:  'contact.html',
+          ctaText:  'Get the 3-Pillar Integrated Strategy &nbsp;&middot;&nbsp; $649',
+          ctaNote:  'Integrated platform + financial strategy',
+          ctaClass: ''
+        },
+
+        ensemble: {
+          num:   '03',
+          pkg:   'Package Three',
+          title: 'The Full Ensemble Strategy',
+          desc:  'The most complete offering available — a fully guided partnership with a certified college planning advisor who is personally accountable to your student\'s results. Every tool, every strategy, and every deliverable from Packages 01 and 02 is included, with expert hands-on guidance layered on top.',
+          focus: 'Dedicated 1-on-1 advisory support across every dimension of the planning process — academic, financial, and personal.',
+          bullets: [
+            {
+              label: 'Dedicated 1-on-1 Mentorship',
+              body:  'Your family is paired with a certified college planning counselor who becomes a consistent, trusted presence throughout the entire process. From early academic positioning through final enrollment decisions, your advisor is personally accountable to your student\'s specific goals — ensuring nothing falls through the cracks and no consequential decision is made without informed guidance.'
+            },
+            {
+              label: 'Strategic Student Profile Building',
+              body:  'A compelling application isn\'t assembled in the fall of senior year — it\'s built deliberately over time. We provide expert guidance on AP course selection, extracurricular engagement, community involvement, and summer experiences that genuinely strengthen your student\'s profile and tell a coherent, authentic story to admissions committees.'
+            },
+            {
+              label: 'Professional Communication Coaching',
+              body:  'The ability to articulate goals, connect with professionals, and present oneself with clarity and confidence extends far beyond the application process. We provide personalized coaching on how your student can build meaningful relationships with professionals in their field — developing capabilities that serve them long after enrollment.'
+            },
+            {
+              label: 'Application &amp; Deadline Mastery',
+              body:  'The application process is unforgiving of disorganization. We provide a fully structured, deadline-driven approach that keeps your student ahead of every submission window — from early decision and early action timelines through regular decision and financial aid deadlines — with proven strategies for standing out through essay development, demonstrated interest, and deliberate application positioning.'
+            },
+            {
+              label: 'The Full Strategy Suite — Packages 01 &amp; 02 Included',
+              body:  'Everything included in the Financial Analysis and Essential 3-Pillar Mix is incorporated at this level — the complete financial aid optimization workflow, FAFSA and CSS Profile guidance, award letter analysis, appeal strategy, scholarship matching, unlimited 24/7 platform access, adaptive test prep, and career exploration tools. This package is comprehensive by design: no additional components need to be sourced separately.'
+            }
+          ],
+          whom: 'For 8th through 11th grade families who want to bypass "learning the hard way" — and prefer an expert hand to help their student stand out while giving the family their time and peace of mind back. And for senior families who feel the clock ticking: we provide the immediate, hands-on support needed to turn crunch-time into a clear, confident, winning strategy.',
+          ctaHref:  'contact.html',
+          ctaText:  'Start My Personalized Strategy',
+          ctaNote:  'Fully guided partnership — let\'s talk',
+          ctaClass: 'btn--arrow'
+        }
+
+      };
+
+      /* ── Build HTML for the shared panel ─────────────────────── */
+      function buildPanelHTML(pkg, data) {
+        var bulletsHTML = data.bullets.map(function(b){
+          return '<div class="pkg-detail__bullet">'
+            + '<div class="pkg-detail__bullet-label">' + b.label + '</div>'
+            + '<p class="pkg-detail__bullet-body">' + b.body + '</p>'
+            + '</div>';
+        }).join('');
+
+        return '<div class="pkg-detail__grid">'
+
+          /* Overview sidebar */
+          + '<div class="pkg-detail__overview">'
+          + '<div class="pkg-detail__overview-num" aria-hidden="true">' + data.num + '</div>'
+          + '<span class="pkg-detail__overview-pkg">' + data.pkg + '</span>'
+          + '<h3 class="pkg-detail__overview-title">' + data.title + '</h3>'
+          + '<p class="pkg-detail__overview-desc">' + data.desc + '</p>'
+          + '<div class="pkg-detail__focus">'
+          + '<span class="pkg-detail__focus-label">Primary Focus</span>'
+          + '<p class="pkg-detail__focus-text">' + data.focus + '</p>'
+          + '</div>'
+          + '</div>'
+
+          /* Content column */
+          + '<div class="pkg-detail__content">'
+          + '<div class="pkg-detail__bullets">' + bulletsHTML + '</div>'
+          + '<div class="pkg-detail__whom">'
+          + '<div class="pkg-detail__whom-label">Who This Is For</div>'
+          + '<p class="pkg-detail__whom-text">' + data.whom + '</p>'
+          + '</div>'
+          + '<div class="pkg-detail__cta">'
+          + '<a href="' + data.ctaHref + '" class="btn btn--primary ' + data.ctaClass + '">' + data.ctaText + '</a>'
+          + '<span class="pkg-detail__cta-note">' + data.ctaNote + '</span>'
+          + '</div>'
+          + '</div>'
+
+          + '</div>';
+      }
+
+      /* ── Position the caret triangle under the active tile ──── */
+      function positionCaret(tile) {
+        if (!caret || !panelRegion) return;
+        var tileRect   = tile.getBoundingClientRect();
+        var regionRect = panelRegion.getBoundingClientRect();
+        var center     = tileRect.left + tileRect.width / 2 - regionRect.left;
+        caret.style.left = center + 'px';
+        caret.style.display = 'block';
+      }
+
+      /* ── Activate a package ────────────────────────────────── */
+      function activate(pkg) {
+        if (pkg === activePkg) {
+          /* Toggle off: clicking the same tile deselects */
+          deactivate();
+          return;
+        }
+
+        var data = pkgData[pkg];
+        if (!data) return;
+
+        activePkg = pkg;
+
+        /* Update tile aria + active class */
+        tiles.forEach(function(t){
+          var active = t.dataset.pkg === pkg;
+          t.classList.toggle('is-active', active);
+          t.setAttribute('aria-selected', active ? 'true' : 'false');
+        });
+
+        /* Position caret */
+        var activeTile = document.querySelector('.pkg-tile.is-active');
+        if (activeTile) positionCaret(activeTile);
+
+        clearTimeout(swapTimer);
+
+        if (panel.classList.contains('is-open')) {
+          /* Panel already open — fade out, swap content, fade in */
+          panel.classList.add('is-fading');
+          swapTimer = setTimeout(function(){
+            panel.setAttribute('data-pkg', pkg);
+            panel.innerHTML = buildPanelHTML(pkg, data);
+            panel.classList.remove('is-fading');
+            scrollToPanel();
+          }, 200);
+        } else {
+          /* Panel not yet open — show it */
+          panel.setAttribute('data-pkg', pkg);
+          panel.innerHTML = buildPanelHTML(pkg, data);
+          panel.classList.add('is-open');
+          /* Brief reflow ensures transition plays */
+          requestAnimationFrame(function(){
+            requestAnimationFrame(function(){
+              scrollToPanel();
+            });
+          });
+        }
+      }
+
+      /* ── Deactivate ─────────────────────────────────────────── */
+      function deactivate() {
+        activePkg = null;
+        tiles.forEach(function(t){
+          t.classList.remove('is-active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        panel.classList.add('is-fading');
+        clearTimeout(swapTimer);
+        swapTimer = setTimeout(function(){
+          panel.classList.remove('is-open', 'is-fading');
+          panel.innerHTML = '';
+          caret.style.display = 'none';
+        }, 220);
+      }
+
+      /* ── Smooth scroll to panel top ──────────────────────────── */
+      function scrollToPanel() {
+        setTimeout(function(){
+          var navH  = document.querySelector('.nav') ? document.querySelector('.nav').offsetHeight : 68;
+          /* Scroll to caret top so the cards stay in view */
+          var top   = panelRegion.getBoundingClientRect().top + window.scrollY - navH - 32;
+          window.scrollTo({ top: top, behavior: 'smooth' });
+        }, 60);
+      }
+
+      /* ── Event listeners on tiles ────────────────────────────── */
+      tiles.forEach(function(tile){
+        tile.addEventListener('click', function(e){
+          /* Let CTA button clicks pass through without triggering selector */
+          if (e.target.closest('.btn')) return;
+          activate(tile.dataset.pkg);
+        });
+
+        tile.addEventListener('keydown', function(e){
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            activate(tile.dataset.pkg);
+          }
+        });
+      });
+
+      /* ── Reposition caret on resize ──────────────────────────── */
+      window.addEventListener('resize', function(){
+        if (activePkg) {
+          var active = document.querySelector('.pkg-tile.is-active');
+          if (active) positionCaret(active);
+        }
+      });
+
+    })();
+  </script>
+
+</body>
+</html>
