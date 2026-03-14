@@ -2285,14 +2285,14 @@
   <!-- ============================================================
        JAVASCRIPT — Navigation drawer + dynamic copyright year
   ============================================================ -->
-  <script>
+    <script>
     // Dynamic copyright year
     document.getElementById('footer-year').textContent = new Date().getFullYear();
 
     // Mobile navigation drawer
-    const toggle   = document.getElementById('nav-toggle');
-    const drawer   = document.getElementById('nav-drawer');
-    const overlay  = document.getElementById('nav-overlay');
+    const toggle = document.getElementById('nav-toggle');
+    const drawer = document.getElementById('nav-drawer');
+    const overlay = document.getElementById('nav-overlay');
     const closeBtn = document.getElementById('nav-close');
 
     function openDrawer() {
@@ -2316,8 +2316,20 @@
       if (e.key === 'Escape' && drawer.classList.contains('is-open')) closeDrawer();
     });
 
+    // Mobile Resources accordion
+    const resAccordionBtn = document.getElementById('res-accordion-btn');
+    const resAccordionPanel = document.getElementById('res-accordion-panel');
+
+    if (resAccordionBtn && resAccordionPanel) {
+      resAccordionBtn.addEventListener('click', () => {
+        const isExpanded = resAccordionBtn.getAttribute('aria-expanded') === 'true';
+        resAccordionBtn.setAttribute('aria-expanded', String(!isExpanded));
+        resAccordionPanel.classList.toggle('is-open', !isExpanded);
+      });
+    }
+
     // Close drawer when a link is tapped
-    drawer.querySelectorAll('.nav__drawer-link, .nav__drawer-ctas .btn').forEach(link => {
+    drawer.querySelectorAll('.nav__drawer-link, .nav__accordion-link, .nav__drawer-ctas .btn').forEach(link => {
       link.addEventListener('click', closeDrawer);
     });
   </script>
