@@ -600,6 +600,17 @@
       outline: none;
     }
 
+        .nav__accordion-chevron {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-right: 1.5px solid currentColor;
+      border-bottom: 1.5px solid currentColor;
+      transform: rotate(45deg) translateY(-1px);
+      transition: transform 0.2s ease;
+      flex-shrink: 0;
+    }
+
     .nav__accordion-trigger[aria-expanded="true"] .nav__accordion-chevron {
       transform: rotate(225deg) translateY(-1px);
     }
