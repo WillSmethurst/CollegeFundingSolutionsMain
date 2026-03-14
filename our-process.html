@@ -384,10 +384,12 @@
         .nav__drawer-ctas .btn { width: 100%; justify-content: center; }
 
     /* Desktop Resources Dropdown */
-    .nav__dropdown {
+        .nav__dropdown {
       position: relative;
       display: flex;
       align-items: center;
+      padding-bottom: 14px;
+      margin-bottom: -14px;
     }
 
     .nav__dropdown-trigger {
@@ -397,7 +399,7 @@
       font-family: var(--font-body);
       font-size: 14px;
       font-weight: 500;
-      color: rgba(255,255,255,0.72);
+      color: rgba(255, 255, 255, 0.72);
       padding: 6px 14px;
       border-radius: var(--radius-sm);
       transition: var(--transition);
@@ -430,9 +432,9 @@
       transform: rotate(225deg) translateY(-1px);
     }
 
-        .nav__dropdown-panel {
+    .nav__dropdown-panel {
       position: absolute;
-      top: 100%;
+      top: calc(100% - 2px);
       left: 0;
       min-width: 220px;
       background: var(--white);
@@ -444,6 +446,16 @@
       flex-direction: column;
       gap: 2px;
       z-index: 250;
+    }
+
+    .nav__dropdown-panel::before {
+      content: '';
+      position: absolute;
+      top: -14px;
+      left: 0;
+      right: 0;
+      height: 14px;
+      background: transparent;
     }
 
     .nav__dropdown:hover .nav__dropdown-panel,
