@@ -385,12 +385,14 @@
    NAV DROPDOWN — Desktop Resources menu
 ============================================================ */
 
-/* Wrapper — positions the panel relative to this anchor point */
 .nav__dropdown {
   position: relative;
+  display: flex;
+  align-items: center;
+  padding-bottom: 14px;
+  margin-bottom: -14px;
 }
 
-/* Trigger button — styled to match .nav__link exactly */
 .nav__dropdown-trigger {
   display: inline-flex;
   align-items: center;
@@ -417,7 +419,6 @@
   background: rgba(255, 255, 255, 0.07);
 }
 
-/* Chevron icon */
 .nav__dropdown-chevron {
   display: inline-block;
   width: 10px;
@@ -437,42 +438,37 @@
   opacity: 0.9;
 }
 
-/* Dropdown panel */
-    .nav__dropdown-panel {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      min-width: 220px;
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-md);
-      padding: 10px;
-      display: none;
-      flex-direction: column;
-      gap: 2px;
-      z-index: 250;
-    }
+.nav__dropdown-panel {
+  position: absolute;
+  top: calc(100% - 2px);
+  left: 50%;
+  transform: translateX(-50%) translateY(0);
+  min-width: 180px;
+  background: var(--navy);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: var(--radius-md);
+  box-shadow: 0 12px 40px rgba(6, 20, 46, 0.38), 0 2px 8px rgba(6, 20, 46, 0.18);
+  padding: 8px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 400;
+}
 
 .nav__dropdown-panel::before {
   content: '';
   position: absolute;
-  top: -5px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 10px;
-  height: 10px;
-  background: var(--navy);
-  border-left: 1px solid rgba(255, 255, 255, 0.09);
-  border-top: 1px solid rgba(255, 255, 255, 0.09);
-  clip-path: polygon(0 100%, 50% 0, 100% 100%);
+  top: -14px;
+  left: 0;
+  right: 0;
+  height: 14px;
+  background: transparent;
 }
 
 .nav__dropdown:hover .nav__dropdown-panel,
 .nav__dropdown:focus-within .nav__dropdown-panel {
   opacity: 1;
   pointer-events: all;
-  transform: translateX(-50%) translateY(0);
 }
 
 .nav__dropdown-link {
