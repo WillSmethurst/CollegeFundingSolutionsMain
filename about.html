@@ -1,0 +1,1992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — College Funding Solutions</title>
+  <meta name="description" content="College Funding Solutions is an advisor-led college planning firm helping families navigate the academic, social, and financial dimensions of the college process with structure and clarity." />
+
+  <!-- Google Fonts: Cormorant Garamond (display) + DM Sans (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet" />
+
+  <style>
+
+    /* ============================================================
+       CSS CUSTOM PROPERTIES — Identical across all site pages
+    ============================================================ */
+    :root {
+      /* Brand Colors */
+      --navy:             #064E3B;
+      --navy-mid:         #0a3528;
+      --navy-light:       #0f4535;
+      --gold:             #C4963A;
+      --gold-light:       #D4A84B;
+      --gold-pale:        #F0E2C4;
+
+      /* Background Colors */
+      --ivory:            #F7F4EE;
+      --ivory-warm:       #EDE9DF;
+      --white:            #FFFFFF;
+
+      /* Text Colors */
+      --text-dark:        #1A1A2E;
+      --text-body:        #3A3A4A;
+      --text-muted:       #6B6B7E;
+      --text-light:       #9A9AAA;
+
+      /* UI */
+      --border:           #E2DDD4;
+
+      /* Shadows */
+      --shadow-sm:        0 2px 12px rgba(13, 27, 46, 0.08);
+      --shadow-md:        0 8px 32px rgba(13, 27, 46, 0.12);
+      --shadow-lg:        0 20px 60px rgba(13, 27, 46, 0.18);
+      --shadow-gold:      0 4px 18px rgba(196, 150, 58, 0.38);
+
+      /* Typography */
+      --font-display:     'Cormorant Garamond', Georgia, serif;
+      --font-body:        'DM Sans', system-ui, -apple-system, sans-serif;
+
+      /* Border Radius */
+      --radius-sm:        6px;
+      --radius-md:        12px;
+      --radius-lg:        20px;
+
+      /* Spacing */
+      --section-pad:      96px 0;
+      --section-pad-md:   64px 0;
+      --section-pad-sm:   48px 0;
+
+      /* Layout */
+      --container-max:    1080px;
+      --container-narrow: 740px;
+      --gutter:           24px;
+
+      /* Transitions */
+      --transition:       all 0.25s ease;
+      --transition-slow:  all 0.4s ease;
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text-body);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ============================================================
+       LAYOUT UTILITIES
+    ============================================================ */
+    .container {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    .container--narrow {
+      max-width: var(--container-narrow);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    /* ============================================================
+       TYPOGRAPHY UTILITIES
+    ============================================================ */
+    .section-label {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(28px, 4vw, 40px);
+      line-height: 1.15;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+    }
+
+    .section-intro {
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--text-body);
+      max-width: 680px;
+    }
+
+    /* Gold decorative rule */
+    .gold-rule {
+      display: block;
+      width: 48px;
+      height: 2px;
+      background: var(--gold);
+      border-radius: 2px;
+      margin-bottom: 28px;
+    }
+
+    .gold-rule--center { margin-left: auto; margin-right: auto; }
+
+    /* ============================================================
+       BUTTON STYLES — Identical across all site pages
+    ============================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      padding: 16px 34px;
+      border-radius: var(--radius-sm);
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+      white-space: nowrap;
+      line-height: 1;
+    }
+
+    /* Primary — Gold Fill */
+    .btn--primary {
+      background: var(--gold);
+      color: var(--white);
+      box-shadow: var(--shadow-gold);
+    }
+    .btn--primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(196, 150, 58, 0.48);
+    }
+    .btn--primary:active { transform: translateY(0); }
+
+    /* Secondary — Gold Outline */
+    .btn--outline {
+      background: transparent;
+      color: var(--gold);
+      border: 1.5px solid var(--gold);
+    }
+    .btn--outline:hover {
+      background: var(--gold);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    /* White Fill — for dark backgrounds */
+    .btn--white {
+      background: var(--white);
+      color: var(--navy);
+      box-shadow: var(--shadow-md);
+    }
+    .btn--white:hover {
+      background: var(--ivory);
+      transform: translateY(-2px);
+    }
+
+    /* White Outline — for dark backgrounds */
+    .btn--white-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1.5px solid rgba(255,255,255,0.45);
+    }
+    .btn--white-outline:hover {
+      border-color: var(--white);
+      background: rgba(255,255,255,0.08);
+      transform: translateY(-2px);
+    }
+
+    /* Size variants */
+    .btn--large {
+      font-size: 16px;
+      padding: 18px 42px;
+    }
+
+    .btn--small {
+      font-size: 13px;
+      padding: 10px 22px;
+    }
+
+    /* Arrow suffix */
+    .btn--arrow::after {
+      content: '→';
+      font-size: 17px;
+      line-height: 1;
+      transition: transform 0.2s ease;
+    }
+    .btn--arrow:hover::after { transform: translateX(4px); }
+
+
+    /* ============================================================
+       NAVIGATION — Sticky, identical across all pages
+    ============================================================ */
+    .nav {
+      background: var(--navy);
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      box-shadow: 0 2px 20px rgba(6, 78, 59, 0.3);
+    }
+
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+      gap: 24px;
+    }
+
+    /* Brand */
+    .nav__brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      flex-shrink: 0;
+      text-decoration: none;
+    }
+
+    .nav__brand-name {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.01em;
+      line-height: 1.2;
+    }
+
+    .nav__brand-tagline {
+      font-family: var(--font-body);
+      font-size: 9.5px;
+      font-weight: 400;
+      color: var(--gold-pale);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      opacity: 0.7;
+    }
+
+    /* Nav Links */
+    .nav__links {
+      display: none;
+      align-items: center;
+      gap: 2px;
+      flex: 1;
+      justify-content: center;
+    }
+
+    @media (min-width: 960px) {
+      .nav__links { display: flex; }
+    }
+
+    .nav__link {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.72);
+      padding: 6px 14px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .nav__link:hover {
+      color: var(--white);
+      background: rgba(255,255,255,0.07);
+    }
+
+    .nav__link--active {
+      color: var(--white);
+    }
+
+    /* Nav CTA Group */
+    .nav__ctas {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .nav__cta-webinar { display: none; }
+
+    @media (min-width: 640px) {
+      .nav__cta-webinar { display: inline-flex; }
+    }
+
+    /* Mobile Hamburger */
+    .nav__hamburger {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 36px;
+      height: 36px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+    }
+
+    .nav__hamburger:hover { background: rgba(255,255,255,0.08); }
+
+    .nav__hamburger span {
+      display: block;
+      height: 1.5px;
+      width: 100%;
+      background: var(--gold);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    @media (min-width: 960px) {
+      .nav__hamburger { display: none; }
+    }
+
+    /* Mobile Drawer */
+    .nav__drawer {
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      pointer-events: none;
+    }
+
+    .nav__drawer-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(6, 20, 46, 0.65);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .nav__drawer-panel {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: min(320px, 85vw);
+      background: var(--navy-mid);
+      padding: 28px 28px 40px;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .nav__drawer.is-open { pointer-events: all; }
+    .nav__drawer.is-open .nav__drawer-overlay { opacity: 1; }
+    .nav__drawer.is-open .nav__drawer-panel { transform: translateX(0); }
+
+    .nav__drawer-close {
+      align-self: flex-end;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.07);
+      border: none;
+      border-radius: 50%;
+      color: var(--white);
+      font-size: 20px;
+      cursor: pointer;
+      margin-bottom: 32px;
+      transition: var(--transition);
+    }
+
+    .nav__drawer-close:hover { background: rgba(255,255,255,0.14); }
+
+    .nav__drawer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex: 1;
+    }
+
+    .nav__drawer-link {
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.8);
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+    }
+
+    .nav__drawer-link:hover {
+      color: var(--white);
+      background: rgba(255,255,255,0.07);
+    }
+
+    .nav__drawer-ctas {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .nav__drawer-ctas .btn { width: 100%; justify-content: center; }
+
+    /* Desktop Resources Dropdown */
+    .nav__dropdown {
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding-bottom: 14px;
+      margin-bottom: -14px;
+    }
+
+    .nav__dropdown-trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.72);
+      padding: 6px 14px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+      white-space: nowrap;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
+
+    .nav__dropdown-trigger:hover,
+    .nav__dropdown-trigger:focus-visible {
+      color: var(--white);
+      background: rgba(255,255,255,0.07);
+      outline: none;
+    }
+
+    .nav__dropdown-chevron {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-right: 1.5px solid currentColor;
+      border-bottom: 1.5px solid currentColor;
+      transform: rotate(45deg) translateY(-1px);
+      transition: transform 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .nav__dropdown:hover .nav__dropdown-chevron,
+    .nav__dropdown:focus-within .nav__dropdown-chevron {
+      transform: rotate(225deg) translateY(-1px);
+    }
+
+    .nav__dropdown-panel {
+      position: absolute;
+      top: calc(100% - 2px);
+      left: 0;
+      min-width: 220px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-md);
+      padding: 10px;
+      display: none;
+      flex-direction: column;
+      gap: 2px;
+      z-index: 250;
+    }
+
+    .nav__dropdown-panel::before {
+      content: '';
+      position: absolute;
+      top: -14px;
+      left: 0;
+      right: 0;
+      height: 14px;
+      background: transparent;
+    }
+
+    .nav__dropdown:hover .nav__dropdown-panel,
+    .nav__dropdown:focus-within .nav__dropdown-panel {
+      display: flex;
+    }
+
+    .nav__dropdown-link {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-body);
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+    }
+
+    .nav__dropdown-link:hover,
+    .nav__dropdown-link:focus-visible {
+      background: var(--ivory);
+      color: var(--navy);
+      outline: none;
+    }
+
+    .nav__dropdown-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 6px 0;
+    }
+
+    /* Mobile Resources Accordion */
+    .nav__accordion {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .nav__accordion-trigger {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.8);
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      transition: var(--transition);
+    }
+
+    .nav__accordion-trigger:hover,
+    .nav__accordion-trigger:focus-visible {
+      color: var(--white);
+      background: rgba(255,255,255,0.07);
+      outline: none;
+    }
+
+    .nav__accordion-panel {
+      display: none;
+      padding: 4px 0 6px 12px;
+    }
+
+    .nav__accordion-panel.is-open {
+      display: block;
+    }
+
+    .nav__accordion-links {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .nav__accordion-link {
+      font-size: 15px;
+      color: rgba(255,255,255,0.72);
+      padding: 10px 16px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+    }
+
+    .nav__accordion-link:hover,
+    .nav__accordion-link:focus-visible {
+      color: var(--white);
+      background: rgba(255,255,255,0.07);
+      outline: none;
+    }
+
+    .nav__accordion-chevron {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-right: 1.5px solid currentColor;
+      border-bottom: 1.5px solid currentColor;
+      transform: rotate(45deg) translateY(-1px);
+      transition: transform 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .nav__accordion-trigger[aria-expanded="true"] .nav__accordion-chevron {
+      transform: rotate(225deg) translateY(-1px);
+    }
+
+
+    /* ============================================================
+       PAGE HERO — Navy, eyebrow + headline + subheadline
+    ============================================================ */
+    .page-hero {
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+      padding: 96px 0 88px;
+    }
+
+    /* Ambient gold glow */
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -5%;
+      width: 55%;
+      height: 130%;
+      background: radial-gradient(ellipse at center, rgba(196,150,58,0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    /* Subtle noise texture */
+    .page-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0.02;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    .page-hero__inner {
+      position: relative;
+      z-index: 2;
+      max-width: 780px;
+    }
+
+    .page-hero__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .page-hero__eyebrow-line {
+      display: block;
+      width: 32px;
+      height: 1.5px;
+      background: var(--gold);
+      border-radius: 2px;
+    }
+
+    .page-hero__eyebrow-text {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .page-hero__headline {
+      font-family: var(--font-display);
+      font-size: clamp(38px, 6vw, 62px);
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      color: var(--white);
+      margin-bottom: 26px;
+    }
+
+    .page-hero__headline em {
+      font-style: italic;
+      color: var(--gold-pale);
+    }
+
+    .page-hero__subheadline {
+      font-size: clamp(16px, 2vw, 19px);
+      line-height: 1.72;
+      color: rgba(255, 255, 255, 0.68);
+      max-width: 620px;
+      margin-bottom: 44px;
+    }
+
+    .page-hero__cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+
+    /* ============================================================
+       WHO WE ARE — White background, two-column
+    ============================================================ */
+    .who-we-are {
+      background: var(--white);
+      padding: var(--section-pad);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .who-we-are__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+
+    @media (min-width: 820px) {
+      .who-we-are__grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+      }
+    }
+
+    .who-we-are__body {
+      font-size: 17px;
+      line-height: 1.78;
+      color: var(--text-body);
+    }
+
+    .who-we-are__body p + p { margin-top: 18px; }
+
+    .who-we-are__pull {
+      font-family: var(--font-display);
+      font-size: 19px;
+      font-style: italic;
+      color: var(--navy);
+      line-height: 1.55;
+      border-left: 3px solid var(--gold);
+      padding: 6px 0 6px 22px;
+      margin-top: 32px;
+    }
+
+    /* Right column: scope pillars list */
+    .scope-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .scope-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 24px;
+      background: var(--ivory);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      border-left: 3px solid var(--gold);
+    }
+
+    .scope-item__num {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--gold);
+      line-height: 1;
+      opacity: 0.6;
+      flex-shrink: 0;
+      padding-top: 2px;
+    }
+
+    .scope-item__text h3 {
+      font-family: var(--font-display);
+      font-size: 19px;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 5px;
+      line-height: 1.2;
+    }
+
+    .scope-item__text p {
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--text-muted);
+    }
+
+
+    /* ============================================================
+       WHAT MAKES OUR APPROACH DIFFERENT — Ivory, three cards
+    ============================================================ */
+    .approach {
+      background: var(--ivory);
+      padding: var(--section-pad);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .approach__header {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 60px;
+    }
+
+    .approach__header .section-title { margin-bottom: 18px; }
+
+    .approach__intro {
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--text-body);
+    }
+
+    .approach__cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    @media (min-width: 720px) {
+      .approach__cards {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .approach-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 36px 30px 32px;
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .approach-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 30px;
+      right: 30px;
+      height: 2px;
+      background: var(--gold);
+      border-radius: 0 0 2px 2px;
+      opacity: 0.6;
+    }
+
+    .approach-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-3px);
+    }
+
+    .approach-card__pillar {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .approach-card__title {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--text-dark);
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+
+    .approach-card__body {
+      font-size: 15px;
+      line-height: 1.72;
+      color: var(--text-body);
+    }
+
+    .approach-card__items {
+      margin-top: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .approach-card__item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .approach-card__item-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+      margin-top: 6px;
+      opacity: 0.7;
+    }
+
+
+    /* ============================================================
+       WHY FAMILIES WORK WITH US — White, two-column value list
+    ============================================================ */
+    .why-families {
+      background: var(--white);
+      padding: var(--section-pad);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .why-families__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+
+    @media (min-width: 820px) {
+      .why-families__grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+      }
+    }
+
+    .why-families__body {
+      font-size: 17px;
+      line-height: 1.78;
+      color: var(--text-body);
+    }
+
+    .why-families__body p + p { margin-top: 18px; }
+
+    .why-families__link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 32px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--navy);
+      border-bottom: 1.5px solid var(--gold);
+      padding-bottom: 2px;
+      transition: var(--transition);
+    }
+
+    .why-families__link:hover {
+      color: var(--gold);
+    }
+
+    /* Right column: value items */
+    .value-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .value-item {
+      display: flex;
+      gap: 20px;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .value-item:first-child { padding-top: 0; }
+    .value-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .value-item__check {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(196,150,58,0.12);
+      border: 1.5px solid rgba(196,150,58,0.35);
+      flex-shrink: 0;
+      margin-top: 2px;
+      position: relative;
+    }
+
+    .value-item__check::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -60%) rotate(45deg);
+      width: 5px;
+      height: 8px;
+      border-right: 1.5px solid var(--gold);
+      border-bottom: 1.5px solid var(--gold);
+    }
+
+    .value-item__text {
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--text-body);
+    }
+
+    .value-item__text strong {
+      display: block;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+    }
+
+
+    /* ============================================================
+       OUR PHILOSOPHY — Dark navy, centered
+    ============================================================ */
+    .philosophy {
+      background: var(--navy);
+      padding: var(--section-pad);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Ambient glow — left side */
+    .philosophy::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      left: -10%;
+      width: 50%;
+      height: 140%;
+      background: radial-gradient(ellipse at center, rgba(196,150,58,0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .philosophy__inner {
+      position: relative;
+      z-index: 2;
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .philosophy__header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .philosophy__header .section-label {
+      display: block;
+    }
+
+    .philosophy__title {
+      font-family: var(--font-display);
+      font-size: clamp(30px, 4.5vw, 46px);
+      font-weight: 600;
+      line-height: 1.12;
+      color: var(--white);
+      margin-bottom: 22px;
+    }
+
+    .philosophy__title em {
+      font-style: italic;
+      color: var(--gold-pale);
+    }
+
+    .philosophy__lead {
+      font-size: 18px;
+      line-height: 1.72;
+      color: rgba(255,255,255,0.65);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Four belief cards */
+    .philosophy__beliefs {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    @media (min-width: 640px) {
+      .philosophy__beliefs { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .belief-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-md);
+      padding: 28px 26px;
+      transition: var(--transition);
+    }
+
+    .belief-card:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(196,150,58,0.3);
+    }
+
+    .belief-card__num {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--gold);
+      opacity: 0.8;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .belief-card__title {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+
+    .belief-card__body {
+      font-size: 14.5px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.55);
+    }
+
+    /* Philosophy closing quote */
+    .philosophy__quote {
+      margin-top: 52px;
+      padding: 34px 40px;
+      background: rgba(196,150,58,0.08);
+      border: 1px solid rgba(196,150,58,0.2);
+      border-radius: var(--radius-md);
+      text-align: center;
+    }
+
+    .philosophy__quote-text {
+      font-family: var(--font-display);
+      font-size: clamp(18px, 2.5vw, 23px);
+      font-style: italic;
+      font-weight: 500;
+      line-height: 1.55;
+      color: rgba(255,255,255,0.82);
+    }
+
+    .philosophy__quote-attr {
+      display: block;
+      margin-top: 14px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.7;
+    }
+
+
+    /* ============================================================
+       CLOSING CTA — White/ivory, centered
+    ============================================================ */
+    .about-cta {
+      background: var(--ivory-warm);
+      padding: var(--section-pad);
+      border-top: 1px solid var(--border);
+    }
+
+    .about-cta__inner {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .about-cta__title {
+      font-family: var(--font-display);
+      font-size: clamp(30px, 4vw, 44px);
+      font-weight: 600;
+      line-height: 1.12;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+    }
+
+    .about-cta__title em {
+      font-style: italic;
+      color: var(--navy);
+    }
+
+    .about-cta__body {
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--text-body);
+      margin-bottom: 38px;
+    }
+
+    .about-cta__buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
+    }
+
+    .about-cta__sub {
+      margin-top: 28px;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .about-cta__sub a {
+      color: var(--navy);
+      border-bottom: 1px solid rgba(6,78,59,0.3);
+      transition: var(--transition);
+    }
+
+    .about-cta__sub a:hover {
+      color: var(--gold);
+      border-color: var(--gold);
+    }
+
+
+    /* ============================================================
+       FOOTER — Identical across all site pages
+    ============================================================ */
+    .footer {
+      background: var(--navy-mid);
+      padding: 64px 0 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    @media (min-width: 640px) { .footer__grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 960px) { .footer__grid { grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 48px; } }
+
+    .footer__brand-name {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .footer__brand-tagline {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.8;
+      margin-bottom: 14px;
+    }
+
+    .footer__brand-desc {
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.38);
+      max-width: 260px;
+    }
+
+    .footer__col-label {
+      display: block;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.7;
+      margin-bottom: 16px;
+    }
+
+    .footer__links {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .footer__link {
+      font-size: 14px;
+      color: rgba(255,255,255,0.48);
+      transition: color 0.2s ease;
+      line-height: 1.5;
+    }
+
+    .footer__link:hover { color: rgba(255,255,255,0.82); }
+
+    .footer__contact-line {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .footer__contact-icon {
+      font-size: 13px;
+      color: var(--gold);
+      opacity: 0.7;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .footer__contact-text {
+      font-size: 14px;
+      line-height: 1.55;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .footer__cta-link {
+      display: inline-block;
+      margin-top: 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gold);
+      border-bottom: 1px solid rgba(196,150,58,0.35);
+      padding-bottom: 2px;
+      transition: var(--transition);
+    }
+
+    .footer__cta-link:hover {
+      color: var(--gold-light);
+      border-color: var(--gold-light);
+    }
+
+    .footer__bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 28px 0;
+      margin-top: 48px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .footer__copyright {
+      font-size: 13px;
+      color: rgba(255,255,255,0.28);
+    }
+
+    .footer__legal-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer__legal-link {
+      font-size: 13px;
+      color: rgba(255,255,255,0.28);
+      transition: color 0.2s ease;
+    }
+
+    .footer__legal-link:hover { color: rgba(255,255,255,0.55); }
+
+
+    /* ============================================================
+       RESPONSIVE OVERRIDES
+    ============================================================ */
+    @media (max-width: 639px) {
+      .page-hero { padding: 72px 0 64px; }
+      .page-hero__cta { flex-direction: column; align-items: flex-start; }
+
+      .about-cta__buttons { flex-direction: column; align-items: center; }
+      .about-cta__buttons .btn { width: 100%; max-width: 360px; justify-content: center; }
+
+      .philosophy__quote { padding: 28px 24px; }
+      .footer__bottom { flex-direction: column; align-items: flex-start; }
+    }
+
+    /* ============================================================
+       ENTRANCE ANIMATION
+    ============================================================ */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+  </style>
+</head>
+
+<body id="top">
+
+  <!-- ============================================================
+       NAVIGATION — Sticky; "About" marked active
+  ============================================================ -->
+  <header class="nav" role="banner">
+    <div class="container">
+      <div class="nav__inner">
+
+        <!-- Brand -->
+        <a href="index.html" class="nav__brand" aria-label="College Funding Solutions — Home">
+          <span class="nav__brand-name">College Funding Solutions</span>
+          <span class="nav__brand-tagline">Strategic College Planning</span>
+        </a>
+
+        <!-- Desktop nav links -->
+        <nav class="nav__links" aria-label="Primary navigation">
+          <a href="how-it-works.html" class="nav__link">How It Works</a>
+          <a href="our-process.html" class="nav__link">Our Process</a>
+          <a href="pillars.html" class="nav__link">The 3 Pillars</a>
+
+          <!-- Resources dropdown -->
+          <div class="nav__dropdown" role="navigation" aria-label="Resources submenu">
+            <button class="nav__dropdown-trigger" aria-haspopup="true" aria-expanded="false" id="resources-dropdown-btn" type="button">
+              Resources
+              <span class="nav__dropdown-chevron" aria-hidden="true"></span>
+            </button>
+            <div class="nav__dropdown-panel" role="menu" aria-labelledby="resources-dropdown-btn">
+              <a href="blogs.html" class="nav__dropdown-link" role="menuitem">Blogs</a>
+              <a href="articles.html" class="nav__dropdown-link" role="menuitem">Articles</a>
+              <div class="nav__dropdown-divider" role="separator" aria-hidden="true"></div>
+              <a href="timeline.html" class="nav__dropdown-link" role="menuitem">Timeline</a>
+              <a href="packages.html" class="nav__dropdown-link" role="menuitem">Packages</a>
+              <div class="nav__dropdown-divider" role="separator" aria-hidden="true"></div>
+              <a href="webinar-library.html" class="nav__dropdown-link" role="menuitem">Webinars</a>
+            </div>
+          </div>
+
+          <a href="about.html" class="nav__link nav__link--active" aria-current="page">About</a>
+        </nav>
+
+        <!-- Desktop CTAs -->
+        <div class="nav__ctas">
+          <a href="webinar-library.html" class="btn btn--outline btn--small nav__cta-webinar">Free Webinar</a>
+          <a href="contact.html" class="btn btn--primary btn--small">Schedule a Consultation</a>
+        </div>
+
+        <!-- Mobile hamburger -->
+        <button class="nav__hamburger" id="nav-toggle" aria-label="Open navigation menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="nav__drawer" id="nav-drawer" role="dialog" aria-label="Navigation menu" aria-modal="true">
+    <div class="nav__drawer-overlay" id="nav-overlay"></div>
+    <div class="nav__drawer-panel">
+      <button class="nav__drawer-close" id="nav-close" aria-label="Close navigation">✕</button>
+      <nav class="nav__drawer-links" aria-label="Mobile navigation">
+        <a href="how-it-works.html" class="nav__drawer-link">How It Works</a>
+        <a href="our-process.html" class="nav__drawer-link">Our Process</a>
+        <a href="pillars.html" class="nav__drawer-link">The 3 Pillars</a>
+
+        <!-- Resources accordion -->
+        <div class="nav__accordion">
+          <button class="nav__accordion-trigger" aria-expanded="false" aria-controls="res-accordion-panel" id="res-accordion-btn" type="button">
+            Resources <span class="nav__accordion-chevron" aria-hidden="true"></span>
+          </button>
+          <div class="nav__accordion-panel" id="res-accordion-panel" role="region" aria-labelledby="res-accordion-btn">
+            <div class="nav__accordion-links">
+              <a href="blogs.html" class="nav__accordion-link">Blogs</a>
+              <a href="articles.html" class="nav__accordion-link">Articles</a>
+              <a href="timeline.html" class="nav__accordion-link">Timeline</a>
+              <a href="packages.html" class="nav__accordion-link">Packages</a>
+              <a href="webinar-library.html" class="nav__accordion-link">Webinars</a>
+            </div>
+          </div>
+        </div>
+
+        <a href="about.html" class="nav__drawer-link" aria-current="page">About</a>
+        <a href="contact.html" class="nav__drawer-link">Contact</a>
+      </nav>
+      <div class="nav__drawer-ctas">
+        <a href="webinar-library.html" class="btn btn--outline">Free Webinar</a>
+        <a href="contact.html" class="btn btn--primary">Schedule a Consultation</a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- ============================================================
+         HERO — Navy; sets tone for the About page
+    ============================================================ -->
+    <section class="page-hero" aria-labelledby="about-hero-heading">
+      <div class="container">
+        <div class="page-hero__inner">
+
+          <div class="page-hero__eyebrow">
+            <span class="page-hero__eyebrow-line" aria-hidden="true"></span>
+            <span class="page-hero__eyebrow-text">About College Funding Solutions</span>
+          </div>
+
+          <h1 class="page-hero__headline" id="about-hero-heading">
+            Families Deserve <em>Clear Guidance</em><br>Through Every Part of This Process
+          </h1>
+
+          <p class="page-hero__subheadline">
+            College planning involves far more than applications and admissions. It requires a coordinated strategy across academic preparation, student development, and financial positioning — built deliberately, starting well before senior year.
+          </p>
+
+          <div class="page-hero__cta">
+            <a href="contact.html" class="btn btn--primary btn--large btn--arrow">Schedule a Consultation</a>
+            <a href="how-it-works.html" class="btn btn--white-outline btn--large">See How It Works</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         WHO WE ARE — White; two-column: copy + scope pillars
+    ============================================================ -->
+    <section class="who-we-are" id="who-we-are" aria-labelledby="who-heading">
+      <div class="container">
+        <div class="who-we-are__grid">
+
+          <!-- Left: Narrative copy -->
+          <div class="who-we-are__text">
+            <span class="section-label">Who We Are</span>
+            <span class="gold-rule" aria-hidden="true"></span>
+            <h2 class="section-title" id="who-heading">
+              An Advisor-Led Firm Built Around the Full College Journey
+            </h2>
+
+            <div class="who-we-are__body">
+              <p>
+                College Funding Solutions is a college planning advisory firm that works with families from 9th grade through enrollment day. We help parents and students navigate the college process with more structure, more clarity, and more confidence than they would have going through it on their own.
+              </p>
+              <p>
+                We built this firm because the college planning process is genuinely more complex than most families realize — and because the consequences of poor planning are real, lasting, and largely avoidable with the right guidance in place.
+              </p>
+              <p>
+                The college process is not just about where your student applies. It is about how they position themselves academically. It is about how they develop as a person and what story they tell. It is about understanding how financial aid actually works — and making informed decisions before the deadline closes every option you didn't know you had.
+              </p>
+            </div>
+
+            <blockquote class="who-we-are__pull">
+              "We treat college planning as what it actually is: a multi-year, multi-dimensional challenge that rewards families who approach it with intention."
+            </blockquote>
+          </div>
+
+          <!-- Right: Three scope items -->
+          <div class="scope-list" role="list" aria-label="Three dimensions of college planning">
+
+            <div class="scope-item" role="listitem">
+              <span class="scope-item__num" aria-hidden="true">01</span>
+              <div class="scope-item__text">
+                <h3>Academic Preparation</h3>
+                <p>Course selection, GPA trajectory, standardized testing strategy, and building an academic record that opens doors — not one that quietly closes them.</p>
+              </div>
+            </div>
+
+            <div class="scope-item" role="listitem">
+              <span class="scope-item__num" aria-hidden="true">02</span>
+              <div class="scope-item__text">
+                <h3>Student Development</h3>
+                <p>Activities, leadership, community engagement, and personal narrative — developing a student profile that communicates character, not just achievement.</p>
+              </div>
+            </div>
+
+            <div class="scope-item" role="listitem">
+              <span class="scope-item__num" aria-hidden="true">03</span>
+              <div class="scope-item__text">
+                <h3>Financial Strategy</h3>
+                <p>FAFSA, CSS Profile, merit aid positioning, award letter analysis, and helping families understand what college actually costs — before they commit to it.</p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         WHAT MAKES OUR APPROACH DIFFERENT — Ivory; three pillar cards
+    ============================================================ -->
+    <section class="approach" id="our-approach" aria-labelledby="approach-heading">
+      <div class="container">
+
+        <div class="approach__header">
+          <span class="section-label">Our Approach</span>
+          <span class="gold-rule gold-rule--center" aria-hidden="true"></span>
+          <h2 class="section-title" id="approach-heading">
+            What Makes Our Approach Different
+          </h2>
+          <p class="approach__intro">
+            Most college planning resources address one piece of the process in isolation. We address all three — simultaneously and in coordination — because that is how the college process actually works.
+          </p>
+        </div>
+
+        <div class="approach__cards" role="list">
+
+          <!-- Card 1: Academic -->
+          <div class="approach-card" role="listitem">
+            <span class="approach-card__pillar">Pillar One</span>
+            <h3 class="approach-card__title">Academic Guidance</h3>
+            <p class="approach-card__body">
+              The academic record your student builds between 9th and 12th grade is the foundation of both admissions competitiveness and scholarship eligibility. We help families understand what strong positioning looks like — and how to build it with intention.
+            </p>
+            <div class="approach-card__items" role="list" aria-label="Academic guidance focus areas">
+              <div class="approach-card__item" role="listitem">
+                <span class="approach-card__item-dot" aria-hidden="true"></span>
+                Course rigor and GPA management by grade year
+              </div>
+              <div class="approach-card__item" role="listitem">
+                <span class="approach-card__item-dot" aria-hidden="true"></span>
+                Test strategy, timing, and score positioning
+              </div>
+              <div class="approach-card__item" role="listitem">
+                <span class="approach-card__item-dot" aria-hidden="true"></span>
+                School list development and admissions fit analysis
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Social -->
+          <div class="approach-card" role="listitem">
+            <span class="approach-card__pillar">Pillar Two</span>
+            <h3 class="approach-card__title">Social Fit &amp; Student Readiness</h3>
+            <p class="approach-card__body">
+              Admissions decisions are about who your student is, not just what they have achieved. We help families develop an authentic, coherent student narrative that translates naturally into compelling applications and a strong sense of personal direction.
+            </p>
+            <div class="approach-card__items" role="list" aria-label="Social strategy focus areas">
+              <div class="approach-card__item" role="listitem">
+                <span class="approach-card__item-dot" aria-hidden="true"></span>
+                Extracurricular depth and leadership development
+              </div>
+              <div class="approach-card__item" role="listitem">
+                <span class="approach-card__item-dot" aria-hidden="true"></span>
+                Personal narrative and application story
+              </div>
+              <div class="approach-card__item" role="listitem">
+                <span class="approach-card__item-dot" aria-hidden="true"></span>
+                Campus culture fit and long-term student readiness
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Financial -->
+          <div class="approach-card" role="listitem">
+            <span class="approach-card__pillar">Pillar Three</span>
+            <h3 class="approach-card__title">Financial Strategy &amp; Cost Clarity</h3>
+            <p class="approach-card__body">
+              Understanding how financial aid and merit scholarships actually work — and positioning your family accordingly — can meaningfully change what college costs. We help families navigate this process with clarity, not guesswork.
+            </p>
+            <div class="approach-card__items" role="list" aria-label="Financial strategy focus areas">
+              <div class="approach-card__item" role="listitem">
+                <span class="approach-card__item-dot" aria-hidden="true"></span>
+                FAFSA and CSS Profile guidance and preparation
+              </div>
+              <div class="approach-card__item" role="listitem">
+                <span class="approach-card__item-dot" aria-hidden="true"></span>
+                Merit aid positioning and school selection strategy
+              </div>
+              <div class="approach-card__item" role="listitem">
+                <span class="approach-card__item-dot" aria-hidden="true"></span>
+                Award letter analysis and enrollment decision support
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         WHY FAMILIES WORK WITH US — White; copy + value checklist
+    ============================================================ -->
+    <section class="why-families" id="why-families" aria-labelledby="why-heading">
+      <div class="container">
+        <div class="why-families__grid">
+
+          <!-- Left: Copy -->
+          <div class="why-families__text">
+            <span class="section-label">Why Families Work With Us</span>
+            <span class="gold-rule" aria-hidden="true"></span>
+            <h2 class="section-title" id="why-heading">
+              Structure and Clarity Where the Process Offers Neither
+            </h2>
+
+            <div class="why-families__body">
+              <p>
+                The college planning process is full of information — and most of it is contradictory, incomplete, or not tailored to your student's actual situation. Families come to us not because they haven't tried to figure it out, but because the volume and complexity of what they're trying to figure out has exceeded what they can do alone.
+              </p>
+              <p>
+                What we offer is not more information. It is a structured, advisor-led process that turns the complexity of college planning into a clear, sequenced plan — built around your family's goals, your student's profile, and the financial reality you are working within.
+              </p>
+              <p>
+                Families who work with us from 9th grade tend to arrive at enrollment day with more options, better outcomes, and a clear understanding of the decisions they made and why. Families who come to us later still benefit — there is meaningful work we can do at every stage.
+              </p>
+            </div>
+
+            <a href="our-process.html" class="why-families__link btn--arrow">See the Year-by-Year Planning Process</a>
+          </div>
+
+          <!-- Right: Value checklist -->
+          <div class="value-list" role="list" aria-label="Benefits of working with College Funding Solutions">
+
+            <div class="value-item" role="listitem">
+              <div class="value-item__check" aria-hidden="true"></div>
+              <div class="value-item__text">
+                <strong>Reducing confusion in the college process</strong>
+                The admissions and financial aid systems are genuinely complex. We translate them into language that makes sense — and decisions that are grounded in how they actually work.
+              </div>
+            </div>
+
+            <div class="value-item" role="listitem">
+              <div class="value-item__check" aria-hidden="true"></div>
+              <div class="value-item__text">
+                <strong>Helping families make informed decisions</strong>
+                Every major decision in the college process has downstream consequences. We make sure families understand those consequences before they commit — not after.
+              </div>
+            </div>
+
+            <div class="value-item" role="listitem">
+              <div class="value-item__check" aria-hidden="true"></div>
+              <div class="value-item__text">
+                <strong>Uncovering opportunities families often miss</strong>
+                Merit aid, need-based aid, and scholarship opportunities are rarely surfaced by schools themselves. We identify them — and help position your student to be competitive for them.
+              </div>
+            </div>
+
+            <div class="value-item" role="listitem">
+              <div class="value-item__check" aria-hidden="true"></div>
+              <div class="value-item__text">
+                <strong>Creating structure across a four-year process</strong>
+                The college journey spans multiple years and hundreds of moving parts. We bring clarity and sequencing to a process that most families experience as reactive and overwhelming.
+              </div>
+            </div>
+
+            <div class="value-item" role="listitem">
+              <div class="value-item__check" aria-hidden="true"></div>
+              <div class="value-item__text">
+                <strong>Giving parents and students genuine confidence</strong>
+                When families know what to do, when to do it, and why — the stress of the college process drops considerably. That clarity is not a side benefit. It is a core part of what we deliver.
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         OUR PHILOSOPHY — Dark navy; belief cards + closing quote
+    ============================================================ -->
+    <section class="philosophy" id="our-philosophy" aria-labelledby="philosophy-heading">
+      <div class="container">
+        <div class="philosophy__inner">
+
+          <div class="philosophy__header">
+            <span class="section-label">Our Philosophy</span>
+            <h2 class="philosophy__title" id="philosophy-heading">
+              Guidance That Is <em>Strategic,<br>Personalized, and Honest</em>
+            </h2>
+            <p class="philosophy__lead">
+              The college process is one of the most consequential planning exercises a family will undertake. We approach it accordingly — with the seriousness, depth, and care it deserves.
+            </p>
+          </div>
+
+          <div class="philosophy__beliefs" role="list" aria-label="Our guiding beliefs">
+
+            <div class="belief-card" role="listitem">
+              <span class="belief-card__num">Belief One</span>
+              <h3 class="belief-card__title">Every Family's Situation Is Different</h3>
+              <p class="belief-card__body">
+                There is no one-size-fits-all path through the college process. A strategy that works well for one family may not serve another. Effective guidance starts with listening — to your goals, your circumstances, and your student's genuine strengths and interests.
+              </p>
+            </div>
+
+            <div class="belief-card" role="listitem">
+              <span class="belief-card__num">Belief Two</span>
+              <h3 class="belief-card__title">Thoughtful Planning Matters</h3>
+              <p class="belief-card__body">
+                The families who navigate this process most successfully are not the ones who work hardest at the end. They are the ones who planned deliberately at the beginning. Timing matters. Sequencing matters. Early decisions close or open doors that come later.
+              </p>
+            </div>
+
+            <div class="belief-card" role="listitem">
+              <span class="belief-card__num">Belief Three</span>
+              <h3 class="belief-card__title">College Decisions Extend Well Beyond Four Years</h3>
+              <p class="belief-card__body">
+                Where a student attends college — and at what cost — shapes the financial and professional trajectory of their early adult life. These decisions deserve the same seriousness families bring to any major long-term investment. We help families make them with both clarity and confidence.
+              </p>
+            </div>
+
+            <div class="belief-card" role="listitem">
+              <span class="belief-card__num">Belief Four</span>
+              <h3 class="belief-card__title">Honesty Is the Foundation of Good Guidance</h3>
+              <p class="belief-card__body">
+                No ethical advisor promises specific admissions results, scholarship amounts, or financial aid outcomes. We don't make those promises. What we do promise is honest, thorough guidance — built around what is actually possible for your family and your student.
+              </p>
+            </div>
+
+          </div>
+
+          <blockquote class="philosophy__quote">
+            <p class="philosophy__quote-text">
+              "Our goal is not to take the process off your plate. It is to walk through it with you — so that every decision you make is an informed one, and every opportunity available to your family is one you actually know about."
+            </p>
+            <span class="philosophy__quote-attr">College Funding Solutions</span>
+          </blockquote>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         CLOSING CTA — Ivory-warm; three conversion paths
+    ============================================================ -->
+    <section class="about-cta" aria-labelledby="about-cta-heading">
+      <div class="container">
+        <div class="about-cta__inner">
+
+          <span class="section-label">Ready to Get Started?</span>
+          <span class="gold-rule gold-rule--center" aria-hidden="true"></span>
+
+          <h2 class="about-cta__title" id="about-cta-heading">
+            The First Step Is<br><em>A Conversation</em>
+          </h2>
+
+          <p class="about-cta__body">
+            Whether your student is in 9th grade just beginning to think about college, or in 12th grade navigating applications and award letters right now, there is meaningful work we can do together. Tell us where your family is — and we'll show you what a clear, structured strategy looks like from here.
+          </p>
+
+          <div class="about-cta__buttons">
+            <a href="contact.html" class="btn btn--primary btn--large btn--arrow">Schedule a Consultation</a>
+            <a href="how-it-works.html" class="btn btn--outline btn--large">Explore the Process</a>
+            <a href="pillars.html" class="btn btn--outline btn--large">See the 3 Pillars</a>
+          </div>
+
+          <p class="about-cta__sub">
+            Prefer to start with a webinar? <a href="webinar-library.html">Join our free session →</a>
+          </p>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ============================================================
+       FOOTER — Identical across all site pages
+  ============================================================ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+
+      <div class="footer__grid">
+
+        <!-- Column 1: Brand -->
+        <div class="footer__brand">
+          <div class="footer__brand-name">College Funding Solutions</div>
+          <div class="footer__brand-tagline">Strategic College Planning</div>
+          <p class="footer__brand-desc">
+            Expert, advisor-led guidance for families navigating the college planning process — from freshman year through enrollment.
+          </p>
+        </div>
+
+        <!-- Column 2: Site Pages -->
+        <div class="footer__col">
+          <span class="footer__col-label">Navigate</span>
+          <nav class="footer__links" aria-label="Footer navigation">
+            <a href="index.html"        class="footer__link">Home</a>
+            <a href="how-it-works.html" class="footer__link">How It Works</a>
+            <a href="our-process.html"  class="footer__link">Our Process</a>
+            <a href="pillars.html"      class="footer__link">The 3 Pillars</a>
+            <a href="about.html"        class="footer__link">About</a>
+          </nav>
+        </div>
+
+        <!-- Column 3: Resources -->
+        <div class="footer__col">
+          <span class="footer__col-label">Resources</span>
+          <nav class="footer__links" aria-label="Resources navigation">
+            <a href="blogs.html"           class="footer__link">Blog Library</a>
+            <a href="articles.html"        class="footer__link">Articles &amp; Guides</a>
+            <a href="timeline.html"        class="footer__link">Planning Timeline</a>
+            <a href="packages.html"        class="footer__link">Our Packages</a>
+            <a href="webinar-library.html" class="footer__link">Free Webinars</a>
+            <a href="contact.html"         class="footer__link">Contact Us</a>
+          </nav>
+        </div>
+
+        <!-- Column 4: Contact -->
+        <div class="footer__col">
+          <span class="footer__col-label">Get in Touch</span>
+
+          <div class="footer__contact-line">
+            <span class="footer__contact-icon" aria-hidden="true">✉</span>
+            <span class="footer__contact-text">info@collegefundingsolutions.com</span>
+          </div>
+
+          <div class="footer__contact-line">
+            <span class="footer__contact-icon" aria-hidden="true">◎</span>
+            <span class="footer__contact-text">
+              Serving families nationwide<br>via virtual consultation
+            </span>
+          </div>
+
+          <a href="contact.html" class="footer__cta-link">Schedule a Consultation</a>
+        </div>
+
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="footer__bottom">
+        <span class="footer__copyright">
+          &copy; <span id="footer-year"></span> College Funding Solutions. All rights reserved.
+        </span>
+        <div class="footer__legal-links">
+          <a href="privacy.html" class="footer__legal-link">Privacy Policy</a>
+          <a href="terms.html"   class="footer__legal-link">Terms of Use</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- ============================================================
+       JAVASCRIPT — Nav drawer + resources accordion + footer year
+  ============================================================ -->
+  <script>
+    // Dynamic copyright year
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+    // Mobile navigation drawer
+    const toggle   = document.getElementById('nav-toggle');
+    const drawer   = document.getElementById('nav-drawer');
+    const overlay  = document.getElementById('nav-overlay');
+    const closeBtn = document.getElementById('nav-close');
+
+    function openDrawer() {
+      drawer.classList.add('is-open');
+      toggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDrawer() {
+      drawer.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    toggle.addEventListener('click', openDrawer);
+    closeBtn.addEventListener('click', closeDrawer);
+    overlay.addEventListener('click', closeDrawer);
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && drawer.classList.contains('is-open')) closeDrawer();
+    });
+
+    // Close drawer when a link is tapped
+    drawer.querySelectorAll('.nav__drawer-link, .nav__accordion-link, .nav__drawer-ctas .btn').forEach(link => {
+      link.addEventListener('click', closeDrawer);
+    });
+
+    // Resources accordion (mobile drawer)
+    const resAccordionBtn   = document.getElementById('res-accordion-btn');
+    const resAccordionPanel = document.getElementById('res-accordion-panel');
+
+    if (resAccordionBtn && resAccordionPanel) {
+      resAccordionBtn.addEventListener('click', function () {
+        const isOpen = resAccordionPanel.classList.toggle('is-open');
+        resAccordionBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+    }
+  </script>
+
+</body>
+</html>
