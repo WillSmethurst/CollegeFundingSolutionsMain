@@ -131,6 +131,7 @@
     .nav__link { font-family: var(--font-body); font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.72); padding: 6px 14px; border-radius: var(--radius-sm); transition: var(--transition); white-space: nowrap; }
     .nav__link:hover { color: var(--white); background: rgba(255,255,255,0.07); }
     .nav__ctas { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    @media (max-width: 959px) { .nav__ctas { display: none; } }
     .nav__cta-webinar { display: none; }
     @media (min-width: 640px) { .nav__cta-webinar { display: inline-flex; } }
     .nav__hamburger { display: flex; flex-direction: column; justify-content: center; gap: 5px; width: 36px; height: 36px; background: none; border: none; cursor: pointer; padding: 6px; border-radius: var(--radius-sm); transition: var(--transition); }
@@ -879,7 +880,6 @@
           </div>
         </div>
         <a href="about.html"  class="nav__drawer-link">About</a>
-        <a href="contact.html" class="nav__drawer-link">Contact</a>
       </nav>
       <div class="nav__drawer-ctas">
         <a href="webinar-library.html"  class="btn btn--outline">Free Webinar</a>
