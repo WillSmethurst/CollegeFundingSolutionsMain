@@ -340,7 +340,6 @@
       gap: 10px;
       flex-shrink: 0;
     }
-    @media (max-width: 959px) { .nav__ctas { display: none; } }
 
     .nav__cta-webinar {
       display: none;
@@ -1052,11 +1051,6 @@
       user-select: none;
     }
 
-    .pillar-card[data-num="03"]::after {
-      right: 22px;
-      font-size: 96px;
-    }
-
     .pillar-card:hover {
       transform: translateY(-6px);
       box-shadow: var(--shadow-md);
@@ -1519,7 +1513,10 @@
        ═══════════════════════════════════════════════════════════
     ============================================================ */
     .webinar-invite {
-  background: var(--navy);
+  background-image: url('images/graduation-webinar-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   padding: var(--section-pad);
   position: relative;
   overflow: hidden;
@@ -1534,6 +1531,16 @@
       height: 500px;
       border-radius: 50%;
       background: radial-gradient(circle, rgba(196, 150, 58, 0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    /* Dark overlay — sits between background image and all content */
+    .webinar-invite::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 1;
       pointer-events: none;
     }
 
@@ -1921,7 +1928,7 @@
       <!-- Desktop CTAs -->
       <div class="nav__ctas">
         <a href="webinar-library.html" class="btn btn--outline btn--small nav__cta-webinar">Free Webinar</a>
-        <a href="https://meetings-na2.hubspot.com/will-smethurst/cfs-website-meeting" class="btn btn--primary btn--small" target="_blank" rel="noopener">Schedule a Consultation</a>
+        <a href="contact.html" class="btn btn--primary btn--small">Schedule a Consultation</a>
       </div>
 
       <!-- Mobile Hamburger -->
@@ -1961,10 +1968,11 @@
   </div>
 </div>
       <a href="about.html" class="nav__drawer-link">About</a>
+      <a href="contact.html" class="nav__drawer-link">Contact</a>
     </nav>
     <div class="nav__drawer-ctas">
       <a href="webinar-library.html" class="btn btn--outline">Free Webinar</a>
-      <a href="https://meetings-na2.hubspot.com/will-smethurst/cfs-website-meeting" class="btn btn--primary" target="_blank" rel="noopener">Schedule a Consultation</a>
+      <a href="contact.html" class="btn btn--primary">Schedule a Consultation</a>
     </div>
   </div>
 </div>
@@ -2008,8 +2016,8 @@
 
             <!-- CTAs -->
             <div class="hero__ctas">
-              <a href="https://meetings-na2.hubspot.com/will-smethurst/cfs-website-meeting" class="btn btn--white btn--large btn--arrow" target="_blank" rel="noopener">Schedule a Consultation</a>
-              <a href="webinar-registration.html?return_to=index.html" class="btn btn--white-outline btn--large">Register for Free Webinar</a>
+              <a href="contact.html" class="btn btn--white btn--large btn--arrow">Schedule a Consultation</a>
+              <a href="webinar-library.html" class="btn btn--white-outline btn--large">Register for Free Webinar</a>
             </div>
 
             <!-- Micro-copy qualifier -->
@@ -2046,12 +2054,12 @@
         <div class="trust-bar__grid" role="list">
 
           <div class="trust-bar__item" role="listitem">
-            <span class="trust-bar__value" aria-label="17,000 plus">17,000+</span>
+            <span class="trust-bar__value" aria-label="500 plus">500+</span>
             <span class="trust-bar__label">Families Guided Through<br>the College Process</span>
           </div>
 
           <div class="trust-bar__item" role="listitem">
-            <span class="trust-bar__value">30+</span>
+            <span class="trust-bar__value">15+</span>
             <span class="trust-bar__label">Years of College<br>Planning Experience</span>
           </div>
 
@@ -2169,7 +2177,7 @@
         </div>
 
         <div class="pillars__cta">
-          <a href="pillars.html" class="btn btn--outline btn--arrow">Explore Our Three-Pillar Approach</a>
+          <a href="cfs_expertise.html" class="btn btn--outline btn--arrow">Explore Our Three-Pillar Approach</a>
         </div>
 
       </div>
@@ -2354,7 +2362,7 @@
         </div>
 
         <div class="timeline-teaser__cta">
-          <a href="timeline.html" class="btn btn--outline btn--arrow">See the Full Year-by-Year Process</a>
+          <a href="cfs_our_process.html" class="btn btn--outline btn--arrow">See the Full Year-by-Year Process</a>
         </div>
 
       </div>
@@ -2477,7 +2485,7 @@
             <!-- CTAs -->
             <div class="webinar-invite__ctas">
               <a href="webinar-library.html" class="btn btn--primary btn--large btn--arrow">Reserve Your Spot — It's Free</a>
-              <a href="https://meetings-na2.hubspot.com/will-smethurst/cfs-website-meeting" class="btn btn--white-outline btn--large" target="_blank" rel="noopener">Schedule a Consultation Instead</a>
+              <a href="contact.html" class="btn btn--white-outline btn--large">Schedule a Consultation Instead</a>
             </div>
 
           </div>
@@ -2505,7 +2513,7 @@
           </p>
 
           <div class="final-cta__ctas">
-            <a href="https://meetings-na2.hubspot.com/will-smethurst/cfs-website-meeting" class="btn btn--primary btn--large btn--arrow" target="_blank" rel="noopener">Schedule a Consultation</a>
+            <a href="contact.html" class="btn btn--primary btn--large btn--arrow">Schedule a Consultation</a>
             <a href="webinar-library.html" class="btn btn--outline btn--large">Join the Free Webinar</a>
           </div>
 
@@ -2553,11 +2561,11 @@
         <div class="footer__col">
           <span class="footer__col-label">Resources</span>
           <nav class="footer__links" aria-label="Resources navigation">
-            <a href="blogs.html" class="footer__link">Blogs</a>
-            <a href="articles.html" class="footer__link">Articles</a>
-            <a href="timeline.html" class="footer__link">Timeline</a>
+            <a href="resources.html" class="footer__link">Resource Library</a>
+            <a href="resources.html#guidebook" class="footer__link">Free Guidebook</a>
+            <a href="resources.html#articles" class="footer__link">Articles &amp; Guides</a>
             <a href="webinar-library.html" class="footer__link">Free Webinar</a>
-            <a href="packages.html" class="footer__link">Packages</a>
+            <a href="contact.html" class="footer__link">Contact Us</a>
           </nav>
         </div>
 
@@ -2580,7 +2588,7 @@
             </span>
           </div>
 
-          <a href="https://meetings-na2.hubspot.com/will-smethurst/cfs-website-meeting" class="footer__cta-link" target="_blank" rel="noopener">Schedule a Consultation</a>
+          <a href="contact.html" class="footer__cta-link">Schedule a Consultation</a>
         </div>
 
       </div>
