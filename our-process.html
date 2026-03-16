@@ -385,7 +385,7 @@
         .nav__drawer-ctas .btn { width: 100%; justify-content: center; }
 
     /* Desktop Resources Dropdown */
-        .nav__dropdown {
+    .nav__dropdown {
       position: relative;
       display: flex;
       align-items: center;
@@ -396,57 +396,63 @@
     .nav__dropdown-trigger {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 5px;
       font-family: var(--font-body);
       font-size: 14px;
       font-weight: 500;
       color: rgba(255, 255, 255, 0.72);
       padding: 6px 14px;
       border-radius: var(--radius-sm);
-      transition: var(--transition);
-      white-space: nowrap;
-      background: transparent;
+      background: none;
       border: none;
       cursor: pointer;
+      transition: var(--transition);
+      white-space: nowrap;
+      line-height: 1.7;
+      letter-spacing: 0;
     }
 
     .nav__dropdown-trigger:hover,
-    .nav__dropdown-trigger:focus-visible {
+    .nav__dropdown:hover .nav__dropdown-trigger,
+    .nav__dropdown:focus-within .nav__dropdown-trigger {
       color: var(--white);
-      background: rgba(255,255,255,0.07);
-      outline: none;
+      background: rgba(255, 255, 255, 0.07);
     }
 
     .nav__dropdown-chevron {
       display: inline-block;
-      width: 8px;
-      height: 8px;
-      border-right: 1.5px solid currentColor;
-      border-bottom: 1.5px solid currentColor;
-      transform: rotate(45deg) translateY(-1px);
-      transition: transform 0.2s ease;
+      width: 10px;
+      height: 10px;
       flex-shrink: 0;
+      opacity: 0.55;
+      transition: transform 0.22s ease, opacity 0.22s ease;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23ffffff' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
     }
 
     .nav__dropdown:hover .nav__dropdown-chevron,
     .nav__dropdown:focus-within .nav__dropdown-chevron {
-      transform: rotate(225deg) translateY(-1px);
+      transform: rotate(180deg);
+      opacity: 0.9;
     }
 
     .nav__dropdown-panel {
       position: absolute;
       top: calc(100% - 2px);
-      left: 0;
-      min-width: 220px;
-      background: var(--white);
-      border: 1px solid var(--border);
+      left: 50%;
+      transform: translateX(-50%) translateY(0);
+      min-width: 180px;
+      background: var(--navy);
+      border: 1px solid rgba(255, 255, 255, 0.09);
       border-radius: var(--radius-md);
-      box-shadow: var(--shadow-md);
-      padding: 10px;
-      display: none;
-      flex-direction: column;
-      gap: 2px;
-      z-index: 250;
+      box-shadow: 0 12px 40px rgba(6, 20, 46, 0.38), 0 2px 8px rgba(6, 20, 46, 0.18);
+      padding: 8px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+      z-index: 400;
     }
 
     .nav__dropdown-panel::before {
@@ -461,30 +467,35 @@
 
     .nav__dropdown:hover .nav__dropdown-panel,
     .nav__dropdown:focus-within .nav__dropdown-panel {
-      display: flex;
+      opacity: 1;
+      pointer-events: all;
     }
 
     .nav__dropdown-link {
       display: block;
+      font-family: var(--font-body);
       font-size: 14px;
-      font-weight: 500;
-      color: var(--text-body);
-      padding: 10px 12px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.68);
+      padding: 9px 16px;
       border-radius: var(--radius-sm);
       transition: var(--transition);
+      white-space: nowrap;
+      text-decoration: none;
     }
 
-    .nav__dropdown-link:hover,
-    .nav__dropdown-link:focus-visible {
-      background: var(--ivory);
-      color: var(--navy);
-      outline: none;
+    .nav__dropdown-link:hover {
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.07);
+      padding-left: 20px;
+      border-left: 2px solid var(--gold);
+      margin-left: -2px;
     }
 
     .nav__dropdown-divider {
       height: 1px;
-      background: var(--border);
-      margin: 6px 0;
+      background: rgba(255, 255, 255, 0.06);
+      margin: 4px 8px;
     }
 
     /* Mobile Resources Accordion */
