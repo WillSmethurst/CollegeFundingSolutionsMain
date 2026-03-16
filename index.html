@@ -1094,7 +1094,7 @@
        ═══════════════════════════════════════════════════════════
     ============================================================ */
     .different {
-      background: var(--navy);
+      background: linear-gradient(148deg, #032c1e 0%, #053d2c 30%, #064E3B 58%, #043526 85%, #021f16 100%);
       padding: var(--section-pad);
       position: relative;
       overflow: hidden;
@@ -1111,6 +1111,36 @@
       border-radius: 50%;
       background: radial-gradient(circle, rgba(196, 150, 58, 0.06) 0%, transparent 68%);
       pointer-events: none;
+    }
+
+    /* Secondary depth glow — bottom-left */
+    .different__glow-secondary {
+      position: absolute;
+      bottom: -20%;
+      left: -10%;
+      width: 480px;
+      height: 480px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(3, 60, 38, 0.65) 0%, transparent 65%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Strategic network — inline SVG layer, bleeds past section edges */
+    .different__network {
+      position: absolute;
+      top: -80px;
+      bottom: -80px;
+      left: -80px;
+      right: -80px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .different__network svg {
+      display: block;
+      width: 100%;
+      height: 100%;
     }
 
     .different__inner {
@@ -2188,6 +2218,140 @@
          HOW WE'RE DIFFERENT — Dark anchor section
     ============================================================ -->
     <section class="different" aria-labelledby="different-heading">
+
+      <!-- Secondary depth glow -->
+      <div class="different__glow-secondary" aria-hidden="true"></div>
+
+      <!-- Strategic network background — inline SVG for guaranteed rendering -->
+      <div class="different__network" aria-hidden="true">
+        <svg viewBox="0 0 1600 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+
+          <!-- ── Network lines — muted gold, element-level opacity ── -->
+          <g stroke="#C4963A" fill="none">
+
+            <!-- Far-left edge into left cluster -->
+            <line x1="-10" y1="200" x2="110" y2="60"   stroke-width="1"    opacity="0.14"/>
+            <line x1="-10" y1="200" x2="110" y2="420"  stroke-width="0.9"  opacity="0.12"/>
+            <line x1="110" y1="60"  x2="280" y2="20"   stroke-width="1"    opacity="0.15"/>
+            <line x1="110" y1="60"  x2="320" y2="280"  stroke-width="0.9"  opacity="0.13"/>
+            <line x1="110" y1="420" x2="60"  y2="700"  stroke-width="0.9"  opacity="0.12"/>
+            <line x1="110" y1="420" x2="320" y2="280"  stroke-width="1"    opacity="0.14"/>
+            <line x1="60"  y1="700" x2="220" y2="760"  stroke-width="0.8"  opacity="0.11"/>
+            <line x1="220" y1="760" x2="400" y2="680"  stroke-width="0.9"  opacity="0.12"/>
+
+            <!-- Left cluster internal -->
+            <line x1="280" y1="20"  x2="500" y2="80"   stroke-width="1"    opacity="0.16"/>
+            <line x1="280" y1="20"  x2="320" y2="280"  stroke-width="0.9"  opacity="0.13"/>
+            <line x1="320" y1="280" x2="400" y2="480"  stroke-width="1"    opacity="0.15"/>
+            <line x1="400" y1="480" x2="400" y2="680"  stroke-width="0.9"  opacity="0.12"/>
+            <line x1="320" y1="280" x2="220" y2="760"  stroke-width="0.8"  opacity="0.09"/>
+
+            <!-- Left → center-left bridge -->
+            <line x1="500" y1="80"  x2="680" y2="10"   stroke-width="1"    opacity="0.15"/>
+            <line x1="500" y1="80"  x2="560" y2="340"  stroke-width="1"    opacity="0.14"/>
+            <line x1="560" y1="340" x2="400" y2="480"  stroke-width="0.9"  opacity="0.13"/>
+            <line x1="560" y1="340" x2="680" y2="260"  stroke-width="1"    opacity="0.16"/>
+            <line x1="400" y1="480" x2="520" y2="640"  stroke-width="0.9"  opacity="0.13"/>
+            <line x1="520" y1="640" x2="680" y2="790"  stroke-width="0.8"  opacity="0.11"/>
+
+            <!-- Center cluster -->
+            <line x1="680" y1="10"  x2="840" y2="50"   stroke-width="1"    opacity="0.15"/>
+            <line x1="680" y1="260" x2="840" y2="50"   stroke-width="1"    opacity="0.16"/>
+            <line x1="680" y1="260" x2="760" y2="500"  stroke-width="1"    opacity="0.15"/>
+            <line x1="840" y1="50"  x2="960" y2="140"  stroke-width="1"    opacity="0.17"/>
+            <line x1="760" y1="500" x2="880" y2="640"  stroke-width="0.9"  opacity="0.13"/>
+            <line x1="880" y1="640" x2="680" y2="790"  stroke-width="0.8"  opacity="0.10"/>
+            <line x1="880" y1="640" x2="800" y2="800"  stroke-width="0.8"  opacity="0.11"/>
+            <line x1="760" y1="500" x2="960" y2="380"  stroke-width="1"    opacity="0.14"/>
+            <line x1="560" y1="340" x2="760" y2="500"  stroke-width="0.9"  opacity="0.11"/>
+
+            <!-- Center → right bridge -->
+            <line x1="960" y1="140" x2="1120" y2="60"  stroke-width="1"    opacity="0.16"/>
+            <line x1="960" y1="140" x2="1080" y2="340" stroke-width="1"    opacity="0.15"/>
+            <line x1="960" y1="380" x2="1080" y2="340" stroke-width="1"    opacity="0.14"/>
+            <line x1="960" y1="380" x2="1020" y2="560" stroke-width="0.9"  opacity="0.13"/>
+            <line x1="1020" y1="560" x2="880" y2="640" stroke-width="0.9"  opacity="0.12"/>
+            <line x1="1020" y1="560" x2="1140" y2="680"stroke-width="0.9"  opacity="0.13"/>
+
+            <!-- Right cluster internal -->
+            <line x1="1120" y1="60"  x2="1300" y2="20"  stroke-width="1"    opacity="0.15"/>
+            <line x1="1120" y1="60"  x2="1260" y2="200" stroke-width="1"    opacity="0.16"/>
+            <line x1="1260" y1="200" x2="1080" y2="340" stroke-width="1"    opacity="0.14"/>
+            <line x1="1260" y1="200" x2="1380" y2="320" stroke-width="1"    opacity="0.15"/>
+            <line x1="1380" y1="320" x2="1080" y2="340" stroke-width="0.9"  opacity="0.12"/>
+            <line x1="1380" y1="320" x2="1460" y2="480" stroke-width="1"    opacity="0.14"/>
+            <line x1="1140" y1="680" x2="1300" y2="740" stroke-width="0.9"  opacity="0.12"/>
+            <line x1="1020" y1="560" x2="1260" y2="560" stroke-width="0.9"  opacity="0.11"/>
+            <line x1="1260" y1="560" x2="1380" y2="320" stroke-width="0.9"  opacity="0.13"/>
+
+            <!-- Right edge bleed -->
+            <line x1="1300" y1="20"  x2="1460" y2="80"  stroke-width="0.9"  opacity="0.13"/>
+            <line x1="1460" y1="80"  x2="1620" y2="180" stroke-width="0.9"  opacity="0.11"/>
+            <line x1="1460" y1="480" x2="1620" y2="400" stroke-width="0.9"  opacity="0.11"/>
+            <line x1="1300" y1="740" x2="1460" y2="680" stroke-width="0.8"  opacity="0.10"/>
+            <line x1="1460" y1="680" x2="1620" y2="600" stroke-width="0.8"  opacity="0.10"/>
+
+            <!-- Long cross-section connectors (sparse, low opacity) -->
+            <line x1="110"  y1="60"  x2="500"  y2="80"  stroke-width="0.75" opacity="0.08"/>
+            <line x1="320"  y1="280" x2="680"  y2="260" stroke-width="0.75" opacity="0.09"/>
+            <line x1="680"  y1="260" x2="960"  y2="140" stroke-width="0.75" opacity="0.08"/>
+            <line x1="760"  y1="500" x2="1080" y2="340" stroke-width="0.75" opacity="0.08"/>
+            <line x1="400"  y1="680" x2="880"  y2="640" stroke-width="0.7"  opacity="0.07"/>
+          </g>
+
+          <!-- ── Nodes — slightly brighter than the lines ── -->
+          <g fill="#C4963A" stroke="none">
+            <!-- Left edge / top-left -->
+            <circle cx="-10" cy="200" r="3"   opacity="0.18"/>
+            <circle cx="60"  cy="700" r="2.5" opacity="0.17"/>
+            <circle cx="110" cy="60"  r="4"   opacity="0.24"/>
+            <circle cx="110" cy="420" r="3.5" opacity="0.22"/>
+            <circle cx="220" cy="760" r="2.5" opacity="0.18"/>
+
+            <!-- Left cluster -->
+            <circle cx="280" cy="20"  r="3"   opacity="0.22"/>
+            <circle cx="320" cy="280" r="4.5" opacity="0.26"/>
+            <circle cx="400" cy="480" r="3.5" opacity="0.22"/>
+            <circle cx="400" cy="680" r="3"   opacity="0.20"/>
+
+            <!-- Center-left -->
+            <circle cx="500" cy="80"  r="4"   opacity="0.24"/>
+            <circle cx="520" cy="640" r="3"   opacity="0.20"/>
+            <circle cx="560" cy="340" r="4.5" opacity="0.26"/>
+            <circle cx="680" cy="10"  r="2.5" opacity="0.20"/>
+            <circle cx="680" cy="790" r="2.5" opacity="0.18"/>
+
+            <!-- Center -->
+            <circle cx="680" cy="260" r="4"   opacity="0.24"/>
+            <circle cx="760" cy="500" r="4"   opacity="0.24"/>
+            <circle cx="800" cy="800" r="2"   opacity="0.16"/>
+            <circle cx="840" cy="50"  r="3.5" opacity="0.22"/>
+            <circle cx="880" cy="640" r="3.5" opacity="0.22"/>
+
+            <!-- Center-right -->
+            <circle cx="960" cy="140" r="4.5" opacity="0.26"/>
+            <circle cx="960" cy="380" r="4"   opacity="0.24"/>
+            <circle cx="1020" cy="560" r="3.5" opacity="0.22"/>
+            <circle cx="1080" cy="340" r="4"   opacity="0.24"/>
+            <circle cx="1140" cy="680" r="3"   opacity="0.20"/>
+
+            <!-- Right cluster -->
+            <circle cx="1120" cy="60"  r="3.5" opacity="0.22"/>
+            <circle cx="1260" cy="200" r="4.5" opacity="0.26"/>
+            <circle cx="1260" cy="560" r="3"   opacity="0.20"/>
+            <circle cx="1300" cy="20"  r="2.5" opacity="0.20"/>
+            <circle cx="1300" cy="740" r="3"   opacity="0.20"/>
+            <circle cx="1380" cy="320" r="4"   opacity="0.24"/>
+
+            <!-- Right edge bleed -->
+            <circle cx="1460" cy="80"  r="3"   opacity="0.18"/>
+            <circle cx="1460" cy="480" r="3"   opacity="0.18"/>
+            <circle cx="1460" cy="680" r="2.5" opacity="0.17"/>
+          </g>
+
+        </svg>
+      </div>
+
       <div class="container">
         <div class="different__inner">
           <div class="different__grid">
