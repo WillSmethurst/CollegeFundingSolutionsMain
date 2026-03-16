@@ -323,7 +323,6 @@
       gap: 10px;
       flex-shrink: 0;
     }
-    @media (max-width: 959px) { .nav__ctas { display: none; } }
 
     .nav__cta-webinar { display: none; }
 
@@ -449,7 +448,7 @@
         .nav__drawer-ctas .btn { width: 100%; justify-content: center; }
 
     /* Desktop Resources Dropdown */
-    .nav__dropdown {
+        .nav__dropdown {
       position: relative;
       display: flex;
       align-items: center;
@@ -460,63 +459,57 @@
     .nav__dropdown-trigger {
       display: inline-flex;
       align-items: center;
-      gap: 5px;
+      gap: 8px;
       font-family: var(--font-body);
       font-size: 14px;
       font-weight: 500;
       color: rgba(255, 255, 255, 0.72);
       padding: 6px 14px;
       border-radius: var(--radius-sm);
-      background: none;
-      border: none;
-      cursor: pointer;
       transition: var(--transition);
       white-space: nowrap;
-      line-height: 1.7;
-      letter-spacing: 0;
+      background: transparent;
+      border: none;
+      cursor: pointer;
     }
 
     .nav__dropdown-trigger:hover,
-    .nav__dropdown:hover .nav__dropdown-trigger,
-    .nav__dropdown:focus-within .nav__dropdown-trigger {
+    .nav__dropdown-trigger:focus-visible {
       color: var(--white);
-      background: rgba(255, 255, 255, 0.07);
+      background: rgba(255,255,255,0.07);
+      outline: none;
     }
 
     .nav__dropdown-chevron {
       display: inline-block;
-      width: 10px;
-      height: 10px;
+      width: 8px;
+      height: 8px;
+      border-right: 1.5px solid currentColor;
+      border-bottom: 1.5px solid currentColor;
+      transform: rotate(45deg) translateY(-1px);
+      transition: transform 0.2s ease;
       flex-shrink: 0;
-      opacity: 0.55;
-      transition: transform 0.22s ease, opacity 0.22s ease;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23ffffff' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: contain;
     }
 
     .nav__dropdown:hover .nav__dropdown-chevron,
     .nav__dropdown:focus-within .nav__dropdown-chevron {
-      transform: rotate(180deg);
-      opacity: 0.9;
+      transform: rotate(225deg) translateY(-1px);
     }
 
     .nav__dropdown-panel {
       position: absolute;
       top: calc(100% - 2px);
-      left: 50%;
-      transform: translateX(-50%) translateY(0);
-      min-width: 180px;
-      background: var(--navy);
-      border: 1px solid rgba(255, 255, 255, 0.09);
+      left: 0;
+      min-width: 220px;
+      background: var(--white);
+      border: 1px solid var(--border);
       border-radius: var(--radius-md);
-      box-shadow: 0 12px 40px rgba(6, 20, 46, 0.38), 0 2px 8px rgba(6, 20, 46, 0.18);
-      padding: 8px;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.2s ease;
-      z-index: 400;
+      box-shadow: var(--shadow-md);
+      padding: 10px;
+      display: none;
+      flex-direction: column;
+      gap: 2px;
+      z-index: 250;
     }
 
     .nav__dropdown-panel::before {
@@ -531,35 +524,30 @@
 
     .nav__dropdown:hover .nav__dropdown-panel,
     .nav__dropdown:focus-within .nav__dropdown-panel {
-      opacity: 1;
-      pointer-events: all;
+      display: flex;
     }
 
     .nav__dropdown-link {
       display: block;
-      font-family: var(--font-body);
       font-size: 14px;
-      font-weight: 400;
-      color: rgba(255, 255, 255, 0.68);
-      padding: 9px 16px;
+      font-weight: 500;
+      color: var(--text-body);
+      padding: 10px 12px;
       border-radius: var(--radius-sm);
       transition: var(--transition);
-      white-space: nowrap;
-      text-decoration: none;
     }
 
-    .nav__dropdown-link:hover {
-      color: var(--white);
-      background: rgba(255, 255, 255, 0.07);
-      padding-left: 20px;
-      border-left: 2px solid var(--gold);
-      margin-left: -2px;
+    .nav__dropdown-link:hover,
+    .nav__dropdown-link:focus-visible {
+      background: var(--ivory);
+      color: var(--navy);
+      outline: none;
     }
 
     .nav__dropdown-divider {
       height: 1px;
-      background: rgba(255, 255, 255, 0.06);
-      margin: 4px 8px;
+      background: var(--border);
+      margin: 6px 0;
     }
 
     /* Mobile Resources Accordion */
@@ -646,7 +634,10 @@
        ═══════════════════════════════════════════════════════════
     ============================================================ */
     .page-hero {
-      background: var(--navy);
+      background-image: url('images/how-it-works-hero-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       position: relative;
       overflow: hidden;
       padding: 96px 0 88px;
@@ -664,13 +655,12 @@
       pointer-events: none;
     }
 
-    /* Subtle noise texture */
+    /* Dark overlay — sits between background image and all content */
     .page-hero::after {
       content: '';
       position: absolute;
       inset: 0;
-      opacity: 0.02;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background: rgba(0, 0, 0, 0.62);
       pointer-events: none;
     }
 
@@ -1680,7 +1670,7 @@
 
         <div class="nav__ctas">
           <a href="webinar-library.html" class="btn btn--outline btn--small nav__cta-webinar">Free Webinar</a>
-          <a href="https://meetings-na2.hubspot.com/will-smethurst/cfs-website-meeting" class="btn btn--primary btn--small" target="_blank" rel="noopener">Schedule a Consultation</a>
+          <a href="contact.html" class="btn btn--primary btn--small">Schedule a Consultation</a>
         </div>
 
         <button class="nav__hamburger" id="nav-toggle" aria-label="Open navigation menu" aria-expanded="false">
@@ -1716,10 +1706,11 @@
   </div>
 </div>
         <a href="about.html" class="nav__drawer-link">About</a>
+        <a href="contact.html" class="nav__drawer-link">Contact</a>
       </nav>
       <div class="nav__drawer-ctas">
         <a href="webinar-library.html" class="btn btn--outline">Free Webinar</a>
-        <a href="https://meetings-na2.hubspot.com/will-smethurst/cfs-website-meeting" class="btn btn--primary" target="_blank" rel="noopener">Schedule a Consultation</a>
+        <a href="contact.html" class="btn btn--primary">Schedule a Consultation</a>
       </div>
     </div>
   </div>
@@ -2224,7 +2215,7 @@
           </p>
 
           <div class="final-cta__ctas">
-            <a href="https://meetings-na2.hubspot.com/will-smethurst/cfs-website-meeting" class="btn btn--primary btn--large btn--arrow" target="_blank" rel="noopener">Schedule a Consultation</a>
+            <a href="contact.html" class="btn btn--primary btn--large btn--arrow">Schedule a Consultation</a>
             <a href="webinar-library.html" class="btn btn--white-outline btn--large">Join the Free Webinar</a>
           </div>
 
@@ -2272,12 +2263,12 @@
         <div class="footer__col">
           <span class="footer__col-label">Resources</span>
           <nav class="footer__links" aria-label="Resources navigation">
-            <a href="blogs.html" class="footer__link">Blogs</a>
-            <a href="articles.html" class="footer__link">Articles</a>
-            <a href="timeline.html" class="footer__link">Timeline</a>
-            <a href="webinar-library.html" class="footer__link">Free Webinar</a>
-            <a href="packages.html" class="footer__link">Packages</a>
-          </nav>
+  <a href="blogs.html" class="footer__link">Blog Library</a>
+  <a href="articles.html" class="footer__link">Articles &amp; Guides</a>
+  <a href="timeline.html" class="footer__link">Planning Timeline</a>
+  <a href="packages.html" class="footer__link">Packages</a>
+  <a href="webinar-library.html" class="footer__link">Free Webinar</a>
+</nav>
         </div>
 
         <!-- Column 4: Contact -->
@@ -2296,7 +2287,7 @@
             </span>
           </div>
 
-          <a href="https://meetings-na2.hubspot.com/will-smethurst/cfs-website-meeting" class="footer__cta-link" target="_blank" rel="noopener">Schedule a Consultation</a>
+          <a href="contact.html" class="footer__cta-link">Schedule a Consultation</a>
         </div>
 
       </div>
