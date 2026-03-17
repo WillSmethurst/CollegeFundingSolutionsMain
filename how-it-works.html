@@ -906,7 +906,19 @@
        ═══════════════════════════════════════════════════════════
     ============================================================ */
     .framework {
-      background: var(--navy);
+      /* Background image with dark green overlay — layered gradient approach */
+      /* Gradient sits on top as the semi-transparent overlay; texture sits behind */
+      background-image:
+        linear-gradient(
+          rgba(10, 53, 40, 0.70),
+          rgba(10, 53, 40, 0.70)
+        ),
+        url('images/three-pillars-texture-bg.png');
+      background-color: var(--navy); /* Fallback if image has not loaded */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
       padding: var(--section-pad);
       position: relative;
       overflow: hidden;
@@ -2277,7 +2289,7 @@
 
           <div class="footer__contact-line">
             <span class="footer__contact-icon" aria-hidden="true">✉</span>
-            <span class="footer__contact-text">info@collegefundingsolutions.com</span>
+            <span class="footer__contact-text"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="751c1b131a35161a191910121013001b111c1b12061a1900011c1a1b065b161a18">[email&#160;protected]</a></span>
           </div>
 
           <div class="footer__contact-line">
@@ -2310,7 +2322,7 @@
   <!-- ============================================================
        JAVASCRIPT — Navigation drawer + dynamic copyright year
   ============================================================ -->
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // Dynamic copyright year
     document.getElementById('footer-year').textContent = new Date().getFullYear();
 
@@ -2353,11 +2365,3 @@
       });
     }
 
-    // Close drawer when a link is tapped
-    drawer.querySelectorAll('.nav__drawer-link, .nav__accordion-link, .nav__drawer-ctas .btn').forEach(link => {
-      link.addEventListener('click', closeDrawer);
-    });
-  </script>
-
-</body>
-</html>
