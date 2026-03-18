@@ -906,7 +906,19 @@
        ═══════════════════════════════════════════════════════════
     ============================================================ */
     .framework {
-      background: var(--navy);
+      /* Background image with dark green overlay — layered gradient approach */
+      /* Gradient sits on top as the semi-transparent overlay; texture sits behind */
+      background-image:
+        linear-gradient(
+          rgba(10, 53, 40, 0.70),
+          rgba(10, 53, 40, 0.70)
+        ),
+        url('images/three-pillars-texture-bg.png');
+      background-color: var(--navy); /* Fallback if image has not loaded */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
       padding: var(--section-pad);
       position: relative;
       overflow: hidden;
@@ -945,7 +957,7 @@
     .framework__intro {
       font-size: 17px;
       line-height: 1.72;
-      color: rgba(255,255,255,0.62);
+      color: rgba(255,255,255,0.88);
     }
 
     /* Three pillar cards in a row */
@@ -1015,7 +1027,7 @@
     .pillar-card__desc {
       font-size: 15px;
       line-height: 1.68;
-      color: rgba(255,255,255,0.55);
+      color: rgba(255,255,255,0.88);
       margin-bottom: 22px;
     }
 
@@ -1031,7 +1043,7 @@
       align-items: flex-start;
       gap: 10px;
       font-size: 14px;
-      color: rgba(255,255,255,0.5);
+      color: rgba(255,255,255,0.82);
       line-height: 1.55;
     }
 
@@ -2277,7 +2289,7 @@
 
           <div class="footer__contact-line">
             <span class="footer__contact-icon" aria-hidden="true">✉</span>
-            <span class="footer__contact-text"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="88e1e6eee7c8ebe7e4e4edefedeefde6ece1e6effbe7e4fdfce1e7e6fba6ebe7e5">[email&#160;protected]</a></span>
+            <span class="footer__contact-text"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="8de4e3ebe2cdeee2e1e1e8eae8ebf8e3e9e4e3eafee2e1f8f9e4e2e3fea3eee2e0">[email&#160;protected]</a></span>
           </div>
 
           <div class="footer__contact-line">
