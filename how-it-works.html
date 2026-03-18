@@ -906,7 +906,19 @@
        ═══════════════════════════════════════════════════════════
     ============================================================ */
     .framework {
-      background: var(--navy);
+      /* Background image with dark green overlay — layered gradient approach */
+      /* Gradient sits on top as the semi-transparent overlay; texture sits behind */
+      background-image:
+        linear-gradient(
+          rgba(10, 53, 40, 0.70),
+          rgba(10, 53, 40, 0.70)
+        ),
+        url('images/three-pillars-texture-bg.png');
+      background-color: var(--navy); /* Fallback if image has not loaded */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
       padding: var(--section-pad);
       position: relative;
       overflow: hidden;
@@ -2277,7 +2289,7 @@
 
           <div class="footer__contact-line">
             <span class="footer__contact-icon" aria-hidden="true">✉</span>
-            <span class="footer__contact-text"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b4dddad2dbf4d7dbd8d8d1d3d1d2c1dad0dddad3c7dbd8c1c0dddbdac79ad7dbd9">[email&#160;protected]</a></span>
+            <span class="footer__contact-text"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7e171018113e1d1112121b191b180b101a1710190d11120b0a1711100d501d1113">[email&#160;protected]</a></span>
           </div>
 
           <div class="footer__contact-line">
