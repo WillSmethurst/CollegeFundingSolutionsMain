@@ -693,8 +693,8 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(160deg, rgba(6,78,59,0.18) 0%, rgba(6,78,59,0.72) 58%, rgba(6,78,59,0.88) 100%),
-    linear-gradient(to right, rgba(6,78,59,0.58) 0%, rgba(6,78,59,0.28) 38%, rgba(6,78,59,0.62) 100%),
+    linear-gradient(160deg, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.72) 58%, rgba(0,0,0,0.88) 100%),
+    linear-gradient(to right, rgba(0,0,0,0.58) 0%, rgba(0,0,0,0.28) 38%, rgba(0,0,0,0.62) 100%),
     url('/images/college-hero-bg.jpg');
   background-size: cover;
   background-position: center center;
@@ -2741,7 +2741,7 @@
             <span class="footer__contact-icon" aria-hidden="true">✉</span>
             <span class="footer__contact-text">
               <!-- Replace with actual email -->
-              info@collegefundingsolutions.com
+              <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c1a8afa7ae81a2aeadada4a6a4a7b4afa5a8afa6b2aeadb4b5a8aeafb2efa2aeac">[email&#160;protected]</a>
             </span>
           </div>
 
@@ -2775,7 +2775,7 @@
   <!-- ============================================================
        JAVASCRIPT — Navigation drawer + dynamic year
   ============================================================ -->
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // Dynamic copyright year
     document.getElementById('footer-year').textContent = new Date().getFullYear();
 
@@ -2814,13 +2814,4 @@
 const accordionBtn = document.getElementById('resources-accordion-btn');
 const accordionPanel = document.getElementById('resources-accordion-panel');
 
-if (accordionBtn && accordionPanel) {
-  accordionBtn.addEventListener('click', function () {
-    const isOpen = accordionPanel.classList.toggle('is-open');
-    accordionBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-  });
-}
-  </script>
-
-</body>
-</html>
+if (accordionBtn && accor
