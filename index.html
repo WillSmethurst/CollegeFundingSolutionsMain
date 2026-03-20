@@ -2811,7 +2811,15 @@
       link.addEventListener('click', closeDrawer);
     });
     // Resources Accordion (mobile drawer)
-const accordionBtn = document.getElementById('resources-accordion-btn');
-const accordionPanel = document.getElementById('resources-accordion-panel');
+    const accordionBtn = document.getElementById('resources-accordion-btn');
+    const accordionPanel = document.getElementById('resources-accordion-panel');
 
-if (accordionBtn && accor
+    if (accordionBtn && accordionPanel) {
+      accordionBtn.addEventListener('click', () => {
+        const isOpen = accordionBtn.getAttribute('aria-expanded') === 'true';
+        accordionBtn.setAttribute('aria-expanded', !isOpen);
+        accordionPanel.classList.toggle('is-open', !isOpen);
+      });
+    }
+  </script>
+  
