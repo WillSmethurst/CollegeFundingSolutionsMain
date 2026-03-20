@@ -2357,6 +2357,11 @@
       if (e.key === 'Escape' && drawer.classList.contains('is-open')) closeDrawer();
     });
 
+    // Close drawer when any link or CTA button inside it is tapped
+    drawer.querySelectorAll('.nav__drawer-link, .nav__accordion-link, .nav__drawer-ctas .btn').forEach(link => {
+      link.addEventListener('click', closeDrawer);
+    });
+
     // Mobile Resources accordion
     const resAccordionBtn = document.getElementById('res-accordion-btn');
     const resAccordionPanel = document.getElementById('res-accordion-panel');
