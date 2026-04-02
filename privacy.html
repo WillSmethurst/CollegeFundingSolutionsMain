@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Strategy West College Planning</title>
+  <meta name="description" content="Privacy Policy for Strategy West College Planning. Learn how we collect, use, and protect your personal information." />
+
+  <!-- Google Fonts: Cormorant Garamond (display) + DM Sans (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       CSS CUSTOM PROPERTIES
+       Matches site-wide design system
+    ============================================================ */
+    :root {
+      --navy:           #064E3B;
+      --navy-mid:       #152540;
+      --navy-light:     #1E3357;
+      --gold:           #C4963A;
+      --gold-light:     #D4A84B;
+      --gold-pale:      #F0E2C4;
+      --ivory:          #F7F4EE;
+      --ivory-warm:     #EDE9DF;
+      --white:          #FFFFFF;
+      --text-dark:      #1A1A2E;
+      --text-body:      #3A3A4A;
+      --text-muted:     #6B6B7E;
+      --text-light:     #9A9AAA;
+      --border:         #E2DDD4;
+      --shadow-sm:      0 2px 12px rgba(13, 27, 46, 0.08);
+      --shadow-md:      0 8px 32px rgba(13, 27, 46, 0.12);
+      --shadow-lg:      0 20px 60px rgba(13, 27, 46, 0.18);
+      --shadow-gold:    0 4px 18px rgba(196, 150, 58, 0.38);
+      --font-display:   'Cormorant Garamond', Georgia, serif;
+      --font-body:      'DM Sans', system-ui, -apple-system, sans-serif;
+      --radius-sm:      6px;
+      --radius-md:      12px;
+      --radius-lg:      20px;
+      --section-pad:    96px 0;
+      --section-pad-md: 64px 0;
+      --section-pad-sm: 48px 0;
+      --container-max:    1080px;
+      --container-narrow: 740px;
+      --gutter:           24px;
+      --transition:      all 0.25s ease;
+      --transition-slow: all 0.4s ease;
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text-body);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ============================================================
+       LAYOUT UTILITIES
+    ============================================================ */
+    .container {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    .container--narrow {
+      max-width: var(--container-narrow);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    /* ============================================================
+       TYPOGRAPHY UTILITIES
+    ============================================================ */
+    .section-label {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 14px;
+    }
+
+    .gold-rule {
+      display: block;
+      width: 48px;
+      height: 2px;
+      background: var(--gold);
+      border-radius: 2px;
+      margin-bottom: 28px;
+    }
+
+    /* ============================================================
+       BUTTON STYLES
+    ============================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      padding: 16px 34px;
+      border-radius: var(--radius-sm);
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+      white-space: nowrap;
+      line-height: 1;
+    }
+
+    .btn--primary {
+      background: var(--gold);
+      color: var(--white);
+      box-shadow: var(--shadow-gold);
+    }
+    .btn--primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(196, 150, 58, 0.48);
+    }
+
+    .btn--outline {
+      background: transparent;
+      color: var(--gold);
+      border: 1.5px solid var(--gold);
+    }
+    .btn--outline:hover {
+      background: var(--gold);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .btn--small {
+      font-size: 13px;
+      padding: 10px 22px;
+    }
+
+    .nav__cta-webinar { display: none; }
+    @media (min-width: 640px) { .nav__cta-webinar { display: inline-flex; } }
+
+    /* ============================================================
+       NAVIGATION
+    ============================================================ */
+    .nav {
+      background: var(--navy);
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      box-shadow: 0 2px 20px rgba(6, 78, 59, 0.3);
+    }
+
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+      gap: 24px;
+    }
+
+    .nav__brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      flex-shrink: 0;
+      text-decoration: none;
+    }
+
+    .nav__brand-name {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.01em;
+      line-height: 1.2;
+    }
+
+    .nav__brand-tagline {
+      font-family: var(--font-body);
+      font-size: 9.5px;
+      font-weight: 400;
+      color: var(--gold-pale);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      opacity: 0.7;
+    }
+
+    .nav__links {
+      display: none;
+      align-items: center;
+      gap: 2px;
+    }
+
+    @media (min-width: 960px) { .nav__links { display: flex; } }
+
+    .nav__link {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.72);
+      padding: 6px 14px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .nav__link:hover {
+      color: var(--white);
+      background: rgba(255,255,255,0.07);
+    }
+
+    .nav__ctas {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    @media (max-width: 959px) { .nav__ctas { display: none; } }
+
+    /* Hamburger */
+    .nav__hamburger {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 36px;
+      height: 36px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+    }
+
+    .nav__hamburger:hover { background: rgba(255,255,255,0.08); }
+
+    .nav__hamburger span {
+      display: block;
+      height: 1.5px;
+      width: 100%;
+      background: var(--gold);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    @media (min-width: 960px) { .nav__hamburger { display: none; } }
+
+    /* Desktop Dropdown */
+    .nav__dropdown {
+      position: relative;
+      padding-bottom: 12px;
+      margin-bottom: -12px;
+    }
+
+    .nav__dropdown-trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.72);
+      padding: 6px 14px;
+      border-radius: var(--radius-sm);
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      white-space: nowrap;
+      line-height: 1.7;
+    }
+
+    .nav__dropdown-trigger:hover,
+    .nav__dropdown:hover .nav__dropdown-trigger,
+    .nav__dropdown:focus-within .nav__dropdown-trigger {
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .nav__dropdown-chevron {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      flex-shrink: 0;
+      opacity: 0.55;
+      transition: transform 0.22s ease, opacity 0.22s ease;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23ffffff' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+    }
+
+    .nav__dropdown:hover .nav__dropdown-chevron,
+    .nav__dropdown:focus-within .nav__dropdown-chevron {
+      transform: rotate(180deg);
+      opacity: 0.9;
+    }
+
+    .nav__dropdown-panel {
+      position: absolute;
+      top: calc(100% + 2px);
+      left: 50%;
+      transform: translateX(-50%) translateY(-4px);
+      min-width: 180px;
+      background: var(--navy);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: var(--radius-md);
+      box-shadow: 0 12px 40px rgba(6, 20, 46, 0.38), 0 2px 8px rgba(6, 20, 46, 0.18);
+      padding: 8px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      z-index: 400;
+    }
+
+    .nav__dropdown-panel::before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 10px;
+      height: 10px;
+      background: var(--navy);
+      border-left: 1px solid rgba(255, 255, 255, 0.09);
+      border-top: 1px solid rgba(255, 255, 255, 0.09);
+      clip-path: polygon(0 100%, 50% 0, 100% 100%);
+    }
+
+    .nav__dropdown:hover .nav__dropdown-panel,
+    .nav__dropdown:focus-within .nav__dropdown-panel {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .nav__dropdown-link {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.68);
+      padding: 9px 16px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+      white-space: nowrap;
+      text-decoration: none;
+    }
+
+    .nav__dropdown-link:hover {
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.07);
+      padding-left: 20px;
+      border-left: 2px solid var(--gold);
+      margin-left: -2px;
+    }
+
+    .nav__dropdown-divider {
+      height: 1px;
+      background: rgba(255, 255, 255, 0.06);
+      margin: 4px 8px;
+    }
+
+    /* Mobile Accordion */
+    .nav__accordion { width: 100%; }
+
+    .nav__accordion-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.8);
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      text-align: left;
+    }
+
+    .nav__accordion-trigger:hover {
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .nav__accordion-chevron {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      flex-shrink: 0;
+      opacity: 0.45;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23ffffff' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+    }
+
+    .nav__accordion-trigger[aria-expanded="true"] .nav__accordion-chevron {
+      transform: rotate(180deg);
+      opacity: 0.85;
+    }
+
+    .nav__accordion-panel {
+      display: none;
+      padding: 4px 0 4px 12px;
+    }
+
+    .nav__accordion-panel.is-open { display: block; }
+
+    .nav__accordion-links {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding: 4px 0;
+    }
+
+    .nav__accordion-link {
+      font-family: var(--font-body);
+      font-size: 14.5px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.6);
+      padding: 8px 12px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+      text-decoration: none;
+      display: block;
+    }
+
+    .nav__accordion-link:hover {
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    /* Mobile Drawer */
+    .nav__drawer {
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      pointer-events: none;
+    }
+
+    .nav__drawer-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(6, 20, 46, 0.65);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .nav__drawer-panel {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: min(320px, 85vw);
+      background: var(--navy);
+      padding: 28px 28px 40px;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .nav__drawer.is-open { pointer-events: all; }
+    .nav__drawer.is-open .nav__drawer-overlay { opacity: 1; }
+    .nav__drawer.is-open .nav__drawer-panel { transform: translateX(0); }
+
+    .nav__drawer-close {
+      align-self: flex-end;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.07);
+      border: none;
+      border-radius: 50%;
+      color: var(--white);
+      font-size: 20px;
+      cursor: pointer;
+      margin-bottom: 32px;
+      transition: var(--transition);
+    }
+
+    .nav__drawer-close:hover { background: rgba(255,255,255,0.14); }
+
+    .nav__drawer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .nav__drawer-link {
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.8);
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+      display: block;
+    }
+
+    .nav__drawer-link:hover {
+      color: var(--white);
+      background: rgba(255,255,255,0.07);
+    }
+
+    .nav__drawer-ctas {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .nav__drawer-ctas .btn { width: 100%; justify-content: center; }
+
+    /* ============================================================
+       PAGE HEADER
+    ============================================================ */
+    .page-header {
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+      padding: 64px 0 72px;
+    }
+
+    .page-header::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -10%;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(196, 150, 58, 0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .page-header__inner {
+      position: relative;
+      z-index: 2;
+    }
+
+    .page-header__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .page-header__eyebrow-line {
+      display: block;
+      width: 28px;
+      height: 1.5px;
+      background: var(--gold);
+      border-radius: 2px;
+    }
+
+    .page-header__eyebrow-text {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .page-header__title {
+      font-family: var(--font-display);
+      font-size: clamp(34px, 5vw, 52px);
+      font-weight: 600;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 16px;
+      letter-spacing: -0.01em;
+    }
+
+    .page-header__subtitle {
+      font-size: clamp(14px, 1.8vw, 16px);
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.68);
+      max-width: 520px;
+    }
+
+    .page-header__meta {
+      margin-top: 20px;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.42);
+      font-style: italic;
+    }
+
+    /* ============================================================
+       LEGAL CONTENT SECTION
+    ============================================================ */
+    .legal-section {
+      background: var(--white);
+      padding: var(--section-pad);
+    }
+
+    .legal-body {
+      /* prose container */
+    }
+
+    .legal-body h2 {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 3vw, 28px);
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-top: 52px;
+      margin-bottom: 16px;
+      line-height: 1.2;
+      padding-top: 52px;
+      border-top: 1px solid var(--border);
+    }
+
+    .legal-body h2:first-of-type {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+    }
+
+    .legal-body h3 {
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-top: 28px;
+      margin-bottom: 10px;
+    }
+
+    .legal-body p {
+      font-size: 15.5px;
+      line-height: 1.78;
+      color: var(--text-body);
+      margin-bottom: 18px;
+    }
+
+    .legal-body ul {
+      list-style: disc;
+      padding-left: 24px;
+      margin-bottom: 18px;
+    }
+
+    .legal-body ul li {
+      font-size: 15.5px;
+      line-height: 1.78;
+      color: var(--text-body);
+      margin-bottom: 8px;
+    }
+
+    .legal-body a {
+      color: var(--navy);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .legal-body a:hover {
+      color: var(--gold);
+    }
+
+    .legal-highlight {
+      background: var(--ivory);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 20px 24px;
+      margin-bottom: 32px;
+    }
+
+    .legal-highlight p {
+      margin-bottom: 0;
+      font-size: 14.5px;
+      color: var(--text-muted);
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    .footer {
+      background: var(--navy);
+      padding: 72px 0 0;
+    }
+
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.4fr;
+      gap: 48px;
+      padding-bottom: 64px;
+    }
+
+    @media (max-width: 900px) {
+      .footer__grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 36px;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .footer__grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+
+    .footer__brand-name {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.01em;
+      line-height: 1.2;
+    }
+
+    .footer__brand-tagline {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 400;
+      color: var(--gold-pale);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.6;
+      margin-bottom: 20px;
+    }
+
+    .footer__brand-desc {
+      font-size: 14px;
+      line-height: 1.72;
+      color: rgba(255,255,255,0.5);
+      max-width: 260px;
+    }
+
+    .footer__col-label {
+      font-family: var(--font-body);
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.8;
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    .footer__links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer__link {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      transition: var(--transition);
+    }
+
+    .footer__link:hover { color: var(--white); }
+
+    .footer__contact-line {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .footer__contact-icon {
+      color: var(--gold);
+      opacity: 0.7;
+      font-size: 14px;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .footer__contact-text {
+      font-size: 13.5px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.6;
+    }
+
+    .footer__cta-link {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.02em;
+      transition: var(--transition);
+    }
+
+    .footer__cta-link:hover { color: var(--gold-light); }
+
+    .footer__bottom {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 24px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer__copyright {
+      font-size: 13px;
+      color: rgba(255,255,255,0.3);
+    }
+
+    .footer__legal-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .footer__legal-link {
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+      transition: var(--transition);
+    }
+
+    .footer__legal-link:hover { color: rgba(255,255,255,0.7); }
+
+  </style>
+</head>
+
+<body id="top">
+
+  <!-- ============================================================
+       NAVIGATION
+  ============================================================ -->
+  <header>
+    <nav class="nav" aria-label="Main navigation">
+      <div class="container">
+        <div class="nav__inner">
+
+          <!-- Brand -->
+          <a href="index.html" class="nav__brand" aria-label="Strategy West College Planning — Home">
+            <span class="nav__brand-name">Strategy West</span>
+            <span class="nav__brand-tagline">College Planning</span>
+          </a>
+
+          <!-- Desktop Links -->
+          <nav class="nav__links" aria-label="Desktop navigation">
+            <a href="how-it-works.html" class="nav__link">How It Works</a>
+            <a href="our-process.html" class="nav__link">Our Process</a>
+            <a href="pillars.html" class="nav__link">The 3 Pillars</a>
+
+            <!-- Resources dropdown -->
+            <div class="nav__dropdown" role="navigation" aria-label="Resources submenu">
+              <button class="nav__dropdown-trigger" aria-haspopup="true" id="resources-dropdown-btn" type="button">
+                Resources
+                <span class="nav__dropdown-chevron" aria-hidden="true"></span>
+              </button>
+              <div class="nav__dropdown-panel" role="menu" aria-labelledby="resources-dropdown-btn">
+                <a href="blogs.html" class="nav__dropdown-link" role="menuitem">Blogs</a>
+                <a href="articles.html" class="nav__dropdown-link" role="menuitem">Articles</a>
+                <div class="nav__dropdown-divider" role="separator" aria-hidden="true"></div>
+                <a href="timeline.html" class="nav__dropdown-link" role="menuitem">Timeline</a>
+                <a href="packages.html" class="nav__dropdown-link" role="menuitem">Packages</a>
+                <div class="nav__dropdown-divider" role="separator" aria-hidden="true"></div>
+                <a href="webinar-library.html" class="nav__dropdown-link" role="menuitem">Webinars</a>
+              </div>
+            </div>
+
+            <a href="about.html" class="nav__link">About</a>
+          </nav>
+
+          <!-- Desktop CTAs -->
+          <div class="nav__ctas">
+            <a href="webinar-library.html" class="btn btn--outline btn--small nav__cta-webinar">Free Webinar</a>
+            <a href="https://meetings-na2.hubspot.com/will-smethurst/cfs-website-meeting" class="btn btn--primary btn--small" target="_blank" rel="noopener">Schedule a Consultation</a>
+          </div>
+
+          <!-- Mobile Hamburger -->
+          <button class="nav__hamburger" id="nav-toggle" aria-label="Open navigation menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="nav__drawer" id="nav-drawer" role="dialog" aria-label="Navigation menu" aria-modal="true">
+    <div class="nav__drawer-overlay" id="nav-overlay"></div>
+    <div class="nav__drawer-panel">
+      <button class="nav__drawer-close" id="nav-close" aria-label="Close navigation">✕</button>
+      <nav class="nav__drawer-links" aria-label="Mobile navigation">
+        <a href="index.html" class="nav__drawer-link">Home</a>
+        <a href="how-it-works.html" class="nav__drawer-link">How It Works</a>
+        <a href="our-process.html" class="nav__drawer-link">Our Process</a>
+        <a href="pillars.html" class="nav__drawer-link">The 3 Pillars</a>
+
+        <!-- Resources Accordion -->
+        <div class="nav__accordion">
+          <button class="nav__accordion-trigger" aria-expanded="false" aria-controls="resources-accordion-panel" id="resources-accordion-btn" type="button">
+            Resources
+            <span class="nav__accordion-chevron" aria-hidden="true"></span>
+          </button>
+          <div class="nav__accordion-panel" id="resources-accordion-panel" role="region" aria-labelledby="resources-accordion-btn">
+            <div class="nav__accordion-links">
+              <a href="blogs.html" class="nav__accordion-link nav__drawer-link">Blogs</a>
+              <a href="articles.html" class="nav__accordion-link nav__drawer-link">Articles</a>
+              <a href="timeline.html" class="nav__accordion-link nav__drawer-link">Timeline</a>
+              <a href="packages.html" class="nav__accordion-link nav__drawer-link">Packages</a>
+              <a href="webinar-library.html" class="nav__accordion-link nav__drawer-link">Webinars</a>
+            </div>
+          </div>
+        </div>
+
+        <a href="about.html" class="nav__drawer-link">About</a>
+      </nav>
+      <div class="nav__drawer-ctas">
+        <a href="webinar-library.html" class="btn btn--outline">Free Webinar</a>
+        <a href="https://meetings-na2.hubspot.com/will-smethurst/cfs-website-meeting" class="btn btn--primary" target="_blank" rel="noopener">Schedule a Consultation</a>
+      </div>
+    </div>
+  </div>
+
+
+  <main>
+
+    <!-- ============================================================
+         PAGE HEADER
+    ============================================================ -->
+    <section class="page-header" aria-label="Privacy Policy">
+      <div class="container">
+        <div class="page-header__inner">
+
+          <div class="page-header__eyebrow">
+            <span class="page-header__eyebrow-line" aria-hidden="true"></span>
+            <span class="page-header__eyebrow-text">Legal</span>
+          </div>
+
+          <h1 class="page-header__title">Privacy Policy</h1>
+
+          <p class="page-header__subtitle">
+            How Strategy West College Planning collects, uses, and protects your personal information.
+          </p>
+
+          <p class="page-header__meta">Last updated: April 2, 2026</p>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         LEGAL CONTENT
+    ============================================================ -->
+    <section class="legal-section" aria-labelledby="privacy-heading">
+      <div class="container--narrow">
+        <div class="legal-body">
+
+          <div class="legal-highlight">
+            <p>This Privacy Policy applies to ACFSWF LLC, doing business as Strategy West College Planning ("Strategy West," "we," "us," or "our"). By using our website or services, you agree to the practices described in this policy. If you have questions, contact us at <a href="mailto:info@swfcollegeplanning.com">info@swfcollegeplanning.com</a>.</p>
+          </div>
+
+          <!-- 1 -->
+          <h2>1. Information We Collect</h2>
+
+          <h3>Information You Provide Directly</h3>
+          <p>When you interact with our website or services, you may provide us with personal information including:</p>
+          <ul>
+            <li>Your name and contact information (email address, phone number)</li>
+            <li>Information about your student, including grade level and academic background</li>
+            <li>Details about your family's college planning goals and financial situation</li>
+            <li>Payment information processed through our payment provider (Stripe)</li>
+            <li>Communications you send to us via email or consultation requests</li>
+          </ul>
+
+          <h3>Information Collected Automatically</h3>
+          <p>When you visit our website, we may automatically collect certain technical information, including:</p>
+          <ul>
+            <li>IP address and general geographic location</li>
+            <li>Browser type and operating system</li>
+            <li>Pages visited, time spent on pages, and referring URLs</li>
+            <li>Device identifiers and usage data</li>
+          </ul>
+
+          <!-- 2 -->
+          <h2>2. How We Use Your Information</h2>
+          <p>We use the information we collect for the following purposes:</p>
+          <ul>
+            <li>To provide our college planning advisory services and fulfill purchased packages</li>
+            <li>To schedule and conduct consultations via our scheduling platform (HubSpot)</li>
+            <li>To process payments securely through our payment processor (Stripe)</li>
+            <li>To send service-related communications, including appointment confirmations and follow-ups</li>
+            <li>To send marketing and educational emails about our services, webinars, and resources (you may opt out at any time)</li>
+            <li>To improve our website, services, and client experience</li>
+            <li>To comply with applicable legal obligations</li>
+          </ul>
+
+          <!-- 3 -->
+          <h2>3. Third-Party Services</h2>
+          <p>We work with the following third-party platforms to deliver our services. Each has its own privacy practices:</p>
+
+          <h3>HubSpot</h3>
+          <p>We use HubSpot for consultation scheduling and marketing email communications. When you schedule a consultation or submit your contact information, that data is stored and managed within HubSpot. You can learn more at <a href="https://legal.hubspot.com/privacy-policy" target="_blank" rel="noopener noreferrer">HubSpot's Privacy Policy</a>.</p>
+
+          <h3>Stripe</h3>
+          <p>We use Stripe to process payments for our service packages. Stripe collects and processes your payment card information directly. We do not store your full payment card details on our systems. You can learn more at <a href="https://stripe.com/privacy" target="_blank" rel="noopener noreferrer">Stripe's Privacy Policy</a>.</p>
+
+          <!-- 4 -->
+          <h2>4. How We Share Your Information</h2>
+          <p>We do not sell, rent, or trade your personal information to third parties. We may share your information only in the following limited circumstances:</p>
+          <ul>
+            <li><strong>Service providers:</strong> With trusted vendors (HubSpot, Stripe) who assist us in operating our business, under appropriate confidentiality agreements</li>
+            <li><strong>Legal requirements:</strong> When required by law, court order, or governmental authority</li>
+            <li><strong>Protection of rights:</strong> When necessary to protect the rights, safety, or property of Strategy West, our clients, or the public</li>
+            <li><strong>Business transfers:</strong> In connection with a merger, acquisition, or sale of assets, your information may be transferred as part of that transaction</li>
+          </ul>
+
+          <!-- 5 -->
+          <h2>5. Data Retention</h2>
+          <p>We retain your personal information for as long as necessary to provide our services, comply with legal obligations, resolve disputes, and enforce our agreements. When your information is no longer needed, we will securely delete or anonymize it.</p>
+
+          <!-- 6 -->
+          <h2>6. Your Choices and Rights</h2>
+          <p>You have the following rights with respect to your personal information:</p>
+          <ul>
+            <li><strong>Access and correction:</strong> You may request access to or correction of the personal information we hold about you</li>
+            <li><strong>Deletion:</strong> You may request that we delete your personal information, subject to certain legal exceptions</li>
+            <li><strong>Marketing opt-out:</strong> You may unsubscribe from our marketing emails at any time by clicking the unsubscribe link in any email or by contacting us directly</li>
+            <li><strong>Data portability:</strong> Where applicable, you may request a copy of your personal information in a commonly used format</li>
+          </ul>
+          <p>To exercise any of these rights, please contact us at <a href="mailto:info@swfcollegeplanning.com">info@swfcollegeplanning.com</a>.</p>
+
+          <!-- 7 -->
+          <h2>7. Cookies and Tracking Technologies</h2>
+          <p>Our website may use cookies and similar tracking technologies to improve your browsing experience and understand how visitors interact with our site. You can control cookie settings through your browser preferences. Note that disabling certain cookies may affect the functionality of our website.</p>
+
+          <!-- 8 -->
+          <h2>8. Children's Privacy</h2>
+          <p>Our website and services are directed at parents and guardians of college-bound students, not at minors. We do not knowingly collect personal information directly from individuals under the age of 13. If you believe we have inadvertently collected such information, please contact us immediately so we can delete it.</p>
+
+          <!-- 9 -->
+          <h2>9. Security</h2>
+          <p>We take reasonable administrative, technical, and physical measures to protect your personal information from unauthorized access, disclosure, alteration, and destruction. However, no method of transmission over the internet or electronic storage is completely secure. We cannot guarantee absolute security.</p>
+
+          <!-- 10 -->
+          <h2>10. Governing Law</h2>
+          <p>This Privacy Policy is governed by and construed in accordance with the laws of the State of Utah. Any disputes arising under this policy shall be subject to the exclusive jurisdiction of the courts located in Salt Lake City, Utah.</p>
+
+          <!-- 11 -->
+          <h2>11. Changes to This Policy</h2>
+          <p>We may update this Privacy Policy from time to time to reflect changes in our practices or applicable law. When we make material changes, we will update the "Last updated" date at the top of this page. We encourage you to review this policy periodically.</p>
+
+          <!-- 12 -->
+          <h2>12. Contact Us</h2>
+          <p>If you have questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:</p>
+          <ul>
+            <li><strong>Business:</strong> Strategy West College Planning (ACFSWF LLC)</li>
+            <li><strong>Email:</strong> <a href="mailto:info@swfcollegeplanning.com">info@swfcollegeplanning.com</a></li>
+            <li><strong>Location:</strong> Salt Lake City, Utah</li>
+          </ul>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+
+      <div class="footer__grid">
+
+        <!-- Column 1: Brand -->
+        <div class="footer__brand">
+          <div class="footer__brand-name">Strategy West</div>
+          <div class="footer__brand-tagline">College Planning</div>
+          <p class="footer__brand-desc">
+            Expert, advisor-led guidance for families navigating the college planning process — from freshman year through enrollment.
+          </p>
+        </div>
+
+        <!-- Column 2: Site Pages -->
+        <div class="footer__col">
+          <span class="footer__col-label">Navigate</span>
+          <nav class="footer__links" aria-label="Footer navigation">
+            <a href="index.html" class="footer__link">Home</a>
+            <a href="how-it-works.html" class="footer__link">How It Works</a>
+            <a href="our-process.html" class="footer__link">Our Process</a>
+            <a href="pillars.html" class="footer__link">The 3 Pillars</a>
+            <a href="about.html" class="footer__link">About</a>
+          </nav>
+        </div>
+
+        <!-- Column 3: Resources -->
+        <div class="footer__col">
+          <span class="footer__col-label">Resources</span>
+          <nav class="footer__links" aria-label="Resources navigation">
+            <a href="blogs.html" class="footer__link">Blogs</a>
+            <a href="articles.html" class="footer__link">Articles</a>
+            <a href="timeline.html" class="footer__link">Timeline</a>
+            <a href="webinar-library.html" class="footer__link">Free Webinar</a>
+            <a href="packages.html" class="footer__link">Packages</a>
+          </nav>
+        </div>
+
+        <!-- Column 4: Contact -->
+        <div class="footer__col">
+          <span class="footer__col-label">Get in Touch</span>
+
+          <div class="footer__contact-line">
+            <span class="footer__contact-icon" aria-hidden="true">✉</span>
+            <span class="footer__contact-text">
+              info@swfcollegeplanning.com
+            </span>
+          </div>
+
+          <div class="footer__contact-line">
+            <span class="footer__contact-icon" aria-hidden="true">◎</span>
+            <span class="footer__contact-text">
+              Serving families nationwide<br>via virtual consultation &amp; in-person in Utah
+            </span>
+          </div>
+
+          <a href="https://meetings-na2.hubspot.com/will-smethurst/cfs-website-meeting" class="footer__cta-link" target="_blank" rel="noopener">Schedule a Consultation</a>
+        </div>
+
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="footer__bottom">
+        <span class="footer__copyright">
+          &copy; <span id="footer-year"></span> Strategy West College Planning. All rights reserved.
+        </span>
+        <div class="footer__legal-links">
+          <a href="privacy.html" class="footer__legal-link">Privacy Policy</a>
+          <a href="terms.html" class="footer__legal-link">Terms of Use</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- ============================================================
+       JAVASCRIPT — Nav drawer + accordion + dynamic year
+  ============================================================ -->
+  <script>
+    // Dynamic copyright year
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+    // Mobile navigation drawer
+    const toggle   = document.getElementById('nav-toggle');
+    const drawer   = document.getElementById('nav-drawer');
+    const overlay  = document.getElementById('nav-overlay');
+    const closeBtn = document.getElementById('nav-close');
+
+    function openDrawer() {
+      drawer.classList.add('is-open');
+      toggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDrawer() {
+      drawer.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    toggle.addEventListener('click', openDrawer);
+    closeBtn.addEventListener('click', closeDrawer);
+    overlay.addEventListener('click', closeDrawer);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && drawer.classList.contains('is-open')) closeDrawer();
+    });
+
+    drawer.querySelectorAll('.nav__drawer-link, .nav__drawer-ctas .btn').forEach(link => {
+      link.addEventListener('click', closeDrawer);
+    });
+
+    // Resources Accordion (mobile drawer)
+    const accordionBtn   = document.getElementById('resources-accordion-btn');
+    const accordionPanel = document.getElementById('resources-accordion-panel');
+
+    if (accordionBtn && accordionPanel) {
+      accordionBtn.addEventListener('click', function () {
+        const isOpen = accordionPanel.classList.toggle('is-open');
+        accordionBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+    }
+  </script>
+
+</body>
+</html>
