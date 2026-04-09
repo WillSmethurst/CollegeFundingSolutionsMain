@@ -852,7 +852,7 @@
             <div class="pkg-tile__footer">
               <p class="pkg-tile__cta-note">One-time investment</p>
               <a href="https://buy.stripe.com/7sYdR26zA1g16Ykf5nbo400" class="btn btn--primary"
-                 onclick="event.stopPropagation()" target="_blank" rel="noopener">
+                 onclick="openStripeModal(event)">
                 Get My Analysis &amp; Funding Report &nbsp;·&nbsp; $249
               </a>
             </div>
@@ -1073,6 +1073,20 @@
        4. Footer year
   ============================================================ -->
   <script>
+    /* ── Stripe Modal Popup ──────────────────────────────────── */
+    function openStripeModal(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var url = 'https://buy.stripe.com/7sYdR26zA1g16Ykf5nbo400';
+      var w = 480, h = 700;
+      var left = Math.max(0, (screen.width  - w) / 2);
+      var top  = Math.max(0, (screen.height - h) / 2);
+      window.open(url, 'stripe_checkout',
+        'width=' + w + ',height=' + h +
+        ',left=' + left + ',top=' + top +
+        ',toolbar=0,menubar=0,location=0,status=0,scrollbars=1,resizable=1');
+    }
+
     /* ── Footer year ─────────────────────────────────────────── */
     document.getElementById('footer-year').textContent = new Date().getFullYear();
 
