@@ -1,0 +1,4261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Educational Intake Form</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.development.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
+  <link href="https://releases.transloadit.com/uppy/v3.21.0/uppy.min.css" rel="stylesheet" />
+  <script src="https://releases.transloadit.com/uppy/v3.21.0/uppy.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { margin: 0; padding: 0; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState, useEffect, useRef } = React;
+
+
+function IntakeForm() {
+  const [formData, setFormData] = useState({});
+  const [currentSection, setCurrentSection] = useState(0);
+  const [pendingCollegeName, setPendingCollegeName] = useState('');
+  const [pendingCollegeCityState, setPendingCollegeCityState] = useState('');
+  const formRef = useRef(null);
+
+  // ── Resume / email gate ────────────────────────────────────────────────────
+  const [appStage, setAppStage] = useState('intro'); // 'intro' | 'email' | 'form'
+  const [clientEmail, setClientEmail] = useState('');
+  const [emailInput, setEmailInput] = useState('');
+  const [resumeLoading, setResumeLoading] = useState(false);
+  const [resumeFound, setResumeFound] = useState(null); // { formData, currentSection } | null
+  // ── End resume state ───────────────────────────────────────────────────────
+
+  // ── Google Sheets integration ──────────────────────────────────────────────
+  // Paste your Apps Script Web App URL below after deploying GoogleAppsScript.js
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxFR8CLOYpGENlLenzRYcN6Bu6ax4iLHPjA7j_vH2Bs7Lcqx1jD9P0Gp8h3FfDpzn-xFA/exec';
+
+  const [saveStatus, setSaveStatus] = useState('');
+  const [devMode, setDevMode] = useState(false);
+
+  const [sessionId] = useState(() => {
+    try {
+      let id = localStorage.getItem('intakeFormSessionId');
+      if (!id) {
+        id = 'sess_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+        localStorage.setItem('intakeFormSessionId', id);
+      }
+      return id;
+    } catch(e) {
+      return 'sess_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    }
+  });
+
+  const saveToSheet = (data, isFinal, resumeSection) => {
+    if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL === 'YOUR_APPS_SCRIPT_URL_HERE') return;
+    try {
+      setSaveStatus('saving');
+      const payload = encodeURIComponent(JSON.stringify({
+        sessionId: sessionId,
+        timestamp: new Date().toISOString(),
+        formData: data,
+        isFinal: !!isFinal,
+        clientEmail: clientEmail || '',
+        resumeSection: resumeSection ?? currentSection
+      }));
+      fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: 'payload=' + payload
+      }).then(() => {
+        setSaveStatus('saved');
+        setTimeout(() => setSaveStatus(''), 2500);
+      }).catch(() => {
+        setSaveStatus('error');
+        setTimeout(() => setSaveStatus(''), 2500);
+      });
+    } catch(e) {
+      console.error('Sheet save error:', e);
+    }
+  };
+
+  // ── Email resume lookup (JSONP to avoid CORS) ──────────────────────────────
+  const lookupEmail = (email) => {
+    return new Promise((resolve) => {
+      const cbName = 'resumeCb_' + Date.now();
+      const timeoutId = setTimeout(() => {
+        delete window[cbName];
+        resolve({ status: 'not_found' });
+      }, 10000);
+      window[cbName] = (data) => {
+        clearTimeout(timeoutId);
+        delete window[cbName];
+        if (script.parentNode) script.parentNode.removeChild(script);
+        resolve(data);
+      };
+      const script = document.createElement('script');
+      script.onerror = () => {
+        clearTimeout(timeoutId);
+        delete window[cbName];
+        resolve({ status: 'not_found' });
+      };
+      script.src = APPS_SCRIPT_URL + '?action=lookup&email=' + encodeURIComponent(email) + '&callback=' + cbName;
+      document.head.appendChild(script);
+    });
+  };
+  // ── End Google Sheets integration ──────────────────────────────────────────
+
+  useEffect(() => {
+    const handleWheel = () => {
+      const el = document.activeElement;
+      // If a number input is focused, blur it so wheel scrolling doesn't change its value
+      if (el && el.tagName === 'INPUT' && el.type === 'number') {
+        el.blur();
+      }
+    };
+
+    // passive true keeps scrolling smooth (we're not preventing scroll, just blurring)
+    window.addEventListener('wheel', handleWheel, { passive: true });
+
+    return () => {
+      window.removeEventListener('wheel', handleWheel);
+    };
+  }, []);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('scheduled') === 'true') {
+      const scheduledIdx = sections.findIndex(s => s.id === 'scheduled');
+      if (scheduledIdx !== -1) {
+        setCurrentSection(scheduledIdx);
+        setAppStage('form');
+      }
+    }
+  }, []);
+
+  const updateField = (field, value) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+  };
+
+  const getColleges = () =>
+    Array.isArray(formData.collegesUnderConsideration) ? formData.collegesUnderConsideration : [];
+
+  const setColleges = (next) => updateField('collegesUnderConsideration', next);
+
+  const housingCodes = ['On Campus', 'Off Campus', 'With Parent(s)', 'Other'];
+
+  const addCollegeRow = () => {
+    const name = (pendingCollegeName || '').trim();
+    if (!name) return;
+
+    const next = [
+      ...getColleges(),
+      {
+        collegeName: name,
+        cityState: (pendingCollegeCityState || '').trim(),
+        housingCode: 'On Campus',
+        alCoa: '',
+        alGiftAid: ''
+      }
+    ];
+
+    setColleges(next);
+    setPendingCollegeName('');
+    setPendingCollegeCityState('');
+  };
+
+  const updateCollegeRow = (index, patch) => {
+    const next = [...getColleges()];
+    next[index] = { ...next[index], ...patch };
+    setColleges(next);
+  };
+
+  const deleteCollegeRow = (index) => {
+    const next = [...getColleges()];
+    next.splice(index, 1);
+    setColleges(next);
+  };
+
+  const usStates = [
+    'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA',
+    'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD',
+    'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ',
+    'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC',
+    'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'
+  ];
+
+  const currentYear = new Date().getFullYear();
+  const gradYears = Array.from({ length: 11 }, (_, i) => currentYear - 5 + i);
+
+  const sections = [
+    { id: 'intro', title: 'Welcome' },
+    { id: 'section1', title: 'Student — Basic Information' },
+    { id: 'section2', title: 'Student — Academic & Enrollment Info' },
+    { id: 'section3', title: 'Parents / Guardians' },
+    { id: 'section4', title: 'Family Household Overview' },
+    { id: 'section5', title: 'Student Income' },
+    { id: 'section6', title: 'Student Assets' },
+    { id: 'section7', title: 'Student Investments (Detailed)' },
+    { id: 'section8', title: 'Parent Income' },
+    { id: 'section9', title: 'Family Benefits (Past 24 Months)' },
+    { id: 'section10', title: 'Parent Assets' },
+    { id: 'section11', title: 'Parent Assets — Continued (Investments)' },
+    { id: 'section12', title: 'Parent Assets — Continued (Property & Equity)' },
+    { id: 'section13', title: 'Parent & Student - Worksheet A Information' },
+    { id: 'section14', title: 'Parent & Student - Worksheet B Information' },
+    { id: 'section15', title: 'Parent & Student - Worksheet C Information' },
+    { id: 'section16', title: 'Life Insurance & Debts' },
+    { id: 'section17', title: 'Non-Custodial Parent (if applicable)' },
+    { id: 'section18', title: 'Colleges Under Consideration, Award Letter / Funding Evaluations' },
+    { id: 'section19', title: 'Dependency Status' },
+    { id: 'section20', title: 'Upload Award Letters' },
+    { id: 'acknowledgment', title: 'Final Acknowledgment' },
+    { id: 'scheduled', title: 'Meeting Confirmed' },
+    { id: 'thankyou', title: 'Thank You' }
+  ];
+
+  return (
+    <div style={{
+      minHeight: '100vh',
+      background: 'linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)',
+      padding: '40px 20px',
+      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif'
+    }}>
+      <div style={{
+        maxWidth: '900px',
+        margin: '0 auto',
+        background: 'white',
+        borderRadius: '12px',
+        boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+        overflow: 'hidden'
+      }}>
+        {/* Header */}
+        {sections[currentSection].id !== 'intro' && sections[currentSection].id !== 'scheduled' && (
+        <div style={{
+          background: 'linear-gradient(135deg, #064E3B 0%, #0a3528 100%)',
+          padding: '40px',
+          color: 'white',
+          textAlign: 'center'
+        }}>
+          <h1 style={{
+            margin: 0,
+            fontSize: '32px',
+            fontWeight: '600',
+            fontFamily: 'Georgia, serif',
+            letterSpacing: '-0.5px'
+          }}>
+            Educational Intake Form
+          </h1>
+          <p style={{
+            margin: '12px 0 0',
+            opacity: 0.95,
+            fontSize: '15px'
+          }}>
+            Please complete all sections accurately for financial aid analysis
+          </p>
+        </div>
+        )}
+
+        {sections[currentSection].id !== 'intro' && sections[currentSection].id !== 'thankyou' && sections[currentSection].id !== 'scheduled' && (
+          <div style={{
+            padding: '30px 40px 20px',
+            borderBottom: '1px solid #e5e7eb'
+          }}>
+            <div style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              marginBottom: '12px'
+            }}>
+              <span style={{ fontSize: '14px', color: '#6b7280', fontWeight: '500' }}>
+                {sections[currentSection].id === 'acknowledgment'
+                  ? 'Final Step: Acknowledgment'
+                  : `Section ${currentSection} of ${sections.length - 3}`
+                }
+              </span>
+              <span style={{ fontSize: '14px', color: '#6b7280', fontWeight: '500' }}>
+                {Math.round(((currentSection + 1) / (sections.length - 1)) * 100)}% Complete
+              </span>
+            </div>
+            <div style={{
+              width: '100%',
+              height: '8px',
+              background: '#e5e7eb',
+              borderRadius: '4px',
+              overflow: 'hidden'
+            }}>
+              <div style={{
+                width: `${((currentSection + 1) / (sections.length - 1)) * 100}%`,
+                height: '100%',
+                background: 'linear-gradient(90deg, #064E3B, #0a3528)',
+                transition: 'width 0.3s ease',
+                borderRadius: '4px'
+              }} />
+            </div>
+          </div>
+        )}
+
+        {/* Form Content */}
+        <div style={{ padding: '40px' }}>
+          <h2 style={{
+            fontSize: '24px',
+            fontWeight: '600',
+            color: '#111827',
+            marginBottom: '30px',
+            fontFamily: 'Georgia, serif',
+            borderBottom: '2px solid #0a3528',
+            paddingBottom: '12px'
+          }}>
+            {sections[currentSection].title}
+          </h2>
+
+          {sections[currentSection].id === 'intro' && (
+            appStage === 'intro' ? (
+            <PremiumHeroShell>
+              <div
+                style={{
+                  maxWidth: '720px',
+                  margin: '0 auto',
+                  background: 'rgba(255,255,255,0.92)',
+                  border: '2px solid #D4AF37',
+                  borderRadius: '12px',
+                  padding: '40px',
+                  boxShadow: '0 10px 30px rgba(0,0,0,0.10)',
+                  backdropFilter: 'blur(6px)',
+                  WebkitBackdropFilter: 'blur(6px)',
+                }}
+              >
+              <h3 style={{
+                fontSize: '26px',
+                fontWeight: '700',
+                color: '#1B2845',
+                marginBottom: '8px',
+                marginTop: 0,
+                fontFamily: 'Georgia, serif'
+              }}>
+                Why This Information Matters
+              </h3>
+              <div style={{
+                height: '3px',
+                width: '64px',
+                background: '#D4AF37',
+                borderRadius: '999px',
+                marginTop: '14px',
+                marginBottom: '22px'
+              }}></div>
+              
+              <p style={{
+                fontSize: '16px',
+                lineHeight: '1.7',
+                color: '#111827',
+                marginBottom: '20px'
+              }}>
+                College is not priced like a traditional consumer purchase. Costs, aid eligibility, and pricing outcomes vary based on family structure, income, assets, and the schools a student is considering.
+              </p>
+
+              <p style={{
+                fontSize: '16px',
+                lineHeight: '1.7',
+                color: '#111827',
+                marginBottom: '20px'
+              }}>
+                The information collected in this intake allows us to evaluate your situation accurately and provide guidance rooted in how college pricing actually works. While we cannot guarantee savings or specific outcomes, we do guarantee clarity — ensuring your family understands whether you are paying what you should be paying, based on the rules and structures in place.
+              </p>
+
+              <p style={{
+                fontSize: '16px',
+                lineHeight: '1.7',
+                color: '#111827',
+                marginBottom: '20px'
+              }}>
+                This process is educational in nature and does not constitute financial, tax, or legal advice.
+              </p>
+
+              <p style={{
+                fontSize: '15px',
+                lineHeight: '1.7',
+                color: '#374151',
+                marginBottom: '28px'
+              }}>
+                <strong>Time to complete:</strong> approximately 20–30 minutes. Estimates are acceptable where exact figures are unavailable. Accuracy improves the usefulness of the analysis.
+              </p>
+
+              <div style={{
+                background: '#0a3528',
+                color: '#FFFFFF',
+                padding: '24px',
+                borderRadius: '8px',
+                borderLeft: '4px solid #D4AF37',
+                marginBottom: '32px'
+              }}>
+                <p style={{
+                  fontSize: '17px',
+                  lineHeight: '1.6',
+                  margin: 0,
+                  fontStyle: 'italic'
+                }}>
+                  "We don't guarantee more gift aid — we guarantee peace of mind, knowing you're paying what you should, not thousands more than necessary."
+                </p>
+              </div>
+
+              <button
+                onClick={() => {
+                  setAppStage('email');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                style={{
+                  width: '100%',
+                  padding: '14px 22px',
+                  fontSize: '18px',
+                  fontWeight: '700',
+                  color: '#0a3528',
+                  background: '#D4AF37',
+                  border: 'none',
+                  borderRadius: '10px',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease',
+                  boxShadow: '0 6px 14px rgba(0,0,0,0.10)'
+                }}
+                onMouseOver={(e) => {
+                  e.target.style.background = '#c49d2f';
+                  e.target.style.transform = 'translateY(-2px)';
+                  e.target.style.boxShadow = '0 8px 18px rgba(0,0,0,0.15)';
+                }}
+                onMouseOut={(e) => {
+                  e.target.style.background = '#D4AF37';
+                  e.target.style.transform = 'translateY(0)';
+                  e.target.style.boxShadow = '0 6px 14px rgba(0,0,0,0.10)';
+                }}
+              >
+                Continue to Questionnaire
+              </button>
+            </div>
+            </PremiumHeroShell>
+            ) : (
+            /* ── Email / Resume Page ─────────────────────────────────────── */
+            <PremiumHeroShell>
+              <div style={{
+                maxWidth: '560px',
+                margin: '0 auto',
+                background: 'rgba(255,255,255,0.92)',
+                border: '2px solid #D4AF37',
+                borderRadius: '12px',
+                padding: '40px',
+                boxShadow: '0 10px 30px rgba(0,0,0,0.10)',
+                backdropFilter: 'blur(6px)',
+                WebkitBackdropFilter: 'blur(6px)',
+              }}>
+                {resumeFound ? (
+                  /* ── Resume prompt ── */
+                  <div>
+                    <div style={{ fontSize: '40px', textAlign: 'center', marginBottom: '16px' }}>👋</div>
+                    <h3 style={{
+                      fontSize: '24px', fontWeight: '700', color: '#1B2845',
+                      marginBottom: '8px', marginTop: 0, fontFamily: 'Georgia, serif',
+                      textAlign: 'center'
+                    }}>
+                      Welcome Back!
+                    </h3>
+                    <div style={{
+                      height: '3px', width: '64px', background: '#D4AF37',
+                      borderRadius: '999px', margin: '14px auto 20px'
+                    }} />
+                    <p style={{ fontSize: '15px', color: '#374151', lineHeight: '1.6', textAlign: 'center', marginBottom: '28px' }}>
+                      We found your saved progress for <strong>{clientEmail}</strong>. Would you like to pick up where you left off?
+                    </p>
+                    <button
+                      onClick={() => {
+                        setFormData(resumeFound.formData || {});
+                        setCurrentSection(resumeFound.currentSection || 1);
+                        setResumeFound(null);
+                        setAppStage('form');
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      }}
+                      style={{
+                        width: '100%', padding: '14px 22px', fontSize: '16px',
+                        fontWeight: '700', color: 'white', background: '#064E3B',
+                        border: 'none', borderRadius: '10px', cursor: 'pointer',
+                        marginBottom: '12px', boxShadow: '0 4px 10px rgba(0,0,0,0.12)'
+                      }}
+                    >
+                      ✅ Resume Where I Left Off
+                    </button>
+                    <button
+                      onClick={() => {
+                        setFormData({});
+                        setCurrentSection(1);
+                        setResumeFound(null);
+                        setAppStage('form');
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      }}
+                      style={{
+                        width: '100%', padding: '12px 22px', fontSize: '15px',
+                        fontWeight: '600', color: '#374151', background: 'white',
+                        border: '2px solid #e5e7eb', borderRadius: '10px', cursor: 'pointer'
+                      }}
+                    >
+                      Start Fresh Instead
+                    </button>
+                  </div>
+                ) : (
+                  /* ── Email entry ── */
+                  <div>
+                    <h3 style={{
+                      fontSize: '26px', fontWeight: '700', color: '#1B2845',
+                      marginBottom: '8px', marginTop: 0, fontFamily: 'Georgia, serif'
+                    }}>
+                      Let's Get You Started
+                    </h3>
+                    <div style={{
+                      height: '3px', width: '64px', background: '#D4AF37',
+                      borderRadius: '999px', marginTop: '14px', marginBottom: '22px'
+                    }} />
+                    <p style={{ fontSize: '15px', color: '#374151', lineHeight: '1.6', marginBottom: '28px' }}>
+                      Enter your email address below. If you've started this form before, we'll pick up right where you left off. Otherwise, you'll begin fresh.
+                    </p>
+                    <div style={{ marginBottom: '20px' }}>
+                      <label style={{
+                        display: 'block', fontSize: '14px', fontWeight: '600',
+                        color: '#374151', marginBottom: '8px'
+                      }}>
+                        Email Address <span style={{ color: '#dc2626' }}>*</span>
+                      </label>
+                      <input
+                        type="email"
+                        placeholder="your@email.com"
+                        value={emailInput}
+                        onChange={(e) => setEmailInput(e.target.value)}
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter' && emailInput.trim()) {
+                            e.preventDefault();
+                            const email = emailInput.trim();
+                            setClientEmail(email);
+                            setResumeLoading(true);
+                            lookupEmail(email).then((result) => {
+                              setResumeLoading(false);
+                              if (result.status === 'found') {
+                                setResumeFound(result);
+                              } else {
+                                setFormData({});
+                                setCurrentSection(1);
+                                setAppStage('form');
+                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                              }
+                            });
+                          }
+                        }}
+                        style={{
+                          width: '100%', padding: '13px 16px', fontSize: '15px',
+                          border: '2px solid #e5e7eb', borderRadius: '8px',
+                          outline: 'none', fontFamily: 'inherit', boxSizing: 'border-box'
+                        }}
+                      />
+                    </div>
+                    <button
+                      disabled={resumeLoading || !emailInput.trim()}
+                      onClick={() => {
+                        const email = emailInput.trim();
+                        if (!email) return;
+                        setClientEmail(email);
+                        setResumeLoading(true);
+                        lookupEmail(email).then((result) => {
+                          setResumeLoading(false);
+                          if (result.status === 'found') {
+                            setResumeFound(result);
+                          } else {
+                            setFormData({});
+                            setCurrentSection(1);
+                            setAppStage('form');
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                          }
+                        });
+                      }}
+                      style={{
+                        width: '100%', padding: '14px 22px', fontSize: '17px',
+                        fontWeight: '700', color: resumeLoading || !emailInput.trim() ? '#9ca3af' : '#1B2845',
+                        background: resumeLoading || !emailInput.trim() ? '#e5e7eb' : '#D4AF37',
+                        border: 'none', borderRadius: '10px',
+                        cursor: resumeLoading || !emailInput.trim() ? 'not-allowed' : 'pointer',
+                        transition: 'all 0.2s ease', boxShadow: '0 6px 14px rgba(0,0,0,0.10)'
+                      }}
+                    >
+                      {resumeLoading ? '⏳ Checking...' : 'Continue →'}
+                    </button>
+                    <p style={{
+                      fontSize: '12px', color: '#9ca3af', textAlign: 'center',
+                      marginTop: '16px', marginBottom: 0
+                    }}>
+                      Your email is used only to save and restore your progress.
+                    </p>
+                  </div>
+                )}
+              </div>
+            </PremiumHeroShell>
+            )
+          )}
+
+          {currentSection === 1 && (
+            <form ref={formRef} onSubmit={(e) => e.preventDefault()}>
+              <div style={{ marginBottom: '32px' }}>
+                <h3 style={subsectionStyle}>Student Identity</h3>
+                <FormField label="Student First Name" required>
+                  <input
+                    type="text"
+                    required
+                    style={inputStyle}
+                    value={formData.studentFirstName || ''}
+                    onChange={(e) => updateField('studentFirstName', e.target.value)}
+                  />
+                </FormField>
+                <FormField label="Student Last Name" required>
+                  <input
+                    type="text"
+                    required
+                    style={inputStyle}
+                    value={formData.studentLastName || ''}
+                    onChange={(e) => updateField('studentLastName', e.target.value)}
+                  />
+                </FormField>
+                <FormField label="Middle Initial">
+                  <input
+                    type="text"
+                    maxLength="1"
+                    style={inputStyle}
+                    value={formData.middleInitial || ''}
+                    onChange={(e) => updateField('middleInitial', e.target.value)}
+                  />
+                </FormField>
+              </div>
+
+              <div style={{ marginBottom: '32px' }}>
+                <h3 style={subsectionStyle}>Contact & Address</h3>
+                <FormField label="Street Address" required>
+                  <input
+                    type="text"
+                    required
+                    style={inputStyle}
+                    value={formData.streetAddress || ''}
+                    onChange={(e) => updateField('streetAddress', e.target.value)}
+                  />
+                </FormField>
+                <FormField label="City" required>
+                  <input
+                    type="text"
+                    required
+                    style={inputStyle}
+                    value={formData.city || ''}
+                    onChange={(e) => updateField('city', e.target.value)}
+                  />
+                </FormField>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+                  <FormField label="State" required>
+                    <select
+                      required
+                      style={inputStyle}
+                      value={formData.state || ''}
+                      onChange={(e) => updateField('state', e.target.value)}
+                    >
+                      <option value="">Select State</option>
+                      {usStates.map(state => (
+                        <option key={state} value={state}>{state}</option>
+                      ))}
+                    </select>
+                  </FormField>
+                  <FormField label="ZIP Code" required>
+                    <input
+                      type="text"
+                      required
+                      pattern="[0-9]{5}"
+                      style={inputStyle}
+                      value={formData.zipCode || ''}
+                      onChange={(e) => updateField('zipCode', e.target.value)}
+                    />
+                  </FormField>
+                </div>
+                <FormField label="Home Phone">
+                  <input
+                    type="tel"
+                    style={inputStyle}
+                    value={formData.homePhone || ''}
+                    onChange={(e) => updateField('homePhone', e.target.value)}
+                  />
+                </FormField>
+              </div>
+
+              <div style={{ marginBottom: '32px' }}>
+                <h3 style={subsectionStyle}>Student Status</h3>
+                <FormField label="High School Graduation Year" required>
+                  <select
+                    required
+                    style={inputStyle}
+                    value={formData.gradYear || ''}
+                    onChange={(e) => updateField('gradYear', e.target.value)}
+                  >
+                    <option value="">Select Year</option>
+                    {gradYears.map(year => (
+                      <option key={year} value={year}>{year}</option>
+                    ))}
+                  </select>
+                </FormField>
+                <FormField label="Date of Birth" required>
+                  <DateInput
+                    required
+                    value={formData.dob || ''}
+                    onChange={(val) => updateField('dob', val)}
+                  />
+                </FormField>
+                <FormField label="Gender" required>
+                  <select
+                    required
+                    style={inputStyle}
+                    value={formData.gender || ''}
+                    onChange={(e) => updateField('gender', e.target.value)}
+                  >
+                    <option value="">Select</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Prefer not to say">Prefer not to say</option>
+                  </select>
+                </FormField>
+              </div>
+            </form>
+          )}
+
+          {/* Section 2: Student Academic & Enrollment Info */}
+          {currentSection === 2 && (
+            <form ref={formRef} onSubmit={(e) => e.preventDefault()}>
+              <div style={{ marginBottom: '32px' }}>
+                <h3 style={subsectionStyle}>General</h3>
+                <FormField label="Does the student live on a farm?" required>
+                  <select
+                    required
+                    style={inputStyle}
+                    value={formData.livesOnFarm || ''}
+                    onChange={(e) => updateField('livesOnFarm', e.target.value)}
+                  >
+                    <option value="">Select</option>
+                    <option value="N/A">N/A</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                </FormField>
+                <FormField label="Completed course of study?" required>
+                  <select
+                    required
+                    style={inputStyle}
+                    value={formData.completedCourse || ''}
+                    onChange={(e) => updateField('completedCourse', e.target.value)}
+                  >
+                    <option value="">Select</option>
+                    <option value="High School Diploma">High School Diploma</option>
+                    <option value="GED">GED</option>
+                    <option value="Home Schooled">Home Schooled</option>
+                  </select>
+                </FormField>
+                <FormField label="Will this be the student's first bachelor's degree before July 1, 2026?" required>
+                  <select
+                    required
+                    style={inputStyle}
+                    value={formData.firstBachelors || ''}
+                    onChange={(e) => updateField('firstBachelors', e.target.value)}
+                  >
+                    <option value="">Select</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                </FormField>
+              </div>
+
+              <div style={{ marginBottom: '32px' }}>
+                <h3 style={subsectionStyle}>Legal / Registration</h3>
+                <FormField label="Convicted of a drug-related crime?" required>
+                  <select
+                    required
+                    style={inputStyle}
+                    value={formData.drugConviction || ''}
+                    onChange={(e) => updateField('drugConviction', e.target.value)}
+                  >
+                    <option value="">Select</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                </FormField>
+                <FormField label="Registered for Selective Service?" required>
+                  <select
+                    required
+                    style={inputStyle}
+                    value={formData.selectiveService || ''}
+                    onChange={(e) => updateField('selectiveService', e.target.value)}
+                  >
+                    <option value="">Select</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                </FormField>
+                {formData.selectiveService === 'Yes' && (
+                  <FormField label="Selective Service Number" indent required>
+                    <input
+                      type="text"
+                      required
+                      style={inputStyle}
+                      value={formData.selectiveServiceNumber || ''}
+                      onChange={(e) => updateField('selectiveServiceNumber', e.target.value)}
+                    />
+                  </FormField>
+                )}
+              </div>
+
+              <div style={{ marginBottom: '32px' }}>
+                <h3 style={subsectionStyle}>Residency</h3>
+                <FormField label="Citizenship Status" required>
+                  <select
+                    required
+                    style={inputStyle}
+                    value={formData.citizenship || ''}
+                    onChange={(e) => updateField('citizenship', e.target.value)}
+                  >
+                    <option value="">Select</option>
+                    <option value="US Citizen">US Citizen</option>
+                    <option value="Eligible Non-Citizen">Eligible Non-Citizen</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </FormField>
+                <FormField label="Residence State" required>
+                  <select
+                    required
+                    style={inputStyle}
+                    value={formData.residenceState || ''}
+                    onChange={(e) => updateField('residenceState', e.target.value)}
+                  >
+                    <option value="">Select State</option>
+                    {usStates.map(state => (
+                      <option key={state} value={state}>{state}</option>
+                    ))}
+                  </select>
+                </FormField>
+                <FormField label="Date residency began" required>
+                  <DateInput
+                    required
+                    value={formData.residencyBeganDate || ''}
+                    onChange={(val) => updateField('residencyBeganDate', val)}
+                  />
+                </FormField>
+              </div>
+
+              <div style={{ marginBottom: '32px' }}>
+                <h3 style={subsectionStyle}>College Intent</h3>
+                <FormField label="College Grade Level" required>
+                  <select
+                    required
+                    style={inputStyle}
+                    value={formData.gradeLevel || ''}
+                    onChange={(e) => updateField('gradeLevel', e.target.value)}
+                  >
+                    <option value="">(Select)</option>
+                    <option value="1st Yr - Never Attended">1st Yr - Never Attended</option>
+                    <option value="1st Yr - Have Attended">1st Yr - Have Attended</option>
+                    <option value="Sophomore">Sophomore</option>
+                    <option value="Junior">Junior</option>
+                    <option value="Senior">Senior</option>
+                    <option value="5th Yr - Other">5th Yr - Other</option>
+                    <option value="Graduate - 1st Yr">Graduate - 1st Yr</option>
+                    <option value="Graduate - Beyond">Graduate - Beyond</option>
+                  </select>
+                </FormField>
+                <FormField label="Attendance Status" required>
+                  <select
+                    required
+                    style={inputStyle}
+                    value={formData.attendanceStatus || ''}
+                    onChange={(e) => updateField('attendanceStatus', e.target.value)}
+                  >
+                    <option value="">(Select)</option>
+                    <option value="Full Time">Full Time</option>
+                    <option value="Three-Quarter Time">Three-Quarter Time</option>
+                    <option value="Half Time">Half Time</option>
+                    <option value="Less Than Half Time">Less Than Half Time</option>
+                  </select>
+                </FormField>
+                <FormField label="Degree Pursuing" required>
+                  <select
+                    required
+                    style={inputStyle}
+                    value={formData.degreePursuing || ''}
+                    onChange={(e) => updateField('degreePursuing', e.target.value)}
+                  >
+                    <option value="">(Select)</option>
+                    <option value="1st Bachelors">1st Bachelors</option>
+                    <option value="2nd Bachelors">2nd Bachelors</option>
+                    <option value="Assoc - Tech">Assoc - Tech</option>
+                    <option value="Assoc - General">Assoc - General</option>
+                    <option value="Occupational Less 2">Occupational Less 2</option>
+                    <option value="Occupational 2 Plus">Occupational 2 Plus</option>
+                    <option value="Teaching Credential">Teaching Credential</option>
+                    <option value="Graduate - Professional">Graduate - Professional</option>
+                    <option value="Other - Undecided">Other - Undecided</option>
+                  </select>
+                </FormField>
+              </div>
+
+              <div style={{ marginBottom: '32px' }}>
+                <h3 style={subsectionStyle}>Marital Status</h3>
+                <FormField label="Student Marital Status" required>
+                  <select
+                    required
+                    style={inputStyle}
+                    value={formData.studentMaritalStatus || ''}
+                    onChange={(e) => updateField('studentMaritalStatus', e.target.value)}
+                  >
+                    <option value="">Select</option>
+                    <option value="Single">Single</option>
+                    <option value="Married">Married</option>
+                  </select>
+                </FormField>
+                {formData.studentMaritalStatus === 'Married' && (
+                  <FormField label="Date of Marriage" indent required>
+                    <DateInput
+                      required
+                      value={formData.marriageDate || ''}
+                      onChange={(val) => updateField('marriageDate', val)}
+                    />
+                  </FormField>
+                )}
+              </div>
+
+              <div style={{ marginBottom: '32px' }}>
+                <h3 style={subsectionStyle}>High School</h3>
+                <FormField label="High School Name" required>
+                  <input
+                    type="text"
+                    required
+                    style={inputStyle}
+                    value={formData.hsName || ''}
+                    onChange={(e) => updateField('hsName', e.target.value)}
+                  />
+                </FormField>
+                <FormField label="High School City" required>
+                  <input
+                    type="text"
+                    required
+                    style={inputStyle}
+                    value={formData.hsCity || ''}
+                    onChange={(e) => updateField('hsCity', e.target.value)}
+                  />
+                </FormField>
+                <FormField label="High School State" required>
+                  <select
+                    required
+                    style={inputStyle}
+                    value={formData.hsState || ''}
+                    onChange={(e) => updateField('hsState', e.target.value)}
+                  >
+                    <option value="">Select State</option>
+                    {usStates.map(state => (
+                      <option key={state} value={state}>{state}</option>
+                    ))}
+                  </select>
+                </FormField>
+              </div>
+
+              <div style={{ marginBottom: '32px' }}>
+                <h3 style={subsectionStyle}>Academics</h3>
+                <FormField label="GPA" required>
+                  <input
+                    type="number"
+                    required
+                    step="0.01"
+                    min="0"
+                    max="4"
+                    style={inputStyle}
+                    value={formData.gpa || ''}
+                    onChange={(e) => updateField('gpa', e.target.value)}
+                  />
+                </FormField>
+                <FormField label="Standardized College Admissions Tests" required>
+                  <select
+                    required
+                    style={inputStyle}
+                    value={formData.standardizedTestType || ''}
+                    onChange={(e) => updateField('standardizedTestType', e.target.value)}
+                  >
+                    <option value="">Select</option>
+                    <option value="ACT">ACT</option>
+                    <option value="SAT">SAT</option>
+                    <option value="Both">Both</option>
+                  </select>
+                </FormField>
+                {(formData.standardizedTestType === 'SAT' || formData.standardizedTestType === 'Both') && (
+                  <FormField label="SAT Score" required>
+                    <input
+                      type="number"
+                      required
+                      min="400"
+                      max="1600"
+                      style={inputStyle}
+                      value={formData.sat || ''}
+                      onChange={(e) => updateField('sat', e.target.value)}
+                    />
+                  </FormField>
+                )}
+                {(formData.standardizedTestType === 'ACT' || formData.standardizedTestType === 'Both') && (
+                  <FormField label="ACT Score" required>
+                    <input
+                      type="number"
+                      required
+                      min="1"
+                      max="36"
+                      style={inputStyle}
+                      value={formData.act || ''}
+                      onChange={(e) => updateField('act', e.target.value)}
+                    />
+                  </FormField>
+                )}
+              </div>
+            </form>
+          )}
+
+          {/* Section 3: Parents/Guardians */}
+          {currentSection === 3 && (
+            <form ref={formRef} onSubmit={(e) => e.preventDefault()}>
+              <div style={{ marginBottom: '32px' }}>
+                <h3 style={subsectionStyle}>Parent 1 - Mom</h3>
+                <FormField label="Parent 1 First Name" required={!formData.momDeceased}>
+                  <input
+                    type="text"
+                    required={!formData.momDeceased}
+                    disabled={formData.momDeceased}
+                    style={{...inputStyle, opacity: formData.momDeceased ? 0.5 : 1}}
+                    value={formData.momDeceased ? '' : (formData.parent1FirstName || '')}
+                    onChange={(e) => updateField('parent1FirstName', e.target.value)}
+                  />
+                </FormField>
+                <FormField label="Parent 1 Last Name" required={!formData.momDeceased}>
+                  <input
+                    type="text"
+                    required={!formData.momDeceased}
+                    disabled={formData.momDeceased}
+                    style={{...inputStyle, opacity: formData.momDeceased ? 0.5 : 1}}
+                    value={formData.momDeceased ? '' : (formData.parent1LastName || '')}
+                    onChange={(e) => updateField('parent1LastName', e.target.value)}
+                  />
+                </FormField>
+                <FormField label="Date of Birth" required={!formData.momDeceased}>
+                  <DateInput
+                    required={!formData.momDeceased}
+                    disabled={formData.momDeceased}
+                    value={formData.momDeceased ? '' : (formData.parent1DOB || '')}
+                    onChange={(val) => updateField('parent1DOB', val)}
+                  />
+                </FormField>
+                <FormField label="Highest Grade Completed" required={!formData.momDeceased}>
+                  <select
+                    required={!formData.momDeceased}
+                    disabled={formData.momDeceased}
+                    style={{...inputStyle, opacity: formData.momDeceased ? 0.5 : 1}}
+                    value={formData.momDeceased ? '' : (formData.parent1Education || '')}
+                    onChange={(e) => updateField('parent1Education', e.target.value)}
+                  >
+                    <option value="">Select</option>
+                    <option value="Elementary School">Elementary School</option>
+                    <option value="Middle School">Middle School</option>
+                    <option value="High School">High School</option>
+                    <option value="Some College">Some College</option>
+                    <option value="Associate Degree">Associate Degree</option>
+                    <option value="Bachelor's Degree">Bachelor's Degree</option>
+                    <option value="Master's Degree">Master's Degree</option>
+                    <option value="Doctoral Degree">Doctoral Degree</option>
+                  </select>
+                </FormField>
+                <FormField label="Work Phone">
+                  <input
+                    type="tel"
+                    disabled={formData.momDeceased}
+                    style={{...inputStyle, opacity: formData.momDeceased ? 0.5 : 1}}
+                    value={formData.momDeceased ? '' : (formData.parent1WorkPhone || '')}
+                    onChange={(e) => updateField('parent1WorkPhone', e.target.value)}
+                  />
+                </FormField>
+                <FormField label="Cell Phone" required={!formData.momDeceased}>
+                  <input
+                    type="tel"
+                    required={!formData.momDeceased}
+                    disabled={formData.momDeceased}
+                    style={{...inputStyle, opacity: formData.momDeceased ? 0.5 : 1}}
+                    value={formData.momDeceased ? '' : (formData.parent1CellPhone || '')}
+                    onChange={(e) => updateField('parent1CellPhone', e.target.value)}
+                  />
+                </FormField>
+                <FormField label="State of Residence" required={!formData.momDeceased}>
+                  <select
+                    required={!formData.momDeceased}
+                    disabled={formData.momDeceased}
+                    style={{...inputStyle, opacity: formData.momDeceased ? 0.5 : 1}}
+                    value={formData.momDeceased ? '' : (formData.parent1State || '')}
+                    onChange={(e) => updateField('parent1State', e.target.value)}
+                  >
+                    <option value="">Select State</option>
+                    <option value="N/A">N/A</option>
+                    {usStates.map(state => (
+                      <option key={state} value={state}>{state}</option>
+                    ))}
+                  </select>
+                </FormField>
+                <FormField label="Residency Start Date" required={!formData.momDeceased}>
+                  <DateInput
+                    required={!formData.momDeceased}
+                    disabled={formData.momDeceased}
+                    value={formData.momDeceased ? '' : (formData.parent1ResidencyDate || '')}
+                    onChange={(val) => updateField('parent1ResidencyDate', val)}
+                  />
+                </FormField>
+                <div style={{ marginTop: '20px' }}>
+                  <label style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    cursor: 'pointer',
+                    fontSize: '14px',
+                    color: '#374151'
+                  }}>
+                    <input
+                      type="checkbox"
+                      checked={formData.momDeceased || false}
+                      onChange={(e) => {
+                        updateField('momDeceased', e.target.checked);
+                        if (e.target.checked) {
+                          updateField('parent1FirstName', '');
+                          updateField('parent1LastName', '');
+                          updateField('parent1DOB', '');
+                          updateField('parent1Education', '');
+                          updateField('parent1WorkPhone', '');
+                          updateField('parent1CellPhone', '');
+                          updateField('parent1State', '');
+                          updateField('parent1ResidencyDate', '');
+                        }
+                      }}
+                      style={{ width: '16px', height: '16px', cursor: 'pointer' }}
+                    />
+                    If your child's mother is deceased please check here
+                  </label>
+                </div>
+              </div>
+
+              <div style={{ marginBottom: '32px' }}>
+                <h3 style={subsectionStyle}>Parent 2 - Dad</h3>
+                <FormField label="Parent 2 First Name" required={!formData.dadDeceased}>
+                  <input
+                    type="text"
+                    required={!formData.dadDeceased}
+                    disabled={formData.dadDeceased}
+                    style={{...inputStyle, opacity: formData.dadDeceased ? 0.5 : 1}}
+                    value={formData.dadDeceased ? '' : (formData.parent2FirstName || '')}
+                    onChange={(e) => updateField('parent2FirstName', e.target.value)}
+                  />
+                </FormField>
+                <FormField label="Parent 2 Last Name" required={!formData.dadDeceased}>
+                  <input
+                    type="text"
+                    required={!formData.dadDeceased}
+                    disabled={formData.dadDeceased}
+                    style={{...inputStyle, opacity: formData.dadDeceased ? 0.5 : 1}}
+                    value={formData.dadDeceased ? '' : (formData.parent2LastName || '')}
+                    onChange={(e) => updateField('parent2LastName', e.target.value)}
+                  />
+                </FormField>
+                <FormField label="Date of Birth" required={!formData.dadDeceased}>
+                  <DateInput
+                    required={!formData.dadDeceased}
+                    disabled={formData.dadDeceased}
+                    value={formData.dadDeceased ? '' : (formData.parent2DOB || '')}
+                    onChange={(val) => updateField('parent2DOB', val)}
+                  />
+                </FormField>
+                <FormField label="Highest Grade Completed" required={!formData.dadDeceased}>
+                  <select
+                    required={!formData.dadDeceased}
+                    disabled={formData.dadDeceased}
+                    style={{...inputStyle, opacity: formData.dadDeceased ? 0.5 : 1}}
+                    value={formData.dadDeceased ? '' : (formData.parent2Education || '')}
+                    onChange={(e) => updateField('parent2Education', e.target.value)}
+                  >
+                    <option value="">Select</option>
+                    <option value="Elementary School">Elementary School</option>
+                    <option value="Middle School">Middle School</option>
+                    <option value="High School">High School</option>
+                    <option value="Some College">Some College</option>
+                    <option value="Associate Degree">Associate Degree</option>
+                    <option value="Bachelor's Degree">Bachelor's Degree</option>
+                    <option value="Master's Degree">Master's Degree</option>
+                    <option value="Doctoral Degree">Doctoral Degree</option>
+                  </select>
+                </FormField>
+                <FormField label="Work Phone">
+                  <input
+                    type="tel"
+                    disabled={formData.dadDeceased}
+                    style={{...inputStyle, opacity: formData.dadDeceased ? 0.5 : 1}}
+                    value={formData.dadDeceased ? '' : (formData.parent2WorkPhone || '')}
+                    onChange={(e) => updateField('parent2WorkPhone', e.target.value)}
+                  />
+                </FormField>
+                <FormField label="Cell Phone" required={!formData.dadDeceased}>
+                  <input
+                    type="tel"
+                    required={!formData.dadDeceased}
+                    disabled={formData.dadDeceased}
+                    style={{...inputStyle, opacity: formData.dadDeceased ? 0.5 : 1}}
+                    value={formData.dadDeceased ? '' : (formData.parent2CellPhone || '')}
+                    onChange={(e) => updateField('parent2CellPhone', e.target.value)}
+                  />
+                </FormField>
+                <FormField label="State of Residence" required={!formData.dadDeceased}>
+                  <select
+                    required={!formData.dadDeceased}
+                    disabled={formData.dadDeceased}
+                    style={{...inputStyle, opacity: formData.dadDeceased ? 0.5 : 1}}
+                    value={formData.dadDeceased ? '' : (formData.parent2State || '')}
+                    onChange={(e) => updateField('parent2State', e.target.value)}
+                  >
+                    <option value="">Select State</option>
+                    <option value="N/A">N/A</option>
+                    {usStates.map(state => (
+                      <option key={state} value={state}>{state}</option>
+                    ))}
+                  </select>
+                </FormField>
+                <FormField label="Residency Start Date" required={!formData.dadDeceased}>
+                  <DateInput
+                    required={!formData.dadDeceased}
+                    disabled={formData.dadDeceased}
+                    value={formData.dadDeceased ? '' : (formData.parent2ResidencyDate || '')}
+                    onChange={(val) => updateField('parent2ResidencyDate', val)}
+                  />
+                </FormField>
+                <div style={{ marginTop: '20px' }}>
+                  <label style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    cursor: 'pointer',
+                    fontSize: '14px',
+                    color: '#374151'
+                  }}>
+                    <input
+                      type="checkbox"
+                      checked={formData.dadDeceased || false}
+                      onChange={(e) => {
+                        updateField('dadDeceased', e.target.checked);
+                        if (e.target.checked) {
+                          updateField('parent2FirstName', '');
+                          updateField('parent2LastName', '');
+                          updateField('parent2DOB', '');
+                          updateField('parent2Education', '');
+                          updateField('parent2WorkPhone', '');
+                          updateField('parent2CellPhone', '');
+                          updateField('parent2State', '');
+                          updateField('parent2ResidencyDate', '');
+                        }
+                      }}
+                      style={{ width: '16px', height: '16px', cursor: 'pointer' }}
+                    />
+                    If your child's father is deceased please check here
+                  </label>
+                </div>
+              </div>
+
+              <div style={{ marginBottom: '32px' }}>
+                <h3 style={subsectionStyle}>Household</h3>
+                <FormField label="Parents' Marital Status" required>
+                  <select
+                    required
+                    style={inputStyle}
+                    value={formData.parentsMaritalStatus || ''}
+                    onChange={(e) => updateField('parentsMaritalStatus', e.target.value)}
+                  >
+                    <option value="">Select</option>
+                    <option value="Married">Married</option>
+                    <option value="Divorced">Divorced</option>
+                    <option value="Separated">Separated</option>
+                    <option value="Widowed">Widowed</option>
+                    <option value="Never Married">Never Married</option>
+                  </select>
+                </FormField>
+                <FormField label="Marital Status Date" required>
+                  <DateInput
+                    required
+                    value={formData.parentsMaritalDate || ''}
+                    onChange={(val) => updateField('parentsMaritalDate', val)}
+                  />
+                </FormField>
+                <FormField label="Number of Parents in Household" required>
+                  <select
+                    required
+                    style={inputStyle}
+                    value={formData.parentsInHousehold || ''}
+                    onChange={(e) => updateField('parentsInHousehold', e.target.value)}
+                  >
+                    <option value="">Select</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                  </select>
+                </FormField>
+                <FormField label="Is either parent a dislocated worker?" required>
+                  <select
+                    required
+                    style={inputStyle}
+                    value={formData.dislocatedWorker || ''}
+                    onChange={(e) => updateField('dislocatedWorker', e.target.value)}
+                  >
+                    <option value="">Select</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                </FormField>
+              </div>
+            </form>
+          )}
+
+          {/* Section 4: Family Household Overview */}
+          {currentSection === 4 && (
+            <form ref={formRef} onSubmit={(e) => e.preventDefault()}>
+              <div style={{ marginBottom: '32px' }}>
+                <h3 style={subsectionStyle}>Household Totals</h3>
+                <FormField label="Total Family Members" required>
+                  <input
+                    type="number"
+                    required
+                    min="1"
+                    style={inputStyle}
+                    value={formData.totalFamilyMembers || ''}
+                    onChange={(e) => updateField('totalFamilyMembers', e.target.value)}
+                  />
+                </FormField>
+                <FormField label="Number of Students in College" required>
+                  <input
+                    type="number"
+                    required
+                    min="0"
+                    style={inputStyle}
+                    value={formData.studentsInCollege || ''}
+                    onChange={(e) => updateField('studentsInCollege', e.target.value)}
+                  />
+                </FormField>
+                <FormField label="Number of Parents in College" required>
+                  <input
+                    type="number"
+                    required
+                    min="0"
+                    style={inputStyle}
+                    value={formData.parentsInCollege || ''}
+                    onChange={(e) => updateField('parentsInCollege', e.target.value)}
+                  />
+                </FormField>
+                <FormField label="Number of Children NOT in College" required>
+                  <input
+                    type="number"
+                    required
+                    min="0"
+                    style={inputStyle}
+                    value={formData.childrenNotInCollege || ''}
+                    onChange={(e) => updateField('childrenNotInCollege', e.target.value)}
+                  />
+                </FormField>
+              </div>
+
+              <div style={{ marginBottom: '32px' }}>
+                <h3 style={subsectionStyle}>Additional Household Members</h3>
+                <FormField label="Are there additional household members besides parents and student?" required>
+                  <select
+                    required
+                    style={inputStyle}
+                    value={formData.additionalMembers || ''}
+                    onChange={(e) => updateField('additionalMembers', e.target.value)}
+                  >
+                    <option value="">Select</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                </FormField>
+                {formData.additionalMembers === 'Yes' && (
+                  <FormField label="List additional members (Name, Relationship, College status)" indent required>
+                    <textarea
+                      required
+                      style={{...inputStyle, minHeight: '120px', fontFamily: 'inherit'}}
+                      value={formData.additionalMembersDetails || ''}
+                      onChange={(e) => updateField('additionalMembersDetails', e.target.value)}
+                      placeholder="Example:&#10;John Smith, Brother, Yes&#10;Sarah Smith, Sister, No"
+                    />
+                  </FormField>
+                )}
+              </div>
+            </form>
+          )}
+
+          {/* Section 5: Student Income */}
+          {currentSection === 5 && (
+            <form ref={formRef} onSubmit={(e) => e.preventDefault()}>
+              <div style={{ marginBottom: '32px' }}>
+                <h3 style={subsectionStyle}>Tax Filing</h3>
+                <FormField label="Will the student file a federal tax return?" required>
+                  <select
+                    required
+                    style={inputStyle}
+                    value={formData.studentFileTax || ''}
+                    onChange={(e) => updateField('studentFileTax', e.target.value)}
+                  >
+                    <option value="">Select</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                </FormField>
+                {(() => {
+                  const studentTaxApplies = formData.studentFileTax === 'Yes';
+                  return (
+                    <div style={{
+                      opacity: studentTaxApplies ? 1 : 0.5,
+                      pointerEvents: studentTaxApplies ? 'auto' : 'none',
+                      background: studentTaxApplies ? 'transparent' : '#f9fafb',
+                      borderRadius: '8px',
+                      padding: studentTaxApplies ? '0' : '16px'
+                    }}>
+                      {formData.studentFileTax === 'Yes' && (
+                        <>
+                          <FormField label="Federal Tax Form Filed" indent required>
+                            <select
+                              required
+                              style={inputStyle}
+                              value={formData.studentTaxForm || ''}
+                              onChange={(e) => updateField('studentTaxForm', e.target.value)}
+                            >
+                              <option value="">Select</option>
+                              <option value="N/A">N/A</option>
+                              <option value="1040">1040</option>
+                              <option value="1040A">1040A</option>
+                              <option value="1040EZ">1040EZ</option>
+                            </select>
+                          </FormField>
+                          <FormField label="Student Filing Status" indent required>
+                            <select
+                              required
+                              style={inputStyle}
+                              value={formData.studentFilingStatus || ''}
+                              onChange={(e) => updateField('studentFilingStatus', e.target.value)}
+                            >
+                              <option value="">Select</option>
+                              <option value="N/A">N/A</option>
+                              <option value="Single">Single</option>
+                              <option value="Married Filing Jointly">Married Filing Jointly</option>
+                              <option value="Married Filing Separately">Married Filing Separately</option>
+                              <option value="Head of Household">Head of Household</option>
+                            </select>
+                          </FormField>
+                          <FormField label="Did the student file Schedule C?" indent required>
+                            <select
+                              required
+                              style={inputStyle}
+                              value={formData.studentScheduleC || ''}
+                              onChange={(e) => updateField('studentScheduleC', e.target.value)}
+                            >
+                              <option value="">Select</option>
+                              <option value="N/A">N/A</option>
+                              <option value="Yes">Yes</option>
+                              <option value="No">No</option>
+                            </select>
+                          </FormField>
+                          {formData.studentScheduleC === 'Yes' && (
+                            <FormField label="Schedule C Amount" indent required>
+                              <CurrencyInput
+                                required
+                                value={formData.studentScheduleCAmount || ''}
+                                onChange={(val) => updateField('studentScheduleCAmount', val)}
+                              />
+                            </FormField>
+                          )}
+                        </>
+                      )}
+                    </div>
+                  );
+                })()}
+              </div>
+
+              {(() => {
+                const studentTaxApplies = formData.studentFileTax === 'Yes';
+                return (
+                  <div style={{
+                    opacity: studentTaxApplies ? 1 : 0.5,
+                    pointerEvents: studentTaxApplies ? 'auto' : 'none',
+                    background: studentTaxApplies ? 'transparent' : '#f9fafb',
+                    borderRadius: '8px',
+                    padding: studentTaxApplies ? '0' : '16px'
+                  }}>
+                    <div style={{ marginBottom: '32px' }}>
+                      <h3 style={subsectionStyle}>Income</h3>
+                      <FormField label="Adjusted Gross Income (AGI)" required={studentTaxApplies}>
+                        <CurrencyInput
+                          required={studentTaxApplies}
+                          disabled={!studentTaxApplies}
+                          value={formData.studentAGI || ''}
+                          onChange={(val) => updateField('studentAGI', val)}
+                        />
+                      </FormField>
+                      <FormField label="Federal Income Taxes Paid" required={studentTaxApplies}>
+                        <CurrencyInput
+                          required={studentTaxApplies}
+                          disabled={!studentTaxApplies}
+                          value={formData.studentTaxesPaid || ''}
+                          onChange={(val) => updateField('studentTaxesPaid', val)}
+                        />
+                      </FormField>
+                      <FormField label="Student Earnings from Work" required={studentTaxApplies}>
+                        <CurrencyInput
+                          required={studentTaxApplies}
+                          disabled={!studentTaxApplies}
+                          value={formData.studentEarnings || ''}
+                          onChange={(val) => updateField('studentEarnings', val)}
+                        />
+                      </FormField>
+                    </div>
+
+                    <div style={{ marginBottom: '32px' }}>
+                      <h3 style={subsectionStyle}>Other Income</h3>
+                      <FormField label="Interest Income" required={studentTaxApplies}>
+                        <CurrencyInput
+                          required={studentTaxApplies}
+                          disabled={!studentTaxApplies}
+                          value={formData.studentInterest || ''}
+                          onChange={(val) => updateField('studentInterest', val)}
+                        />
+                      </FormField>
+                      <FormField label="Dividend Income" required={studentTaxApplies}>
+                        <CurrencyInput
+                          required={studentTaxApplies}
+                          disabled={!studentTaxApplies}
+                          value={formData.studentDividends || ''}
+                          onChange={(val) => updateField('studentDividends', val)}
+                        />
+                      </FormField>
+                      <FormField label="Does the student receive VA Education Benefits?" required={studentTaxApplies}>
+                        <select
+                          required={studentTaxApplies}
+                          disabled={!studentTaxApplies}
+                          style={inputStyle}
+                          value={formData.studentVABenefits || ''}
+                          onChange={(e) => updateField('studentVABenefits', e.target.value)}
+                        >
+                          <option value="">Select</option>
+                          <option value="Yes">Yes</option>
+                          <option value="No">No</option>
+                        </select>
+                      </FormField>
+                      <FormField label="IRA Rollover" required={studentTaxApplies}>
+                        <CurrencyInput
+                          required={studentTaxApplies}
+                          disabled={!studentTaxApplies}
+                          value={formData.studentIRARollover || ''}
+                          onChange={(val) => updateField('studentIRARollover', val)}
+                        />
+                      </FormField>
+                      <FormField label="Pension Rollover" required={studentTaxApplies}>
+                        <CurrencyInput
+                          required={studentTaxApplies}
+                          disabled={!studentTaxApplies}
+                          value={formData.studentPensionRollover || ''}
+                          onChange={(val) => updateField('studentPensionRollover', val)}
+                        />
+                      </FormField>
+                    </div>
+                  </div>
+                );
+              })()}
+            </form>
+          )}
+
+          {/* Section 6: Student Assets */}
+          {currentSection === 6 && (
+            <form ref={formRef} onSubmit={(e) => e.preventDefault()}>
+              <div style={{ marginBottom: '32px' }}>
+                <h3 style={subsectionStyle}>Cash & Investments</h3>
+                <FormField label="Cash / Checking / Savings" required>
+                  <CurrencyInput
+                    required
+                    value={formData.studentCash || ''}
+                    onChange={(val) => updateField('studentCash', val)}
+                  />
+                </FormField>
+                <FormField label="Investments" required>
+                  <CurrencyInput
+                    required
+                    value={formData.studentInvestments || ''}
+                    onChange={(val) => updateField('studentInvestments', val)}
+                  />
+                </FormField>
+              </div>
+
+              <div style={{ marginBottom: '32px' }}>
+                <h3 style={subsectionStyle}>Retirement / Annuities</h3>
+                <FormField label="401k / Retirement Accounts" required>
+                  <CurrencyInput
+                    required
+                    value={formData.student401k || ''}
+                    onChange={(val) => updateField('student401k', val)}
+                  />
+                </FormField>
+                <FormField label="Annuities" required>
+                  <CurrencyInput
+                    required
+                    value={formData.studentAnnuities || ''}
+                    onChange={(val) => updateField('studentAnnuities', val)}
+                  />
+                </FormField>
+              </div>
+
+              <div style={{ marginBottom: '32px' }}>
+                <h3 style={subsectionStyle}>Trust Information</h3>
+                <FormField label="Is trust value available?" required>
+                  <select
+                    required
+                    style={inputStyle}
+                    value={formData.studentTrustAvailable || ''}
+                    onChange={(e) => updateField('studentTrustAvailable', e.target.value)}
+                  >
+                    <option value="">Select</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                    <option value="Not Sure">Not Sure</option>
+                  </select>
+                </FormField>
+                {formData.studentTrustAvailable === 'Yes' && (
+                  <FormField label="Who established the trust?" indent required>
+                    <select
+                      required
+                      style={inputStyle}
+                      value={formData.studentTrustEstablisher || ''}
+                      onChange={(e) => updateField('studentTrustEstablisher', e.target.value)}
+                    >
+                      <option value="">Select</option>
+                      <option value="N/A">N/A</option>
+                      <option value="Student">Student</option>
+                      <option value="Parent">Parent</option>
+                      <option value="Grandparent">Grandparent</option>
+                      <option value="Other Relative">Other Relative</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </FormField>
+                )}
+              </div>
+
+              <div style={{ marginBottom: '32px' }}>
+                <h3 style={subsectionStyle}>Property / Business</h3>
+                <FormField label="Does the student own property?" required>
+                  <select
+                    required
+                    style={inputStyle}
+                    value={formData.studentOwnsProperty || ''}
+                    onChange={(e) => updateField('studentOwnsProperty', e.target.value)}
+                  >
+                    <option value="">Select</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                </FormField>
+                {formData.studentOwnsProperty === 'Yes' && (
+                  <FormField label="Estimated property value" indent required>
+                    <CurrencyInput
+                      required
+                      value={formData.studentPropertyValue || ''}
+                      onChange={(val) => updateField('studentPropertyValue', val)}
+                    />
+                  </FormField>
+                )}
+                <FormField label="Does the student own a farm?" required>
+                  <select
+                    required
+                    style={inputStyle}
+                    value={formData.studentOwnsFarm || ''}
+                    onChange={(e) => updateField('studentOwnsFarm', e.target.value)}
+                  >
+                    <option value="">Select</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                </FormField>
+                {formData.studentOwnsFarm === 'Yes' && (
+                  <FormField label="Estimated farm value" indent required>
+                    <CurrencyInput
+                      required
+                      value={formData.studentFarmValue || ''}
+                      onChange={(val) => updateField('studentFarmValue', val)}
+                    />
+                  </FormField>
+                )}
+                <FormField label="Does the student own a business?" required>
+                  <select
+                    required
+                    style={inputStyle}
+                    value={formData.studentOwnsBusiness || ''}
+                    onChange={(e) => updateField('studentOwnsBusiness', e.target.value)}
+                  >
+                    <option value="">Select</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                </FormField>
+                {formData.studentOwnsBusiness === 'Yes' && (
+                  <FormField label="Estimated business value" indent required>
+                    <CurrencyInput
+                      required
+                      value={formData.studentBusinessValue || ''}
+                      onChange={(val) => updateField('studentBusinessValue', val)}
+                    />
+                  </FormField>
+                )}
+              </div>
+            </form>
+          )}
+
+          {/* Section 7: Student Investments (Detailed) */}
+          {currentSection === 7 && (
+            <form ref={formRef} onSubmit={(e) => e.preventDefault()}>
+              <p style={{ color: '#6b7280', marginBottom: '24px', fontSize: '15px' }}>
+                Please provide estimated values for each investment type (enter estimated dollar amounts)
+              </p>
+              <FormField label="Certificates of Deposit (CDs)" required>
+                <CurrencyInput
+                  required
+                  value={formData.studentCDs || ''}
+                  onChange={(val) => updateField('studentCDs', val)}
+                />
+              </FormField>
+              <FormField label="Treasury Bills (T-Bills)" required>
+                <CurrencyInput
+                  required
+                  value={formData.studentTBills || ''}
+                  onChange={(val) => updateField('studentTBills', val)}
+                />
+              </FormField>
+              <FormField label="Money Market Funds" required>
+                <CurrencyInput
+                  required
+                  value={formData.studentMoneyMarket || ''}
+                  onChange={(val) => updateField('studentMoneyMarket', val)}
+                />
+              </FormField>
+              <FormField label="Mutual Funds" required>
+                <CurrencyInput
+                  required
+                  value={formData.studentMutualFunds || ''}
+                  onChange={(val) => updateField('studentMutualFunds', val)}
+                />
+              </FormField>
+              <FormField label="Stocks / Stock Options" required>
+                <CurrencyInput
+                  required
+                  value={formData.studentStocks || ''}
+                  onChange={(val) => updateField('studentStocks', val)}
+                />
+              </FormField>
+              <FormField label="Bonds" required>
+                <CurrencyInput
+                  required
+                  value={formData.studentBonds || ''}
+                  onChange={(val) => updateField('studentBonds', val)}
+                />
+              </FormField>
+              <FormField label="Trust Funds" required>
+                <CurrencyInput
+                  required
+                  value={formData.studentTrustFunds || ''}
+                  onChange={(val) => updateField('studentTrustFunds', val)}
+                />
+              </FormField>
+              <FormField label="Installment Contracts" required>
+                <CurrencyInput
+                  required
+                  value={formData.studentInstallmentContracts || ''}
+                  onChange={(val) => updateField('studentInstallmentContracts', val)}
+                />
+              </FormField>
+              <FormField label="Commodities" required>
+                <CurrencyInput
+                  required
+                  value={formData.studentCommodities || ''}
+                  onChange={(val) => updateField('studentCommodities', val)}
+                />
+              </FormField>
+              <FormField label="UGMA (Uniform Gifts to Minors Act)" required>
+                <CurrencyInput
+                  required
+                  value={formData.studentUGMA || ''}
+                  onChange={(val) => updateField('studentUGMA', val)}
+                />
+              </FormField>
+              <FormField label="Non-Retirement Annuities" required>
+                <CurrencyInput
+                  required
+                  value={formData.studentNonRetirementAnnuities || ''}
+                  onChange={(val) => updateField('studentNonRetirementAnnuities', val)}
+                />
+              </FormField>
+              <FormField label="Precious Metals" required>
+                <CurrencyInput
+                  required
+                  value={formData.studentPreciousMetals || ''}
+                  onChange={(val) => updateField('studentPreciousMetals', val)}
+                />
+              </FormField>
+              <FormField label="Other Investments" required>
+                <CurrencyInput
+                  required
+                  value={formData.studentOtherInvestments || ''}
+                  onChange={(val) => updateField('studentOtherInvestments', val)}
+                />
+              </FormField>
+            </form>
+          )}
+
+          {/* Section 10: Parent Assets */}
+          {currentSection === 10 && (
+            <form ref={formRef} onSubmit={(e) => e.preventDefault()}>
+              <div style={{ marginBottom: '32px' }}>
+                <h3 style={subsectionStyle}>Cash & Retirement</h3>
+                <FormField label="Cash, Checking & Savings" required>
+                  <CurrencyInput
+                    required
+                    value={formData.parentCashCheckingSavings || ''}
+                    onChange={(val) => updateField('parentCashCheckingSavings', val)}
+                  />
+                </FormField>
+                <FormField label="401k & Retirement Accounts" required>
+                  <CurrencyInput
+                    required
+                    value={formData.parent401kRetirement || ''}
+                    onChange={(val) => updateField('parent401kRetirement', val)}
+                  />
+                </FormField>
+                <FormField label="Annuities" required>
+                  <CurrencyInput
+                    required
+                    value={formData.parentAnnuities || ''}
+                    onChange={(val) => updateField('parentAnnuities', val)}
+                  />
+                </FormField>
+              </div>
+
+              <div style={{ marginBottom: '32px' }}>
+                <h3 style={subsectionStyle}>Other Assets</h3>
+                <FormField label="Assets in Siblings Name" required>
+                  <CurrencyInput
+                    required
+                    value={formData.parentAssetsInSiblingsName || ''}
+                    onChange={(val) => updateField('parentAssetsInSiblingsName', val)}
+                  />
+                </FormField>
+                <FormField label="Prepaid Tuition - Siblings" required>
+                  <CurrencyInput
+                    required
+                    value={formData.parentPrepaidTuitionSiblings || ''}
+                    onChange={(val) => updateField('parentPrepaidTuitionSiblings', val)}
+                  />
+                </FormField>
+                <FormField label="Prepaid Tuition - Student" required>
+                  <CurrencyInput
+                    required
+                    value={formData.parentPrepaidTuitionStudent || ''}
+                    onChange={(val) => updateField('parentPrepaidTuitionStudent', val)}
+                  />
+                </FormField>
+              </div>
+
+              <div style={{ marginBottom: '32px' }}>
+                <h3 style={subsectionStyle}>Property & Business</h3>
+                <FormField label="Do the Parent(s) Own a Farm?" required>
+                  <select
+                    required
+                    style={inputStyle}
+                    value={formData.parentOwnFarm || ''}
+                    onChange={(e) => updateField('parentOwnFarm', e.target.value)}
+                  >
+                    <option value="">Select</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                </FormField>
+                {formData.parentOwnFarm === 'Yes' && (
+                  <FormField label="If Yes, Value of Farm" indent required>
+                    <CurrencyInput
+                      required
+                      value={formData.parentFarmValue || ''}
+                      onChange={(val) => updateField('parentFarmValue', val)}
+                    />
+                  </FormField>
+                )}
+                <FormField label="Do the Parent(s) Own a Business?" required>
+                  <select
+                    required
+                    style={inputStyle}
+                    value={formData.parentOwnBusiness || ''}
+                    onChange={(e) => updateField('parentOwnBusiness', e.target.value)}
+                  >
+                    <option value="">Select</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                </FormField>
+                {formData.parentOwnBusiness === 'Yes' && (
+                  <FormField label="If Yes, Value of Business" indent required>
+                    <CurrencyInput
+                      required
+                      value={formData.parentBusinessValue || ''}
+                      onChange={(val) => updateField('parentBusinessValue', val)}
+                    />
+                  </FormField>
+                )}
+              </div>
+            </form>
+          )}
+
+          {/* Section 11: Parent Assets — Continued (Investments) */}
+          {currentSection === 11 && (
+            <form ref={formRef} onSubmit={(e) => e.preventDefault()}>
+              <p style={{ color: '#6b7280', marginBottom: '24px', fontSize: '15px' }}>
+                Please provide estimated values for each investment type (enter estimated dollar amounts)
+              </p>
+              <FormField label="Certificates of Deposit (CDs)" required>
+                <CurrencyInput
+                  required
+                  value={formData.parentCDs || ''}
+                  onChange={(val) => updateField('parentCDs', val)}
+                />
+              </FormField>
+              <FormField label="Treasury Bills (T-Bills)" required>
+                <CurrencyInput
+                  required
+                  value={formData.parentTBills || ''}
+                  onChange={(val) => updateField('parentTBills', val)}
+                />
+              </FormField>
+              <FormField label="Money Market Funds" required>
+                <CurrencyInput
+                  required
+                  value={formData.parentMoneyMarketFunds || ''}
+                  onChange={(val) => updateField('parentMoneyMarketFunds', val)}
+                />
+              </FormField>
+              <FormField label="Mutual Funds" required>
+                <CurrencyInput
+                  required
+                  value={formData.parentMutualFunds || ''}
+                  onChange={(val) => updateField('parentMutualFunds', val)}
+                />
+              </FormField>
+              <FormField label="Stocks / Stock Options" required>
+                <CurrencyInput
+                  required
+                  value={formData.parentStocksOptions || ''}
+                  onChange={(val) => updateField('parentStocksOptions', val)}
+                />
+              </FormField>
+              <FormField label="Bonds" required>
+                <CurrencyInput
+                  required
+                  value={formData.parentBonds || ''}
+                  onChange={(val) => updateField('parentBonds', val)}
+                />
+              </FormField>
+              <FormField label="Trusts" required>
+                <CurrencyInput
+                  required
+                  value={formData.parentTrusts || ''}
+                  onChange={(val) => updateField('parentTrusts', val)}
+                />
+              </FormField>
+              <FormField label="Other Securities" required>
+                <CurrencyInput
+                  required
+                  value={formData.parentOtherSecurities || ''}
+                  onChange={(val) => updateField('parentOtherSecurities', val)}
+                />
+              </FormField>
+              <FormField label="Educational Benefits" required>
+                <CurrencyInput
+                  required
+                  value={formData.parentEducationalBenefits || ''}
+                  onChange={(val) => updateField('parentEducationalBenefits', val)}
+                />
+              </FormField>
+              <FormField label="College Savings Plans" required>
+                <CurrencyInput
+                  required
+                  value={formData.parentCollegeSavingsPlans || ''}
+                  onChange={(val) => updateField('parentCollegeSavingsPlans', val)}
+                />
+              </FormField>
+              <FormField label="Installment Contracts" required>
+                <CurrencyInput
+                  required
+                  value={formData.parentInstallmentContracts || ''}
+                  onChange={(val) => updateField('parentInstallmentContracts', val)}
+                />
+              </FormField>
+              <FormField label="Commodities" required>
+                <CurrencyInput
+                  required
+                  value={formData.parentCommodities || ''}
+                  onChange={(val) => updateField('parentCommodities', val)}
+                />
+              </FormField>
+              <FormField label="Non-Retirement Annuities" required>
+                <CurrencyInput
+                  required
+                  value={formData.parentNonRetirementAnnuities || ''}
+                  onChange={(val) => updateField('parentNonRetirementAnnuities', val)}
+                />
+              </FormField>
+              <FormField label="Precious Metals" required>
+                <CurrencyInput
+                  required
+                  value={formData.parentPreciousMetals || ''}
+                  onChange={(val) => updateField('parentPreciousMetals', val)}
+                />
+              </FormField>
+              <FormField label="All Other Investments" required>
+                <CurrencyInput
+                  required
+                  value={formData.parentAllOtherInvestments || ''}
+                  onChange={(val) => updateField('parentAllOtherInvestments', val)}
+                />
+              </FormField>
+            </form>
+          )}
+
+          {/* Section 12: Parent Assets — Continued (Property & Equity) */}
+          {currentSection === 12 && (
+            <form ref={formRef} onSubmit={(e) => e.preventDefault()}>
+              <div style={{ marginBottom: '32px' }}>
+                <h3 style={subsectionStyle}>Parent Primary Residence</h3>
+                <FormField label="Home Value" required>
+                  <CurrencyInput
+                    required
+                    value={formData.parentHomeValue || ''}
+                    onChange={(val) => updateField('parentHomeValue', val)}
+                  />
+                </FormField>
+                <FormField label="Home Debt" required>
+                  <CurrencyInput
+                    required
+                    value={formData.parentHomeDebt || ''}
+                    onChange={(val) => updateField('parentHomeDebt', val)}
+                  />
+                </FormField>
+                <FormField label="Mortgage Payment" required>
+                  <CurrencyInput
+                    required
+                    value={formData.parentMortgagePayment || ''}
+                    onChange={(val) => updateField('parentMortgagePayment', val)}
+                  />
+                </FormField>
+                <FormField label="Year Purchased" required>
+                  <input
+                    type="number"
+                    required
+                    min="1900"
+                    max={new Date().getFullYear()}
+                    style={inputStyle}
+                    value={formData.parentYearPurchased || ''}
+                    onChange={(e) => updateField('parentYearPurchased', e.target.value)}
+                  />
+                </FormField>
+                <FormField label="Purchase Price" required>
+                  <CurrencyInput
+                    required
+                    value={formData.parentPurchasePrice || ''}
+                    onChange={(val) => updateField('parentPurchasePrice', val)}
+                  />
+                </FormField>
+                <FormField label="Mortgage Date" required>
+                  <DateInput
+                    required
+                    value={formData.parentMortgageDate || ''}
+                    onChange={(val) => updateField('parentMortgageDate', val)}
+                  />
+                </FormField>
+                <FormField label="Mortgage Rate (%)" required>
+                  <input
+                    type="number"
+                    required
+                    min="0"
+                    step="0.01"
+                    style={inputStyle}
+                    value={formData.parentMortgageRate || ''}
+                    onChange={(e) => updateField('parentMortgageRate', e.target.value)}
+                  />
+                </FormField>
+                <FormField label="Mortgage Term (Years)" required>
+                  <input
+                    type="number"
+                    required
+                    min="1"
+                    max="50"
+                    style={inputStyle}
+                    value={formData.parentMortgageTermYears || ''}
+                    onChange={(e) => updateField('parentMortgageTermYears', e.target.value)}
+                  />
+                </FormField>
+              </div>
+
+              <div style={{ marginBottom: '32px' }}>
+                <h3 style={subsectionStyle}>Parent Investment Property</h3>
+                <p style={{ color: '#6b7280', marginBottom: '16px', fontSize: '14px' }}>
+                  Add any investment properties owned by parent(s). This section is optional.
+                </p>
+                {(formData.parentInvestmentProperties || []).map((property, index) => (
+                  <div
+                    key={index}
+                    style={{
+                      marginBottom: '24px',
+                      padding: '20px',
+                      background: '#f9fafb',
+                      borderRadius: '8px',
+                      border: '1px solid #e5e7eb'
+                    }}
+                  >
+                    <div style={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      marginBottom: '16px'
+                    }}>
+                      <h4 style={{ margin: 0, fontSize: '16px', fontWeight: '600', color: '#374151' }}>
+                        Property {index + 1}
+                      </h4>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const updated = [...(formData.parentInvestmentProperties || [])];
+                          updated.splice(index, 1);
+                          updateField('parentInvestmentProperties', updated);
+                        }}
+                        style={{
+                          padding: '6px 12px',
+                          fontSize: '13px',
+                          color: '#dc2626',
+                          background: 'white',
+                          border: '1px solid #dc2626',
+                          borderRadius: '6px',
+                          cursor: 'pointer'
+                        }}
+                      >
+                        Delete
+                      </button>
+                    </div>
+                    <FormField label="Value" required>
+                      <CurrencyInput
+                        required
+                        value={property.value || ''}
+                        onChange={(val) => {
+                          const updated = [...(formData.parentInvestmentProperties || [])];
+                          updated[index] = { ...updated[index], value: val };
+                          updateField('parentInvestmentProperties', updated);
+                        }}
+                      />
+                    </FormField>
+                    <FormField label="Debt" required>
+                      <CurrencyInput
+                        required
+                        value={property.debt || ''}
+                        onChange={(val) => {
+                          const updated = [...(formData.parentInvestmentProperties || [])];
+                          updated[index] = { ...updated[index], debt: val };
+                          updateField('parentInvestmentProperties', updated);
+                        }}
+                      />
+                    </FormField>
+                    <FormField label="Year Purchased" required>
+                      <input
+                        type="number"
+                        required
+                        min="1900"
+                        max={new Date().getFullYear()}
+                        style={inputStyle}
+                        value={property.yearPurchased || ''}
+                        onChange={(e) => {
+                          const updated = [...(formData.parentInvestmentProperties || [])];
+                          updated[index] = { ...updated[index], yearPurchased: e.target.value };
+                          updateField('parentInvestmentProperties', updated);
+                        }}
+                      />
+                    </FormField>
+                    <FormField label="Purchase Price" required>
+                      <CurrencyInput
+                        required
+                        value={property.purchasePrice || ''}
+                        onChange={(val) => {
+                          const updated = [...(formData.parentInvestmentProperties || [])];
+                          updated[index] = { ...updated[index], purchasePrice: val };
+                          updateField('parentInvestmentProperties', updated);
+                        }}
+                      />
+                    </FormField>
+                    <FormField label="Equity" required>
+                      <CurrencyInput
+                        required
+                        value={property.equity || ''}
+                        onChange={(val) => {
+                          const updated = [...(formData.parentInvestmentProperties || [])];
+                          updated[index] = { ...updated[index], equity: val };
+                          updateField('parentInvestmentProperties', updated);
+                        }}
+                      />
+                    </FormField>
+                  </div>
+                ))}
+                <button
+                  type="button"
+                  onClick={() => {
+                    const updated = [...(formData.parentInvestmentProperties || []), {
+                      value: '',
+                      debt: '',
+                      yearPurchased: '',
+                      purchasePrice: '',
+                      equity: ''
+                    }];
+                    updateField('parentInvestmentProperties', updated);
+                  }}
+                  style={{
+                    padding: '12px 24px',
+                    fontSize: '15px',
+                    fontWeight: '600',
+                    color: '#0a3528',
+                    background: 'white',
+                    border: '2px solid #0a3528',
+                    borderRadius: '8px',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s ease'
+                  }}
+                >
+                  + Add Property
+                </button>
+              </div>
+            </form>
+          )}
+
+          {/* Section 8: Parent Income */}
+          {currentSection === 8 && (
+            <form ref={formRef} onSubmit={(e) => e.preventDefault()}>
+              <div style={{ marginBottom: '32px' }}>
+                <h3 style={subsectionStyle}>Tax Filing</h3>
+                <FormField label="Will parent(s) file a federal tax return?" required>
+                  <select
+                    required
+                    style={inputStyle}
+                    value={formData.parentFileTax || ''}
+                    onChange={(e) => updateField('parentFileTax', e.target.value)}
+                  >
+                    <option value="">Select</option>
+                    <option value="N/A">N/A</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                </FormField>
+                {formData.parentFileTax === 'Yes' && (
+                  <>
+                    <FormField label="Federal Tax Form Filed" indent required>
+                      <select
+                        required
+                        style={inputStyle}
+                        value={formData.parentTaxForm || ''}
+                        onChange={(e) => updateField('parentTaxForm', e.target.value)}
+                      >
+                        <option value="">Select</option>
+                        <option value="N/A">N/A</option>
+                        <option value="1040">1040</option>
+                        <option value="1040A">1040A</option>
+                        <option value="1040EZ">1040EZ</option>
+                      </select>
+                    </FormField>
+                    <FormField label="Parents' Filing Status" indent required>
+                      <select
+                        required
+                        style={inputStyle}
+                        value={formData.parentFilingStatus || ''}
+                        onChange={(e) => updateField('parentFilingStatus', e.target.value)}
+                      >
+                        <option value="">Select</option>
+                        <option value="N/A">N/A</option>
+                        <option value="Single">Single</option>
+                        <option value="Married Filing Jointly">Married Filing Jointly</option>
+                        <option value="Married Filing Separately">Married Filing Separately</option>
+                        <option value="Head of Household">Head of Household</option>
+                      </select>
+                    </FormField>
+                    <FormField label="Did parents file Schedule C?" indent required>
+                      <select
+                        required
+                        style={inputStyle}
+                        value={formData.parentScheduleC || ''}
+                        onChange={(e) => updateField('parentScheduleC', e.target.value)}
+                      >
+                        <option value="">Select</option>
+                        <option value="N/A">N/A</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                      </select>
+                    </FormField>
+                    {formData.parentScheduleC === 'Yes' && (
+                      <FormField label="Schedule C Amount" indent required>
+                        <CurrencyInput
+                          required
+                          value={formData.parentScheduleCAmount || ''}
+                          onChange={(val) => updateField('parentScheduleCAmount', val)}
+                        />
+                      </FormField>
+                    )}
+                  </>
+                )}
+              </div>
+
+              <div style={{ marginBottom: '32px' }}>
+                <h3 style={subsectionStyle}>Income</h3>
+                <FormField label="Adjusted Gross Income (AGI)" required>
+                  <CurrencyInput
+                    required
+                    value={formData.parentAGI || ''}
+                    onChange={(val) => updateField('parentAGI', val)}
+                  />
+                </FormField>
+                <FormField label="Federal Income Taxes Paid" required>
+                  <CurrencyInput
+                    required
+                    value={formData.parentTaxesPaid || ''}
+                    onChange={(val) => updateField('parentTaxesPaid', val)}
+                  />
+                </FormField>
+                <FormField label="Parent 1 Earnings from Work" required>
+                  <CurrencyInput
+                    required
+                    value={formData.parent1Earnings || ''}
+                    onChange={(val) => updateField('parent1Earnings', val)}
+                  />
+                </FormField>
+                <FormField label="Parent 2 Earnings from Work" required>
+                  <CurrencyInput
+                    required
+                    value={formData.parent2Earnings || ''}
+                    onChange={(val) => updateField('parent2Earnings', val)}
+                  />
+                </FormField>
+              </div>
+
+              <div style={{ marginBottom: '32px' }}>
+                <h3 style={subsectionStyle}>Other Income & Adjustments</h3>
+                <FormField label="Itemized Deductions" required>
+                  <CurrencyInput
+                    required
+                    value={formData.parentItemizedDeductions || ''}
+                    onChange={(val) => updateField('parentItemizedDeductions', val)}
+                  />
+                </FormField>
+                <FormField label="Income Adjustments" required>
+                  <CurrencyInput
+                    required
+                    value={formData.parentIncomeAdjustments || ''}
+                    onChange={(val) => updateField('parentIncomeAdjustments', val)}
+                  />
+                </FormField>
+                <FormField label="Interest Income" required>
+                  <CurrencyInput
+                    required
+                    value={formData.parentInterest || ''}
+                    onChange={(val) => updateField('parentInterest', val)}
+                  />
+                </FormField>
+                <FormField label="Dividend Income" required>
+                  <CurrencyInput
+                    required
+                    value={formData.parentDividends || ''}
+                    onChange={(val) => updateField('parentDividends', val)}
+                  />
+                </FormField>
+                <FormField label="Business / Farm / Rental Income" required>
+                  <CurrencyInput
+                    required
+                    value={formData.parentBusinessIncome || ''}
+                    onChange={(val) => updateField('parentBusinessIncome', val)}
+                  />
+                </FormField>
+                <FormField label="Other Taxable Income" required>
+                  <CurrencyInput
+                    required
+                    value={formData.parentOtherIncome || ''}
+                    onChange={(val) => updateField('parentOtherIncome', val)}
+                  />
+                </FormField>
+                <FormField label="IRA Rollover" required>
+                  <CurrencyInput
+                    required
+                    value={formData.parentIRARollover || ''}
+                    onChange={(val) => updateField('parentIRARollover', val)}
+                  />
+                </FormField>
+                <FormField label="Pension Rollover" required>
+                  <CurrencyInput
+                    required
+                    value={formData.parentPensionRollover || ''}
+                    onChange={(val) => updateField('parentPensionRollover', val)}
+                  />
+                </FormField>
+                <FormField label="Dependent Care Withholdings" required>
+                  <CurrencyInput
+                    required
+                    value={formData.parentDependentCare || ''}
+                    onChange={(val) => updateField('parentDependentCare', val)}
+                  />
+                </FormField>
+                <FormField label="Medical / Dental Expenses After Insurance" required>
+                  <CurrencyInput
+                    required
+                    value={formData.parentMedicalExpenses || ''}
+                    onChange={(val) => updateField('parentMedicalExpenses', val)}
+                  />
+                </FormField>
+              </div>
+            </form>
+          )}
+
+          {/* Section 9: Family Benefits */}
+          {currentSection === 9 && (
+            <form ref={formRef} onSubmit={(e) => e.preventDefault()}>
+              <p style={{ color: '#6b7280', marginBottom: '24px', fontSize: '15px' }}>
+                For each question below, indicate whether your family received these benefits in the past 24 months:
+              </p>
+              <FormField label="Supplemental Security Income (SSI)" required>
+                <select
+                  required
+                  style={inputStyle}
+                  value={formData.benefitSSI || ''}
+                  onChange={(e) => updateField('benefitSSI', e.target.value)}
+                >
+                  <option value="">Select</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+              </FormField>
+              <FormField label="SNAP (Food Stamps)" required>
+                <select
+                  required
+                  style={inputStyle}
+                  value={formData.benefitSNAP || ''}
+                  onChange={(e) => updateField('benefitSNAP', e.target.value)}
+                >
+                  <option value="">Select</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+              </FormField>
+              <FormField label="Free or Reduced-Price School Lunch" required>
+                <select
+                  required
+                  style={inputStyle}
+                  value={formData.benefitSchoolLunch || ''}
+                  onChange={(e) => updateField('benefitSchoolLunch', e.target.value)}
+                >
+                  <option value="">Select</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+              </FormField>
+              <FormField label="Temporary Assistance for Needy Families (TANF)" required>
+                <select
+                  required
+                  style={inputStyle}
+                  value={formData.benefitTANF || ''}
+                  onChange={(e) => updateField('benefitTANF', e.target.value)}
+                >
+                  <option value="">Select</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+              </FormField>
+              <FormField label="Women, Infants, and Children Program (WIC)" required>
+                <select
+                  required
+                  style={inputStyle}
+                  value={formData.benefitWIC || ''}
+                  onChange={(e) => updateField('benefitWIC', e.target.value)}
+                >
+                  <option value="">Select</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+              </FormField>
+            </form>
+          )}
+
+          {/* Section 13: Parent & Student - Worksheet A Information */}
+          {currentSection === 13 && (
+            <form ref={formRef} onSubmit={(e) => e.preventDefault()}>
+              <p style={{ color: '#6b7280', marginBottom: '24px', fontSize: '15px' }}>
+                Please provide values for both Parent(s) and Student columns. Enter $0 if not applicable.
+              </p>
+              <div style={{ 
+                display: 'grid', 
+                gridTemplateColumns: '1fr 200px 200px', 
+                gap: '12px',
+                marginBottom: '16px',
+                paddingBottom: '12px',
+                borderBottom: '2px solid #e5e7eb'
+              }}>
+                <div></div>
+                <div style={{ fontWeight: '600', color: '#374151', textAlign: 'center' }}>Parent(s)</div>
+                <div style={{ fontWeight: '600', color: '#374151', textAlign: 'center' }}>Student</div>
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 200px 200px', gap: '12px', rowGap: '20px' }}>
+                <FormField label="Earned Income Credit" required>
+                  <div></div>
+                </FormField>
+                <div>
+                  <CurrencyInput
+                    required
+                    value={formData.worksheetA_parent_earnedIncomeCredit || ''}
+                    onChange={(val) => updateField('worksheetA_parent_earnedIncomeCredit', val)}
+                  />
+                </div>
+                <div>
+                  <CurrencyInput
+                    required
+                    value={formData.worksheetA_student_earnedIncomeCredit || ''}
+                    onChange={(val) => updateField('worksheetA_student_earnedIncomeCredit', val)}
+                  />
+                </div>
+
+                <FormField label="Additional Child Tax Credit" required>
+                  <div></div>
+                </FormField>
+                <div>
+                  <CurrencyInput
+                    required
+                    value={formData.worksheetA_parent_additionalChildTaxCredit || ''}
+                    onChange={(val) => updateField('worksheetA_parent_additionalChildTaxCredit', val)}
+                  />
+                </div>
+                <div>
+                  <CurrencyInput
+                    required
+                    value={formData.worksheetA_student_additionalChildTaxCredit || ''}
+                    onChange={(val) => updateField('worksheetA_student_additionalChildTaxCredit', val)}
+                  />
+                </div>
+
+                <FormField label="Welfare Benefits" required>
+                  <div></div>
+                </FormField>
+                <div>
+                  <CurrencyInput
+                    required
+                    value={formData.worksheetA_parent_welfareBenefits || ''}
+                    onChange={(val) => updateField('worksheetA_parent_welfareBenefits', val)}
+                  />
+                </div>
+                <div>
+                  <CurrencyInput
+                    required
+                    value={formData.worksheetA_student_welfareBenefits || ''}
+                    onChange={(val) => updateField('worksheetA_student_welfareBenefits', val)}
+                  />
+                </div>
+
+                <FormField label="Untaxed Social Security Benefits" required>
+                  <div></div>
+                </FormField>
+                <div>
+                  <CurrencyInput
+                    required
+                    value={formData.worksheetA_parent_untaxedSocialSecurityBenefits || ''}
+                    onChange={(val) => updateField('worksheetA_parent_untaxedSocialSecurityBenefits', val)}
+                  />
+                </div>
+                <div>
+                  <CurrencyInput
+                    required
+                    value={formData.worksheetA_student_untaxedSocialSecurityBenefits || ''}
+                    onChange={(val) => updateField('worksheetA_student_untaxedSocialSecurityBenefits', val)}
+                  />
+                </div>
+              </div>
+            </form>
+          )}
+
+          {/* Section 14: Parent & Student - Worksheet B Information */}
+          {currentSection === 14 && (
+            <form ref={formRef} onSubmit={(e) => e.preventDefault()}>
+              <p style={{ color: '#6b7280', marginBottom: '24px', fontSize: '15px' }}>
+                Please provide values for both Parent(s) and Student columns. Enter $0 if not applicable.
+              </p>
+              <div style={{ 
+                display: 'grid', 
+                gridTemplateColumns: '1fr 200px 200px', 
+                gap: '12px',
+                marginBottom: '16px',
+                paddingBottom: '12px',
+                borderBottom: '2px solid #e5e7eb'
+              }}>
+                <div></div>
+                <div style={{ fontWeight: '600', color: '#374151', textAlign: 'center' }}>Parent(s)</div>
+                <div style={{ fontWeight: '600', color: '#374151', textAlign: 'center' }}>Student</div>
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 200px 200px', gap: '12px', rowGap: '20px' }}>
+                <FormField label="Tax-Deferred Pension Payments" required>
+                  <div></div>
+                </FormField>
+                <div>
+                  <CurrencyInput
+                    required
+                    value={formData.worksheetB_parent_taxDeferredPensionPayments || ''}
+                    onChange={(val) => updateField('worksheetB_parent_taxDeferredPensionPayments', val)}
+                  />
+                </div>
+                <div>
+                  <CurrencyInput
+                    required
+                    value={formData.worksheetB_student_taxDeferredPensionPayments || ''}
+                    onChange={(val) => updateField('worksheetB_student_taxDeferredPensionPayments', val)}
+                  />
+                </div>
+
+                <FormField label="IRA Deductions" required>
+                  <div></div>
+                </FormField>
+                <div>
+                  <CurrencyInput
+                    required
+                    value={formData.worksheetB_parent_iraDeductions || ''}
+                    onChange={(val) => updateField('worksheetB_parent_iraDeductions', val)}
+                  />
+                </div>
+                <div>
+                  <CurrencyInput
+                    required
+                    value={formData.worksheetB_student_iraDeductions || ''}
+                    onChange={(val) => updateField('worksheetB_student_iraDeductions', val)}
+                  />
+                </div>
+
+                <FormField label="Child Support RECEIVED" required>
+                  <div></div>
+                </FormField>
+                <div>
+                  <CurrencyInput
+                    required
+                    value={formData.worksheetB_parent_childSupportReceived || ''}
+                    onChange={(val) => updateField('worksheetB_parent_childSupportReceived', val)}
+                  />
+                </div>
+                <div>
+                  <CurrencyInput
+                    required
+                    value={formData.worksheetB_student_childSupportReceived || ''}
+                    onChange={(val) => updateField('worksheetB_student_childSupportReceived', val)}
+                  />
+                </div>
+
+                <FormField label="Tax Exempt Interest" required>
+                  <div></div>
+                </FormField>
+                <div>
+                  <CurrencyInput
+                    required
+                    value={formData.worksheetB_parent_taxExemptInterest || ''}
+                    onChange={(val) => updateField('worksheetB_parent_taxExemptInterest', val)}
+                  />
+                </div>
+                <div>
+                  <CurrencyInput
+                    required
+                    value={formData.worksheetB_student_taxExemptInterest || ''}
+                    onChange={(val) => updateField('worksheetB_student_taxExemptInterest', val)}
+                  />
+                </div>
+
+                <FormField label="Foreign Income Exclusions" required>
+                  <div></div>
+                </FormField>
+                <div>
+                  <CurrencyInput
+                    required
+                    value={formData.worksheetB_parent_foreignIncomeExclusions || ''}
+                    onChange={(val) => updateField('worksheetB_parent_foreignIncomeExclusions', val)}
+                  />
+                </div>
+                <div>
+                  <CurrencyInput
+                    required
+                    value={formData.worksheetB_student_foreignIncomeExclusions || ''}
+                    onChange={(val) => updateField('worksheetB_student_foreignIncomeExclusions', val)}
+                  />
+                </div>
+
+                <FormField label="Untaxed IRA and Pension Distributions" required>
+                  <div></div>
+                </FormField>
+                <div>
+                  <CurrencyInput
+                    required
+                    value={formData.worksheetB_parent_untaxedIraPensionDistributions || ''}
+                    onChange={(val) => updateField('worksheetB_parent_untaxedIraPensionDistributions', val)}
+                  />
+                </div>
+                <div>
+                  <CurrencyInput
+                    required
+                    value={formData.worksheetB_student_untaxedIraPensionDistributions || ''}
+                    onChange={(val) => updateField('worksheetB_student_untaxedIraPensionDistributions', val)}
+                  />
+                </div>
+
+                <FormField label="Special Fuels Credit" required>
+                  <div></div>
+                </FormField>
+                <div>
+                  <CurrencyInput
+                    required
+                    value={formData.worksheetB_parent_specialFuelsCredit || ''}
+                    onChange={(val) => updateField('worksheetB_parent_specialFuelsCredit', val)}
+                  />
+                </div>
+                <div>
+                  <CurrencyInput
+                    required
+                    value={formData.worksheetB_student_specialFuelsCredit || ''}
+                    onChange={(val) => updateField('worksheetB_student_specialFuelsCredit', val)}
+                  />
+                </div>
+
+                <FormField label="Housing - Clergy or Military" required>
+                  <div></div>
+                </FormField>
+                <div>
+                  <CurrencyInput
+                    required
+                    value={formData.worksheetB_parent_housingClergyMilitary || ''}
+                    onChange={(val) => updateField('worksheetB_parent_housingClergyMilitary', val)}
+                  />
+                </div>
+                <div>
+                  <CurrencyInput
+                    required
+                    value={formData.worksheetB_student_housingClergyMilitary || ''}
+                    onChange={(val) => updateField('worksheetB_student_housingClergyMilitary', val)}
+                  />
+                </div>
+
+                <FormField label="Veterans' Non-Education Benefits" required>
+                  <div></div>
+                </FormField>
+                <div>
+                  <CurrencyInput
+                    required
+                    value={formData.worksheetB_parent_veteransNonEducationBenefits || ''}
+                    onChange={(val) => updateField('worksheetB_parent_veteransNonEducationBenefits', val)}
+                  />
+                </div>
+                <div>
+                  <CurrencyInput
+                    required
+                    value={formData.worksheetB_student_veteransNonEducationBenefits || ''}
+                    onChange={(val) => updateField('worksheetB_student_veteransNonEducationBenefits', val)}
+                  />
+                </div>
+
+                <FormField label="Other Untaxed Benefits" required>
+                  <div></div>
+                </FormField>
+                <div>
+                  <CurrencyInput
+                    required
+                    value={formData.worksheetB_parent_otherUntaxedBenefits || ''}
+                    onChange={(val) => updateField('worksheetB_parent_otherUntaxedBenefits', val)}
+                  />
+                </div>
+                <div>
+                  <CurrencyInput
+                    required
+                    value={formData.worksheetB_student_otherUntaxedBenefits || ''}
+                    onChange={(val) => updateField('worksheetB_student_otherUntaxedBenefits', val)}
+                  />
+                </div>
+
+                <FormField label="Money Received or Paid on Behalf" required>
+                  <div></div>
+                </FormField>
+                <div>
+                  <CurrencyInput
+                    required
+                    value={formData.worksheetB_parent_moneyReceivedOrPaidOnBehalf || ''}
+                    onChange={(val) => updateField('worksheetB_parent_moneyReceivedOrPaidOnBehalf', val)}
+                  />
+                </div>
+                <div>
+                  <CurrencyInput
+                    required
+                    value={formData.worksheetB_student_moneyReceivedOrPaidOnBehalf || ''}
+                    onChange={(val) => updateField('worksheetB_student_moneyReceivedOrPaidOnBehalf', val)}
+                  />
+                </div>
+              </div>
+            </form>
+          )}
+
+          {/* Section 15: Parent & Student - Worksheet C Information */}
+          {currentSection === 15 && (
+            <form ref={formRef} onSubmit={(e) => e.preventDefault()}>
+              <p style={{ color: '#6b7280', marginBottom: '24px', fontSize: '15px' }}>
+                Please provide values for both Parent(s) and Student columns. Enter $0 if not applicable.
+              </p>
+              <div style={{ 
+                display: 'grid', 
+                gridTemplateColumns: '1fr 200px 200px', 
+                gap: '12px',
+                marginBottom: '16px',
+                paddingBottom: '12px',
+                borderBottom: '2px solid #e5e7eb'
+              }}>
+                <div></div>
+                <div style={{ fontWeight: '600', color: '#374151', textAlign: 'center' }}>Parent(s)</div>
+                <div style={{ fontWeight: '600', color: '#374151', textAlign: 'center' }}>Student</div>
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 200px 200px', gap: '12px', rowGap: '20px' }}>
+                <FormField label="Education Hope Credits" required>
+                  <div></div>
+                </FormField>
+                <div>
+                  <CurrencyInput
+                    required
+                    value={formData.worksheetC_parent_educationHopeCredits || ''}
+                    onChange={(val) => updateField('worksheetC_parent_educationHopeCredits', val)}
+                  />
+                </div>
+                <div>
+                  <CurrencyInput
+                    required
+                    value={formData.worksheetC_student_educationHopeCredits || ''}
+                    onChange={(val) => updateField('worksheetC_student_educationHopeCredits', val)}
+                  />
+                </div>
+
+                <FormField label="Child Support PAID" required>
+                  <div></div>
+                </FormField>
+                <div>
+                  <CurrencyInput
+                    required
+                    value={formData.worksheetC_parent_childSupportPaid || ''}
+                    onChange={(val) => updateField('worksheetC_parent_childSupportPaid', val)}
+                  />
+                </div>
+                <div>
+                  <CurrencyInput
+                    required
+                    value={formData.worksheetC_student_childSupportPaid || ''}
+                    onChange={(val) => updateField('worksheetC_student_childSupportPaid', val)}
+                  />
+                </div>
+
+                <FormField label="Taxable Need-Based Aid" required>
+                  <div></div>
+                </FormField>
+                <div>
+                  <CurrencyInput
+                    required
+                    value={formData.worksheetC_parent_taxableNeedBasedAid || ''}
+                    onChange={(val) => updateField('worksheetC_parent_taxableNeedBasedAid', val)}
+                  />
+                </div>
+                <div>
+                  <CurrencyInput
+                    required
+                    value={formData.worksheetC_student_taxableNeedBasedAid || ''}
+                    onChange={(val) => updateField('worksheetC_student_taxableNeedBasedAid', val)}
+                  />
+                </div>
+
+                <FormField label="Grants / Scholarships in AGI" required>
+                  <div></div>
+                </FormField>
+                <div>
+                  <CurrencyInput
+                    required
+                    value={formData.worksheetC_parent_grantsScholarshipsInAgi || ''}
+                    onChange={(val) => updateField('worksheetC_parent_grantsScholarshipsInAgi', val)}
+                  />
+                </div>
+                <div>
+                  <CurrencyInput
+                    required
+                    value={formData.worksheetC_student_grantsScholarshipsInAgi || ''}
+                    onChange={(val) => updateField('worksheetC_student_grantsScholarshipsInAgi', val)}
+                  />
+                </div>
+
+                <FormField label="Combat Pay or Special Combat Pay" required>
+                  <div></div>
+                </FormField>
+                <div>
+                  <CurrencyInput
+                    required
+                    value={formData.worksheetC_parent_combatPaySpecialCombatPay || ''}
+                    onChange={(val) => updateField('worksheetC_parent_combatPaySpecialCombatPay', val)}
+                  />
+                </div>
+                <div>
+                  <CurrencyInput
+                    required
+                    value={formData.worksheetC_student_combatPaySpecialCombatPay || ''}
+                    onChange={(val) => updateField('worksheetC_student_combatPaySpecialCombatPay', val)}
+                  />
+                </div>
+
+                <FormField label="College COOP Education Earnings" required>
+                  <div></div>
+                </FormField>
+                <div>
+                  <CurrencyInput
+                    required
+                    value={formData.worksheetC_parent_collegeCoopEducationEarnings || ''}
+                    onChange={(val) => updateField('worksheetC_parent_collegeCoopEducationEarnings', val)}
+                  />
+                </div>
+                <div>
+                  <CurrencyInput
+                    required
+                    value={formData.worksheetC_student_collegeCoopEducationEarnings || ''}
+                    onChange={(val) => updateField('worksheetC_student_collegeCoopEducationEarnings', val)}
+                  />
+                </div>
+              </div>
+            </form>
+          )}
+
+          {currentSection === 16 && (
+            <form ref={formRef} onSubmit={(e) => e.preventDefault()}>
+              <p style={{ color: '#6b7280', marginBottom: '24px', fontSize: '15px' }}>
+                Please provide values for both Parent(s) and Student columns. Enter $0 if not applicable.
+              </p>
+              <div style={{ 
+                display: 'grid', 
+                gridTemplateColumns: '1fr 200px 200px', 
+                gap: '12px',
+                marginBottom: '16px',
+                paddingBottom: '12px',
+                borderBottom: '2px solid #e5e7eb'
+              }}>
+                <div></div>
+                <div style={{ fontWeight: '600', color: '#374151', textAlign: 'center' }}>Parent(s)</div>
+                <div style={{ fontWeight: '600', color: '#374151', textAlign: 'center' }}>Student</div>
+              </div>
+
+              <div style={{ marginBottom: '32px' }}>
+                <h3 style={subsectionStyle}>Life Insurance</h3>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 200px 200px', gap: '12px', rowGap: '20px' }}>
+                  <FormField label="Face Value" required>
+                    <div></div>
+                  </FormField>
+                  <div>
+                    <CurrencyInput
+                      required
+                      value={formData.life_faceValue_parent || ''}
+                      onChange={(val) => updateField('life_faceValue_parent', val)}
+                    />
+                  </div>
+                  <div>
+                    <CurrencyInput
+                      required
+                      value={formData.life_faceValue_student || ''}
+                      onChange={(val) => updateField('life_faceValue_student', val)}
+                    />
+                  </div>
+
+                  <FormField label="Cash Value" required>
+                    <div></div>
+                  </FormField>
+                  <div>
+                    <CurrencyInput
+                      required
+                      value={formData.life_cashValue_parent || ''}
+                      onChange={(val) => updateField('life_cashValue_parent', val)}
+                    />
+                  </div>
+                  <div>
+                    <CurrencyInput
+                      required
+                      value={formData.life_cashValue_student || ''}
+                      onChange={(val) => updateField('life_cashValue_student', val)}
+                    />
+                  </div>
+
+                  <FormField label="Annual Premium" required>
+                    <div></div>
+                  </FormField>
+                  <div>
+                    <CurrencyInput
+                      required
+                      value={formData.life_annualPremium_parent || ''}
+                      onChange={(val) => updateField('life_annualPremium_parent', val)}
+                    />
+                  </div>
+                  <div>
+                    <CurrencyInput
+                      required
+                      value={formData.life_annualPremium_student || ''}
+                      onChange={(val) => updateField('life_annualPremium_student', val)}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div style={{ marginBottom: '32px' }}>
+                <h3 style={subsectionStyle}>Debt</h3>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 200px 200px', gap: '12px', rowGap: '20px' }}>
+                  <FormField label="Credit Card" required>
+                    <div></div>
+                  </FormField>
+                  <div>
+                    <CurrencyInput
+                      required
+                      value={formData.debt_creditCard_parent || ''}
+                      onChange={(val) => updateField('debt_creditCard_parent', val)}
+                    />
+                  </div>
+                  <div>
+                    <CurrencyInput
+                      required
+                      value={formData.debt_creditCard_student || ''}
+                      onChange={(val) => updateField('debt_creditCard_student', val)}
+                    />
+                  </div>
+
+                  <FormField label="Auto" required>
+                    <div></div>
+                  </FormField>
+                  <div>
+                    <CurrencyInput
+                      required
+                      value={formData.debt_auto_parent || ''}
+                      onChange={(val) => updateField('debt_auto_parent', val)}
+                    />
+                  </div>
+                  <div>
+                    <CurrencyInput
+                      required
+                      value={formData.debt_auto_student || ''}
+                      onChange={(val) => updateField('debt_auto_student', val)}
+                    />
+                  </div>
+
+                  <FormField label="Medical" required>
+                    <div></div>
+                  </FormField>
+                  <div>
+                    <CurrencyInput
+                      required
+                      value={formData.debt_medical_parent || ''}
+                      onChange={(val) => updateField('debt_medical_parent', val)}
+                    />
+                  </div>
+                  <div>
+                    <CurrencyInput
+                      required
+                      value={formData.debt_medical_student || ''}
+                      onChange={(val) => updateField('debt_medical_student', val)}
+                    />
+                  </div>
+
+                  <FormField label="Miscellaneous" required>
+                    <div></div>
+                  </FormField>
+                  <div>
+                    <CurrencyInput
+                      required
+                      value={formData.debt_misc_parent || ''}
+                      onChange={(val) => updateField('debt_misc_parent', val)}
+                    />
+                  </div>
+                  <div>
+                    <CurrencyInput
+                      required
+                      value={formData.debt_misc_student || ''}
+                      onChange={(val) => updateField('debt_misc_student', val)}
+                    />
+                  </div>
+                </div>
+              </div>
+            </form>
+          )}
+
+          {currentSection === 17 && (
+            <form ref={formRef} onSubmit={(e) => e.preventDefault()}>
+              <div style={{ marginBottom: '32px' }}>
+                <FormField label="Does a Non-Custodial Parent apply?" required>
+                  <select
+                    required
+                    style={inputStyle}
+                    value={formData.nonCustodialApplies || ''}
+                    onChange={(e) => updateField('nonCustodialApplies', e.target.value)}
+                  >
+                    <option value="">Select</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                </FormField>
+              </div>
+
+              {(() => {
+                const nonCustodialApplies = formData.nonCustodialApplies === 'Yes';
+                return (
+                  <div style={{
+                    opacity: nonCustodialApplies ? 1 : 0.5,
+                    pointerEvents: nonCustodialApplies ? 'auto' : 'none',
+                    background: nonCustodialApplies ? 'transparent' : '#f9fafb',
+                    borderRadius: '8px',
+                    padding: nonCustodialApplies ? '0' : '16px'
+                  }}>
+                    <div style={{ marginBottom: '32px' }}>
+                      <h3 style={subsectionStyle}>Identity</h3>
+                      <FormField label="First Name" required={nonCustodialApplies}>
+                        <input
+                          type="text"
+                          required={nonCustodialApplies}
+                          disabled={!nonCustodialApplies}
+                          style={inputStyle}
+                          value={formData.nonCustodial_firstName || ''}
+                          onChange={(e) => updateField('nonCustodial_firstName', e.target.value)}
+                        />
+                      </FormField>
+                      <FormField label="Last Name" required={nonCustodialApplies}>
+                        <input
+                          type="text"
+                          required={nonCustodialApplies}
+                          disabled={!nonCustodialApplies}
+                          style={inputStyle}
+                          value={formData.nonCustodial_lastName || ''}
+                          onChange={(e) => updateField('nonCustodial_lastName', e.target.value)}
+                        />
+                      </FormField>
+                    </div>
+
+                    <div style={{ marginBottom: '32px' }}>
+                      <h3 style={subsectionStyle}>Address</h3>
+                      <FormField label="Address" required={nonCustodialApplies}>
+                        <input
+                          type="text"
+                          required={nonCustodialApplies}
+                          disabled={!nonCustodialApplies}
+                          style={inputStyle}
+                          value={formData.nonCustodial_address || ''}
+                          onChange={(e) => updateField('nonCustodial_address', e.target.value)}
+                        />
+                      </FormField>
+                      <FormField label="City" required={nonCustodialApplies}>
+                        <input
+                          type="text"
+                          required={nonCustodialApplies}
+                          disabled={!nonCustodialApplies}
+                          style={inputStyle}
+                          value={formData.nonCustodial_city || ''}
+                          onChange={(e) => updateField('nonCustodial_city', e.target.value)}
+                        />
+                      </FormField>
+                      <FormField label="State" required={nonCustodialApplies}>
+                        <select
+                          required={nonCustodialApplies}
+                          disabled={!nonCustodialApplies}
+                          style={inputStyle}
+                          value={formData.nonCustodial_state || ''}
+                          onChange={(e) => updateField('nonCustodial_state', e.target.value)}
+                        >
+                          <option value="">Select State</option>
+                          {usStates.map(state => (
+                            <option key={state} value={state}>{state}</option>
+                          ))}
+                        </select>
+                      </FormField>
+                      <FormField label="Zip" required={nonCustodialApplies}>
+                        <input
+                          type="text"
+                          pattern="[0-9]{5}"
+                          required={nonCustodialApplies}
+                          disabled={!nonCustodialApplies}
+                          style={inputStyle}
+                          value={formData.nonCustodial_zip || ''}
+                          onChange={(e) => updateField('nonCustodial_zip', e.target.value)}
+                        />
+                      </FormField>
+                    </div>
+
+                    <div style={{ marginBottom: '32px' }}>
+                      <h3 style={subsectionStyle}>Contact & Education</h3>
+                      <FormField label="Home Phone" required={nonCustodialApplies}>
+                        <input
+                          type="tel"
+                          pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                          placeholder="xxx-xxx-xxxx"
+                          required={nonCustodialApplies}
+                          disabled={!nonCustodialApplies}
+                          style={inputStyle}
+                          value={formData.nonCustodial_homePhone || ''}
+                          onChange={(e) => updateField('nonCustodial_homePhone', e.target.value)}
+                        />
+                      </FormField>
+                      <FormField label="Cell Phone" required={nonCustodialApplies}>
+                        <input
+                          type="tel"
+                          pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                          placeholder="xxx-xxx-xxxx"
+                          required={nonCustodialApplies}
+                          disabled={!nonCustodialApplies}
+                          style={inputStyle}
+                          value={formData.nonCustodial_cellPhone || ''}
+                          onChange={(e) => updateField('nonCustodial_cellPhone', e.target.value)}
+                        />
+                      </FormField>
+                      <FormField label="Date of Birth" required={nonCustodialApplies}>
+                        <DateInput
+                          required={nonCustodialApplies}
+                          disabled={!nonCustodialApplies}
+                          value={formData.nonCustodial_dob || ''}
+                          onChange={(val) => updateField('nonCustodial_dob', val)}
+                        />
+                      </FormField>
+                      <FormField label="Highest Grade Completed" required={nonCustodialApplies}>
+                        <select
+                          required={nonCustodialApplies}
+                          disabled={!nonCustodialApplies}
+                          style={inputStyle}
+                          value={formData.nonCustodial_gradeCompleted || ''}
+                          onChange={(e) => updateField('nonCustodial_gradeCompleted', e.target.value)}
+                        >
+                          <option value="">Select</option>
+                          <option value="Elementary School">Elementary School</option>
+                          <option value="Middle School">Middle School</option>
+                          <option value="High School">High School</option>
+                          <option value="Some College">Some College</option>
+                          <option value="Associate Degree">Associate Degree</option>
+                          <option value="Bachelor's Degree">Bachelor's Degree</option>
+                          <option value="Master's Degree">Master's Degree</option>
+                          <option value="Doctoral Degree">Doctoral Degree</option>
+                        </select>
+                      </FormField>
+                    </div>
+
+                    <div style={{ marginBottom: '32px' }}>
+                      <h3 style={subsectionStyle}>Employment</h3>
+                      <FormField label="Employer" required={nonCustodialApplies}>
+                        <input
+                          type="text"
+                          required={nonCustodialApplies}
+                          disabled={!nonCustodialApplies}
+                          style={inputStyle}
+                          value={formData.nonCustodial_employer || ''}
+                          onChange={(e) => updateField('nonCustodial_employer', e.target.value)}
+                        />
+                      </FormField>
+                      <FormField label="Work Phone">
+                        <input
+                          type="tel"
+                          pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                          placeholder="xxx-xxx-xxxx"
+                          disabled={!nonCustodialApplies}
+                          style={inputStyle}
+                          value={formData.nonCustodial_workPhone || ''}
+                          onChange={(e) => updateField('nonCustodial_workPhone', e.target.value)}
+                        />
+                      </FormField>
+                    </div>
+
+                    <div style={{ marginBottom: '32px' }}>
+                      <h3 style={subsectionStyle}>Divorce / Support</h3>
+                      <FormField label="Date of Divorce" required={nonCustodialApplies}>
+                        <DateInput
+                          required={nonCustodialApplies}
+                          disabled={!nonCustodialApplies}
+                          value={formData.nonCustodial_dateOfDivorce || ''}
+                          onChange={(val) => updateField('nonCustodial_dateOfDivorce', val)}
+                        />
+                      </FormField>
+                      <FormField label="Who Last Claimed the Student?" required={nonCustodialApplies}>
+                        <input
+                          type="text"
+                          required={nonCustodialApplies}
+                          disabled={!nonCustodialApplies}
+                          style={inputStyle}
+                          value={formData.nonCustodial_whoClaimedStudent || ''}
+                          onChange={(e) => updateField('nonCustodial_whoClaimedStudent', e.target.value)}
+                        />
+                      </FormField>
+                      <FormField label="Year Claimed" required={nonCustodialApplies}>
+                        <input
+                          type="number"
+                          min="1900"
+                          max={currentYear}
+                          required={nonCustodialApplies}
+                          disabled={!nonCustodialApplies}
+                          style={inputStyle}
+                          value={formData.nonCustodial_yearClaimed || ''}
+                          onChange={(e) => updateField('nonCustodial_yearClaimed', e.target.value)}
+                        />
+                      </FormField>
+                      <FormField label="Date Child Support Ends" required={nonCustodialApplies}>
+                        <DateInput
+                          required={nonCustodialApplies}
+                          disabled={!nonCustodialApplies}
+                          value={formData.nonCustodial_childSupportEnds || ''}
+                          onChange={(val) => updateField('nonCustodial_childSupportEnds', val)}
+                        />
+                      </FormField>
+                      <FormField label="Education Clause in Divorce?" required={nonCustodialApplies}>
+                        <select
+                          required={nonCustodialApplies}
+                          disabled={!nonCustodialApplies}
+                          style={inputStyle}
+                          value={formData.nonCustodial_educationClause || ''}
+                          onChange={(e) => updateField('nonCustodial_educationClause', e.target.value)}
+                        >
+                          <option value="">Select</option>
+                          <option value="Yes">Yes</option>
+                          <option value="No">No</option>
+                        </select>
+                      </FormField>
+                      {formData.nonCustodial_educationClause === 'Yes' && (
+                        <FormField label="If Yes, Amount" indent required={nonCustodialApplies}>
+                          <CurrencyInput
+                            required={nonCustodialApplies}
+                            disabled={!nonCustodialApplies}
+                            value={formData.nonCustodial_educationClauseAmount || ''}
+                            onChange={(val) => updateField('nonCustodial_educationClauseAmount', val)}
+                          />
+                        </FormField>
+                      )}
+                    </div>
+                  </div>
+                );
+              })()}
+            </form>
+          )}
+
+          {sections[currentSection].id === 'section18' && (
+            <form ref={formRef} onSubmit={(e) => e.preventDefault()}>
+              <div style={{ marginBottom: '18px' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 240px', gap: '16px', alignItems: 'end' }}>
+                  <div>
+                    <FormField label="College to Add" required>
+                      <div style={{ display: 'grid', gap: '10px' }}>
+                        <input
+                          type="text"
+                          required
+                          style={inputStyle}
+                          placeholder="Type college/university name (required)"
+                          value={pendingCollegeName || ''}
+                          onChange={(e) => setPendingCollegeName(e.target.value)}
+                        />
+
+                        <input
+                          type="text"
+                          style={inputStyle}
+                          placeholder="City, State (optional but recommended)"
+                          value={pendingCollegeCityState || ''}
+                          onChange={(e) => setPendingCollegeCityState(e.target.value)}
+                        />
+                      </div>
+                    </FormField>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={addCollegeRow}
+                    style={{
+                      ...buttonStyle,
+                      background: 'linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%)',
+                      color: '#111827',
+                      boxShadow: 'none'
+                    }}
+                  >
+                    Add New College Now
+                  </button>
+                </div>
+              </div>
+
+              <div style={{ border: '1px solid #d1d5db', borderRadius: '8px', overflow: 'hidden', background: 'white' }}>
+                <div
+                  style={{
+                    display: 'grid',
+                    gridTemplateColumns: '2fr 1.4fr 1fr 1fr 1fr 90px',
+                    background: '#e5e7eb',
+                    padding: '12px',
+                    fontWeight: '600'
+                  }}
+                >
+                  <div>College / University</div>
+                  <div>City, State</div>
+                  <div>Housing Code</div>
+                  <div>1) AL COA</div>
+                  <div>2) AL Gift Aid</div>
+                  <div></div>
+                </div>
+
+                {getColleges().length === 0 ? (
+                  <div style={{ padding: '16px', color: '#6b7280', fontSize: '14px' }}>
+                    No colleges added yet. Add at least one to continue.
+                  </div>
+                ) : (
+                  getColleges().map((row, idx) => (
+                    <div
+                      key={idx}
+                      style={{
+                        display: 'grid',
+                        gridTemplateColumns: '2fr 1.4fr 1fr 1fr 1fr 90px',
+                        gap: '10px',
+                        alignItems: 'center',
+                        padding: '12px',
+                        borderTop: '1px solid #e5e7eb'
+                      }}
+                    >
+                      <input
+                        type="text"
+                        required
+                        style={inputStyle}
+                        value={row.collegeName || ''}
+                        onChange={(e) => updateCollegeRow(idx, { collegeName: e.target.value })}
+                      />
+
+                      <input
+                        type="text"
+                        style={inputStyle}
+                        value={row.cityState || ''}
+                        onChange={(e) => updateCollegeRow(idx, { cityState: e.target.value })}
+                      />
+
+                      <select
+                        required
+                        style={inputStyle}
+                        value={row.housingCode || ''}
+                        onChange={(e) => updateCollegeRow(idx, { housingCode: e.target.value })}
+                      >
+                        <option value="">Select</option>
+                        {housingCodes.map((h) => (
+                          <option key={h} value={h}>{h}</option>
+                        ))}
+                      </select>
+
+                      <CurrencyInput
+                        required
+                        value={row.alCoa || ''}
+                        onChange={(val) => updateCollegeRow(idx, { alCoa: val })}
+                      />
+
+                      <CurrencyInput
+                        required
+                        value={row.alGiftAid || ''}
+                        onChange={(val) => updateCollegeRow(idx, { alGiftAid: val })}
+                      />
+
+                      <button
+                        type="button"
+                        onClick={() => deleteCollegeRow(idx)}
+                        style={{
+                          padding: '10px 12px',
+                          fontSize: '14px',
+                          color: '#2563eb',
+                          background: 'transparent',
+                          border: 'none',
+                          cursor: 'pointer',
+                          textDecoration: 'underline'
+                        }}
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  ))
+                )}
+              </div>
+
+              <div style={{ marginTop: '24px', color: '#111827', fontSize: '15px', lineHeight: 1.6 }}>
+                <div>1) AL COA - Enter "Cost of Attendance" from Student&apos;s Award Letter</div>
+                <div>2) AL Gift Aid - Enter "Gift Aid" from Student&apos;s Award Letter</div>
+              </div>
+            </form>
+          )}
+
+          {sections[currentSection].id === 'section19' && (
+            <form ref={formRef} onSubmit={(e) => e.preventDefault()}>
+              <div style={{ marginBottom: '24px' }}>
+                <div style={{ color: '#7f1d1d', fontWeight: '700', lineHeight: 1.4, fontSize: '15px' }}>
+                  Please answer the following Eight (8) questions as they pertain to the Student. Any question answered
+                  "YES" constitutes an Independent Student; otherwise the student will be Dependent with Parental
+                  Information reported.
+                </div>
+              </div>
+
+              <FormField label="Born before January 1, 2003?" required>
+                <select
+                  required
+                  style={inputStyle}
+                  value={formData.dep_bornBefore2003 || ''}
+                  onChange={(e) => updateField('dep_bornBefore2003', e.target.value)}
+                >
+                  <option value="">Select</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+              </FormField>
+
+              <FormField label="2026 - 2027 school year, working on master's or doctorate program?" required>
+                <select
+                  required
+                  style={inputStyle}
+                  value={formData.dep_gradProgram || ''}
+                  onChange={(e) => updateField('dep_gradProgram', e.target.value)}
+                >
+                  <option value="">Select</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+              </FormField>
+
+              <FormField label="Married / Unmarried but Live Together?" required>
+                <select
+                  required
+                  style={inputStyle}
+                  value={formData.dep_marriedOrLiveTogether || ''}
+                  onChange={(e) => updateField('dep_marriedOrLiveTogether', e.target.value)}
+                >
+                  <option value="">Select</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+              </FormField>
+
+              <FormField label="Have children?" required>
+                <select
+                  required
+                  style={inputStyle}
+                  value={formData.dep_haveChildren || ''}
+                  onChange={(e) => updateField('dep_haveChildren', e.target.value)}
+                >
+                  <option value="">Select</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+              </FormField>
+
+              <FormField label="Have dependents (other than spouse or children)?" required>
+                <select
+                  required
+                  style={inputStyle}
+                  value={formData.dep_haveDependents || ''}
+                  onChange={(e) => updateField('dep_haveDependents', e.target.value)}
+                >
+                  <option value="">Select</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+              </FormField>
+
+              <FormField label="Homeless, emancipated, unaccompanied youth, or both parents deceased?" required>
+                <select
+                  required
+                  style={inputStyle}
+                  value={formData.dep_homelessEmancipatedOrParentsDeceased || ''}
+                  onChange={(e) => updateField('dep_homelessEmancipatedOrParentsDeceased', e.target.value)}
+                >
+                  <option value="">Select</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+              </FormField>
+
+              <FormField label="Serving active duty in the US Armed Forces, or reserve?" required>
+                <select
+                  required
+                  style={inputStyle}
+                  value={formData.dep_activeDutyOrReserve || ''}
+                  onChange={(e) => updateField('dep_activeDutyOrReserve', e.target.value)}
+                >
+                  <option value="">Select</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+              </FormField>
+
+              <FormField label="Veteran of the US Armed Forces?" required>
+                <select
+                  required
+                  style={inputStyle}
+                  value={formData.dep_veteran || ''}
+                  onChange={(e) => updateField('dep_veteran', e.target.value)}
+                >
+                  <option value="">Select</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+              </FormField>
+            </form>
+          )}
+
+          {sections[currentSection].id === 'section20' && (
+            <form ref={formRef} onSubmit={(e) => e.preventDefault()}>
+              <UppyUploadSection
+                clientEmail={clientEmail}
+                sessionId={sessionId}
+                uploads={formData.awardLetterUploads || []}
+                onUploadsChange={(uploads) => updateField('awardLetterUploads', uploads)}
+                noLetters={formData.noAwardLettersYet || false}
+                onNoLettersChange={(val) => updateField('noAwardLettersYet', val)}
+              />
+            </form>
+          )}
+
+          {sections[currentSection].id === 'acknowledgment' && (
+            <form ref={formRef} onSubmit={(e) => e.preventDefault()}>
+              <div style={{
+                background: '#f0f9ff',
+                border: '2px solid #3b82f6',
+                borderRadius: '8px',
+                padding: '24px',
+                marginBottom: '24px'
+              }}>
+                <label style={{
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  gap: '12px',
+                  cursor: 'pointer',
+                  fontSize: '15px',
+                  lineHeight: '1.6'
+                }}>
+                  <input
+                    type="checkbox"
+                    required
+                    style={{
+                      marginTop: '4px',
+                      width: '18px',
+                      height: '18px',
+                      cursor: 'pointer'
+                    }}
+                    checked={formData.acknowledgment || false}
+                    onChange={(e) => updateField('acknowledgment', e.target.checked)}
+                  />
+                  <span>
+                    I understand this is an educational analysis, not financial or admissions advice.
+                  </span>
+                </label>
+              </div>
+              <div style={{
+                background: '#f9fafb',
+                borderRadius: '8px',
+                padding: '20px',
+                marginTop: '32px'
+              }}>
+                <h3 style={{ fontSize: '18px', fontWeight: '600', marginBottom: '12px', color: '#111827' }}>
+                  Ready to Submit
+                </h3>
+                <p style={{ color: '#6b7280', fontSize: '14px', marginBottom: '16px' }}>
+                  Please review your information before submitting. You can navigate back through sections 
+                  using the Previous button below.
+                </p>
+                <div style={{
+                  background: '#f0fdf4',
+                  border: '2px solid #064E3B',
+                  borderRadius: '8px',
+                  padding: '20px',
+                  marginTop: '16px'
+                }}>
+                  <p style={{ fontSize: '15px', color: '#111827', lineHeight: '1.7', margin: 0 }}>
+                    Now the next step is to schedule your call with experts to review your funding analysis. Please press <strong>Next</strong> to proceed with booking your financial analysis meeting.
+                  </p>
+                </div>
+              </div>
+            </form>
+          )}
+
+          {sections[currentSection].id === 'thankyou' && (
+            <PremiumHeroShell>
+              <div
+                style={{
+                  maxWidth: '720px',
+                  margin: '0 auto',
+                  background: 'rgba(255,255,255,0.92)',
+                  border: '2px solid #D4AF37',
+                  borderRadius: '12px',
+                  padding: '60px 40px',
+                  boxShadow: '0 12px 34px rgba(0,0,0,0.12)',
+                  backdropFilter: 'blur(6px)',
+                  WebkitBackdropFilter: 'blur(6px)',
+                  textAlign: 'center',
+                }}
+              >
+              <h1 style={{
+                fontSize: '42px',
+                fontWeight: '700',
+                color: '#1B2845',
+                marginBottom: '8px',
+                marginTop: 0,
+                animation: 'slideInFromLeft 0.6s ease-out',
+                fontFamily: 'Georgia, serif'
+              }}>
+                Thank You
+              </h1>
+              <div style={{
+                height: '3px',
+                width: '64px',
+                background: '#D4AF37',
+                borderRadius: '999px',
+                marginTop: '14px',
+                marginBottom: '22px',
+                marginLeft: 'auto',
+                marginRight: 'auto'
+              }}></div>
+              
+              <div style={{
+                fontSize: '17px',
+                lineHeight: '1.8',
+                color: '#111827',
+                animation: 'slideInFromLeft 0.8s ease-out',
+                animationDelay: '0.2s',
+                animationFillMode: 'both'
+              }}>
+                <p style={{ marginBottom: '20px' }}>
+                  Your information has been successfully received.
+                </p>
+                
+                <p style={{ marginBottom: '20px' }}>
+                  We'll review everything carefully and deliver your results within 3–5 business days.
+                  If clarification or next steps are needed, we'll reach out directly.
+                </p>
+                
+                <p style={{
+                  marginTop: '32px',
+                  fontSize: '18px',
+                  fontWeight: '600',
+                  color: '#1B2845',
+                  fontStyle: 'italic',
+                  paddingTop: '24px',
+                  borderTop: '2px solid #D4AF37'
+                }}>
+                  We're not promising more gift aid.
+                  We're promising clarity and confidence — so you can sleep at night knowing you're paying
+                  what you should for college, not thousands more than necessary.
+                </p>
+              </div>
+
+              <style>{`
+                @keyframes slideInFromLeft {
+                  0% {
+                    transform: translateX(-100%);
+                    opacity: 0;
+                  }
+                  100% {
+                    transform: translateX(0);
+                    opacity: 1;
+                  }
+                }
+              `}</style>
+            </div>
+            </PremiumHeroShell>
+          )}
+
+          {sections[currentSection].id === 'scheduled' && (
+            <PremiumHeroShell>
+              <div
+                style={{
+                  maxWidth: '720px',
+                  margin: '0 auto',
+                  background: 'rgba(255,255,255,0.92)',
+                  border: '2px solid #D4AF37',
+                  borderRadius: '12px',
+                  padding: '60px 40px',
+                  boxShadow: '0 12px 34px rgba(0,0,0,0.12)',
+                  backdropFilter: 'blur(6px)',
+                  WebkitBackdropFilter: 'blur(6px)',
+                  textAlign: 'center',
+                }}
+              >
+                <div style={{ fontSize: '52px', marginBottom: '16px' }}>🎉</div>
+                <h1 style={{
+                  fontSize: '38px',
+                  fontWeight: '700',
+                  color: '#1B2845',
+                  marginBottom: '8px',
+                  marginTop: 0,
+                  fontFamily: 'Georgia, serif'
+                }}>
+                  Congratulations!
+                </h1>
+                <div style={{
+                  height: '3px',
+                  width: '64px',
+                  background: '#D4AF37',
+                  borderRadius: '999px',
+                  margin: '14px auto 24px'
+                }} />
+                <p style={{
+                  fontSize: '17px',
+                  lineHeight: '1.8',
+                  color: '#111827',
+                  marginBottom: '36px',
+                  maxWidth: '560px',
+                  marginLeft: 'auto',
+                  marginRight: 'auto'
+                }}>
+                  You have confirmed your time with our team to review your financial analysis. Please be on the lookout for an email from our team prior to your meeting with either, your <strong>40 page funding report</strong> OR your <strong>FAFSA line-by-line answer sheet</strong>.
+                </p>
+                <button
+                  onClick={() => { window.location.href = 'https://www.swestf.com'; }}
+                  style={{
+                    padding: '16px 40px',
+                    fontSize: '17px',
+                    fontWeight: '700',
+                    color: '#1B2845',
+                    background: '#D4AF37',
+                    border: 'none',
+                    borderRadius: '10px',
+                    cursor: 'pointer',
+                    boxShadow: '0 6px 14px rgba(0,0,0,0.10)',
+                    transition: 'all 0.2s ease'
+                  }}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.background = '#c49d2f';
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                    e.currentTarget.style.boxShadow = '0 8px 18px rgba(0,0,0,0.15)';
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.background = '#D4AF37';
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = '0 6px 14px rgba(0,0,0,0.10)';
+                  }}
+                >
+                  Go Back To Website
+                </button>
+              </div>
+            </PremiumHeroShell>
+          )}
+        </div>
+
+        {sections[currentSection].id !== 'intro' && sections[currentSection].id !== 'thankyou' && sections[currentSection].id !== 'scheduled' && (
+          <div style={{
+            padding: '30px 40px',
+            borderTop: '1px solid #e5e7eb',
+            background: '#f9fafb'
+          }}>
+            {saveStatus === 'saving' && (
+              <div style={{ fontSize: '12px', color: '#6b7280', marginBottom: '8px' }}>⏳ Saving...</div>
+            )}
+            {saveStatus === 'saved' && (
+              <div style={{ fontSize: '12px', color: '#16a34a', marginBottom: '8px' }}>✓ Progress saved</div>
+            )}
+            {saveStatus === 'error' && (
+              <div style={{ fontSize: '12px', color: '#dc2626', marginBottom: '8px' }}>⚠ Save failed — check your Apps Script URL</div>
+            )}
+            <div style={{ marginBottom: '12px' }}>
+              <label style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                cursor: 'pointer',
+                fontSize: '12px',
+                color: '#9ca3af'
+              }}>
+                <input
+                  type="checkbox"
+                  checked={devMode}
+                  onChange={(e) => setDevMode(e.target.checked)}
+                  style={{ width: '14px', height: '14px', cursor: 'pointer' }}
+                />
+                Dev Mode: Skip Validation
+              </label>
+            </div>
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between'
+          }}>
+            <button
+              onClick={() => {
+                const prev = Math.max(0, currentSection - 1);
+                setCurrentSection(prev);
+                if (prev === 0) setAppStage('email');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              disabled={currentSection === 0}
+              style={{
+                ...buttonStyle,
+                background: currentSection === 0 ? '#e5e7eb' : 'white',
+                color: currentSection === 0 ? '#9ca3af' : '#374151',
+                border: '2px solid #e5e7eb',
+                cursor: currentSection === 0 ? 'not-allowed' : 'pointer'
+              }}
+            >
+              ← Previous
+            </button>
+            {sections[currentSection].id !== 'acknowledgment' ? (
+              <button
+                onClick={() => {
+                  if (!devMode && formRef.current && !formRef.current.reportValidity()) return;
+
+                  const currentSectionId = sections?.[currentSection]?.id;
+
+                  if (currentSectionId === 'section18') {
+                    if (getColleges().length === 0) {
+                      alert('Please add at least one college before continuing.');
+                      return;
+                    }
+                  }
+
+                  if (currentSectionId === 'section20') {
+                    if (!formData.noAwardLettersYet && (!formData.awardLetterUploads || formData.awardLetterUploads.length === 0)) {
+                      alert('Please upload at least one award letter, or check the box if you do not yet have award letters.');
+                      return;
+                    }
+                  }
+
+                  saveToSheet(formData, false, currentSection + 1);
+                  setCurrentSection(currentSection + 1);
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                style={{
+                  ...buttonStyle,
+                  background: '#064E3B',
+                  color: 'white'
+                }}
+              >
+                Next →
+              </button>
+            ) : (
+              <button
+                onClick={() => {
+                  if (formRef.current && !formRef.current.reportValidity()) return;
+                  if (formData.acknowledgment) {
+                    saveToSheet(formData, true);
+                    window.open('https://meetings-na2.hubspot.com/will-smethurst/swfcp-website-financial-analysis', '_blank');
+                  } else {
+                    alert('Please check the acknowledgment box before submitting.');
+                  }
+                }}
+                style={{
+                  ...buttonStyle,
+                  background: formData.acknowledgment 
+                    ? 'linear-gradient(135deg, #16a34a 0%, #22c55e 100%)'
+                    : '#e5e7eb',
+                  color: formData.acknowledgment ? 'white' : '#9ca3af',
+                  cursor: formData.acknowledgment ? 'pointer' : 'not-allowed'
+                }}
+              >
+                Next →
+              </button>
+            )}
+          </div>
+        </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// Helper Components
+function PremiumHeroShell({ children }) {
+  return (
+    <div
+      style={{
+        position: 'relative',
+        overflow: 'hidden',
+        borderRadius: '14px',
+        padding: '28px',
+      }}
+    >
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          pointerEvents: 'none',
+          backgroundImage: `
+            radial-gradient(1200px 700px at 20% 10%, rgba(212,175,55,0.18), transparent 55%),
+            radial-gradient(900px 600px at 85% 25%, rgba(59,130,246,0.14), transparent 55%),
+            radial-gradient(900px 700px at 50% 110%, rgba(27,40,69,0.16), transparent 60%),
+            linear-gradient(135deg, rgba(248,250,252,1) 0%, rgba(241,245,249,1) 35%, rgba(248,250,252,1) 100%),
+            repeating-linear-gradient(45deg, rgba(27,40,69,0.025) 0px, rgba(27,40,69,0.025) 1px, transparent 1px, transparent 9px)
+          `,
+          filter: 'saturate(1.05)',
+        }}
+      />
+      <div style={{ position: 'relative', zIndex: 1 }}>{children}</div>
+    </div>
+  );
+}
+
+function CurrencyInput({ value, onChange, required, disabled, placeholder }) {
+  return (
+    <div>
+      <input
+        type="number"
+        inputMode="decimal"
+        min="0"
+        step="1"
+        placeholder={placeholder || "Enter amount (numbers only)"}
+        required={required}
+        disabled={disabled}
+        style={inputStyle}
+        value={value || ''}
+        onChange={(e) => onChange(e.target.value)}
+      />
+      <div style={{ color: '#6b7280', fontSize: '12px', marginTop: '4px' }}>
+        Enter the estimated amount in dollars (no commas).
+      </div>
+    </div>
+  );
+}
+
+function DateInput({ value, onChange, required, disabled }) {
+  const [error, setError] = React.useState('');
+
+  const mdyToIso = (mdy) => {
+    if (!mdy) return '';
+    const pattern = /^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/\d{4}$/;
+    if (!pattern.test(mdy)) return '';
+    const parts = mdy.split('/');
+    return `${parts[2]}-${parts[0]}-${parts[1]}`;
+  };
+
+  const handleTextChange = (e) => {
+    let input = e.target.value;
+    
+    // Strip all non-digits
+    const digitsOnly = input.replace(/\D/g, '');
+    
+    // Limit to 8 digits
+    const limited = digitsOnly.slice(0, 8);
+    
+    // Auto-format with slashes
+    let formatted = '';
+    if (limited.length >= 1) {
+      formatted = limited.slice(0, 2);
+    }
+    if (limited.length >= 3) {
+      formatted += '/' + limited.slice(2, 4);
+    }
+    if (limited.length >= 5) {
+      formatted += '/' + limited.slice(4, 8);
+    }
+    
+    onChange(formatted);
+    setError('');
+  };
+
+  const handleTextBlur = (e) => {
+    const val = e.target.value;
+    if (val && !mdyToIso(val)) {
+      setError('Please use format: mm/dd/yyyy');
+    } else {
+      setError('');
+    }
+  };
+
+  return (
+    <div>
+      <input
+        type="text"
+        placeholder="mm/dd/yyyy"
+        inputMode="numeric"
+        pattern="^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/\d{4}$"
+        required={required}
+        disabled={disabled}
+        style={inputStyle}
+        value={value || ''}
+        onChange={handleTextChange}
+        onBlur={handleTextBlur}
+      />
+      {error && (
+        <div style={{ color: '#dc2626', fontSize: '12px', marginTop: '4px' }}>
+          {error}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function UppyUploadSection({ clientEmail, sessionId, uploads, onUploadsChange, noLetters, onNoLettersChange }) {
+  const containerRef = React.useRef(null);
+  const uploadsRef = React.useRef(uploads);
+  const WORKER_URL = 'https://intake-upload-worker.will-c65.workers.dev';
+
+  React.useEffect(() => {
+    uploadsRef.current = uploads;
+  }, [uploads]);
+
+  React.useEffect(() => {
+    if (!window.Uppy || !containerRef.current) return;
+
+    const uppy = new window.Uppy.Uppy({
+      restrictions: {
+        maxFileSize: 25 * 1024 * 1024,
+        allowedFileTypes: ['application/pdf', 'image/jpeg', 'image/png', '.pdf', '.jpg', '.jpeg', '.png'],
+        maxNumberOfFiles: 20
+      },
+      autoProceed: false
+    });
+
+    uppy.use(window.Uppy.Dashboard, {
+      target: containerRef.current,
+      inline: true,
+      height: 350,
+      showProgressDetails: true,
+      note: 'PDF, JPG, or PNG only · Max 25 MB per file',
+      proudlyDisplayPoweredByUppy: false
+    });
+
+    uppy.use(window.Uppy.XHRUpload, {
+      endpoint: WORKER_URL,
+      method: 'POST',
+      formData: true,
+      fieldName: 'file',
+      getResponseData(responseText) {
+        try { return JSON.parse(responseText); } catch { return {}; }
+      },
+      headers: {
+        'X-Client-Email': clientEmail || '',
+        'X-Session-Id': sessionId || ''
+      }
+    });
+
+    uppy.on('upload-success', (file, response) => {
+      const key = response.body?.key || file.name;
+      const updated = [...uploadsRef.current, { name: file.name, key }];
+      uploadsRef.current = updated;
+      onUploadsChange(updated);
+    });
+
+    uppy.on('upload-error', (file, error) => {
+      console.error('Upload error for', file.name, error);
+    });
+
+    return () => {
+      try { uppy.destroy(); } catch(e) {}
+    };
+  }, []);
+
+  return (
+    <div>
+      <p style={{ color: '#374151', fontSize: '15px', lineHeight: '1.7', marginBottom: '20px' }}>
+        Please upload your student's award letter(s) from each college they have been accepted to.
+        You may upload multiple files — one per college. Accepted formats: <strong>PDF, JPG, PNG</strong>. Maximum <strong>25 MB</strong> per file.
+      </p>
+
+      <div ref={containerRef} style={{ marginBottom: '20px' }} />
+
+      {uploads.length > 0 && (
+        <div style={{
+          background: '#f0fdf4',
+          border: '1px solid #bbf7d0',
+          borderRadius: '8px',
+          padding: '14px 18px',
+          marginBottom: '16px',
+          color: '#166534',
+          fontSize: '14px',
+          fontWeight: '500'
+        }}>
+          ✓ {uploads.length} file{uploads.length !== 1 ? 's' : ''} successfully uploaded
+        </div>
+      )}
+
+      <div style={{
+        background: '#fffbeb',
+        border: '1px solid #fde68a',
+        borderRadius: '8px',
+        padding: '16px 20px',
+        marginTop: '8px'
+      }}>
+        <label style={{
+          display: 'flex',
+          alignItems: 'flex-start',
+          gap: '10px',
+          cursor: 'pointer',
+          fontSize: '14px',
+          color: '#374151',
+          lineHeight: '1.5'
+        }}>
+          <input
+            type="checkbox"
+            checked={noLetters}
+            onChange={(e) => onNoLettersChange(e.target.checked)}
+            style={{ width: '16px', height: '16px', marginTop: '2px', cursor: 'pointer', flexShrink: 0 }}
+          />
+          <span>
+            <strong>I do not yet have award letters to upload</strong> — checking this box will allow you to proceed without uploading files now. You can submit your award letters to us directly when you receive them.
+          </span>
+        </label>
+      </div>
+    </div>
+  );
+}
+
+function FormField({ label, required, children, indent }) {
+  return (
+    <div style={{ 
+      marginBottom: '20px',
+      marginLeft: indent ? '24px' : '0',
+      transition: 'margin 0.3s ease'
+    }}>
+      <label style={{
+        display: 'block',
+        fontSize: '14px',
+        fontWeight: '500',
+        color: '#374151',
+        marginBottom: '8px'
+      }}>
+        {label}
+        {required && <span style={{ color: '#dc2626', marginLeft: '4px' }}>*</span>}
+      </label>
+      {children}
+    </div>
+  );
+}
+
+// Styles
+const subsectionStyle = {
+  fontSize: '18px',
+  fontWeight: '600',
+  color: '#0a3528',
+  marginBottom: '20px',
+  paddingBottom: '8px',
+  borderBottom: '1px solid #e5e7eb'
+};
+
+const inputStyle = {
+  width: '100%',
+  padding: '12px 16px',
+  fontSize: '15px',
+  border: '2px solid #e5e7eb',
+  borderRadius: '8px',
+  outline: 'none',
+  transition: 'all 0.2s ease',
+  background: 'white',
+  fontFamily: 'inherit'
+};
+
+const buttonStyle = {
+  padding: '14px 32px',
+  fontSize: '15px',
+  fontWeight: '600',
+  borderRadius: '8px',
+  border: 'none',
+  cursor: 'pointer',
+  transition: 'all 0.2s ease',
+  boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+};
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<IntakeForm />);
+  </script>
+</body>
+</html>
