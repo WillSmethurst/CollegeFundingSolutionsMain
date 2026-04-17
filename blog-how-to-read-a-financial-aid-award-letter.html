@@ -4,34 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- ============================================================
-       SEO — FILL IN FOR EVERY POST
-       Title:       Keep under 60 characters
-       Description: Keep under 155 characters
-  ============================================================ -->
   <title>How to Read a Financial Aid Award Letter — Strategy West College Planning</title>
   <meta name="description" content="Most families misread their financial aid award letter. Learn how to break down each section, calculate your real cost, and avoid overpaying for college." />
 
-  <!-- Canonical URL — replace slug below, keep domain as-is -->
   <link rel="canonical" href="https://www.swfcollegeplanning.com/blog-how-to-read-a-financial-aid-award-letter" />
 
-  <!-- Open Graph (social sharing) -->
   <meta property="og:type"        content="article" />
-  <meta property="og:title"       content="How to Read a Financial Aid Award Letter" />
+  <meta property="og:title"       content="How to Read a Financial Aid Award Letter — Strategy West College Planning" />
   <meta property="og:description" content="Most families misread their financial aid award letter. Learn how to break down each section, calculate your real cost, and avoid overpaying for college." />
   <meta property="og:url"         content="https://www.swfcollegeplanning.com/blog-how-to-read-a-financial-aid-award-letter" />
   <meta property="og:site_name"   content="Strategy West College Planning" />
 
-  <!-- Google Fonts: Cormorant Garamond (display) + DM Sans (body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet" />
 
   <style>
 
-    /* ============================================================
-       CSS CUSTOM PROPERTIES — Identical across all site pages
-    ============================================================ */
     :root {
       --navy:           #064E3B;
       --navy-mid:       #152540;
@@ -62,9 +51,6 @@
       --transition:      all 0.25s ease;
     }
 
-    /* ============================================================
-       RESET & BASE
-    ============================================================ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
     body {
@@ -79,24 +65,17 @@
     a { color: inherit; text-decoration: none; }
     ul { list-style: none; }
 
-    /* ============================================================
-       LAYOUT UTILITIES
-    ============================================================ */
     .container {
       max-width: var(--container-max);
       margin: 0 auto;
       padding: 0 var(--gutter);
     }
-
     .container--narrow {
       max-width: var(--container-narrow);
       margin: 0 auto;
       padding: 0 var(--gutter);
     }
 
-    /* ============================================================
-       BUTTON STYLES
-    ============================================================ */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -115,59 +94,19 @@
       white-space: nowrap;
       line-height: 1;
     }
-    .btn--primary {
-      background: var(--gold);
-      color: var(--white);
-      box-shadow: var(--shadow-gold);
-    }
-    .btn--primary:hover {
-      background: var(--gold-light);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(196, 150, 58, 0.48);
-    }
-    .btn--outline {
-      background: transparent;
-      color: var(--gold);
-      border: 1.5px solid var(--gold);
-    }
-    .btn--outline:hover {
-      background: var(--gold);
-      color: var(--white);
-      transform: translateY(-2px);
-    }
-    .btn--white-outline {
-      background: transparent;
-      color: var(--white);
-      border: 1.5px solid rgba(255,255,255,0.45);
-    }
-    .btn--white-outline:hover {
-      border-color: var(--white);
-      background: rgba(255,255,255,0.08);
-      transform: translateY(-2px);
-    }
-    .btn--ghost {
-      background: transparent;
-      color: var(--navy);
-      border: 1.5px solid var(--border);
-    }
-    .btn--ghost:hover {
-      border-color: var(--gold);
-      color: var(--gold);
-      transform: translateY(-2px);
-    }
+    .btn--primary { background: var(--gold); color: var(--white); box-shadow: var(--shadow-gold); }
+    .btn--primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(196, 150, 58, 0.48); }
+    .btn--outline { background: transparent; color: var(--gold); border: 1.5px solid var(--gold); }
+    .btn--outline:hover { background: var(--gold); color: var(--white); transform: translateY(-2px); }
+    .btn--white-outline { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,0.45); }
+    .btn--white-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.08); transform: translateY(-2px); }
+    .btn--ghost { background: transparent; color: var(--navy); border: 1.5px solid var(--border); }
+    .btn--ghost:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
     .btn--large { font-size: 16px; padding: 18px 42px; }
     .btn--small { font-size: 13px; padding: 10px 22px; }
-    .btn--arrow::after {
-      content: '→';
-      font-size: 17px;
-      line-height: 1;
-      transition: transform 0.2s ease;
-    }
+    .btn--arrow::after { content: '→'; font-size: 17px; line-height: 1; transition: transform 0.2s ease; }
     .btn--arrow:hover::after { transform: translateX(4px); }
 
-    /* ============================================================
-       NAVIGATION — Identical to site-wide pattern
-    ============================================================ */
     .nav {
       background: var(--navy);
       position: sticky;
@@ -182,652 +121,146 @@
       height: 68px;
       gap: 24px;
     }
-    .nav__brand {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      flex-shrink: 0;
-      text-decoration: none;
-    }
-    .nav__brand-name {
-      font-family: var(--font-display);
-      font-size: 18px;
-      font-weight: 600;
-      color: var(--white);
-      letter-spacing: 0.01em;
-      line-height: 1.2;
-    }
-    .nav__brand-tagline {
-      font-family: var(--font-body);
-      font-size: 9.5px;
-      font-weight: 400;
-      color: var(--gold-pale);
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      opacity: 0.7;
-    }
-    .nav__links {
-      display: none;
-      align-items: center;
-      gap: 2px;
-    }
+    .nav__brand { display: flex; flex-direction: column; gap: 2px; flex-shrink: 0; text-decoration: none; }
+    .nav__brand-name { font-family: var(--font-display); font-size: 18px; font-weight: 600; color: var(--white); letter-spacing: 0.01em; line-height: 1.2; }
+    .nav__brand-tagline { font-family: var(--font-body); font-size: 9.5px; font-weight: 400; color: var(--gold-pale); letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.7; }
+    .nav__links { display: none; align-items: center; gap: 2px; }
     @media (min-width: 960px) { .nav__links { display: flex; } }
-    .nav__link {
-      font-family: var(--font-body);
-      font-size: 14px;
-      font-weight: 500;
-      color: rgba(255, 255, 255, 0.72);
-      padding: 6px 14px;
-      border-radius: var(--radius-sm);
-      transition: var(--transition);
-      white-space: nowrap;
-    }
+    .nav__link { font-family: var(--font-body); font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.72); padding: 6px 14px; border-radius: var(--radius-sm); transition: var(--transition); white-space: nowrap; }
     .nav__link:hover { color: var(--white); background: rgba(255,255,255,0.07); }
-    .nav__ctas {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-shrink: 0;
-    }
+    .nav__ctas { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
     @media (max-width: 959px) { .nav__ctas { display: none; } }
     .nav__cta-webinar { display: none; }
     @media (min-width: 640px) { .nav__cta-webinar { display: inline-flex; } }
-
-    /* Hamburger */
-    .nav__hamburger {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 5px;
-      width: 36px;
-      height: 36px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 6px;
-      border-radius: var(--radius-sm);
-      transition: var(--transition);
-    }
+    .nav__hamburger { display: flex; flex-direction: column; justify-content: center; gap: 5px; width: 36px; height: 36px; background: none; border: none; cursor: pointer; padding: 6px; border-radius: var(--radius-sm); transition: var(--transition); }
     .nav__hamburger:hover { background: rgba(255,255,255,0.08); }
-    .nav__hamburger span {
-      display: block;
-      height: 1.5px;
-      width: 100%;
-      background: var(--gold);
-      border-radius: 2px;
-      transition: var(--transition);
-    }
+    .nav__hamburger span { display: block; height: 1.5px; width: 100%; background: var(--gold); border-radius: 2px; transition: var(--transition); }
     @media (min-width: 960px) { .nav__hamburger { display: none; } }
 
-    /* Desktop Dropdown */
-    .nav__dropdown {
-      position: relative;
-      padding-bottom: 12px;
-      margin-bottom: -12px;
-    }
-    .nav__dropdown-trigger {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      font-family: var(--font-body);
-      font-size: 14px;
-      font-weight: 500;
-      color: rgba(255, 255, 255, 0.72);
-      padding: 6px 14px;
-      border-radius: var(--radius-sm);
-      background: none;
-      border: none;
-      cursor: pointer;
-      transition: var(--transition);
-      white-space: nowrap;
-      line-height: 1.7;
-    }
-    .nav__dropdown-trigger:hover,
-    .nav__dropdown:hover .nav__dropdown-trigger,
-    .nav__dropdown:focus-within .nav__dropdown-trigger {
-      color: var(--white);
-      background: rgba(255, 255, 255, 0.07);
-    }
-    .nav__dropdown-chevron {
-      display: inline-block;
-      width: 10px;
-      height: 10px;
-      flex-shrink: 0;
-      opacity: 0.55;
-      transition: transform 0.22s ease, opacity 0.22s ease;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23ffffff' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: contain;
-    }
-    .nav__dropdown:hover .nav__dropdown-chevron,
-    .nav__dropdown:focus-within .nav__dropdown-chevron {
-      transform: rotate(180deg);
-      opacity: 0.9;
-    }
-    .nav__dropdown-panel {
-      position: absolute;
-      top: calc(100% + 2px);
-      left: 50%;
-      transform: translateX(-50%) translateY(-4px);
-      min-width: 180px;
-      background: var(--navy);
-      border: 1px solid rgba(255, 255, 255, 0.09);
-      border-radius: var(--radius-md);
-      box-shadow: 0 12px 40px rgba(6, 20, 46, 0.38), 0 2px 8px rgba(6, 20, 46, 0.18);
-      padding: 8px;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.2s ease, transform 0.2s ease;
-      z-index: 400;
-    }
-    .nav__dropdown-panel::before {
-      content: '';
-      position: absolute;
-      top: -5px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 10px;
-      height: 10px;
-      background: var(--navy);
-      border-left: 1px solid rgba(255, 255, 255, 0.09);
-      border-top: 1px solid rgba(255, 255, 255, 0.09);
-      clip-path: polygon(0 100%, 50% 0, 100% 100%);
-    }
-    .nav__dropdown:hover .nav__dropdown-panel,
-    .nav__dropdown:focus-within .nav__dropdown-panel {
-      opacity: 1;
-      pointer-events: all;
-      transform: translateX(-50%) translateY(0);
-    }
-    .nav__dropdown-link {
-      display: block;
-      font-family: var(--font-body);
-      font-size: 14px;
-      font-weight: 400;
-      color: rgba(255, 255, 255, 0.68);
-      padding: 9px 16px;
-      border-radius: var(--radius-sm);
-      transition: var(--transition);
-      white-space: nowrap;
-    }
-    .nav__dropdown-link:hover {
-      color: var(--white);
-      background: rgba(255, 255, 255, 0.07);
-      padding-left: 20px;
-      border-left: 2px solid var(--gold);
-      margin-left: -2px;
-    }
-    .nav__dropdown-divider {
-      height: 1px;
-      background: rgba(255, 255, 255, 0.06);
-      margin: 4px 8px;
-    }
+    .nav__dropdown { position: relative; padding-bottom: 12px; margin-bottom: -12px; }
+    .nav__dropdown-trigger { display: inline-flex; align-items: center; gap: 5px; font-family: var(--font-body); font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.72); padding: 6px 14px; border-radius: var(--radius-sm); background: none; border: none; cursor: pointer; transition: var(--transition); white-space: nowrap; line-height: 1.7; }
+    .nav__dropdown-trigger:hover, .nav__dropdown:hover .nav__dropdown-trigger, .nav__dropdown:focus-within .nav__dropdown-trigger { color: var(--white); background: rgba(255,255,255,0.07); }
+    .nav__dropdown-chevron { display: inline-block; width: 10px; height: 10px; flex-shrink: 0; opacity: 0.55; transition: transform 0.22s ease, opacity 0.22s ease; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23ffffff' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: center; background-size: contain; }
+    .nav__dropdown:hover .nav__dropdown-chevron, .nav__dropdown:focus-within .nav__dropdown-chevron { transform: rotate(180deg); opacity: 0.9; }
+    .nav__dropdown-panel { position: absolute; top: calc(100% + 2px); left: 50%; transform: translateX(-50%) translateY(-4px); min-width: 180px; background: var(--navy); border: 1px solid rgba(255,255,255,0.09); border-radius: var(--radius-md); box-shadow: 0 12px 40px rgba(6,20,46,0.38), 0 2px 8px rgba(6,20,46,0.18); padding: 8px; opacity: 0; pointer-events: none; transition: opacity 0.2s ease, transform 0.2s ease; z-index: 400; }
+    .nav__dropdown-panel::before { content: ''; position: absolute; top: -5px; left: 50%; transform: translateX(-50%); width: 10px; height: 10px; background: var(--navy); border-left: 1px solid rgba(255,255,255,0.09); border-top: 1px solid rgba(255,255,255,0.09); clip-path: polygon(0 100%, 50% 0, 100% 100%); }
+    .nav__dropdown:hover .nav__dropdown-panel, .nav__dropdown:focus-within .nav__dropdown-panel { opacity: 1; pointer-events: all; transform: translateX(-50%) translateY(0); }
+    .nav__dropdown-link { display: block; font-family: var(--font-body); font-size: 14px; font-weight: 400; color: rgba(255,255,255,0.68); padding: 9px 16px; border-radius: var(--radius-sm); transition: var(--transition); white-space: nowrap; }
+    .nav__dropdown-link:hover { color: var(--white); background: rgba(255,255,255,0.07); padding-left: 20px; border-left: 2px solid var(--gold); margin-left: -2px; }
+    .nav__dropdown-divider { height: 1px; background: rgba(255,255,255,0.06); margin: 4px 8px; }
 
-    /* Mobile Accordion */
     .nav__accordion { width: 100%; }
-    .nav__accordion-trigger {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-      font-family: var(--font-body);
-      font-size: 16px;
-      font-weight: 500;
-      color: rgba(255, 255, 255, 0.8);
-      padding: 12px 16px;
-      border-radius: var(--radius-sm);
-      background: none;
-      border: none;
-      cursor: pointer;
-      transition: var(--transition);
-      text-align: left;
-    }
+    .nav__accordion-trigger { display: flex; align-items: center; justify-content: space-between; width: 100%; font-family: var(--font-body); font-size: 16px; font-weight: 500; color: rgba(255,255,255,0.8); padding: 12px 16px; border-radius: var(--radius-sm); background: none; border: none; cursor: pointer; transition: var(--transition); text-align: left; }
     .nav__accordion-trigger:hover { color: var(--white); background: rgba(255,255,255,0.07); }
-    .nav__accordion-chevron {
-      display: inline-block;
-      width: 12px;
-      height: 12px;
-      flex-shrink: 0;
-      opacity: 0.45;
-      transition: transform 0.25s ease, opacity 0.25s ease;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23ffffff' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: contain;
-    }
-    .nav__accordion-trigger[aria-expanded="true"] .nav__accordion-chevron {
-      transform: rotate(180deg);
-      opacity: 0.85;
-    }
+    .nav__accordion-chevron { display: inline-block; width: 12px; height: 12px; flex-shrink: 0; opacity: 0.45; transition: transform 0.25s ease, opacity 0.25s ease; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23ffffff' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: center; background-size: contain; }
+    .nav__accordion-trigger[aria-expanded="true"] .nav__accordion-chevron { transform: rotate(180deg); opacity: 0.85; }
     .nav__accordion-panel { display: none; padding: 4px 0 4px 12px; }
     .nav__accordion-panel.is-open { display: block; }
     .nav__accordion-links { display: flex; flex-direction: column; gap: 2px; padding: 4px 0; }
-    .nav__accordion-link {
-      font-family: var(--font-body);
-      font-size: 14.5px;
-      font-weight: 400;
-      color: rgba(255, 255, 255, 0.6);
-      padding: 8px 12px;
-      border-radius: var(--radius-sm);
-      transition: var(--transition);
-      text-decoration: none;
-      display: block;
-    }
+    .nav__accordion-link { font-family: var(--font-body); font-size: 14.5px; font-weight: 400; color: rgba(255,255,255,0.6); padding: 8px 12px; border-radius: var(--radius-sm); transition: var(--transition); text-decoration: none; display: block; }
     .nav__accordion-link:hover { color: var(--white); background: rgba(255,255,255,0.06); }
 
-    /* Mobile Drawer */
-    .nav__drawer {
-      position: fixed;
-      inset: 0;
-      z-index: 300;
-      pointer-events: none;
-    }
-    .nav__drawer-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(6, 20, 46, 0.65);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    .nav__drawer-panel {
-      position: absolute;
-      top: 0; right: 0; bottom: 0;
-      width: min(320px, 85vw);
-      background: var(--navy);
-      padding: 28px 28px 40px;
-      display: flex;
-      flex-direction: column;
-      transform: translateX(100%);
-      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: var(--shadow-lg);
-    }
+    .nav__drawer { position: fixed; inset: 0; z-index: 300; pointer-events: none; }
+    .nav__drawer-overlay { position: absolute; inset: 0; background: rgba(6,20,46,0.65); opacity: 0; transition: opacity 0.3s ease; }
+    .nav__drawer-panel { position: absolute; top: 0; right: 0; bottom: 0; width: min(320px, 85vw); background: var(--navy); padding: 28px 28px 40px; display: flex; flex-direction: column; transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); box-shadow: var(--shadow-lg); }
     .nav__drawer.is-open { pointer-events: all; }
     .nav__drawer.is-open .nav__drawer-overlay { opacity: 1; }
     .nav__drawer.is-open .nav__drawer-panel { transform: translateX(0); }
-    .nav__drawer-close {
-      align-self: flex-end;
-      width: 36px; height: 36px;
-      display: flex; align-items: center; justify-content: center;
-      background: rgba(255,255,255,0.07);
-      border: none; border-radius: 50%;
-      color: var(--white);
-      font-size: 20px;
-      cursor: pointer;
-      margin-bottom: 32px;
-      transition: var(--transition);
-    }
+    .nav__drawer-close { align-self: flex-end; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.07); border: none; border-radius: 50%; color: var(--white); font-size: 20px; cursor: pointer; margin-bottom: 32px; transition: var(--transition); }
     .nav__drawer-close:hover { background: rgba(255,255,255,0.14); }
     .nav__drawer-links { display: flex; flex-direction: column; gap: 4px; flex: 1; }
-    .nav__drawer-link {
-      font-family: var(--font-body);
-      font-size: 16px;
-      font-weight: 500;
-      color: rgba(255,255,255,0.8);
-      padding: 12px 16px;
-      border-radius: var(--radius-sm);
-      transition: var(--transition);
-    }
+    .nav__drawer-link { font-family: var(--font-body); font-size: 16px; font-weight: 500; color: rgba(255,255,255,0.8); padding: 12px 16px; border-radius: var(--radius-sm); transition: var(--transition); }
     .nav__drawer-link:hover { color: var(--white); background: rgba(255,255,255,0.07); }
-    .nav__drawer-ctas {
-      display: flex; flex-direction: column; gap: 10px;
-      padding-top: 24px;
-      border-top: 1px solid rgba(255,255,255,0.1);
-    }
+    .nav__drawer-ctas { display: flex; flex-direction: column; gap: 10px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); }
     .nav__drawer-ctas .btn { width: 100%; justify-content: center; }
 
-    /* ============================================================
-       PAGE HEADER — Clean text header, no image
-    ============================================================ */
     .post-header {
       background: var(--navy);
       padding: 64px 0 72px;
       position: relative;
       overflow: hidden;
     }
-
-    .post-header::before {
-      content: '';
-      position: absolute;
-      top: -20%;
-      right: -8%;
-      width: 480px;
-      height: 480px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(196, 150, 58, 0.07) 0%, transparent 65%);
-      pointer-events: none;
-    }
-
-    .post-header__inner {
-      position: relative;
-      z-index: 2;
-      animation: fadeUp 0.6s ease both;
-    }
-
-    .post-header__back {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 13px;
-      font-weight: 500;
-      color: rgba(255,255,255,0.5);
-      margin-bottom: 32px;
-      transition: var(--transition);
-    }
+    .post-header::before { content: ''; position: absolute; top: -20%; right: -8%; width: 480px; height: 480px; border-radius: 50%; background: radial-gradient(circle, rgba(196,150,58,0.07) 0%, transparent 65%); pointer-events: none; }
+    .post-header__inner { position: relative; z-index: 2; animation: fadeUp 0.6s ease both; }
+    .post-header__back { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.5); margin-bottom: 32px; transition: var(--transition); }
     .post-header__back::before { content: '←'; font-size: 14px; transition: transform 0.2s ease; }
     .post-header__back:hover { color: rgba(255,255,255,0.8); }
     .post-header__back:hover::before { transform: translateX(-4px); }
+    .post-header__category { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+    .post-header__title { font-family: var(--font-display); font-size: clamp(32px, 5vw, 54px); font-weight: 600; line-height: 1.12; color: var(--white); letter-spacing: -0.01em; margin-bottom: 24px; max-width: 820px; }
+    .post-header__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 20px; }
+    .post-header__meta-item { font-size: 13px; color: rgba(255,255,255,0.45); display: flex; align-items: center; gap: 6px; }
+    .post-header__meta-dot { display: inline-block; width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.25); }
 
-    .post-header__category {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 20px;
-    }
-
-    .post-header__title {
-      font-family: var(--font-display);
-      font-size: clamp(32px, 5vw, 54px);
-      font-weight: 600;
-      line-height: 1.12;
-      color: var(--white);
-      letter-spacing: -0.01em;
-      margin-bottom: 24px;
-      max-width: 820px;
-    }
-
-    .post-header__meta {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 6px 20px;
-    }
-
-    .post-header__meta-item {
-      font-size: 13px;
-      color: rgba(255,255,255,0.45);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .post-header__meta-dot {
-      display: inline-block;
-      width: 3px;
-      height: 3px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.25);
-    }
-
-    /* ============================================================
-       ARTICLE BODY
-    ============================================================ */
-    .post-body {
-      background: var(--white);
-      padding: 72px 0 80px;
-    }
-
-    .post-body__content {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 0 var(--gutter);
-    }
-
-    .post-intro {
-      font-size: 18px;
-      line-height: 1.78;
-      color: var(--text-body);
-      margin-bottom: 48px;
-      padding-bottom: 40px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .post-section {
-      margin-bottom: 52px;
-    }
-
-    .post-section__heading {
-      font-family: var(--font-display);
-      font-size: clamp(22px, 3vw, 30px);
-      font-weight: 600;
-      color: var(--navy);
-      line-height: 1.2;
-      margin-bottom: 18px;
-      padding-top: 8px;
-    }
-
-    .post-section__heading::after {
-      content: '';
-      display: block;
-      width: 36px;
-      height: 2px;
-      background: var(--gold);
-      border-radius: 2px;
-      margin-top: 12px;
-    }
-
-    .post-section__subheading {
-      font-family: var(--font-body);
-      font-size: 18px;
-      font-weight: 600;
-      color: var(--navy);
-      line-height: 1.3;
-      margin-top: 32px;
-      margin-bottom: 12px;
-    }
-
-    .post-section p {
-      font-size: 16.5px;
-      line-height: 1.78;
-      color: var(--text-body);
-      margin-bottom: 20px;
-    }
-
+    .post-body { background: var(--white); padding: 72px 0 80px; }
+    .post-body__content { max-width: 720px; margin: 0 auto; padding: 0 var(--gutter); }
+    .post-intro { font-size: 18px; line-height: 1.78; color: var(--text-body); margin-bottom: 48px; padding-bottom: 40px; border-bottom: 1px solid var(--border); }
+    .post-section { margin-bottom: 52px; }
+    .post-section__heading { font-family: var(--font-display); font-size: clamp(22px, 3vw, 30px); font-weight: 600; color: var(--navy); line-height: 1.2; margin-bottom: 18px; padding-top: 8px; }
+    .post-section__heading::after { content: ''; display: block; width: 36px; height: 2px; background: var(--gold); border-radius: 2px; margin-top: 12px; }
+    .post-section__subheading { font-family: var(--font-display); font-size: clamp(18px, 2.5vw, 22px); font-weight: 600; color: var(--navy); line-height: 1.25; margin-bottom: 12px; margin-top: 28px; }
+    .post-section p { font-size: 16.5px; line-height: 1.78; color: var(--text-body); margin-bottom: 20px; }
     .post-section p:last-child { margin-bottom: 0; }
+    .post-callout { background: var(--ivory); border-left: 3px solid var(--gold); border-radius: 0 var(--radius-md) var(--radius-md) 0; padding: 24px 28px; margin: 36px 0; }
+    .post-callout p { font-size: 16px; line-height: 1.72; color: var(--text-body); margin: 0; }
+    .post-callout strong { color: var(--navy); font-weight: 600; }
+    .post-list { list-style: none; margin: 20px 0 28px; display: flex; flex-direction: column; gap: 12px; }
+    .post-list li { display: flex; align-items: flex-start; gap: 14px; font-size: 16px; line-height: 1.7; color: var(--text-body); }
+    .post-list li::before { content: ''; display: block; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 10px; }
 
-    .post-callout {
-      background: var(--ivory);
-      border-left: 3px solid var(--gold);
-      border-radius: 0 var(--radius-md) var(--radius-md) 0;
-      padding: 24px 28px;
-      margin: 36px 0;
-    }
+    .post-cta { background: var(--ivory); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 48px 40px; text-align: center; margin-top: 64px; }
+    .post-cta__eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; display: block; }
+    .post-cta__title { font-family: var(--font-display); font-size: clamp(22px, 3vw, 30px); font-weight: 600; color: var(--navy); line-height: 1.2; margin-bottom: 14px; }
+    .post-cta__body { font-size: 15.5px; line-height: 1.7; color: var(--text-muted); margin-bottom: 28px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .post-cta__buttons { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px; }
 
-    .post-callout p {
-      font-size: 16px;
-      line-height: 1.72;
-      color: var(--text-body);
-      margin: 0;
-    }
+    .related-posts { background: var(--ivory); border-top: 1px solid var(--border); padding: 64px 0 72px; }
+    .related-posts__header { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 36px; }
+    .related-posts__eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 8px; }
+    .related-posts__title { font-family: var(--font-display); font-size: clamp(20px, 2.5vw, 26px); font-weight: 600; color: var(--navy); line-height: 1.2; }
+    .related-posts__all { font-size: 13px; font-weight: 500; color: var(--gold); white-space: nowrap; transition: var(--transition); display: inline-flex; align-items: center; gap: 5px; flex-shrink: 0; }
+    .related-posts__all::after { content: '→'; transition: transform 0.2s ease; }
+    .related-posts__all:hover { color: var(--gold-light); }
+    .related-posts__all:hover::after { transform: translateX(3px); }
+    .related-posts__grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+    @media (min-width: 640px) { .related-posts__grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 960px) { .related-posts__grid { grid-template-columns: repeat(3, 1fr); } }
+    .related-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 28px 28px 24px; display: flex; flex-direction: column; transition: var(--transition); text-decoration: none; }
+    .related-card:hover { border-color: var(--gold); box-shadow: var(--shadow-md); transform: translateY(-3px); }
+    .related-card__category { font-size: 10.5px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; display: block; }
+    .related-card__title { font-family: var(--font-display); font-size: 19px; font-weight: 600; color: var(--navy); line-height: 1.25; margin-bottom: 12px; flex: 1; }
+    .related-card__excerpt { font-size: 14px; line-height: 1.65; color: var(--text-muted); margin-bottom: 20px; }
+    .related-card__footer { display: flex; align-items: center; justify-content: space-between; padding-top: 16px; border-top: 1px solid var(--border); margin-top: auto; }
+    .related-card__date { font-size: 12px; color: var(--text-light); }
+    .related-card__link { font-size: 13px; font-weight: 600; color: var(--gold); display: inline-flex; align-items: center; gap: 5px; transition: var(--transition); }
+    .related-card__link::after { content: '→'; transition: transform 0.2s ease; }
+    .related-card:hover .related-card__link { color: var(--gold-light); }
+    .related-card:hover .related-card__link::after { transform: translateX(3px); }
 
-    .post-callout strong {
-      color: var(--navy);
-      font-weight: 600;
-    }
-
-    .post-list {
-      list-style: none;
-      margin: 20px 0 28px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .post-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      font-size: 16px;
-      line-height: 1.7;
-      color: var(--text-body);
-    }
-
-    .post-list li::before {
-      content: '';
-      display: block;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--gold);
-      flex-shrink: 0;
-      margin-top: 10px;
-    }
-
-    /* FAQ styles */
-    .post-faq {
-      margin-top: 56px;
-      padding-top: 48px;
-      border-top: 1px solid var(--border);
-    }
-
-    .post-faq__title {
-      font-family: var(--font-display);
-      font-size: clamp(22px, 3vw, 30px);
-      font-weight: 600;
-      color: var(--navy);
-      margin-bottom: 32px;
-    }
-
-    .post-faq__item {
-      margin-bottom: 32px;
-    }
-
-    .post-faq__question {
-      font-family: var(--font-body);
-      font-size: 16.5px;
-      font-weight: 600;
-      color: var(--navy);
-      margin-bottom: 10px;
-    }
-
-    .post-faq__answer {
-      font-size: 16px;
-      line-height: 1.75;
-      color: var(--text-body);
-    }
-
-    /* ============================================================
-       POST FOOTER CTA — Bottom of article
-    ============================================================ */
-    .post-cta {
-      background: var(--ivory);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 48px 40px;
-      text-align: center;
-      margin-top: 64px;
-    }
-
-    .post-cta__eyebrow {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 14px;
-      display: block;
-    }
-
-    .post-cta__title {
-      font-family: var(--font-display);
-      font-size: clamp(22px, 3vw, 30px);
-      font-weight: 600;
-      color: var(--navy);
-      line-height: 1.2;
-      margin-bottom: 14px;
-    }
-
-    .post-cta__body {
-      font-size: 15.5px;
-      line-height: 1.7;
-      color: var(--text-muted);
-      margin-bottom: 28px;
-      max-width: 480px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .post-cta__buttons {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-    }
-
-    /* ============================================================
-       FOOTER — Identical to site-wide pattern
-    ============================================================ */
-    .footer {
-      background: #0a3528;
-      padding: 64px 0 0;
-      border-top: 1px solid rgba(255,255,255,0.06);
-    }
-    .footer__grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 40px;
-    }
+    .footer { background: #0a3528; padding: 64px 0 0; border-top: 1px solid rgba(255,255,255,0.06); }
+    .footer__grid { display: grid; grid-template-columns: 1fr; gap: 40px; }
     @media (min-width: 640px) { .footer__grid { grid-template-columns: repeat(2, 1fr); } }
     @media (min-width: 960px) { .footer__grid { grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 48px; } }
-    .footer__brand-name {
-      font-family: var(--font-display);
-      font-size: 20px; font-weight: 600;
-      color: var(--white);
-      margin-bottom: 4px;
-      letter-spacing: 0.01em;
-    }
-    .footer__brand-tagline {
-      font-size: 10px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--gold-pale);
-      opacity: 0.6;
-      margin-bottom: 16px;
-    }
-    .footer__brand-desc {
-      font-size: 14px; line-height: 1.65;
-      color: rgba(255,255,255,0.4);
-      max-width: 280px;
-    }
-    .footer__col-label {
-      font-size: 10.5px; font-weight: 600;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 20px; display: block;
-    }
+    .footer__brand-name { font-family: var(--font-display); font-size: 20px; font-weight: 600; color: var(--white); margin-bottom: 4px; letter-spacing: 0.01em; }
+    .footer__brand-tagline { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-pale); opacity: 0.6; margin-bottom: 16px; }
+    .footer__brand-desc { font-size: 14px; line-height: 1.65; color: rgba(255,255,255,0.4); max-width: 280px; }
+    .footer__col-label { font-size: 10.5px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; display: block; }
     .footer__links { display: flex; flex-direction: column; gap: 4px; }
     .footer__link { font-size: 14px; color: rgba(255,255,255,0.55); padding: 5px 0; transition: var(--transition); }
     .footer__link:hover { color: var(--white); }
     .footer__contact-line { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; }
     .footer__contact-icon { font-size: 14px; color: var(--gold); opacity: 0.7; flex-shrink: 0; margin-top: 2px; }
     .footer__contact-text { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.5; }
-    .footer__cta-link {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: 14px; font-weight: 500;
-      color: var(--gold); margin-top: 16px; transition: var(--transition);
-    }
+    .footer__cta-link { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 500; color: var(--gold); margin-top: 16px; transition: var(--transition); }
     .footer__cta-link:hover { color: var(--gold-light); }
     .footer__cta-link::after { content: '→'; transition: transform 0.2s ease; }
     .footer__cta-link:hover::after { transform: translateX(3px); }
-    .footer__bottom {
-      margin-top: 56px; padding: 24px 0;
-      border-top: 1px solid rgba(255,255,255,0.07);
-      display: flex; flex-wrap: wrap;
-      align-items: center; justify-content: space-between;
-      gap: 12px;
-    }
+    .footer__bottom { margin-top: 56px; padding: 24px 0; border-top: 1px solid rgba(255,255,255,0.07); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
     .footer__copyright { font-size: 12px; color: rgba(255,255,255,0.3); }
     .footer__legal-links { display: flex; gap: 20px; }
     .footer__legal-link { font-size: 12px; color: rgba(255,255,255,0.3); transition: var(--transition); }
     .footer__legal-link:hover { color: rgba(255,255,255,0.6); }
 
-    /* ============================================================
-       RESPONSIVE OVERRIDES
-    ============================================================ */
     @media (max-width: 599px) {
       .post-header { padding: 48px 0 56px; }
       .post-body { padding: 48px 0 56px; }
@@ -835,11 +268,10 @@
       .post-cta__buttons { flex-direction: column; align-items: stretch; }
       .post-cta__buttons .btn { justify-content: center; }
       .footer__bottom { flex-direction: column; align-items: flex-start; }
+      .related-posts { padding: 48px 0 56px; }
+      .related-card { padding: 22px 20px 18px; }
     }
 
-    /* ============================================================
-       ENTRANCE ANIMATION
-    ============================================================ */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(16px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -850,22 +282,16 @@
 
 <body id="top">
 
-  <!-- ============================================================
-       NAVIGATION
-  ============================================================ -->
   <header class="nav" role="banner">
     <div class="container">
       <div class="nav__inner">
-
         <a href="index.html" class="nav__brand" aria-label="Strategy West College Planning — Home">
           <img src="images/logo.png" alt="Strategy West College Planning" style="height: 120px; width: auto; display: block;">
         </a>
-
         <nav class="nav__links" aria-label="Primary navigation">
           <a href="how-it-works.html" class="nav__link">How It Works</a>
           <a href="our-process.html" class="nav__link">Our Process</a>
           <a href="pillars.html" class="nav__link">The 3 Pillars</a>
-
           <div class="nav__dropdown" role="navigation" aria-label="Resources submenu">
             <button class="nav__dropdown-trigger" aria-haspopup="true" aria-expanded="false" id="resources-dropdown-btn" type="button">
               Resources
@@ -881,34 +307,28 @@
               <a href="webinar-library.html" class="nav__dropdown-link" role="menuitem">Free Workshop</a>
             </div>
           </div>
-
           <a href="about.html" class="nav__link">About</a>
         </nav>
-
         <div class="nav__ctas">
           <a href="webinar-library.html" class="btn btn--outline btn--small nav__cta-webinar">Free Workshop</a>
           <a href="https://meetings-na2.hubspot.com/will-smethurst/cfs-website-meeting" class="btn btn--primary btn--small" target="_blank" rel="noopener">Schedule a Consultation</a>
         </div>
-
         <button class="nav__hamburger" id="nav-toggle" aria-label="Open navigation menu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
-
       </div>
     </div>
   </header>
 
-  <!-- Mobile Drawer -->
   <div class="nav__drawer" id="nav-drawer" role="dialog" aria-label="Navigation menu" aria-modal="true">
     <div class="nav__drawer-overlay" id="nav-overlay"></div>
     <div class="nav__drawer-panel">
-      <button class="nav__drawer-close" id="nav-close" aria-label="Close navigation">&#x2715;</button>
+      <button class="nav__drawer-close" id="nav-close" aria-label="Close navigation">✕</button>
       <nav class="nav__drawer-links" aria-label="Mobile navigation">
         <a href="index.html" class="nav__drawer-link">Home</a>
         <a href="how-it-works.html" class="nav__drawer-link">How It Works</a>
         <a href="our-process.html" class="nav__drawer-link">Our Process</a>
         <a href="pillars.html" class="nav__drawer-link">The 3 Pillars</a>
-
         <div class="nav__accordion">
           <button class="nav__accordion-trigger" aria-expanded="false" aria-controls="resources-accordion-panel" id="resources-accordion-btn" type="button">
             Resources
@@ -924,7 +344,6 @@
             </div>
           </div>
         </div>
-
         <a href="about.html" class="nav__drawer-link">About</a>
       </nav>
       <div class="nav__drawer-ctas">
@@ -937,60 +356,39 @@
 
   <main>
 
-    <!-- ============================================================
-         PAGE HEADER
-    ============================================================ -->
     <section class="post-header" aria-label="Article header">
       <div class="container">
         <div class="post-header__inner">
-
           <a href="blogs.html" class="post-header__back">Back to Blog</a>
-
           <span class="post-header__category">Financial Aid</span>
-
           <h1 class="post-header__title">How to Read a Financial Aid Award Letter (And What It Really Means)</h1>
-
           <div class="post-header__meta">
             <span class="post-header__meta-item">April 14, 2026</span>
             <span class="post-header__meta-dot" aria-hidden="true"></span>
-            <span class="post-header__meta-item">9 min read</span>
+            <span class="post-header__meta-item">8 min read</span>
           </div>
-
         </div>
       </div>
     </section>
 
 
-    <!-- ============================================================
-         ARTICLE BODY
-    ============================================================ -->
     <article class="post-body">
       <div class="post-body__content">
 
-        <!-- INTRO -->
         <p class="post-intro">
-          Your child gets into college. The excitement is real. Then the financial aid award letter arrives, and suddenly the numbers are everywhere and none of them seem to make sense. You see a large dollar figure labeled "Total Aid" and feel a wave of relief. Then, a few weeks later, you get the tuition bill and realize something is off. The amount you actually owe is much higher than you expected.
+          Your child gets into college. The excitement is real. Then the financial aid award letter arrives and suddenly the numbers are everywhere and none of them seem to make sense. Most families misread this document in ways that cost them thousands. This guide will walk you through exactly how to decode what an award letter is actually saying.
         </p>
 
 
-        <!-- SECTION 1: What Most Families Think vs Reality -->
         <div class="post-section">
           <h2 class="post-section__heading">What Most Families Think vs. What Is Actually True</h2>
-
-          <p>Most parents assume the "Total Financial Aid" number on an award letter represents money the college is giving their family. The higher the number, the better the deal.</p>
-
-          <p>That assumption is incorrect, and it is one of the most common and costly misunderstandings in the entire college process.</p>
-
-          <p>The total aid figure almost always includes a mix of three very different types of funding. Some of it is money you do not have to repay. Some of it is money you absolutely do have to repay, with interest. And some of it requires your student to work part-time during the school year to access it at all.</p>
-
-          <p>Lumping all three together into a single number is technically accurate, but it can be deeply misleading for any family trying to compare schools or plan a budget. This happens to families every single year, not because they are careless, but because financial aid award letters are genuinely confusing documents. They are not designed to be consumer-friendly. They are designed by institutions that operate like businesses, and understanding what they actually say requires knowing how to read between the lines.</p>
+          <p>Most parents assume the "Total Financial Aid" number on an award letter represents money the college is giving their family. The higher the number, the better the deal. That assumption is incorrect, and it is one of the most common and costly misunderstandings in the entire college process.</p>
+          <p>The total aid figure almost always includes a mix of three very different types of funding. Some of it is money you do not have to repay. Some of it is money you absolutely do have to repay, with interest. And some of it requires your student to work part-time during the school year to access it at all. Lumping all three together into a single headline number is technically accurate, but it can be deeply misleading for any family trying to compare schools or plan a budget.</p>
         </div>
 
 
-        <!-- SECTION 2: The Two Categories -->
         <div class="post-section">
           <h2 class="post-section__heading">The Two Categories You Need to Understand First</h2>
-
           <p>Before you can read an award letter correctly, you need to understand the difference between two fundamental types of aid.</p>
 
           <h3 class="post-section__subheading">Gift Aid: Money You Keep</h3>
@@ -1003,23 +401,20 @@
         </div>
 
 
-        <!-- CALLOUT -->
         <div class="post-callout">
           <p><strong>Key Rule:</strong> Strip out every loan and every work-study dollar before you evaluate an offer. What remains is your true gift aid, and that is the only number that directly reduces what your family owes.</p>
         </div>
 
 
-        <!-- SECTION 3: How to Read Each Section -->
         <div class="post-section">
           <h2 class="post-section__heading">How to Read Each Section of the Letter</h2>
-
           <p>Award letters vary by school, and there is no standardized format colleges are required to follow. That makes comparisons harder. Here is how to approach the key sections you will find in most letters.</p>
 
           <h3 class="post-section__subheading">Cost of Attendance</h3>
           <p>This is the school's estimated total cost for one academic year. It includes tuition, room and board, books, personal expenses, and sometimes travel. Some schools set this number higher or lower than the actual reality, so it is worth checking the true costs directly on the school's website.</p>
 
           <h3 class="post-section__subheading">Expected Family Contribution</h3>
-          <p>This is the amount the federal formula calculates your family should be able to contribute toward college costs. It is based on information from your FAFSA and, at some schools, your CSS Profile. Keep in mind this number is calculated by a formula that does not always reflect the reality of your family's financial situation.</p>
+          <p>This is the amount the federal formula calculates your family should be able to contribute toward college costs in a given year. It is based on information from your FAFSA and, at some schools, your CSS Profile. Keep in mind this number is calculated by a formula that does not always reflect the reality of your family's financial situation.</p>
 
           <h3 class="post-section__subheading">Financial Need</h3>
           <p>This is the difference between the cost of attendance and your expected family contribution. It represents the gap the school is theoretically trying to fill with financial aid. Not all schools meet 100 percent of demonstrated need, and how they meet it, with grants versus loans, matters enormously.</p>
@@ -1029,10 +424,8 @@
         </div>
 
 
-        <!-- SECTION 4: Calculate Your Real Cost -->
         <div class="post-section">
           <h2 class="post-section__heading">How to Calculate Your Real Out-of-Pocket Cost</h2>
-
           <p>Once you have separated gift aid from self-help aid, you can calculate the number that actually matters. Use this simple framework.</p>
 
           <ul class="post-list">
@@ -1046,64 +439,34 @@
         </div>
 
 
-        <!-- SECTION 5: College Is a Business -->
         <div class="post-section">
           <h2 class="post-section__heading">College Is a Business. Award Letters Reflect That.</h2>
-
-          <p>One of the most important shifts a family can make in this process is understanding that colleges operate like businesses. They have enrollment goals, budget constraints, and financial strategies of their own.</p>
-
-          <p>An award letter is not a charity document. It is a business offer. The school is telling you how much they are willing to invest in your student's enrollment, based on the information they have at the time and the criteria they are currently using.</p>
-
-          <p>That means two things are true simultaneously. First, the initial offer may not reflect the full picture. Circumstances change, financial situations shift, and competing offers from other schools arrive. Schools know this, and many of them have formal processes for revisiting their initial packages. Second, families who understand the business side of this process are in a much better position than those who accept the first offer at face value.</p>
+          <p>One of the most important shifts a family can make in this process is understanding that colleges operate like businesses. They have enrollment goals, budget constraints, and financial strategies of their own. An award letter is not a charity document. It is a business offer. The school is telling you how much they are willing to invest in your student's enrollment based on the information they have at the time and the criteria they are currently using.</p>
+          <p>That means two things are true simultaneously. First, the first offer is not always the final offer. Schools have appeal processes, and families who provide additional financial context, explain changes in their circumstances, or present competing offers from comparable institutions sometimes receive revised packages. Second, the process rewards those who understand how it works. Families who approach award letters strategically tend to make better decisions and, in some cases, secure better outcomes.</p>
+          <p>One example of what this can look like in practice: a student admitted to Yale University initially received approximately $9,986 in gift aid. After a strategic financial aid appeal, the revised package increased gift aid to approximately $15,247. That difference translated to roughly $21,000 in additional savings over four years. The first offer was not the final word. Results like this are not guaranteed, but they illustrate what is possible when families understand the process and engage with it strategically.</p>
         </div>
 
 
-        <!-- SECTION 6: Award Letters Are Not Final -->
         <div class="post-section">
-          <h2 class="post-section__heading">Award Letters Are Not Always Final</h2>
+          <h2 class="post-section__heading">Frequently Asked Questions</h2>
 
-          <p>This is one of the most underutilized pieces of knowledge in college planning.</p>
+          <p><strong>What is the difference between subsidized and unsubsidized loans?</strong><br>
+          Subsidized loans do not accrue interest while your student is enrolled at least half-time. Unsubsidized loans begin accruing interest immediately. Both are loans that must be repaid and should not be confused with grants or scholarships.</p>
 
-          <p>Many families receive an award letter, assume it is a fixed number, and start planning around it. They do not realize that financial aid appeals are a legitimate part of the process. Schools often have the ability to reconsider packages when a family provides updated financial information, presents a competing offer from another school, or documents a change in circumstances.</p>
+          <p><strong>Can I appeal a financial aid offer?</strong><br>
+          Yes. Most schools have a formal appeal process. Appeals are most effective when you can document a change in circumstances, provide information not reflected in your original FAFSA, or present a competing offer from a comparable institution. There is no guarantee, but the process is worth understanding and pursuing strategically.</p>
 
-          <p>To illustrate what is possible with the right approach: one family working through a strategic appeal at a highly selective university saw their gift aid increase by more than $5,200 per year after submitting a formal appeal letter. Over four years, that difference added up to more than $21,000 in reduced college costs.</p>
+          <p><strong>What if I did not qualify for need-based aid?</strong><br>
+          Not qualifying for need-based aid does not mean there is no money available. Many schools offer merit-based scholarships that are awarded regardless of income. Your student's academic profile, extracurricular record, and how well they match what the school is looking to build in their class all play a role. This is where admissions strategy and financial strategy overlap.</p>
 
-          <p>That is not a guarantee, and results depend entirely on the school, the situation, and how the case is presented. But it illustrates a point that most families never act on: the first number is not always the final number. Knowing how to read your award letter clearly is the foundation for knowing whether and how to ask for more.</p>
+          <p><strong>How do I compare award letters from different schools?</strong><br>
+          Reduce each offer to its net price: total cost of attendance minus gift aid only. Do not include loans or work-study in this calculation. Once you have the net price for each school, you can make a real financial comparison. A school that looks more expensive may actually be cheaper once you account for the strength of its gift aid.</p>
+
+          <p><strong>When is the best time to appeal?</strong><br>
+          Typically after you have received all of your award letters and before you commit to a school. Spring of senior year is the most common window. If your financial situation has changed since you filed your FAFSA, that is also a strong basis for an appeal at any point in the process.</p>
         </div>
 
 
-        <!-- FAQ -->
-        <div class="post-faq">
-          <h2 class="post-faq__title">Frequently Asked Questions</h2>
-
-          <div class="post-faq__item">
-            <p class="post-faq__question">What is the most important number to look at on a financial aid award letter?</p>
-            <p class="post-faq__answer">Your gift aid total. This is the amount the school is actually giving you with no repayment required. Subtract it from the total cost of attendance to find your real annual out-of-pocket cost.</p>
-          </div>
-
-          <div class="post-faq__item">
-            <p class="post-faq__question">Does every school format their award letter the same way?</p>
-            <p class="post-faq__answer">No. This is part of what makes comparisons difficult. Schools are not required to use a standardized format, so the labels and categories vary widely. Some schools are more transparent than others. Always categorize each line item yourself before drawing any conclusions.</p>
-          </div>
-
-          <div class="post-faq__item">
-            <p class="post-faq__question">Can I ask a college to reconsider my financial aid offer?</p>
-            <p class="post-faq__answer">Yes, many schools have a formal process for reconsidering an award. This typically involves submitting a written appeal with supporting documentation, such as updated financial information or a competing offer from another school. Success is not guaranteed, but it is more common than most families realize.</p>
-          </div>
-
-          <div class="post-faq__item">
-            <p class="post-faq__question">Does having a higher income mean I will not qualify for financial aid?</p>
-            <p class="post-faq__answer">Not necessarily. Federal need-based aid has income thresholds, but institutional aid from colleges works differently. Many schools have large endowments and offer merit-based or need-based grants to families across a wide range of income levels. Income alone does not determine what a school is willing to offer.</p>
-          </div>
-
-          <div class="post-faq__item">
-            <p class="post-faq__question">How do I know if I received a good financial aid package?</p>
-            <p class="post-faq__answer">Compare the gift aid percentage to the total cost of attendance. Look at what percentage of your demonstrated need is being met with grants versus loans. Then compare that ratio across multiple schools before making any final decision.</p>
-          </div>
-        </div>
-
-
-        <!-- CLOSING CTA BOX -->
         <div class="post-cta">
           <span class="post-cta__eyebrow">Ready to Take Action?</span>
           <h2 class="post-cta__title">Get a Plan Built Around Your Family</h2>
@@ -1123,21 +486,59 @@
 
 
   <!-- ============================================================
-       FOOTER
+       RELATED POSTS — Financial Aid category
+       Currently this is the first Financial Aid post published.
+       Replace the placeholder cards below as new Financial Aid posts go live.
+       Max 3 cards. Never link a post to itself.
   ============================================================ -->
-  <footer class="footer" role="contentinfo">
+  <section class="related-posts" aria-label="Related articles">
     <div class="container">
 
-      <div class="footer__grid">
+      <div class="related-posts__header">
+        <div>
+          <span class="related-posts__eyebrow">Keep Reading</span>
+          <h2 class="related-posts__title">More in Financial Aid</h2>
+        </div>
+        <a href="blogs.html" class="related-posts__all">All Articles</a>
+      </div>
 
+      <div class="related-posts__grid">
+
+        <!-- PLACEHOLDER — replace with first new Financial Aid post when published -->
+        <a href="blogs.html" class="related-card">
+          <span class="related-card__category">Financial Aid</span>
+          <h3 class="related-card__title">Common FAFSA Mistakes That Cost Families Money</h3>
+          <p class="related-card__excerpt">Coming soon. Small errors on the FAFSA can have a significant impact on the aid your family receives. Here is what to watch for.</p>
+          <div class="related-card__footer">
+            <span class="related-card__date">Coming Soon</span>
+            <span class="related-card__link">Read More</span>
+          </div>
+        </a>
+
+        <!-- PLACEHOLDER — replace with second new Financial Aid post when published -->
+        <a href="blogs.html" class="related-card">
+          <span class="related-card__category">Financial Aid</span>
+          <h3 class="related-card__title">How to Appeal a Financial Aid Offer</h3>
+          <p class="related-card__excerpt">Coming soon. Most families do not know that financial aid offers can be negotiated. Learn how to approach the appeal process strategically.</p>
+          <div class="related-card__footer">
+            <span class="related-card__date">Coming Soon</span>
+            <span class="related-card__link">Read More</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
         <div class="footer__brand">
           <div class="footer__brand-name">Strategy West</div>
           <div class="footer__brand-tagline">College Planning</div>
-          <p class="footer__brand-desc">
-            Expert, advisor-led guidance for families navigating the college planning process — from freshman year through enrollment.
-          </p>
+          <p class="footer__brand-desc">Expert, advisor-led guidance for families navigating the college planning process — from freshman year through enrollment.</p>
         </div>
-
         <div class="footer__col">
           <span class="footer__col-label">Navigate</span>
           <nav class="footer__links" aria-label="Footer navigation">
@@ -1148,7 +549,6 @@
             <a href="about.html" class="footer__link">About</a>
           </nav>
         </div>
-
         <div class="footer__col">
           <span class="footer__col-label">Resources</span>
           <nav class="footer__links" aria-label="Resources navigation">
@@ -1159,68 +559,43 @@
             <a href="packages.html" class="footer__link">Packages</a>
           </nav>
         </div>
-
         <div class="footer__col">
           <span class="footer__col-label">Get in Touch</span>
           <div class="footer__contact-line">
-            <span class="footer__contact-icon" aria-hidden="true">&#x2709;</span>
+            <span class="footer__contact-icon" aria-hidden="true">✉</span>
             <span class="footer__contact-text">info@swfcollegeplanning.com</span>
           </div>
           <div class="footer__contact-line">
-            <span class="footer__contact-icon" aria-hidden="true">&#x25CE;</span>
+            <span class="footer__contact-icon" aria-hidden="true">◎</span>
             <span class="footer__contact-text">Serving families nationwide<br>via virtual consultation &amp; in-person in Utah</span>
           </div>
           <a href="https://meetings-na2.hubspot.com/will-smethurst/cfs-website-meeting" class="footer__cta-link" target="_blank" rel="noopener">Schedule a Consultation</a>
         </div>
-
       </div>
-
       <div class="footer__bottom">
-        <span class="footer__copyright">
-          &copy; <span id="footer-year"></span> Strategy West College Planning. All rights reserved.
-        </span>
+        <span class="footer__copyright">&copy; <span id="footer-year"></span> Strategy West College Planning. All rights reserved.</span>
         <div class="footer__legal-links">
           <a href="privacy.html" class="footer__legal-link">Privacy Policy</a>
           <a href="terms.html" class="footer__legal-link">Terms of Use</a>
         </div>
       </div>
-
     </div>
   </footer>
 
 
-  <!-- ============================================================
-       JAVASCRIPT
-  ============================================================ -->
   <script>
     document.getElementById('footer-year').textContent = new Date().getFullYear();
-
     const toggle   = document.getElementById('nav-toggle');
     const drawer   = document.getElementById('nav-drawer');
     const overlay  = document.getElementById('nav-overlay');
     const closeBtn = document.getElementById('nav-close');
-
-    function openDrawer() {
-      drawer.classList.add('is-open');
-      toggle.setAttribute('aria-expanded', 'true');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeDrawer() {
-      drawer.classList.remove('is-open');
-      toggle.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    }
-
+    function openDrawer() { drawer.classList.add('is-open'); toggle.setAttribute('aria-expanded', 'true'); document.body.style.overflow = 'hidden'; }
+    function closeDrawer() { drawer.classList.remove('is-open'); toggle.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; }
     toggle.addEventListener('click', openDrawer);
     closeBtn.addEventListener('click', closeDrawer);
     overlay.addEventListener('click', closeDrawer);
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && drawer.classList.contains('is-open')) closeDrawer();
-    });
-    drawer.querySelectorAll('.nav__drawer-link, .nav__drawer-ctas .btn').forEach(link => {
-      link.addEventListener('click', closeDrawer);
-    });
-
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && drawer.classList.contains('is-open')) closeDrawer(); });
+    drawer.querySelectorAll('.nav__drawer-link, .nav__drawer-ctas .btn').forEach(link => { link.addEventListener('click', closeDrawer); });
     const accordionBtn   = document.getElementById('resources-accordion-btn');
     const accordionPanel = document.getElementById('resources-accordion-panel');
     if (accordionBtn && accordionPanel) {
