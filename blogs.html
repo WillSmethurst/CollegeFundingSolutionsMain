@@ -831,24 +831,9 @@
       flex-shrink: 0;
     }
 
-    /* Each card gets a subtle tinted pattern for visual variety */
-    .blog-card:nth-child(1) .blog-card__image {
-      background: linear-gradient(135deg, #e8f0eb 0%, #d4e5da 100%);
-    }
-    .blog-card:nth-child(2) .blog-card__image {
-      background: linear-gradient(135deg, #f0e8d4 0%, #e5d9bb 100%);
-    }
-    .blog-card:nth-child(3) .blog-card__image {
-      background: linear-gradient(135deg, #e8ebf0 0%, #d4dae5 100%);
-    }
-    .blog-card:nth-child(4) .blog-card__image {
-      background: linear-gradient(135deg, #f0ebe8 0%, #e5d9d4 100%);
-    }
-    .blog-card:nth-child(5) .blog-card__image {
-      background: linear-gradient(135deg, #e8f0eb 0%, #cfe0d5 100%);
-    }
-    .blog-card:nth-child(6) .blog-card__image {
-      background: linear-gradient(135deg, #f0ede8 0%, #e5ddd4 100%);
+    /* All card image areas use brand dark green */
+    .blog-card__image {
+      background: #0a3528 !important;
     }
 
     /* Placeholder icon inside image area */
@@ -1717,9 +1702,7 @@
         return (
           '<article class="blog-card" role="listitem">' +
             '<div class="blog-card__image" aria-hidden="true">' +
-              '<svg class="blog-card__image-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
-                post.icon +
-              '</svg>' +
+              '<img src="images/SWFCP-Transparent-logo.png" alt="Strategy West College Planning" style="height: 110px; width: auto; object-fit: contain;" />' +
               ribbon +
             '</div>' +
             '<div class="blog-card__body">' +
