@@ -53,665 +53,157 @@
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-    body {
-      font-family: var(--font-body);
-      font-size: 16px;
-      line-height: 1.7;
-      color: var(--text-body);
-      background: var(--white);
-      -webkit-font-smoothing: antialiased;
-    }
+    body { font-family: var(--font-body); font-size: 16px; line-height: 1.7; color: var(--text-body); background: var(--white); -webkit-font-smoothing: antialiased; }
     img { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
     ul { list-style: none; }
 
-    .container {
-      max-width: var(--container-max);
-      margin: 0 auto;
-      padding: 0 var(--gutter);
-    }
+    .container { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--gutter); }
+    .container--narrow { max-width: var(--container-narrow); margin: 0 auto; padding: 0 var(--gutter); }
 
-    .container--narrow {
-      max-width: var(--container-narrow);
-      margin: 0 auto;
-      padding: 0 var(--gutter);
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      font-family: var(--font-body);
-      font-size: 15px;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-      padding: 16px 34px;
-      border-radius: var(--radius-sm);
-      border: none;
-      cursor: pointer;
-      transition: var(--transition);
-      text-decoration: none;
-      white-space: nowrap;
-      line-height: 1;
-    }
-    .btn--primary {
-      background: var(--gold);
-      color: var(--white);
-      box-shadow: var(--shadow-gold);
-    }
-    .btn--primary:hover {
-      background: var(--gold-light);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(196, 150, 58, 0.48);
-    }
-    .btn--outline {
-      background: transparent;
-      color: var(--gold);
-      border: 1.5px solid var(--gold);
-    }
-    .btn--outline:hover {
-      background: var(--gold);
-      color: var(--white);
-      transform: translateY(-2px);
-    }
-    .btn--white-outline {
-      background: transparent;
-      color: var(--white);
-      border: 1.5px solid rgba(255,255,255,0.45);
-    }
-    .btn--white-outline:hover {
-      border-color: var(--white);
-      background: rgba(255,255,255,0.08);
-      transform: translateY(-2px);
-    }
-    .btn--ghost {
-      background: transparent;
-      color: var(--navy);
-      border: 1.5px solid var(--border);
-    }
-    .btn--ghost:hover {
-      border-color: var(--gold);
-      color: var(--gold);
-      transform: translateY(-2px);
-    }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--font-body); font-size: 15px; font-weight: 600; letter-spacing: 0.02em; padding: 16px 34px; border-radius: var(--radius-sm); border: none; cursor: pointer; transition: var(--transition); text-decoration: none; white-space: nowrap; line-height: 1; }
+    .btn--primary { background: var(--gold); color: var(--white); box-shadow: var(--shadow-gold); }
+    .btn--primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(196,150,58,0.48); }
+    .btn--outline { background: transparent; color: var(--gold); border: 1.5px solid var(--gold); }
+    .btn--outline:hover { background: var(--gold); color: var(--white); transform: translateY(-2px); }
+    .btn--ghost { background: transparent; color: var(--navy); border: 1.5px solid var(--border); }
+    .btn--ghost:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
     .btn--large { font-size: 16px; padding: 18px 42px; }
     .btn--small { font-size: 13px; padding: 10px 22px; }
-    .btn--arrow::after {
-      content: '→';
-      font-size: 17px;
-      line-height: 1;
-      transition: transform 0.2s ease;
-    }
+    .btn--arrow::after { content: '→'; font-size: 17px; line-height: 1; transition: transform 0.2s ease; }
     .btn--arrow:hover::after { transform: translateX(4px); }
 
-    .nav {
-      background: var(--navy);
-      position: sticky;
-      top: 0;
-      z-index: 200;
-      box-shadow: 0 2px 20px rgba(6, 78, 59, 0.3);
-    }
-    .nav__inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 68px;
-      gap: 24px;
-    }
-    .nav__brand {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      flex-shrink: 0;
-      text-decoration: none;
-    }
-    .nav__brand-name {
-      font-family: var(--font-display);
-      font-size: 18px;
-      font-weight: 600;
-      color: var(--white);
-      letter-spacing: 0.01em;
-      line-height: 1.2;
-    }
-    .nav__brand-tagline {
-      font-family: var(--font-body);
-      font-size: 9.5px;
-      font-weight: 400;
-      color: var(--gold-pale);
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      opacity: 0.7;
-    }
-    .nav__links {
-      display: none;
-      align-items: center;
-      gap: 2px;
-    }
+    .nav { background: var(--navy); position: sticky; top: 0; z-index: 200; box-shadow: 0 2px 20px rgba(6,78,59,0.3); }
+    .nav__inner { display: flex; align-items: center; justify-content: space-between; height: 68px; gap: 24px; }
+    .nav__brand { display: flex; flex-direction: column; gap: 2px; flex-shrink: 0; text-decoration: none; }
+    .nav__brand-name { font-family: var(--font-display); font-size: 18px; font-weight: 600; color: var(--white); letter-spacing: 0.01em; line-height: 1.2; }
+    .nav__brand-tagline { font-family: var(--font-body); font-size: 9.5px; font-weight: 400; color: var(--gold-pale); letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.7; }
+    .nav__links { display: none; align-items: center; gap: 2px; }
     @media (min-width: 960px) { .nav__links { display: flex; } }
-    .nav__link {
-      font-family: var(--font-body);
-      font-size: 14px;
-      font-weight: 500;
-      color: rgba(255, 255, 255, 0.72);
-      padding: 6px 14px;
-      border-radius: var(--radius-sm);
-      transition: var(--transition);
-      white-space: nowrap;
-    }
+    .nav__link { font-family: var(--font-body); font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.72); padding: 6px 14px; border-radius: var(--radius-sm); transition: var(--transition); white-space: nowrap; }
     .nav__link:hover { color: var(--white); background: rgba(255,255,255,0.07); }
-    .nav__ctas {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-shrink: 0;
-    }
+    .nav__ctas { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
     @media (max-width: 959px) { .nav__ctas { display: none; } }
     .nav__cta-webinar { display: none; }
     @media (min-width: 640px) { .nav__cta-webinar { display: inline-flex; } }
-
-    .nav__hamburger {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 5px;
-      width: 36px;
-      height: 36px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 6px;
-      border-radius: var(--radius-sm);
-      transition: var(--transition);
-    }
+    .nav__hamburger { display: flex; flex-direction: column; justify-content: center; gap: 5px; width: 36px; height: 36px; background: none; border: none; cursor: pointer; padding: 6px; border-radius: var(--radius-sm); transition: var(--transition); }
     .nav__hamburger:hover { background: rgba(255,255,255,0.08); }
-    .nav__hamburger span {
-      display: block;
-      height: 1.5px;
-      width: 100%;
-      background: var(--gold);
-      border-radius: 2px;
-      transition: var(--transition);
-    }
+    .nav__hamburger span { display: block; height: 1.5px; width: 100%; background: var(--gold); border-radius: 2px; transition: var(--transition); }
     @media (min-width: 960px) { .nav__hamburger { display: none; } }
 
-    .nav__dropdown {
-      position: relative;
-      padding-bottom: 12px;
-      margin-bottom: -12px;
-    }
-    .nav__dropdown-trigger {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      font-family: var(--font-body);
-      font-size: 14px;
-      font-weight: 500;
-      color: rgba(255, 255, 255, 0.72);
-      padding: 6px 14px;
-      border-radius: var(--radius-sm);
-      background: none;
-      border: none;
-      cursor: pointer;
-      transition: var(--transition);
-      white-space: nowrap;
-      line-height: 1.7;
-    }
-    .nav__dropdown-trigger:hover,
-    .nav__dropdown:hover .nav__dropdown-trigger,
-    .nav__dropdown:focus-within .nav__dropdown-trigger {
-      color: var(--white);
-      background: rgba(255, 255, 255, 0.07);
-    }
-    .nav__dropdown-chevron {
-      display: inline-block;
-      width: 10px;
-      height: 10px;
-      flex-shrink: 0;
-      opacity: 0.55;
-      transition: transform 0.22s ease, opacity 0.22s ease;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23ffffff' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: contain;
-    }
-    .nav__dropdown:hover .nav__dropdown-chevron,
-    .nav__dropdown:focus-within .nav__dropdown-chevron {
-      transform: rotate(180deg);
-      opacity: 0.9;
-    }
-    .nav__dropdown-panel {
-      position: absolute;
-      top: calc(100% + 2px);
-      left: 50%;
-      transform: translateX(-50%) translateY(-4px);
-      min-width: 180px;
-      background: var(--navy);
-      border: 1px solid rgba(255, 255, 255, 0.09);
-      border-radius: var(--radius-md);
-      box-shadow: 0 12px 40px rgba(6, 20, 46, 0.38), 0 2px 8px rgba(6, 20, 46, 0.18);
-      padding: 8px;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.2s ease, transform 0.2s ease;
-      z-index: 400;
-    }
-    .nav__dropdown-panel::before {
-      content: '';
-      position: absolute;
-      top: -5px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 10px;
-      height: 10px;
-      background: var(--navy);
-      border-left: 1px solid rgba(255, 255, 255, 0.09);
-      border-top: 1px solid rgba(255, 255, 255, 0.09);
-      clip-path: polygon(0 100%, 50% 0, 100% 100%);
-    }
-    .nav__dropdown:hover .nav__dropdown-panel,
-    .nav__dropdown:focus-within .nav__dropdown-panel {
-      opacity: 1;
-      pointer-events: all;
-      transform: translateX(-50%) translateY(0);
-    }
-    .nav__dropdown-link {
-      display: block;
-      font-family: var(--font-body);
-      font-size: 14px;
-      font-weight: 400;
-      color: rgba(255, 255, 255, 0.68);
-      padding: 9px 16px;
-      border-radius: var(--radius-sm);
-      transition: var(--transition);
-      white-space: nowrap;
-    }
-    .nav__dropdown-link:hover {
-      color: var(--white);
-      background: rgba(255, 255, 255, 0.07);
-      padding-left: 20px;
-      border-left: 2px solid var(--gold);
-      margin-left: -2px;
-    }
-    .nav__dropdown-divider {
-      height: 1px;
-      background: rgba(255, 255, 255, 0.06);
-      margin: 4px 8px;
-    }
+    .nav__dropdown { position: relative; padding-bottom: 12px; margin-bottom: -12px; }
+    .nav__dropdown-trigger { display: inline-flex; align-items: center; gap: 5px; font-family: var(--font-body); font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.72); padding: 6px 14px; border-radius: var(--radius-sm); background: none; border: none; cursor: pointer; transition: var(--transition); white-space: nowrap; line-height: 1.7; }
+    .nav__dropdown-trigger:hover, .nav__dropdown:hover .nav__dropdown-trigger, .nav__dropdown:focus-within .nav__dropdown-trigger { color: var(--white); background: rgba(255,255,255,0.07); }
+    .nav__dropdown-chevron { display: inline-block; width: 10px; height: 10px; flex-shrink: 0; opacity: 0.55; transition: transform 0.22s ease, opacity 0.22s ease; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23ffffff' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: center; background-size: contain; }
+    .nav__dropdown:hover .nav__dropdown-chevron, .nav__dropdown:focus-within .nav__dropdown-chevron { transform: rotate(180deg); opacity: 0.9; }
+    .nav__dropdown-panel { position: absolute; top: calc(100% + 2px); left: 50%; transform: translateX(-50%) translateY(-4px); min-width: 180px; background: var(--navy); border: 1px solid rgba(255,255,255,0.09); border-radius: var(--radius-md); box-shadow: 0 12px 40px rgba(6,20,46,0.38), 0 2px 8px rgba(6,20,46,0.18); padding: 8px; opacity: 0; pointer-events: none; transition: opacity 0.2s ease, transform 0.2s ease; z-index: 400; }
+    .nav__dropdown-panel::before { content: ''; position: absolute; top: -5px; left: 50%; transform: translateX(-50%); width: 10px; height: 10px; background: var(--navy); border-left: 1px solid rgba(255,255,255,0.09); border-top: 1px solid rgba(255,255,255,0.09); clip-path: polygon(0 100%, 50% 0, 100% 100%); }
+    .nav__dropdown:hover .nav__dropdown-panel, .nav__dropdown:focus-within .nav__dropdown-panel { opacity: 1; pointer-events: all; transform: translateX(-50%) translateY(0); }
+    .nav__dropdown-link { display: block; font-family: var(--font-body); font-size: 14px; font-weight: 400; color: rgba(255,255,255,0.68); padding: 9px 16px; border-radius: var(--radius-sm); transition: var(--transition); white-space: nowrap; }
+    .nav__dropdown-link:hover { color: var(--white); background: rgba(255,255,255,0.07); padding-left: 20px; border-left: 2px solid var(--gold); margin-left: -2px; }
+    .nav__dropdown-divider { height: 1px; background: rgba(255,255,255,0.06); margin: 4px 8px; }
 
     .nav__accordion { width: 100%; }
-    .nav__accordion-trigger {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-      font-family: var(--font-body);
-      font-size: 16px;
-      font-weight: 500;
-      color: rgba(255, 255, 255, 0.8);
-      padding: 12px 16px;
-      border-radius: var(--radius-sm);
-      background: none;
-      border: none;
-      cursor: pointer;
-      transition: var(--transition);
-      text-align: left;
-    }
+    .nav__accordion-trigger { display: flex; align-items: center; justify-content: space-between; width: 100%; font-family: var(--font-body); font-size: 16px; font-weight: 500; color: rgba(255,255,255,0.8); padding: 12px 16px; border-radius: var(--radius-sm); background: none; border: none; cursor: pointer; transition: var(--transition); text-align: left; }
     .nav__accordion-trigger:hover { color: var(--white); background: rgba(255,255,255,0.07); }
-    .nav__accordion-chevron {
-      display: inline-block;
-      width: 12px;
-      height: 12px;
-      flex-shrink: 0;
-      opacity: 0.45;
-      transition: transform 0.25s ease, opacity 0.25s ease;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23ffffff' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: contain;
-    }
-    .nav__accordion-trigger[aria-expanded="true"] .nav__accordion-chevron {
-      transform: rotate(180deg);
-      opacity: 0.85;
-    }
+    .nav__accordion-chevron { display: inline-block; width: 12px; height: 12px; flex-shrink: 0; opacity: 0.45; transition: transform 0.25s ease, opacity 0.25s ease; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23ffffff' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: center; background-size: contain; }
+    .nav__accordion-trigger[aria-expanded="true"] .nav__accordion-chevron { transform: rotate(180deg); opacity: 0.85; }
     .nav__accordion-panel { display: none; padding: 4px 0 4px 12px; }
     .nav__accordion-panel.is-open { display: block; }
     .nav__accordion-links { display: flex; flex-direction: column; gap: 2px; padding: 4px 0; }
-    .nav__accordion-link {
-      font-family: var(--font-body);
-      font-size: 14.5px;
-      font-weight: 400;
-      color: rgba(255, 255, 255, 0.6);
-      padding: 8px 12px;
-      border-radius: var(--radius-sm);
-      transition: var(--transition);
-      text-decoration: none;
-      display: block;
-    }
+    .nav__accordion-link { font-family: var(--font-body); font-size: 14.5px; font-weight: 400; color: rgba(255,255,255,0.6); padding: 8px 12px; border-radius: var(--radius-sm); transition: var(--transition); text-decoration: none; display: block; }
     .nav__accordion-link:hover { color: var(--white); background: rgba(255,255,255,0.06); }
 
-    .nav__drawer {
-      position: fixed;
-      inset: 0;
-      z-index: 300;
-      pointer-events: none;
-    }
-    .nav__drawer-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(6, 20, 46, 0.65);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    .nav__drawer-panel {
-      position: absolute;
-      top: 0; right: 0; bottom: 0;
-      width: min(320px, 85vw);
-      background: var(--navy);
-      padding: 28px 28px 40px;
-      display: flex;
-      flex-direction: column;
-      transform: translateX(100%);
-      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: var(--shadow-lg);
-    }
+    .nav__drawer { position: fixed; inset: 0; z-index: 300; pointer-events: none; }
+    .nav__drawer-overlay { position: absolute; inset: 0; background: rgba(6,20,46,0.65); opacity: 0; transition: opacity 0.3s ease; }
+    .nav__drawer-panel { position: absolute; top: 0; right: 0; bottom: 0; width: min(320px, 85vw); background: var(--navy); padding: 28px 28px 40px; display: flex; flex-direction: column; transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); box-shadow: var(--shadow-lg); }
     .nav__drawer.is-open { pointer-events: all; }
     .nav__drawer.is-open .nav__drawer-overlay { opacity: 1; }
     .nav__drawer.is-open .nav__drawer-panel { transform: translateX(0); }
-    .nav__drawer-close {
-      align-self: flex-end;
-      width: 36px; height: 36px;
-      display: flex; align-items: center; justify-content: center;
-      background: rgba(255,255,255,0.07);
-      border: none; border-radius: 50%;
-      color: var(--white);
-      font-size: 20px;
-      cursor: pointer;
-      margin-bottom: 32px;
-      transition: var(--transition);
-    }
+    .nav__drawer-close { align-self: flex-end; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.07); border: none; border-radius: 50%; color: var(--white); font-size: 20px; cursor: pointer; margin-bottom: 32px; transition: var(--transition); }
     .nav__drawer-close:hover { background: rgba(255,255,255,0.14); }
     .nav__drawer-links { display: flex; flex-direction: column; gap: 4px; flex: 1; }
-    .nav__drawer-link {
-      font-family: var(--font-body);
-      font-size: 16px;
-      font-weight: 500;
-      color: rgba(255,255,255,0.8);
-      padding: 12px 16px;
-      border-radius: var(--radius-sm);
-      transition: var(--transition);
-    }
+    .nav__drawer-link { font-family: var(--font-body); font-size: 16px; font-weight: 500; color: rgba(255,255,255,0.8); padding: 12px 16px; border-radius: var(--radius-sm); transition: var(--transition); }
     .nav__drawer-link:hover { color: var(--white); background: rgba(255,255,255,0.07); }
-    .nav__drawer-ctas {
-      display: flex; flex-direction: column; gap: 10px;
-      padding-top: 24px;
-      border-top: 1px solid rgba(255,255,255,0.1);
-    }
+    .nav__drawer-ctas { display: flex; flex-direction: column; gap: 10px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); }
     .nav__drawer-ctas .btn { width: 100%; justify-content: center; }
 
-    .post-header {
-      background: var(--navy);
-      padding: 64px 0 72px;
-      position: relative;
-      overflow: hidden;
-    }
-    .post-header::before {
-      content: '';
-      position: absolute;
-      top: -20%;
-      right: -8%;
-      width: 480px;
-      height: 480px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(196, 150, 58, 0.07) 0%, transparent 65%);
-      pointer-events: none;
-    }
-    .post-header__inner {
-      position: relative;
-      z-index: 2;
-      animation: fadeUp 0.6s ease both;
-    }
-    .post-header__back {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 13px;
-      font-weight: 500;
-      color: rgba(255,255,255,0.5);
-      margin-bottom: 32px;
-      transition: var(--transition);
-    }
+    .post-header { background: var(--navy); padding: 64px 0 72px; position: relative; overflow: hidden; }
+    .post-header::before { content: ''; position: absolute; top: -20%; right: -8%; width: 480px; height: 480px; border-radius: 50%; background: radial-gradient(circle, rgba(196,150,58,0.07) 0%, transparent 65%); pointer-events: none; }
+    .post-header__inner { position: relative; z-index: 2; animation: fadeUp 0.6s ease both; }
+    .post-header__back { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.5); margin-bottom: 32px; transition: var(--transition); }
     .post-header__back::before { content: '←'; font-size: 14px; transition: transform 0.2s ease; }
     .post-header__back:hover { color: rgba(255,255,255,0.8); }
     .post-header__back:hover::before { transform: translateX(-4px); }
-    .post-header__category {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 20px;
-    }
-    .post-header__title {
-      font-family: var(--font-display);
-      font-size: clamp(32px, 5vw, 54px);
-      font-weight: 600;
-      line-height: 1.12;
-      color: var(--white);
-      letter-spacing: -0.01em;
-      margin-bottom: 24px;
-      max-width: 820px;
-    }
-    .post-header__meta {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 6px 20px;
-    }
-    .post-header__meta-item {
-      font-size: 13px;
-      color: rgba(255,255,255,0.45);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .post-header__meta-dot {
-      display: inline-block;
-      width: 3px;
-      height: 3px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.25);
-    }
+    .post-header__category { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+    .post-header__title { font-family: var(--font-display); font-size: clamp(32px, 5vw, 54px); font-weight: 600; line-height: 1.12; color: var(--white); letter-spacing: -0.01em; margin-bottom: 24px; max-width: 820px; }
+    .post-header__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 20px; }
+    .post-header__meta-item { font-size: 13px; color: rgba(255,255,255,0.45); display: flex; align-items: center; gap: 6px; }
+    .post-header__meta-dot { display: inline-block; width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.25); }
 
-    .post-body {
-      background: var(--white);
-      padding: 72px 0 80px;
-    }
-    .post-body__content {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 0 var(--gutter);
-    }
-    .post-intro {
-      font-size: 18px;
-      line-height: 1.78;
-      color: var(--text-body);
-      margin-bottom: 48px;
-      padding-bottom: 40px;
-      border-bottom: 1px solid var(--border);
-    }
-    .post-section {
-      margin-bottom: 52px;
-    }
-    .post-section__heading {
-      font-family: var(--font-display);
-      font-size: clamp(22px, 3vw, 30px);
-      font-weight: 600;
-      color: var(--navy);
-      line-height: 1.2;
-      margin-bottom: 18px;
-      padding-top: 8px;
-    }
-    .post-section__heading::after {
-      content: '';
-      display: block;
-      width: 36px;
-      height: 2px;
-      background: var(--gold);
-      border-radius: 2px;
-      margin-top: 12px;
-    }
-    .post-section p {
-      font-size: 16.5px;
-      line-height: 1.78;
-      color: var(--text-body);
-      margin-bottom: 20px;
-    }
+    .post-body { background: var(--white); padding: 72px 0 80px; }
+    .post-body__content { max-width: 720px; margin: 0 auto; padding: 0 var(--gutter); }
+    .post-intro { font-size: 18px; line-height: 1.78; color: var(--text-body); margin-bottom: 48px; padding-bottom: 40px; border-bottom: 1px solid var(--border); }
+    .post-section { margin-bottom: 52px; }
+    .post-section__heading { font-family: var(--font-display); font-size: clamp(22px, 3vw, 30px); font-weight: 600; color: var(--navy); line-height: 1.2; margin-bottom: 18px; padding-top: 8px; }
+    .post-section__heading::after { content: ''; display: block; width: 36px; height: 2px; background: var(--gold); border-radius: 2px; margin-top: 12px; }
+    .post-section p { font-size: 16.5px; line-height: 1.78; color: var(--text-body); margin-bottom: 20px; }
     .post-section p:last-child { margin-bottom: 0; }
-    .post-callout {
-      background: var(--ivory);
-      border-left: 3px solid var(--gold);
-      border-radius: 0 var(--radius-md) var(--radius-md) 0;
-      padding: 24px 28px;
-      margin: 36px 0;
-    }
-    .post-callout p {
-      font-size: 16px;
-      line-height: 1.72;
-      color: var(--text-body);
-      margin: 0;
-    }
-    .post-callout strong {
-      color: var(--navy);
-      font-weight: 600;
-    }
-    .post-list {
-      list-style: none;
-      margin: 20px 0 28px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .post-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      font-size: 16px;
-      line-height: 1.7;
-      color: var(--text-body);
-    }
-    .post-list li::before {
-      content: '';
-      display: block;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--gold);
-      flex-shrink: 0;
-      margin-top: 10px;
-    }
-    .post-cta {
-      background: var(--ivory);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 48px 40px;
-      text-align: center;
-      margin-top: 64px;
-    }
-    .post-cta__eyebrow {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 14px;
-      display: block;
-    }
-    .post-cta__title {
-      font-family: var(--font-display);
-      font-size: clamp(22px, 3vw, 30px);
-      font-weight: 600;
-      color: var(--navy);
-      line-height: 1.2;
-      margin-bottom: 14px;
-    }
-    .post-cta__body {
-      font-size: 15.5px;
-      line-height: 1.7;
-      color: var(--text-muted);
-      margin-bottom: 28px;
-      max-width: 480px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .post-cta__buttons {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-    }
+    .post-callout { background: var(--ivory); border-left: 3px solid var(--gold); border-radius: 0 var(--radius-md) var(--radius-md) 0; padding: 24px 28px; margin: 36px 0; }
+    .post-callout p { font-size: 16px; line-height: 1.72; color: var(--text-body); margin: 0; }
+    .post-callout strong { color: var(--navy); font-weight: 600; }
+    .post-list { list-style: none; margin: 20px 0 28px; display: flex; flex-direction: column; gap: 12px; }
+    .post-list li { display: flex; align-items: flex-start; gap: 14px; font-size: 16px; line-height: 1.7; color: var(--text-body); }
+    .post-list li::before { content: ''; display: block; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 10px; }
 
-    .footer {
-      background: #0a3528;
-      padding: 64px 0 0;
-      border-top: 1px solid rgba(255,255,255,0.06);
-    }
-    .footer__grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 40px;
-    }
+    .post-cta { background: var(--ivory); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 48px 40px; text-align: center; margin-top: 64px; }
+    .post-cta__eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; display: block; }
+    .post-cta__title { font-family: var(--font-display); font-size: clamp(22px, 3vw, 30px); font-weight: 600; color: var(--navy); line-height: 1.2; margin-bottom: 14px; }
+    .post-cta__body { font-size: 15.5px; line-height: 1.7; color: var(--text-muted); margin-bottom: 28px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .post-cta__buttons { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px; }
+
+    .related-posts { background: var(--ivory); border-top: 1px solid var(--border); padding: 64px 0 72px; }
+    .related-posts__header { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 36px; }
+    .related-posts__eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 8px; }
+    .related-posts__title { font-family: var(--font-display); font-size: clamp(20px, 2.5vw, 26px); font-weight: 600; color: var(--navy); line-height: 1.2; }
+    .related-posts__all { font-size: 13px; font-weight: 500; color: var(--gold); white-space: nowrap; transition: var(--transition); display: inline-flex; align-items: center; gap: 5px; flex-shrink: 0; }
+    .related-posts__all::after { content: '→'; transition: transform 0.2s ease; }
+    .related-posts__all:hover { color: var(--gold-light); }
+    .related-posts__all:hover::after { transform: translateX(3px); }
+    .related-posts__grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+    @media (min-width: 640px) { .related-posts__grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 960px) { .related-posts__grid { grid-template-columns: repeat(3, 1fr); } }
+    .related-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 28px 28px 24px; display: flex; flex-direction: column; transition: var(--transition); text-decoration: none; }
+    .related-card:hover { border-color: var(--gold); box-shadow: var(--shadow-md); transform: translateY(-3px); }
+    .related-card__category { font-size: 10.5px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; display: block; }
+    .related-card__title { font-family: var(--font-display); font-size: 19px; font-weight: 600; color: var(--navy); line-height: 1.25; margin-bottom: 12px; flex: 1; }
+    .related-card__excerpt { font-size: 14px; line-height: 1.65; color: var(--text-muted); margin-bottom: 20px; }
+    .related-card__footer { display: flex; align-items: center; justify-content: space-between; padding-top: 16px; border-top: 1px solid var(--border); margin-top: auto; }
+    .related-card__date { font-size: 12px; color: var(--text-light); }
+    .related-card__link { font-size: 13px; font-weight: 600; color: var(--gold); display: inline-flex; align-items: center; gap: 5px; transition: var(--transition); }
+    .related-card__link::after { content: '→'; transition: transform 0.2s ease; }
+    .related-card:hover .related-card__link { color: var(--gold-light); }
+    .related-card:hover .related-card__link::after { transform: translateX(3px); }
+
+    .footer { background: #0a3528; padding: 64px 0 0; border-top: 1px solid rgba(255,255,255,0.06); }
+    .footer__grid { display: grid; grid-template-columns: 1fr; gap: 40px; }
     @media (min-width: 640px) { .footer__grid { grid-template-columns: repeat(2, 1fr); } }
     @media (min-width: 960px) { .footer__grid { grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 48px; } }
-    .footer__brand-name {
-      font-family: var(--font-display);
-      font-size: 20px; font-weight: 600;
-      color: var(--white);
-      margin-bottom: 4px;
-      letter-spacing: 0.01em;
-    }
-    .footer__brand-tagline {
-      font-size: 10px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--gold-pale);
-      opacity: 0.6;
-      margin-bottom: 16px;
-    }
-    .footer__brand-desc {
-      font-size: 14px; line-height: 1.65;
-      color: rgba(255,255,255,0.4);
-      max-width: 280px;
-    }
-    .footer__col-label {
-      font-size: 10.5px; font-weight: 600;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 20px; display: block;
-    }
+    .footer__brand-name { font-family: var(--font-display); font-size: 20px; font-weight: 600; color: var(--white); margin-bottom: 4px; letter-spacing: 0.01em; }
+    .footer__brand-tagline { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-pale); opacity: 0.6; margin-bottom: 16px; }
+    .footer__brand-desc { font-size: 14px; line-height: 1.65; color: rgba(255,255,255,0.4); max-width: 280px; }
+    .footer__col-label { font-size: 10.5px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; display: block; }
     .footer__links { display: flex; flex-direction: column; gap: 4px; }
     .footer__link { font-size: 14px; color: rgba(255,255,255,0.55); padding: 5px 0; transition: var(--transition); }
     .footer__link:hover { color: var(--white); }
     .footer__contact-line { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; }
     .footer__contact-icon { font-size: 14px; color: var(--gold); opacity: 0.7; flex-shrink: 0; margin-top: 2px; }
     .footer__contact-text { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.5; }
-    .footer__cta-link {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: 14px; font-weight: 500;
-      color: var(--gold); margin-top: 16px; transition: var(--transition);
-    }
+    .footer__cta-link { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 500; color: var(--gold); margin-top: 16px; transition: var(--transition); }
     .footer__cta-link:hover { color: var(--gold-light); }
     .footer__cta-link::after { content: '→'; transition: transform 0.2s ease; }
     .footer__cta-link:hover::after { transform: translateX(3px); }
-    .footer__bottom {
-      margin-top: 56px; padding: 24px 0;
-      border-top: 1px solid rgba(255,255,255,0.07);
-      display: flex; flex-wrap: wrap;
-      align-items: center; justify-content: space-between;
-      gap: 12px;
-    }
+    .footer__bottom { margin-top: 56px; padding: 24px 0; border-top: 1px solid rgba(255,255,255,0.07); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
     .footer__copyright { font-size: 12px; color: rgba(255,255,255,0.3); }
     .footer__legal-links { display: flex; gap: 20px; }
     .footer__legal-link { font-size: 12px; color: rgba(255,255,255,0.3); transition: var(--transition); }
@@ -724,6 +216,8 @@
       .post-cta__buttons { flex-direction: column; align-items: stretch; }
       .post-cta__buttons .btn { justify-content: center; }
       .footer__bottom { flex-direction: column; align-items: flex-start; }
+      .related-posts { padding: 48px 0 56px; }
+      .related-card { padding: 22px 20px 18px; }
     }
 
     @keyframes fadeUp {
@@ -739,16 +233,13 @@
   <header class="nav" role="banner">
     <div class="container">
       <div class="nav__inner">
-
         <a href="index.html" class="nav__brand" aria-label="Strategy West College Planning — Home">
           <img src="images/logo.png" alt="Strategy West College Planning" style="height: 120px; width: auto; display: block;">
         </a>
-
         <nav class="nav__links" aria-label="Primary navigation">
           <a href="how-it-works.html" class="nav__link">How It Works</a>
           <a href="our-process.html" class="nav__link">Our Process</a>
           <a href="pillars.html" class="nav__link">The 3 Pillars</a>
-
           <div class="nav__dropdown" role="navigation" aria-label="Resources submenu">
             <button class="nav__dropdown-trigger" aria-haspopup="true" aria-expanded="false" id="resources-dropdown-btn" type="button">
               Resources
@@ -764,19 +255,15 @@
               <a href="webinar-library.html" class="nav__dropdown-link" role="menuitem">Free Workshop</a>
             </div>
           </div>
-
           <a href="about.html" class="nav__link">About</a>
         </nav>
-
         <div class="nav__ctas">
           <a href="webinar-library.html" class="btn btn--outline btn--small nav__cta-webinar">Free Workshop</a>
           <a href="https://meetings-na2.hubspot.com/will-smethurst/cfs-website-meeting" class="btn btn--primary btn--small" target="_blank" rel="noopener">Schedule a Consultation</a>
         </div>
-
         <button class="nav__hamburger" id="nav-toggle" aria-label="Open navigation menu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
-
       </div>
     </div>
   </header>
@@ -784,13 +271,12 @@
   <div class="nav__drawer" id="nav-drawer" role="dialog" aria-label="Navigation menu" aria-modal="true">
     <div class="nav__drawer-overlay" id="nav-overlay"></div>
     <div class="nav__drawer-panel">
-      <button class="nav__drawer-close" id="nav-close" aria-label="Close navigation">&#x2715;</button>
+      <button class="nav__drawer-close" id="nav-close" aria-label="Close navigation">✕</button>
       <nav class="nav__drawer-links" aria-label="Mobile navigation">
         <a href="index.html" class="nav__drawer-link">Home</a>
         <a href="how-it-works.html" class="nav__drawer-link">How It Works</a>
         <a href="our-process.html" class="nav__drawer-link">Our Process</a>
         <a href="pillars.html" class="nav__drawer-link">The 3 Pillars</a>
-
         <div class="nav__accordion">
           <button class="nav__accordion-trigger" aria-expanded="false" aria-controls="resources-accordion-panel" id="resources-accordion-btn" type="button">
             Resources
@@ -806,7 +292,6 @@
             </div>
           </div>
         </div>
-
         <a href="about.html" class="nav__drawer-link">About</a>
       </nav>
       <div class="nav__drawer-ctas">
@@ -822,19 +307,14 @@
     <section class="post-header" aria-label="Article header">
       <div class="container">
         <div class="post-header__inner">
-
           <a href="blogs.html" class="post-header__back">Back to Blog</a>
-
           <span class="post-header__category">Financial Strategy</span>
-
           <h1 class="post-header__title">Understanding the True Cost of College</h1>
-
           <div class="post-header__meta">
             <span class="post-header__meta-item">April 17, 2026</span>
             <span class="post-header__meta-dot" aria-hidden="true"></span>
             <span class="post-header__meta-item">8 min read</span>
           </div>
-
         </div>
       </div>
     </section>
@@ -844,7 +324,7 @@
       <div class="post-body__content">
 
         <p class="post-intro">
-          Most families begin the college search by looking at tuition. That is a reasonable starting point, but it is also where many costly misunderstandings begin. The price listed on a college's website is rarely what a family actually pays, and what a family actually pays is rarely the full picture of what college will cost. Understanding the difference between these numbers is one of the most important things a parent can do before a student ever submits an application.
+          When most families start thinking about college costs, they go straight to the number listed on a school's website. That is a reasonable starting point, but it is also where many costly misunderstandings begin. The price listed on a college's website is rarely what a family actually pays, and what a family actually pays is rarely the full picture of what college will cost.
         </p>
 
 
@@ -883,28 +363,25 @@
 
           <ul class="post-list">
             <li><strong>Time to graduation.</strong> The national average for completing a bachelor's degree is closer to five and a half years, not four. Every additional semester adds tuition, housing, and living expenses on top of a year of delayed income. Choosing a school with strong academic support and clear degree pathways can save a family a full year of college costs.</li>
-            <li><strong>Travel and transportation.</strong> A school that sounds affordable may be located far from home. Multiple cross-country flights per year, combined with the cost of shipping belongings or storing items over summers, can add $3,000 to $6,000 or more annually.</li>
-            <li><strong>Loan interest over time.</strong> Many families look at loan amounts without accounting for the interest that accrues over a 10 or 20-year repayment period. A $40,000 loan at a standard interest rate can cost considerably more by the time it is fully repaid. The cost of borrowing is part of the true cost of college.</li>
-            <li><strong>Major and career alignment.</strong> A degree that does not lead to meaningful employment adds cost in a different way. Lost earning potential, graduate school to compensate for an undergraduate degree that did not translate, or returning to school to retrain are all real financial consequences of choosing the wrong fit academically.</li>
-            <li><strong>Institutional aid renewability.</strong> Some merit scholarships are renewable automatically each year. Others have GPA requirements that, if not maintained, cause the award to decrease or disappear entirely. Before committing, families need to understand the conditions attached to any aid offer.</li>
+            <li><strong>Travel and transportation.</strong> A school that sounds affordable may be located far from home. Round-trip flights two or three times per year add up quickly, especially if a family has more than one student in college simultaneously.</li>
+            <li><strong>Room and board escalations.</strong> Housing and meal plan costs often increase year over year. The figure listed in the COA for freshman year may not reflect what your student will pay by junior or senior year.</li>
+            <li><strong>Program-specific fees.</strong> Some majors, particularly in engineering, nursing, business, or the arts, carry additional fees not always reflected in the general COA estimate. Check the fine print for the specific program your student plans to enter.</li>
+            <li><strong>Lost merit aid.</strong> Some merit scholarships require students to maintain a minimum GPA. If your student's academic performance shifts, they may lose aid they were counting on from year two onward.</li>
           </ul>
-
-          <p>None of these factors show up in the published Cost of Attendance. But all of them affect what a family will ultimately spend.</p>
         </div>
 
 
         <div class="post-section">
           <h2 class="post-section__heading">Why Colleges Price the Way They Do</h2>
-          <p>Understanding how colleges set their prices requires a shift in perspective. A college is not just an academic institution. It is also a business with a budget to manage, an enrollment goal to hit, and a brand to build. Tuition and fees are not set arbitrarily. They reflect what the institution needs to operate and, in many cases, what the market will bear.</p>
-          <p>Colleges use institutional aid strategically. A school with a $70,000 sticker price may offer large merit scholarships to attract high-achieving students who bring prestige to their class profile. A school with a $40,000 sticker price may offer very little institutional aid because they already attract enough students without needing to discount heavily. The discount rate, meaning how much colleges reduce their stated price through institutional aid, varies enormously across schools.</p>
-          <p>This is one of the core insights behind effective college planning. Families who understand that colleges make financial decisions like businesses are far better positioned to choose schools strategically and to pursue aid with confidence. Families who treat college purely as an academic decision often end up paying more than they need to.</p>
+          <p>Understanding the true cost of college becomes clearer when you understand that colleges are not just educational institutions. They are also businesses, and they price strategically.</p>
+          <p>Colleges use what is called a discount rate, which is the percentage by which they reduce their published price through institutional aid. A school with a $70,000 sticker price and a 50 percent discount rate is effectively charging the average student $35,000. But the discount is not distributed evenly. Colleges use aid to attract the students they want most, whether that means students with high test scores, students who bring geographic or demographic diversity, or students who align with the school's enrollment goals.</p>
+          <p>A school with a $40,000 sticker price may offer very little institutional aid because they already attract enough students without needing to discount heavily. The discount rate varies enormously across schools, and this is one of the core insights behind effective college planning. Families who understand that colleges make financial decisions like businesses are far better positioned to choose schools strategically and to pursue aid with confidence.</p>
         </div>
 
 
         <div class="post-section">
           <h2 class="post-section__heading">How to Calculate and Compare True Costs Across Schools</h2>
-          <p>The most effective way to compare colleges financially is to build a side-by-side net price comparison before your student commits to a school. Here is a practical framework for doing that.</p>
-          <p>Start with the Cost of Attendance for each school on the list. Then identify the total gift aid offered, separating grants and scholarships from loans and work-study. Subtract the gift aid from the Cost of Attendance to arrive at the net price. Then factor in any additional costs specific to that school, such as travel distance, housing options, or program fees that are not captured in the standard COA estimate.</p>
+          <p>The most effective way to compare colleges financially is to build a side-by-side net price comparison before your student commits to a school. Start with the Cost of Attendance for each school on the list. Then identify the total gift aid offered, separating grants and scholarships from loans and work-study. Subtract the gift aid from the Cost of Attendance to arrive at the net price. Then factor in any additional costs specific to that school, such as travel distance, housing options, or program fees not captured in the standard COA estimate.</p>
           <p>Once you have net prices across multiple schools, you can make genuinely informed comparisons. You may find that the school your student was most excited about is also the most financially strategic choice. Or you may find that a school lower on the list offers a dramatically better net price and warrants a closer look.</p>
           <p>It is also worth knowing that financial aid offers are not always final. Schools have appeal processes, and families who provide additional financial context or who present competing offers from comparable institutions sometimes receive revised packages. One example of this in practice: a student admitted to Yale University initially received approximately $9,986 in gift aid. After a strategic financial aid appeal, the revised package increased gift aid to approximately $15,247. That difference translated to roughly $21,000 in additional savings over four years. The first offer was not the final word.</p>
         </div>
@@ -914,19 +391,19 @@
           <h2 class="post-section__heading">Frequently Asked Questions</h2>
 
           <p><strong>Is the sticker price what I will actually pay?</strong><br>
-          Almost certainly not. Most students do not pay the full published Cost of Attendance. The amount you pay depends on your financial situation, the school's aid policies, and how well your student's profile aligns with what the school is trying to build in their incoming class. Using the Net Price Calculator on each school's website will give you a more realistic estimate before applications are submitted.</p>
+          Almost certainly not. Most students do not pay the full published Cost of Attendance. The amount you pay depends on your financial situation, the school's aid policies, and how well your student's profile aligns with what the school is trying to build in their incoming class.</p>
 
-          <p><strong>Does my income affect how much aid my student can receive?</strong><br>
-          Income is one factor, but it is not the only one. Need-based aid from the federal government has income thresholds, but institutional aid from colleges operates differently. Many schools have large endowments and offer merit-based grants to families across a wide range of income levels. Assuming your income disqualifies you from aid is one of the most common and costly mistakes families make.</p>
+          <p><strong>Does income affect whether we qualify for aid?</strong><br>
+          Income affects need-based aid from the federal government, but it does not necessarily prevent you from receiving institutional aid directly from colleges. Many schools award merit-based scholarships regardless of family income. Assuming you earn too much to qualify for any aid is one of the most common and costly mistakes families make.</p>
 
-          <p><strong>When should I start thinking about college costs?</strong><br>
-          As early as possible. Many financial positioning strategies, including how income and assets are structured before financial aid applications are submitted, need to be considered during the student's freshman or sophomore year of high school to be most effective. Starting senior year leaves very little room to optimize outcomes.</p>
+          <p><strong>How do I find a school's actual net price?</strong><br>
+          Most college websites have a net price calculator, which gives you a rough estimate based on your family's financial information. These calculators vary in accuracy, but they are a useful starting point. The more precise number comes after you receive a formal award letter and separate the gift aid from loans and work-study.</p>
 
-          <p><strong>Can I appeal a financial aid offer if I think we deserve more?</strong><br>
-          Yes, and many families do successfully. The appeal process varies by school, but most institutions have a formal process for reconsidering an aid package based on new or updated financial information, special circumstances, or a competing offer from a comparable school. Success is not guaranteed, but appeals are more common and more effective than most families realize.</p>
+          <p><strong>What if the school we want is too expensive even after aid?</strong><br>
+          That is the right question to ask before committing. If the net price still exceeds what your family can manage, consider whether an appeal is appropriate, whether comparable schools offer better packages, or whether the school fits within a broader financial plan that does not require excessive borrowing.</p>
 
-          <p><strong>What is the difference between need-based aid and merit aid?</strong><br>
-          Need-based aid is calculated using your family's financial information as submitted through the FAFSA and, at some schools, the CSS Profile. It is designed to bridge the gap between what the school believes you can pay and the cost of attendance. Merit aid is awarded based on a student's academic achievements, test scores, talents, or other qualities the school values, regardless of financial need. Many students receive a combination of both.</p>
+          <p><strong>When should we start thinking about costs?</strong><br>
+          Earlier than most families do. The decisions made during freshman and sophomore year of high school shape the academic profile that determines aid eligibility and admissions outcomes. Families who begin building their strategy early have significantly more options when award letters arrive.</p>
         </div>
 
 
@@ -948,19 +425,60 @@
   </main>
 
 
-  <footer class="footer" role="contentinfo">
+  <!-- ============================================================
+       RELATED POSTS — Financial Strategy category
+       Currently this is the first Financial Strategy post published.
+       Replace the placeholder cards below as new Financial Strategy posts go live.
+       Max 3 cards. Never link a post to itself.
+  ============================================================ -->
+  <section class="related-posts" aria-label="Related articles">
     <div class="container">
 
-      <div class="footer__grid">
+      <div class="related-posts__header">
+        <div>
+          <span class="related-posts__eyebrow">Keep Reading</span>
+          <h2 class="related-posts__title">More in Financial Strategy</h2>
+        </div>
+        <a href="blogs.html" class="related-posts__all">All Articles</a>
+      </div>
 
+      <div class="related-posts__grid">
+
+        <!-- PLACEHOLDER — replace with first new Financial Strategy post when published -->
+        <a href="blogs.html" class="related-card">
+          <span class="related-card__category">Financial Strategy</span>
+          <h3 class="related-card__title">Merit Aid vs. Need-Based Aid: What Every Family Should Know</h3>
+          <p class="related-card__excerpt">Coming soon. Understanding the difference between merit and need-based aid is essential for building a smart college list and maximizing your offers.</p>
+          <div class="related-card__footer">
+            <span class="related-card__date">Coming Soon</span>
+            <span class="related-card__link">Read More</span>
+          </div>
+        </a>
+
+        <!-- PLACEHOLDER — replace with second new Financial Strategy post when published -->
+        <a href="blogs.html" class="related-card">
+          <span class="related-card__category">Financial Strategy</span>
+          <h3 class="related-card__title">Why Middle-Income Families Often Get the Worst Deal in College Funding</h3>
+          <p class="related-card__excerpt">Coming soon. Middle-income families frequently earn too much for need-based aid and not enough to pay full price. Here is how to approach that gap strategically.</p>
+          <div class="related-card__footer">
+            <span class="related-card__date">Coming Soon</span>
+            <span class="related-card__link">Read More</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
         <div class="footer__brand">
           <div class="footer__brand-name">Strategy West</div>
           <div class="footer__brand-tagline">College Planning</div>
-          <p class="footer__brand-desc">
-            Expert, advisor-led guidance for families navigating the college planning process — from freshman year through enrollment.
-          </p>
+          <p class="footer__brand-desc">Expert, advisor-led guidance for families navigating the college planning process — from freshman year through enrollment.</p>
         </div>
-
         <div class="footer__col">
           <span class="footer__col-label">Navigate</span>
           <nav class="footer__links" aria-label="Footer navigation">
@@ -971,7 +489,6 @@
             <a href="about.html" class="footer__link">About</a>
           </nav>
         </div>
-
         <div class="footer__col">
           <span class="footer__col-label">Resources</span>
           <nav class="footer__links" aria-label="Resources navigation">
@@ -982,65 +499,43 @@
             <a href="packages.html" class="footer__link">Packages</a>
           </nav>
         </div>
-
         <div class="footer__col">
           <span class="footer__col-label">Get in Touch</span>
           <div class="footer__contact-line">
-            <span class="footer__contact-icon" aria-hidden="true">&#x2709;</span>
+            <span class="footer__contact-icon" aria-hidden="true">✉</span>
             <span class="footer__contact-text">info@swfcollegeplanning.com</span>
           </div>
           <div class="footer__contact-line">
-            <span class="footer__contact-icon" aria-hidden="true">&#x25CE;</span>
+            <span class="footer__contact-icon" aria-hidden="true">◎</span>
             <span class="footer__contact-text">Serving families nationwide<br>via virtual consultation &amp; in-person in Utah</span>
           </div>
           <a href="https://meetings-na2.hubspot.com/will-smethurst/cfs-website-meeting" class="footer__cta-link" target="_blank" rel="noopener">Schedule a Consultation</a>
         </div>
-
       </div>
-
       <div class="footer__bottom">
-        <span class="footer__copyright">
-          &copy; <span id="footer-year"></span> Strategy West College Planning. All rights reserved.
-        </span>
+        <span class="footer__copyright">&copy; <span id="footer-year"></span> Strategy West College Planning. All rights reserved.</span>
         <div class="footer__legal-links">
           <a href="privacy.html" class="footer__legal-link">Privacy Policy</a>
           <a href="terms.html" class="footer__legal-link">Terms of Use</a>
         </div>
       </div>
-
     </div>
   </footer>
 
 
   <script>
     document.getElementById('footer-year').textContent = new Date().getFullYear();
-
     const toggle   = document.getElementById('nav-toggle');
     const drawer   = document.getElementById('nav-drawer');
     const overlay  = document.getElementById('nav-overlay');
     const closeBtn = document.getElementById('nav-close');
-
-    function openDrawer() {
-      drawer.classList.add('is-open');
-      toggle.setAttribute('aria-expanded', 'true');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeDrawer() {
-      drawer.classList.remove('is-open');
-      toggle.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    }
-
+    function openDrawer() { drawer.classList.add('is-open'); toggle.setAttribute('aria-expanded', 'true'); document.body.style.overflow = 'hidden'; }
+    function closeDrawer() { drawer.classList.remove('is-open'); toggle.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; }
     toggle.addEventListener('click', openDrawer);
     closeBtn.addEventListener('click', closeDrawer);
     overlay.addEventListener('click', closeDrawer);
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && drawer.classList.contains('is-open')) closeDrawer();
-    });
-    drawer.querySelectorAll('.nav__drawer-link, .nav__drawer-ctas .btn').forEach(link => {
-      link.addEventListener('click', closeDrawer);
-    });
-
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && drawer.classList.contains('is-open')) closeDrawer(); });
+    drawer.querySelectorAll('.nav__drawer-link, .nav__drawer-ctas .btn').forEach(link => { link.addEventListener('click', closeDrawer); });
     const accordionBtn   = document.getElementById('resources-accordion-btn');
     const accordionPanel = document.getElementById('resources-accordion-panel');
     if (accordionBtn && accordionPanel) {
