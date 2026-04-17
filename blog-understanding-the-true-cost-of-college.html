@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Understanding the True Cost of College — Strategy West College Planning</title>
+  <meta name="description" content="Sticker price is not what you will pay. Learn how to calculate the true cost of college and what most families miss when comparing schools." />
+
+  <link rel="canonical" href="https://www.swfcollegeplanning.com/blog-understanding-the-true-cost-of-college" />
+
+  <meta property="og:type"        content="article" />
+  <meta property="og:title"       content="Understanding the True Cost of College — Strategy West College Planning" />
+  <meta property="og:description" content="Sticker price is not what you will pay. Learn how to calculate the true cost of college and what most families miss when comparing schools." />
+  <meta property="og:url"         content="https://www.swfcollegeplanning.com/blog-understanding-the-true-cost-of-college" />
+  <meta property="og:site_name"   content="Strategy West College Planning" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet" />
+
+  <style>
+
+    :root {
+      --navy:           #064E3B;
+      --navy-mid:       #152540;
+      --navy-light:     #1E3357;
+      --gold:           #C4963A;
+      --gold-light:     #D4A84B;
+      --gold-pale:      #F0E2C4;
+      --ivory:          #F7F4EE;
+      --ivory-warm:     #EDE9DF;
+      --white:          #FFFFFF;
+      --text-dark:      #1A1A2E;
+      --text-body:      #3A3A4A;
+      --text-muted:     #6B6B7E;
+      --text-light:     #9A9AAA;
+      --border:         #E2DDD4;
+      --shadow-sm:      0 2px 12px rgba(13, 27, 46, 0.08);
+      --shadow-md:      0 8px 32px rgba(13, 27, 46, 0.12);
+      --shadow-lg:      0 20px 60px rgba(13, 27, 46, 0.18);
+      --shadow-gold:    0 4px 18px rgba(196, 150, 58, 0.38);
+      --font-display:   'Cormorant Garamond', Georgia, serif;
+      --font-body:      'DM Sans', system-ui, -apple-system, sans-serif;
+      --radius-sm:      6px;
+      --radius-md:      12px;
+      --radius-lg:      20px;
+      --container-max:    1080px;
+      --container-narrow: 740px;
+      --gutter:           24px;
+      --transition:      all 0.25s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text-body);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    .container {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    .container--narrow {
+      max-width: var(--container-narrow);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      padding: 16px 34px;
+      border-radius: var(--radius-sm);
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+      white-space: nowrap;
+      line-height: 1;
+    }
+    .btn--primary {
+      background: var(--gold);
+      color: var(--white);
+      box-shadow: var(--shadow-gold);
+    }
+    .btn--primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(196, 150, 58, 0.48);
+    }
+    .btn--outline {
+      background: transparent;
+      color: var(--gold);
+      border: 1.5px solid var(--gold);
+    }
+    .btn--outline:hover {
+      background: var(--gold);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+    .btn--white-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1.5px solid rgba(255,255,255,0.45);
+    }
+    .btn--white-outline:hover {
+      border-color: var(--white);
+      background: rgba(255,255,255,0.08);
+      transform: translateY(-2px);
+    }
+    .btn--ghost {
+      background: transparent;
+      color: var(--navy);
+      border: 1.5px solid var(--border);
+    }
+    .btn--ghost:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateY(-2px);
+    }
+    .btn--large { font-size: 16px; padding: 18px 42px; }
+    .btn--small { font-size: 13px; padding: 10px 22px; }
+    .btn--arrow::after {
+      content: '→';
+      font-size: 17px;
+      line-height: 1;
+      transition: transform 0.2s ease;
+    }
+    .btn--arrow:hover::after { transform: translateX(4px); }
+
+    .nav {
+      background: var(--navy);
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      box-shadow: 0 2px 20px rgba(6, 78, 59, 0.3);
+    }
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+      gap: 24px;
+    }
+    .nav__brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      flex-shrink: 0;
+      text-decoration: none;
+    }
+    .nav__brand-name {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.01em;
+      line-height: 1.2;
+    }
+    .nav__brand-tagline {
+      font-family: var(--font-body);
+      font-size: 9.5px;
+      font-weight: 400;
+      color: var(--gold-pale);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      opacity: 0.7;
+    }
+    .nav__links {
+      display: none;
+      align-items: center;
+      gap: 2px;
+    }
+    @media (min-width: 960px) { .nav__links { display: flex; } }
+    .nav__link {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.72);
+      padding: 6px 14px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+    .nav__link:hover { color: var(--white); background: rgba(255,255,255,0.07); }
+    .nav__ctas {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    @media (max-width: 959px) { .nav__ctas { display: none; } }
+    .nav__cta-webinar { display: none; }
+    @media (min-width: 640px) { .nav__cta-webinar { display: inline-flex; } }
+
+    .nav__hamburger {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 36px;
+      height: 36px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+    }
+    .nav__hamburger:hover { background: rgba(255,255,255,0.08); }
+    .nav__hamburger span {
+      display: block;
+      height: 1.5px;
+      width: 100%;
+      background: var(--gold);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+    @media (min-width: 960px) { .nav__hamburger { display: none; } }
+
+    .nav__dropdown {
+      position: relative;
+      padding-bottom: 12px;
+      margin-bottom: -12px;
+    }
+    .nav__dropdown-trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.72);
+      padding: 6px 14px;
+      border-radius: var(--radius-sm);
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      white-space: nowrap;
+      line-height: 1.7;
+    }
+    .nav__dropdown-trigger:hover,
+    .nav__dropdown:hover .nav__dropdown-trigger,
+    .nav__dropdown:focus-within .nav__dropdown-trigger {
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.07);
+    }
+    .nav__dropdown-chevron {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      flex-shrink: 0;
+      opacity: 0.55;
+      transition: transform 0.22s ease, opacity 0.22s ease;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23ffffff' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+    }
+    .nav__dropdown:hover .nav__dropdown-chevron,
+    .nav__dropdown:focus-within .nav__dropdown-chevron {
+      transform: rotate(180deg);
+      opacity: 0.9;
+    }
+    .nav__dropdown-panel {
+      position: absolute;
+      top: calc(100% + 2px);
+      left: 50%;
+      transform: translateX(-50%) translateY(-4px);
+      min-width: 180px;
+      background: var(--navy);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: var(--radius-md);
+      box-shadow: 0 12px 40px rgba(6, 20, 46, 0.38), 0 2px 8px rgba(6, 20, 46, 0.18);
+      padding: 8px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      z-index: 400;
+    }
+    .nav__dropdown-panel::before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 10px;
+      height: 10px;
+      background: var(--navy);
+      border-left: 1px solid rgba(255, 255, 255, 0.09);
+      border-top: 1px solid rgba(255, 255, 255, 0.09);
+      clip-path: polygon(0 100%, 50% 0, 100% 100%);
+    }
+    .nav__dropdown:hover .nav__dropdown-panel,
+    .nav__dropdown:focus-within .nav__dropdown-panel {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateX(-50%) translateY(0);
+    }
+    .nav__dropdown-link {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.68);
+      padding: 9px 16px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+    .nav__dropdown-link:hover {
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.07);
+      padding-left: 20px;
+      border-left: 2px solid var(--gold);
+      margin-left: -2px;
+    }
+    .nav__dropdown-divider {
+      height: 1px;
+      background: rgba(255, 255, 255, 0.06);
+      margin: 4px 8px;
+    }
+
+    .nav__accordion { width: 100%; }
+    .nav__accordion-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.8);
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      text-align: left;
+    }
+    .nav__accordion-trigger:hover { color: var(--white); background: rgba(255,255,255,0.07); }
+    .nav__accordion-chevron {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      flex-shrink: 0;
+      opacity: 0.45;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23ffffff' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+    }
+    .nav__accordion-trigger[aria-expanded="true"] .nav__accordion-chevron {
+      transform: rotate(180deg);
+      opacity: 0.85;
+    }
+    .nav__accordion-panel { display: none; padding: 4px 0 4px 12px; }
+    .nav__accordion-panel.is-open { display: block; }
+    .nav__accordion-links { display: flex; flex-direction: column; gap: 2px; padding: 4px 0; }
+    .nav__accordion-link {
+      font-family: var(--font-body);
+      font-size: 14.5px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.6);
+      padding: 8px 12px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+      text-decoration: none;
+      display: block;
+    }
+    .nav__accordion-link:hover { color: var(--white); background: rgba(255,255,255,0.06); }
+
+    .nav__drawer {
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      pointer-events: none;
+    }
+    .nav__drawer-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(6, 20, 46, 0.65);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .nav__drawer-panel {
+      position: absolute;
+      top: 0; right: 0; bottom: 0;
+      width: min(320px, 85vw);
+      background: var(--navy);
+      padding: 28px 28px 40px;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: var(--shadow-lg);
+    }
+    .nav__drawer.is-open { pointer-events: all; }
+    .nav__drawer.is-open .nav__drawer-overlay { opacity: 1; }
+    .nav__drawer.is-open .nav__drawer-panel { transform: translateX(0); }
+    .nav__drawer-close {
+      align-self: flex-end;
+      width: 36px; height: 36px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(255,255,255,0.07);
+      border: none; border-radius: 50%;
+      color: var(--white);
+      font-size: 20px;
+      cursor: pointer;
+      margin-bottom: 32px;
+      transition: var(--transition);
+    }
+    .nav__drawer-close:hover { background: rgba(255,255,255,0.14); }
+    .nav__drawer-links { display: flex; flex-direction: column; gap: 4px; flex: 1; }
+    .nav__drawer-link {
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.8);
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+    }
+    .nav__drawer-link:hover { color: var(--white); background: rgba(255,255,255,0.07); }
+    .nav__drawer-ctas {
+      display: flex; flex-direction: column; gap: 10px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .nav__drawer-ctas .btn { width: 100%; justify-content: center; }
+
+    .post-header {
+      background: var(--navy);
+      padding: 64px 0 72px;
+      position: relative;
+      overflow: hidden;
+    }
+    .post-header::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -8%;
+      width: 480px;
+      height: 480px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(196, 150, 58, 0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .post-header__inner {
+      position: relative;
+      z-index: 2;
+      animation: fadeUp 0.6s ease both;
+    }
+    .post-header__back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 32px;
+      transition: var(--transition);
+    }
+    .post-header__back::before { content: '←'; font-size: 14px; transition: transform 0.2s ease; }
+    .post-header__back:hover { color: rgba(255,255,255,0.8); }
+    .post-header__back:hover::before { transform: translateX(-4px); }
+    .post-header__category {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .post-header__title {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 5vw, 54px);
+      font-weight: 600;
+      line-height: 1.12;
+      color: var(--white);
+      letter-spacing: -0.01em;
+      margin-bottom: 24px;
+      max-width: 820px;
+    }
+    .post-header__meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px 20px;
+    }
+    .post-header__meta-item {
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .post-header__meta-dot {
+      display: inline-block;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.25);
+    }
+
+    .post-body {
+      background: var(--white);
+      padding: 72px 0 80px;
+    }
+    .post-body__content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+    .post-intro {
+      font-size: 18px;
+      line-height: 1.78;
+      color: var(--text-body);
+      margin-bottom: 48px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+    }
+    .post-section {
+      margin-bottom: 52px;
+    }
+    .post-section__heading {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 3vw, 30px);
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 18px;
+      padding-top: 8px;
+    }
+    .post-section__heading::after {
+      content: '';
+      display: block;
+      width: 36px;
+      height: 2px;
+      background: var(--gold);
+      border-radius: 2px;
+      margin-top: 12px;
+    }
+    .post-section p {
+      font-size: 16.5px;
+      line-height: 1.78;
+      color: var(--text-body);
+      margin-bottom: 20px;
+    }
+    .post-section p:last-child { margin-bottom: 0; }
+    .post-callout {
+      background: var(--ivory);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: 24px 28px;
+      margin: 36px 0;
+    }
+    .post-callout p {
+      font-size: 16px;
+      line-height: 1.72;
+      color: var(--text-body);
+      margin: 0;
+    }
+    .post-callout strong {
+      color: var(--navy);
+      font-weight: 600;
+    }
+    .post-list {
+      list-style: none;
+      margin: 20px 0 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .post-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text-body);
+    }
+    .post-list li::before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+      margin-top: 10px;
+    }
+    .post-cta {
+      background: var(--ivory);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 48px 40px;
+      text-align: center;
+      margin-top: 64px;
+    }
+    .post-cta__eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+      display: block;
+    }
+    .post-cta__title {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 3vw, 30px);
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+    .post-cta__body {
+      font-size: 15.5px;
+      line-height: 1.7;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .post-cta__buttons {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .footer {
+      background: #0a3528;
+      padding: 64px 0 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    @media (min-width: 640px) { .footer__grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 960px) { .footer__grid { grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 48px; } }
+    .footer__brand-name {
+      font-family: var(--font-display);
+      font-size: 20px; font-weight: 600;
+      color: var(--white);
+      margin-bottom: 4px;
+      letter-spacing: 0.01em;
+    }
+    .footer__brand-tagline {
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold-pale);
+      opacity: 0.6;
+      margin-bottom: 16px;
+    }
+    .footer__brand-desc {
+      font-size: 14px; line-height: 1.65;
+      color: rgba(255,255,255,0.4);
+      max-width: 280px;
+    }
+    .footer__col-label {
+      font-size: 10.5px; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px; display: block;
+    }
+    .footer__links { display: flex; flex-direction: column; gap: 4px; }
+    .footer__link { font-size: 14px; color: rgba(255,255,255,0.55); padding: 5px 0; transition: var(--transition); }
+    .footer__link:hover { color: var(--white); }
+    .footer__contact-line { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; }
+    .footer__contact-icon { font-size: 14px; color: var(--gold); opacity: 0.7; flex-shrink: 0; margin-top: 2px; }
+    .footer__contact-text { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.5; }
+    .footer__cta-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 14px; font-weight: 500;
+      color: var(--gold); margin-top: 16px; transition: var(--transition);
+    }
+    .footer__cta-link:hover { color: var(--gold-light); }
+    .footer__cta-link::after { content: '→'; transition: transform 0.2s ease; }
+    .footer__cta-link:hover::after { transform: translateX(3px); }
+    .footer__bottom {
+      margin-top: 56px; padding: 24px 0;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      display: flex; flex-wrap: wrap;
+      align-items: center; justify-content: space-between;
+      gap: 12px;
+    }
+    .footer__copyright { font-size: 12px; color: rgba(255,255,255,0.3); }
+    .footer__legal-links { display: flex; gap: 20px; }
+    .footer__legal-link { font-size: 12px; color: rgba(255,255,255,0.3); transition: var(--transition); }
+    .footer__legal-link:hover { color: rgba(255,255,255,0.6); }
+
+    @media (max-width: 599px) {
+      .post-header { padding: 48px 0 56px; }
+      .post-body { padding: 48px 0 56px; }
+      .post-cta { padding: 36px 24px; }
+      .post-cta__buttons { flex-direction: column; align-items: stretch; }
+      .post-cta__buttons .btn { justify-content: center; }
+      .footer__bottom { flex-direction: column; align-items: flex-start; }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+  </style>
+</head>
+
+<body id="top">
+
+  <header class="nav" role="banner">
+    <div class="container">
+      <div class="nav__inner">
+
+        <a href="index.html" class="nav__brand" aria-label="Strategy West College Planning — Home">
+          <img src="images/logo.png" alt="Strategy West College Planning" style="height: 120px; width: auto; display: block;">
+        </a>
+
+        <nav class="nav__links" aria-label="Primary navigation">
+          <a href="how-it-works.html" class="nav__link">How It Works</a>
+          <a href="our-process.html" class="nav__link">Our Process</a>
+          <a href="pillars.html" class="nav__link">The 3 Pillars</a>
+
+          <div class="nav__dropdown" role="navigation" aria-label="Resources submenu">
+            <button class="nav__dropdown-trigger" aria-haspopup="true" aria-expanded="false" id="resources-dropdown-btn" type="button">
+              Resources
+              <span class="nav__dropdown-chevron" aria-hidden="true"></span>
+            </button>
+            <div class="nav__dropdown-panel" role="menu" aria-labelledby="resources-dropdown-btn">
+              <a href="blogs.html" class="nav__dropdown-link nav__dropdown-link--active" role="menuitem">Blogs</a>
+              <a href="articles.html" class="nav__dropdown-link" role="menuitem">Articles</a>
+              <div class="nav__dropdown-divider" role="separator" aria-hidden="true"></div>
+              <a href="timeline.html" class="nav__dropdown-link" role="menuitem">Timeline</a>
+              <a href="packages.html" class="nav__dropdown-link" role="menuitem">Packages</a>
+              <div class="nav__dropdown-divider" role="separator" aria-hidden="true"></div>
+              <a href="webinar-library.html" class="nav__dropdown-link" role="menuitem">Free Workshop</a>
+            </div>
+          </div>
+
+          <a href="about.html" class="nav__link">About</a>
+        </nav>
+
+        <div class="nav__ctas">
+          <a href="webinar-library.html" class="btn btn--outline btn--small nav__cta-webinar">Free Workshop</a>
+          <a href="https://meetings-na2.hubspot.com/will-smethurst/cfs-website-meeting" class="btn btn--primary btn--small" target="_blank" rel="noopener">Schedule a Consultation</a>
+        </div>
+
+        <button class="nav__hamburger" id="nav-toggle" aria-label="Open navigation menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+  <div class="nav__drawer" id="nav-drawer" role="dialog" aria-label="Navigation menu" aria-modal="true">
+    <div class="nav__drawer-overlay" id="nav-overlay"></div>
+    <div class="nav__drawer-panel">
+      <button class="nav__drawer-close" id="nav-close" aria-label="Close navigation">&#x2715;</button>
+      <nav class="nav__drawer-links" aria-label="Mobile navigation">
+        <a href="index.html" class="nav__drawer-link">Home</a>
+        <a href="how-it-works.html" class="nav__drawer-link">How It Works</a>
+        <a href="our-process.html" class="nav__drawer-link">Our Process</a>
+        <a href="pillars.html" class="nav__drawer-link">The 3 Pillars</a>
+
+        <div class="nav__accordion">
+          <button class="nav__accordion-trigger" aria-expanded="false" aria-controls="resources-accordion-panel" id="resources-accordion-btn" type="button">
+            Resources
+            <span class="nav__accordion-chevron" aria-hidden="true"></span>
+          </button>
+          <div class="nav__accordion-panel" id="resources-accordion-panel" role="region" aria-labelledby="resources-accordion-btn">
+            <div class="nav__accordion-links">
+              <a href="blogs.html" class="nav__accordion-link nav__drawer-link">Blogs</a>
+              <a href="articles.html" class="nav__accordion-link nav__drawer-link">Articles</a>
+              <a href="timeline.html" class="nav__accordion-link nav__drawer-link">Timeline</a>
+              <a href="packages.html" class="nav__accordion-link nav__drawer-link">Packages</a>
+              <a href="webinar-library.html" class="nav__accordion-link nav__drawer-link">Free Workshop</a>
+            </div>
+          </div>
+        </div>
+
+        <a href="about.html" class="nav__drawer-link">About</a>
+      </nav>
+      <div class="nav__drawer-ctas">
+        <a href="webinar-library.html" class="btn btn--outline">Free Workshop</a>
+        <a href="https://meetings-na2.hubspot.com/will-smethurst/cfs-website-meeting" class="btn btn--primary" target="_blank" rel="noopener">Schedule a Consultation</a>
+      </div>
+    </div>
+  </div>
+
+
+  <main>
+
+    <section class="post-header" aria-label="Article header">
+      <div class="container">
+        <div class="post-header__inner">
+
+          <a href="blogs.html" class="post-header__back">Back to Blog</a>
+
+          <span class="post-header__category">Financial Strategy</span>
+
+          <h1 class="post-header__title">Understanding the True Cost of College</h1>
+
+          <div class="post-header__meta">
+            <span class="post-header__meta-item">April 17, 2026</span>
+            <span class="post-header__meta-dot" aria-hidden="true"></span>
+            <span class="post-header__meta-item">8 min read</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <article class="post-body">
+      <div class="post-body__content">
+
+        <p class="post-intro">
+          Most families begin the college search by looking at tuition. That is a reasonable starting point, but it is also where many costly misunderstandings begin. The price listed on a college's website is rarely what a family actually pays, and what a family actually pays is rarely the full picture of what college will cost. Understanding the difference between these numbers is one of the most important things a parent can do before a student ever submits an application.
+        </p>
+
+
+        <div class="post-section">
+          <h2 class="post-section__heading">What Most Families Think vs. What Is Actually True</h2>
+          <p>The most common assumption is that the sticker price listed on a college's website represents the cost of attending that school. For a large number of families, this single assumption leads to two very different and equally damaging mistakes.</p>
+          <p>The first mistake is assuming a school is unaffordable without ever looking deeper. A family sees a $70,000 annual price tag, decides the school is out of reach, and removes it from consideration entirely. The second mistake is the opposite: assuming a lower sticker price means a better deal. A family picks a less expensive-seeming school without realizing that the net price, what they will actually pay after aid, may be higher than schools with a larger published cost.</p>
+          <p>The reality is that sticker price and actual cost are two entirely different numbers. Until you understand both, you cannot make a sound college decision.</p>
+        </div>
+
+
+        <div class="post-section">
+          <h2 class="post-section__heading">Breaking Down the Cost of Attendance</h2>
+          <p>Every college is required to publish what is called a Cost of Attendance, or COA. This is the official total estimated cost of going to that school for one academic year. Most families focus only on tuition, but the COA includes several other components that add up quickly.</p>
+          <p>Tuition and fees are the most visible piece. Room and board, which covers housing and meal plans, is typically the second-largest expense and can range from around $12,000 to $20,000 or more per year depending on the school and the living situation. Books and supplies are usually estimated between $800 and $1,500 per year. Transportation, including travel between home and campus, is another line item. Personal expenses round out the estimate.</p>
+          <p>When you add all of these together, the total cost of attending a private university can easily reach $75,000 to $85,000 per year. Even many public universities, when you factor in out-of-state tuition and on-campus housing, can exceed $40,000 to $50,000 annually. These are the numbers that matter, not just the tuition line.</p>
+        </div>
+
+
+        <div class="post-callout">
+          <p><strong>Key distinction:</strong> The Cost of Attendance is what a school estimates it will cost you. The net price is what you will actually pay after grants and scholarships are applied. These two numbers can be dramatically different, and the gap between them is where strategy lives.</p>
+        </div>
+
+
+        <div class="post-section">
+          <h2 class="post-section__heading">The Number That Actually Matters: Net Price</h2>
+          <p>Net price is the Cost of Attendance minus any gift aid your student receives. Gift aid includes grants and scholarships, meaning money that does not need to be repaid. It does not include loans or work-study, which are often packaged into financial aid offers in ways that make the award look larger than it actually is.</p>
+          <p>This distinction is critical. When you receive a financial aid award letter, the headline number will often show a large "total aid" figure. But buried inside that figure may be thousands of dollars in loans and work-study expectations. Strip those out, and the actual gift aid, the money that reduces your bill, can be significantly smaller.</p>
+          <p>Once you identify the true gift aid amount and subtract it from the Cost of Attendance, you have your net price. That is the number you need to compare across every school your student is considering. And here is where it gets interesting: a school with a $75,000 sticker price and a generous merit scholarship may end up costing less than a school with a $45,000 sticker price and very little institutional aid.</p>
+        </div>
+
+
+        <div class="post-section">
+          <h2 class="post-section__heading">The Hidden Costs Most Families Miss</h2>
+          <p>Even after calculating net price, there are additional factors that affect the true cost of a college education. These are the ones that rarely appear in comparison charts, but they can add tens of thousands of dollars to the total bill.</p>
+
+          <ul class="post-list">
+            <li><strong>Time to graduation.</strong> The national average for completing a bachelor's degree is closer to five and a half years, not four. Every additional semester adds tuition, housing, and living expenses on top of a year of delayed income. Choosing a school with strong academic support and clear degree pathways can save a family a full year of college costs.</li>
+            <li><strong>Travel and transportation.</strong> A school that sounds affordable may be located far from home. Multiple cross-country flights per year, combined with the cost of shipping belongings or storing items over summers, can add $3,000 to $6,000 or more annually.</li>
+            <li><strong>Loan interest over time.</strong> Many families look at loan amounts without accounting for the interest that accrues over a 10 or 20-year repayment period. A $40,000 loan at a standard interest rate can cost considerably more by the time it is fully repaid. The cost of borrowing is part of the true cost of college.</li>
+            <li><strong>Major and career alignment.</strong> A degree that does not lead to meaningful employment adds cost in a different way. Lost earning potential, graduate school to compensate for an undergraduate degree that did not translate, or returning to school to retrain are all real financial consequences of choosing the wrong fit academically.</li>
+            <li><strong>Institutional aid renewability.</strong> Some merit scholarships are renewable automatically each year. Others have GPA requirements that, if not maintained, cause the award to decrease or disappear entirely. Before committing, families need to understand the conditions attached to any aid offer.</li>
+          </ul>
+
+          <p>None of these factors show up in the published Cost of Attendance. But all of them affect what a family will ultimately spend.</p>
+        </div>
+
+
+        <div class="post-section">
+          <h2 class="post-section__heading">Why Colleges Price the Way They Do</h2>
+          <p>Understanding how colleges set their prices requires a shift in perspective. A college is not just an academic institution. It is also a business with a budget to manage, an enrollment goal to hit, and a brand to build. Tuition and fees are not set arbitrarily. They reflect what the institution needs to operate and, in many cases, what the market will bear.</p>
+          <p>Colleges use institutional aid strategically. A school with a $70,000 sticker price may offer large merit scholarships to attract high-achieving students who bring prestige to their class profile. A school with a $40,000 sticker price may offer very little institutional aid because they already attract enough students without needing to discount heavily. The discount rate, meaning how much colleges reduce their stated price through institutional aid, varies enormously across schools.</p>
+          <p>This is one of the core insights behind effective college planning. Families who understand that colleges make financial decisions like businesses are far better positioned to choose schools strategically and to pursue aid with confidence. Families who treat college purely as an academic decision often end up paying more than they need to.</p>
+        </div>
+
+
+        <div class="post-section">
+          <h2 class="post-section__heading">How to Calculate and Compare True Costs Across Schools</h2>
+          <p>The most effective way to compare colleges financially is to build a side-by-side net price comparison before your student commits to a school. Here is a practical framework for doing that.</p>
+          <p>Start with the Cost of Attendance for each school on the list. Then identify the total gift aid offered, separating grants and scholarships from loans and work-study. Subtract the gift aid from the Cost of Attendance to arrive at the net price. Then factor in any additional costs specific to that school, such as travel distance, housing options, or program fees that are not captured in the standard COA estimate.</p>
+          <p>Once you have net prices across multiple schools, you can make genuinely informed comparisons. You may find that the school your student was most excited about is also the most financially strategic choice. Or you may find that a school lower on the list offers a dramatically better net price and warrants a closer look.</p>
+          <p>It is also worth knowing that financial aid offers are not always final. Schools have appeal processes, and families who provide additional financial context or who present competing offers from comparable institutions sometimes receive revised packages. One example of this in practice: a student admitted to Yale University initially received approximately $9,986 in gift aid. After a strategic financial aid appeal, the revised package increased gift aid to approximately $15,247. That difference translated to roughly $21,000 in additional savings over four years. The first offer was not the final word.</p>
+        </div>
+
+
+        <div class="post-section">
+          <h2 class="post-section__heading">Frequently Asked Questions</h2>
+
+          <p><strong>Is the sticker price what I will actually pay?</strong><br>
+          Almost certainly not. Most students do not pay the full published Cost of Attendance. The amount you pay depends on your financial situation, the school's aid policies, and how well your student's profile aligns with what the school is trying to build in their incoming class. Using the Net Price Calculator on each school's website will give you a more realistic estimate before applications are submitted.</p>
+
+          <p><strong>Does my income affect how much aid my student can receive?</strong><br>
+          Income is one factor, but it is not the only one. Need-based aid from the federal government has income thresholds, but institutional aid from colleges operates differently. Many schools have large endowments and offer merit-based grants to families across a wide range of income levels. Assuming your income disqualifies you from aid is one of the most common and costly mistakes families make.</p>
+
+          <p><strong>When should I start thinking about college costs?</strong><br>
+          As early as possible. Many financial positioning strategies, including how income and assets are structured before financial aid applications are submitted, need to be considered during the student's freshman or sophomore year of high school to be most effective. Starting senior year leaves very little room to optimize outcomes.</p>
+
+          <p><strong>Can I appeal a financial aid offer if I think we deserve more?</strong><br>
+          Yes, and many families do successfully. The appeal process varies by school, but most institutions have a formal process for reconsidering an aid package based on new or updated financial information, special circumstances, or a competing offer from a comparable school. Success is not guaranteed, but appeals are more common and more effective than most families realize.</p>
+
+          <p><strong>What is the difference between need-based aid and merit aid?</strong><br>
+          Need-based aid is calculated using your family's financial information as submitted through the FAFSA and, at some schools, the CSS Profile. It is designed to bridge the gap between what the school believes you can pay and the cost of attendance. Merit aid is awarded based on a student's academic achievements, test scores, talents, or other qualities the school values, regardless of financial need. Many students receive a combination of both.</p>
+        </div>
+
+
+        <div class="post-cta">
+          <span class="post-cta__eyebrow">Ready to Take Action?</span>
+          <h2 class="post-cta__title">Get a Plan Built Around Your Family</h2>
+          <p class="post-cta__body">
+            Every family's situation is different. A strategy session with an advisor gives you a clear, personalized roadmap for your student's college journey.
+          </p>
+          <div class="post-cta__buttons">
+            <a href="https://meetings-na2.hubspot.com/will-smethurst/cfs-website-meeting" class="btn btn--primary btn--large btn--arrow" target="_blank" rel="noopener">Schedule a Consultation</a>
+            <a href="webinar-library.html" class="btn btn--ghost btn--large">Watch the Free Workshop</a>
+          </div>
+        </div>
+
+      </div>
+    </article>
+
+  </main>
+
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+
+      <div class="footer__grid">
+
+        <div class="footer__brand">
+          <div class="footer__brand-name">Strategy West</div>
+          <div class="footer__brand-tagline">College Planning</div>
+          <p class="footer__brand-desc">
+            Expert, advisor-led guidance for families navigating the college planning process — from freshman year through enrollment.
+          </p>
+        </div>
+
+        <div class="footer__col">
+          <span class="footer__col-label">Navigate</span>
+          <nav class="footer__links" aria-label="Footer navigation">
+            <a href="index.html" class="footer__link">Home</a>
+            <a href="how-it-works.html" class="footer__link">How It Works</a>
+            <a href="our-process.html" class="footer__link">Our Process</a>
+            <a href="pillars.html" class="footer__link">The 3 Pillars</a>
+            <a href="about.html" class="footer__link">About</a>
+          </nav>
+        </div>
+
+        <div class="footer__col">
+          <span class="footer__col-label">Resources</span>
+          <nav class="footer__links" aria-label="Resources navigation">
+            <a href="blogs.html" class="footer__link">Blogs</a>
+            <a href="articles.html" class="footer__link">Articles</a>
+            <a href="timeline.html" class="footer__link">Timeline</a>
+            <a href="webinar-library.html" class="footer__link">Free Workshop</a>
+            <a href="packages.html" class="footer__link">Packages</a>
+          </nav>
+        </div>
+
+        <div class="footer__col">
+          <span class="footer__col-label">Get in Touch</span>
+          <div class="footer__contact-line">
+            <span class="footer__contact-icon" aria-hidden="true">&#x2709;</span>
+            <span class="footer__contact-text">info@swfcollegeplanning.com</span>
+          </div>
+          <div class="footer__contact-line">
+            <span class="footer__contact-icon" aria-hidden="true">&#x25CE;</span>
+            <span class="footer__contact-text">Serving families nationwide<br>via virtual consultation &amp; in-person in Utah</span>
+          </div>
+          <a href="https://meetings-na2.hubspot.com/will-smethurst/cfs-website-meeting" class="footer__cta-link" target="_blank" rel="noopener">Schedule a Consultation</a>
+        </div>
+
+      </div>
+
+      <div class="footer__bottom">
+        <span class="footer__copyright">
+          &copy; <span id="footer-year"></span> Strategy West College Planning. All rights reserved.
+        </span>
+        <div class="footer__legal-links">
+          <a href="privacy.html" class="footer__legal-link">Privacy Policy</a>
+          <a href="terms.html" class="footer__legal-link">Terms of Use</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <script>
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+    const toggle   = document.getElementById('nav-toggle');
+    const drawer   = document.getElementById('nav-drawer');
+    const overlay  = document.getElementById('nav-overlay');
+    const closeBtn = document.getElementById('nav-close');
+
+    function openDrawer() {
+      drawer.classList.add('is-open');
+      toggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeDrawer() {
+      drawer.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    toggle.addEventListener('click', openDrawer);
+    closeBtn.addEventListener('click', closeDrawer);
+    overlay.addEventListener('click', closeDrawer);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && drawer.classList.contains('is-open')) closeDrawer();
+    });
+    drawer.querySelectorAll('.nav__drawer-link, .nav__drawer-ctas .btn').forEach(link => {
+      link.addEventListener('click', closeDrawer);
+    });
+
+    const accordionBtn   = document.getElementById('resources-accordion-btn');
+    const accordionPanel = document.getElementById('resources-accordion-panel');
+    if (accordionBtn && accordionPanel) {
+      accordionBtn.addEventListener('click', function () {
+        const isOpen = accordionPanel.classList.toggle('is-open');
+        accordionBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+    }
+  </script>
+
+</body>
+</html>
