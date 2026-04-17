@@ -831,9 +831,9 @@
       flex-shrink: 0;
     }
 
-    /* All card image areas use brand dark green */
+    /* All card image areas use warm ivory */
     .blog-card__image {
-      background: #0a3528 !important;
+      background: #F0EBE0 !important;
     }
 
     /* Placeholder icon inside image area */
@@ -1680,6 +1680,15 @@
     const nextBtn    = document.getElementById('blog-next');
     const filterTags = document.querySelectorAll('.blog-filter__tag');
 
+    // ── Category Icon Map ─────────────────────────────────────────
+    const categoryIcons = {
+      'Financial Strategy':  'images/financial-strategy-symbol-transparent.svg',
+      'Academic Planning':   'images/academic-planning-transparent.svg',
+      'School Selection':    'images/school-selection-transparent.svg',
+      'Financial Aid':       'images/financial-aid-transparent.svg',
+      'Timelines & Process': 'images/timeline-and-process-transparent.svg'
+    };
+
     // ── Render ────────────────────────────────────────────────────
     function renderBlogs() {
       // Filter posts
@@ -1702,7 +1711,7 @@
         return (
           '<article class="blog-card" role="listitem">' +
             '<div class="blog-card__image" aria-hidden="true">' +
-              '<img src="images/SWFCP-Transparent-logo.png" alt="Strategy West College Planning" style="height: 110px; width: auto; object-fit: contain;" />' +
+              '<img src="' + (categoryIcons[post.category] || '') + '" alt="' + post.category + '" style="height: 80px; width: auto; object-fit: contain;" />' +
               ribbon +
             '</div>' +
             '<div class="blog-card__body">' +
