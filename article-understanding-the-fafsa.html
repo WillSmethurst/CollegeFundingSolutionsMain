@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ============================================================
+       SEO — FILL IN FOR EVERY ARTICLE
+       Title:       Keep under 60 characters
+       Description: Keep under 155 characters
+  ============================================================ -->
+  <title>A Family's Complete Guide to the FAFSA | Strategy West College Planning</title>
+  <meta name="description" content="A clear, step-by-step guide to the FAFSA for families. Learn how the form works, what the Student Aid Index means, and the mistakes to avoid." />
+
+  <!-- Canonical URL — replace slug below, keep domain as-is -->
+  <link rel="canonical" href="https://www.swfcollegeplanning.com/article-understanding-the-fafsa" />
+
+  <!-- Open Graph (social sharing) -->
+  <meta property="og:type"        content="article" />
+  <meta property="og:title"       content="A Family's Complete Guide to the FAFSA" />
+  <meta property="og:description" content="A clear, step-by-step guide to the FAFSA for families. Learn how the form works, what the Student Aid Index means, and the mistakes to avoid." />
+  <meta property="og:url"         content="https://www.swfcollegeplanning.com/article-understanding-the-fafsa" />
+  <meta property="og:site_name"   content="Strategy West College Planning" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet" />
+
+  <style>
+
+    /* ============================================================
+       CSS CUSTOM PROPERTIES
+    ============================================================ */
+    :root {
+      --navy:           #064E3B;
+      --navy-mid:       #152540;
+      --navy-light:     #1E3357;
+      --gold:           #C4963A;
+      --gold-light:     #D4A84B;
+      --gold-pale:      #F0E2C4;
+      --ivory:          #F7F4EE;
+      --ivory-warm:     #EDE9DF;
+      --white:          #FFFFFF;
+      --text-dark:      #1A1A2E;
+      --text-body:      #3A3A4A;
+      --text-muted:     #6B6B7E;
+      --text-light:     #9A9AAA;
+      --border:         #E2DDD4;
+      --shadow-sm:      0 2px 12px rgba(13, 27, 46, 0.08);
+      --shadow-md:      0 8px 32px rgba(13, 27, 46, 0.12);
+      --shadow-lg:      0 20px 60px rgba(13, 27, 46, 0.18);
+      --shadow-gold:    0 4px 18px rgba(196, 150, 58, 0.38);
+      --font-display:   'Cormorant Garamond', Georgia, serif;
+      --font-body:      'DM Sans', system-ui, -apple-system, sans-serif;
+      --radius-sm:      6px;
+      --radius-md:      12px;
+      --radius-lg:      20px;
+      --container-max:    1080px;
+      --container-narrow: 740px;
+      --gutter:           24px;
+      --transition:      all 0.25s ease;
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text-body);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ============================================================
+       LAYOUT
+    ============================================================ */
+    .container {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+    .container--narrow {
+      max-width: var(--container-narrow);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    /* ============================================================
+       BUTTONS
+    ============================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      padding: 16px 34px;
+      border-radius: var(--radius-sm);
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+      white-space: nowrap;
+      line-height: 1;
+    }
+    .btn--primary { background: var(--gold); color: var(--white); box-shadow: var(--shadow-gold); }
+    .btn--primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn--outline { background: transparent; color: var(--gold); border: 1.5px solid var(--gold); }
+    .btn--outline:hover { background: var(--gold); color: var(--white); transform: translateY(-2px); }
+    .btn--ghost { background: transparent; color: var(--navy); border: 1.5px solid var(--border); }
+    .btn--ghost:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+    .btn--white-outline { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,0.45); }
+    .btn--white-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.08); transform: translateY(-2px); }
+    .btn--large { font-size: 16px; padding: 18px 42px; }
+    .btn--small { font-size: 13px; padding: 10px 22px; }
+    .btn--arrow::after { content: '→'; font-size: 17px; line-height: 1; transition: transform 0.2s ease; }
+    .btn--arrow:hover::after { transform: translateX(4px); }
+
+    /* ============================================================
+       NAVIGATION
+    ============================================================ */
+    .nav {
+      background: var(--navy);
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      box-shadow: 0 2px 20px rgba(6, 78, 59, 0.3);
+    }
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+      gap: 24px;
+    }
+    .nav__brand { display: flex; flex-direction: column; gap: 2px; flex-shrink: 0; text-decoration: none; }
+    .nav__brand-name { font-family: var(--font-display); font-size: 18px; font-weight: 600; color: var(--white); letter-spacing: 0.01em; line-height: 1.2; }
+    .nav__brand-tagline { font-family: var(--font-body); font-size: 9.5px; font-weight: 400; color: var(--gold-pale); letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.7; }
+    .nav__links { display: none; align-items: center; gap: 2px; }
+    @media (min-width: 960px) { .nav__links { display: flex; } }
+    .nav__link { font-family: var(--font-body); font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.72); padding: 6px 14px; border-radius: var(--radius-sm); transition: var(--transition); white-space: nowrap; }
+    .nav__link:hover { color: var(--white); background: rgba(255,255,255,0.07); }
+    .nav__ctas { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    @media (max-width: 959px) { .nav__ctas { display: none; } }
+    .nav__cta-webinar { display: none; }
+    @media (min-width: 640px) { .nav__cta-webinar { display: inline-flex; } }
+    .nav__hamburger { display: flex; flex-direction: column; justify-content: center; gap: 5px; width: 36px; height: 36px; background: none; border: none; cursor: pointer; padding: 6px; border-radius: var(--radius-sm); transition: var(--transition); }
+    .nav__hamburger:hover { background: rgba(255,255,255,0.08); }
+    .nav__hamburger span { display: block; height: 1.5px; width: 100%; background: var(--gold); border-radius: 2px; transition: var(--transition); }
+    @media (min-width: 960px) { .nav__hamburger { display: none; } }
+
+    /* Dropdown */
+    .nav__dropdown { position: relative; padding-bottom: 12px; margin-bottom: -12px; }
+    .nav__dropdown-trigger { display: inline-flex; align-items: center; gap: 5px; font-family: var(--font-body); font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.72); padding: 6px 14px; border-radius: var(--radius-sm); background: none; border: none; cursor: pointer; transition: var(--transition); white-space: nowrap; line-height: 1.7; }
+    .nav__dropdown-trigger:hover, .nav__dropdown:hover .nav__dropdown-trigger, .nav__dropdown:focus-within .nav__dropdown-trigger { color: var(--white); background: rgba(255,255,255,0.07); }
+    .nav__dropdown-chevron { display: inline-block; width: 10px; height: 10px; flex-shrink: 0; opacity: 0.55; transition: transform 0.22s ease, opacity 0.22s ease; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23ffffff' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: center; background-size: contain; }
+    .nav__dropdown:hover .nav__dropdown-chevron, .nav__dropdown:focus-within .nav__dropdown-chevron { transform: rotate(180deg); opacity: 0.9; }
+    .nav__dropdown-panel { position: absolute; top: calc(100% + 2px); left: 50%; transform: translateX(-50%) translateY(-4px); min-width: 180px; background: var(--navy); border: 1px solid rgba(255,255,255,0.09); border-radius: var(--radius-md); box-shadow: 0 12px 40px rgba(6,20,46,0.38), 0 2px 8px rgba(6,20,46,0.18); padding: 8px; opacity: 0; pointer-events: none; transition: opacity 0.2s ease, transform 0.2s ease; z-index: 400; }
+    .nav__dropdown-panel::before { content: ''; position: absolute; top: -5px; left: 50%; transform: translateX(-50%); width: 10px; height: 10px; background: var(--navy); border-left: 1px solid rgba(255,255,255,0.09); border-top: 1px solid rgba(255,255,255,0.09); clip-path: polygon(0 100%, 50% 0, 100% 100%); }
+    .nav__dropdown:hover .nav__dropdown-panel, .nav__dropdown:focus-within .nav__dropdown-panel { opacity: 1; pointer-events: all; transform: translateX(-50%) translateY(0); }
+    .nav__dropdown-link { display: block; font-family: var(--font-body); font-size: 14px; font-weight: 400; color: rgba(255,255,255,0.68); padding: 9px 16px; border-radius: var(--radius-sm); transition: var(--transition); white-space: nowrap; }
+    .nav__dropdown-link:hover { color: var(--white); background: rgba(255,255,255,0.07); padding-left: 20px; border-left: 2px solid var(--gold); margin-left: -2px; }
+    .nav__dropdown-divider { height: 1px; background: rgba(255,255,255,0.06); margin: 4px 8px; }
+
+    /* Mobile Accordion */
+    .nav__accordion { width: 100%; }
+    .nav__accordion-trigger { display: flex; align-items: center; justify-content: space-between; width: 100%; font-family: var(--font-body); font-size: 16px; font-weight: 500; color: rgba(255,255,255,0.8); padding: 12px 16px; border-radius: var(--radius-sm); background: none; border: none; cursor: pointer; transition: var(--transition); text-align: left; }
+    .nav__accordion-trigger:hover { color: var(--white); background: rgba(255,255,255,0.07); }
+    .nav__accordion-chevron { display: inline-block; width: 12px; height: 12px; flex-shrink: 0; opacity: 0.45; transition: transform 0.25s ease, opacity 0.25s ease; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23ffffff' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: center; background-size: contain; }
+    .nav__accordion-trigger[aria-expanded="true"] .nav__accordion-chevron { transform: rotate(180deg); opacity: 0.85; }
+    .nav__accordion-panel { display: none; padding: 4px 0 4px 12px; }
+    .nav__accordion-panel.is-open { display: block; }
+    .nav__accordion-links { display: flex; flex-direction: column; gap: 2px; padding: 4px 0; }
+    .nav__accordion-link { font-family: var(--font-body); font-size: 14.5px; font-weight: 400; color: rgba(255,255,255,0.6); padding: 8px 12px; border-radius: var(--radius-sm); transition: var(--transition); text-decoration: none; display: block; }
+    .nav__accordion-link:hover { color: var(--white); background: rgba(255,255,255,0.06); }
+
+    /* Drawer */
+    .nav__drawer { position: fixed; inset: 0; z-index: 300; pointer-events: none; }
+    .nav__drawer-overlay { position: absolute; inset: 0; background: rgba(6,20,46,0.65); opacity: 0; transition: opacity 0.3s ease; }
+    .nav__drawer-panel { position: absolute; top: 0; right: 0; bottom: 0; width: min(320px, 85vw); background: var(--navy); padding: 28px 28px 40px; display: flex; flex-direction: column; transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); box-shadow: var(--shadow-lg); }
+    .nav__drawer.is-open { pointer-events: all; }
+    .nav__drawer.is-open .nav__drawer-overlay { opacity: 1; }
+    .nav__drawer.is-open .nav__drawer-panel { transform: translateX(0); }
+    .nav__drawer-close { align-self: flex-end; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.07); border: none; border-radius: 50%; color: var(--white); font-size: 20px; cursor: pointer; margin-bottom: 32px; transition: var(--transition); }
+    .nav__drawer-close:hover { background: rgba(255,255,255,0.14); }
+    .nav__drawer-links { display: flex; flex-direction: column; gap: 4px; flex: 1; }
+    .nav__drawer-link { font-family: var(--font-body); font-size: 16px; font-weight: 500; color: rgba(255,255,255,0.8); padding: 12px 16px; border-radius: var(--radius-sm); transition: var(--transition); }
+    .nav__drawer-link:hover { color: var(--white); background: rgba(255,255,255,0.07); }
+    .nav__drawer-ctas { display: flex; flex-direction: column; gap: 10px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); }
+    .nav__drawer-ctas .btn { width: 100%; justify-content: center; }
+
+    /* ============================================================
+       PAGE HEADER
+    ============================================================ */
+    .post-header {
+      background: var(--navy);
+      padding: 64px 0 72px;
+      position: relative;
+      overflow: hidden;
+    }
+    .post-header::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -8%;
+      width: 480px;
+      height: 480px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(196,150,58,0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .post-header__inner { position: relative; z-index: 2; animation: fadeUp 0.6s ease both; }
+    .post-header__back { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.5); margin-bottom: 32px; transition: var(--transition); }
+    .post-header__back::before { content: '←'; font-size: 14px; transition: transform 0.2s ease; }
+    .post-header__back:hover { color: rgba(255,255,255,0.8); }
+    .post-header__back:hover::before { transform: translateX(-4px); }
+    .post-header__meta-top { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+    .post-header__category { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
+    .post-header__pill { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy); background: var(--gold); border-radius: 100px; padding: 4px 12px; }
+    .post-header__title { font-family: var(--font-display); font-size: clamp(32px, 5vw, 54px); font-weight: 600; line-height: 1.12; color: var(--white); letter-spacing: -0.01em; margin-bottom: 24px; max-width: 820px; }
+    .post-header__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 20px; }
+    .post-header__meta-item { font-size: 13px; color: rgba(255,255,255,0.45); display: flex; align-items: center; gap: 6px; }
+    .post-header__meta-dot { display: inline-block; width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.25); }
+
+    /* ============================================================
+       ARTICLE BODY
+    ============================================================ */
+    .post-body {
+      background: var(--white);
+      padding: 72px 0 80px;
+    }
+    .post-body__content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    /* Article type badge */
+    .post-type-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--ivory);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 36px;
+    }
+
+    /* Intro paragraph */
+    .post-intro {
+      font-size: 18px;
+      line-height: 1.78;
+      color: var(--text-body);
+      margin-bottom: 48px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Sections */
+    .post-section { margin-bottom: 52px; }
+    .post-section__heading {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 3vw, 30px);
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 18px;
+      padding-top: 8px;
+    }
+    .post-section__heading::after {
+      content: '';
+      display: block;
+      width: 36px;
+      height: 2px;
+      background: var(--gold);
+      border-radius: 2px;
+      margin-top: 12px;
+    }
+    .post-section__subheading {
+      font-family: var(--font-display);
+      font-size: clamp(18px, 2.5vw, 22px);
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.3;
+      margin-top: 32px;
+      margin-bottom: 12px;
+    }
+    .post-section p { font-size: 16.5px; line-height: 1.78; color: var(--text-body); margin-bottom: 20px; }
+    .post-section p:last-child { margin-bottom: 0; }
+
+    /* Callout box */
+    .post-callout {
+      background: var(--ivory);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: 24px 28px;
+      margin: 36px 0;
+    }
+    .post-callout p { font-size: 16px; line-height: 1.72; color: var(--text-body); margin: 0; }
+    .post-callout strong { color: var(--navy); font-weight: 600; }
+
+    /* Bulleted list */
+    .post-list { list-style: none; margin: 20px 0 28px; display: flex; flex-direction: column; gap: 12px; }
+    .post-list li { display: flex; align-items: flex-start; gap: 14px; font-size: 16px; line-height: 1.7; color: var(--text-body); }
+    .post-list li::before { content: ''; display: block; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 10px; }
+
+    /* Key terms / definition block */
+    .post-definition {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 24px 28px;
+      margin: 36px 0;
+      background: var(--white);
+    }
+    .post-definition__term {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .post-definition__desc {
+      font-size: 15.5px;
+      line-height: 1.7;
+      color: var(--text-body);
+      margin: 0;
+    }
+
+    /* Bottom CTA */
+    .post-cta {
+      background: var(--ivory);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 48px 40px;
+      text-align: center;
+      margin-top: 64px;
+    }
+    .post-cta__eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; display: block; }
+    .post-cta__title { font-family: var(--font-display); font-size: clamp(22px, 3vw, 30px); font-weight: 600; color: var(--navy); line-height: 1.2; margin-bottom: 14px; }
+    .post-cta__body { font-size: 15.5px; line-height: 1.7; color: var(--text-muted); margin-bottom: 28px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .post-cta__buttons { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px; }
+
+    /* ============================================================
+       RELATED POSTS — Same as blog template
+    ============================================================ */
+    .related-posts {
+      background: var(--ivory);
+      padding: 64px 0;
+      border-top: 1px solid var(--border);
+    }
+    .related-posts__header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 36px;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .related-posts__eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 8px; }
+    .related-posts__title { font-family: var(--font-display); font-size: clamp(22px, 3vw, 28px); font-weight: 600; color: var(--navy); line-height: 1.2; }
+    .related-posts__all { font-size: 13px; font-weight: 600; color: var(--gold); white-space: nowrap; transition: var(--transition); display: inline-flex; align-items: center; gap: 6px; }
+    .related-posts__all::after { content: '→'; transition: transform 0.2s ease; }
+    .related-posts__all:hover::after { transform: translateX(4px); }
+    .related-posts__grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+    @media (min-width: 640px) { .related-posts__grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 960px) { .related-posts__grid { grid-template-columns: repeat(3, 1fr); } }
+    .related-card {
+      display: flex;
+      flex-direction: column;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      transition: var(--transition);
+      text-decoration: none;
+    }
+    .related-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: rgba(196,150,58,0.3); }
+    .related-card__category { font-size: 10px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; display: block; }
+    .related-card__title { font-family: var(--font-display); font-size: 18px; font-weight: 600; color: var(--navy); line-height: 1.3; margin-bottom: 10px; flex: 1; }
+    .related-card__excerpt { font-size: 13.5px; line-height: 1.65; color: var(--text-muted); margin-bottom: 16px; }
+    .related-card__footer { display: flex; align-items: center; justify-content: space-between; padding-top: 14px; border-top: 1px solid var(--border); margin-top: auto; }
+    .related-card__date { font-size: 12px; color: var(--text-light); }
+    .related-card__link { font-size: 12px; font-weight: 600; color: var(--gold); display: inline-flex; align-items: center; gap: 4px; }
+    .related-card__link::after { content: '→'; transition: transform 0.2s ease; }
+    .related-card:hover .related-card__link::after { transform: translateX(3px); }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    .footer { background: #0a3528; padding: 64px 0 0; border-top: 1px solid rgba(255,255,255,0.06); }
+    .footer__grid { display: grid; grid-template-columns: 1fr; gap: 40px; }
+    @media (min-width: 640px) { .footer__grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 960px) { .footer__grid { grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 48px; } }
+    .footer__brand-name { font-family: var(--font-display); font-size: 20px; font-weight: 600; color: var(--white); margin-bottom: 4px; letter-spacing: 0.01em; }
+    .footer__brand-tagline { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-pale); opacity: 0.6; margin-bottom: 16px; }
+    .footer__brand-desc { font-size: 14px; line-height: 1.65; color: rgba(255,255,255,0.4); max-width: 280px; }
+    .footer__col-label { font-size: 10.5px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; display: block; }
+    .footer__links { display: flex; flex-direction: column; gap: 4px; }
+    .footer__link { font-size: 14px; color: rgba(255,255,255,0.55); padding: 5px 0; transition: var(--transition); }
+    .footer__link:hover { color: var(--white); }
+    .footer__contact-line { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; }
+    .footer__contact-icon { font-size: 14px; color: var(--gold); opacity: 0.7; flex-shrink: 0; margin-top: 2px; }
+    .footer__contact-text { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.5; }
+    .footer__cta-link { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 500; color: var(--gold); margin-top: 16px; transition: var(--transition); }
+    .footer__cta-link:hover { color: var(--gold-light); }
+    .footer__cta-link::after { content: '→'; transition: transform 0.2s ease; }
+    .footer__cta-link:hover::after { transform: translateX(3px); }
+    .footer__bottom { margin-top: 56px; padding: 24px 0; border-top: 1px solid rgba(255,255,255,0.07); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+    .footer__copyright { font-size: 12px; color: rgba(255,255,255,0.3); }
+    .footer__legal-links { display: flex; gap: 20px; }
+    .footer__legal-link { font-size: 12px; color: rgba(255,255,255,0.3); transition: var(--transition); }
+    .footer__legal-link:hover { color: rgba(255,255,255,0.6); }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 599px) {
+      .post-header { padding: 48px 0 56px; }
+      .post-body { padding: 48px 0 56px; }
+      .post-cta { padding: 36px 24px; }
+      .post-cta__buttons { flex-direction: column; align-items: stretch; }
+      .post-cta__buttons .btn { justify-content: center; }
+      .footer__bottom { flex-direction: column; align-items: flex-start; }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+  </style>
+</head>
+
+<body id="top">
+
+  <!-- ============================================================
+       NAVIGATION
+  ============================================================ -->
+  <header class="nav" role="banner">
+    <div class="container">
+      <div class="nav__inner">
+
+        <a href="index.html" class="nav__brand" aria-label="Strategy West College Planning, Home">
+          <img src="images/logo.png" alt="Strategy West College Planning" style="height: 120px; width: auto; display: block;">
+        </a>
+
+        <nav class="nav__links" aria-label="Primary navigation">
+          <a href="how-it-works.html" class="nav__link">How It Works</a>
+          <a href="our-process.html" class="nav__link">Our Process</a>
+          <a href="pillars.html" class="nav__link">The 3 Pillars</a>
+
+          <div class="nav__dropdown" role="navigation" aria-label="Resources submenu">
+            <button class="nav__dropdown-trigger" aria-haspopup="true" aria-expanded="false" id="resources-dropdown-btn" type="button">
+              Resources
+              <span class="nav__dropdown-chevron" aria-hidden="true"></span>
+            </button>
+            <div class="nav__dropdown-panel" role="menu" aria-labelledby="resources-dropdown-btn">
+              <a href="blogs.html"    class="nav__dropdown-link" role="menuitem">Blogs</a>
+              <a href="articles.html" class="nav__dropdown-link nav__dropdown-link--active" role="menuitem">Articles</a>
+              <div class="nav__dropdown-divider" role="separator" aria-hidden="true"></div>
+              <a href="timeline.html" class="nav__dropdown-link" role="menuitem">Timeline</a>
+              <a href="packages.html" class="nav__dropdown-link" role="menuitem">Packages</a>
+              <div class="nav__dropdown-divider" role="separator" aria-hidden="true"></div>
+              <a href="webinar-library.html" class="nav__dropdown-link" role="menuitem">Free Workshop</a>
+            </div>
+          </div>
+
+          <a href="about.html" class="nav__link">About</a>
+        </nav>
+
+        <div class="nav__ctas">
+          <a href="webinar-library.html" class="btn btn--outline btn--small nav__cta-webinar">Free Workshop</a>
+          <a href="https://meetings-na2.hubspot.com/will-smethurst/cfs-website-meeting" class="btn btn--primary btn--small" target="_blank" rel="noopener">Schedule a Consultation</a>
+        </div>
+
+        <button class="nav__hamburger" id="nav-toggle" aria-label="Open navigation menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="nav__drawer" id="nav-drawer" role="dialog" aria-label="Navigation menu" aria-modal="true">
+    <div class="nav__drawer-overlay" id="nav-overlay"></div>
+    <div class="nav__drawer-panel">
+      <button class="nav__drawer-close" id="nav-close" aria-label="Close navigation">✕</button>
+      <nav class="nav__drawer-links" aria-label="Mobile navigation">
+        <a href="index.html" class="nav__drawer-link">Home</a>
+        <a href="how-it-works.html" class="nav__drawer-link">How It Works</a>
+        <a href="our-process.html" class="nav__drawer-link">Our Process</a>
+        <a href="pillars.html" class="nav__drawer-link">The 3 Pillars</a>
+        <div class="nav__accordion">
+          <button class="nav__accordion-trigger" aria-expanded="false" aria-controls="resources-accordion-panel" id="resources-accordion-btn" type="button">
+            Resources
+            <span class="nav__accordion-chevron" aria-hidden="true"></span>
+          </button>
+          <div class="nav__accordion-panel" id="resources-accordion-panel" role="region" aria-labelledby="resources-accordion-btn">
+            <div class="nav__accordion-links">
+              <a href="blogs.html"    class="nav__accordion-link nav__drawer-link">Blogs</a>
+              <a href="articles.html" class="nav__accordion-link nav__drawer-link">Articles</a>
+              <a href="timeline.html" class="nav__accordion-link nav__drawer-link">Timeline</a>
+              <a href="packages.html" class="nav__accordion-link nav__drawer-link">Packages</a>
+              <a href="webinar-library.html" class="nav__accordion-link nav__drawer-link">Free Workshop</a>
+            </div>
+          </div>
+        </div>
+        <a href="about.html" class="nav__drawer-link">About</a>
+      </nav>
+      <div class="nav__drawer-ctas">
+        <a href="webinar-library.html" class="btn btn--outline">Free Workshop</a>
+        <a href="https://meetings-na2.hubspot.com/will-smethurst/cfs-website-meeting" class="btn btn--primary" target="_blank" rel="noopener">Schedule a Consultation</a>
+      </div>
+    </div>
+  </div>
+
+
+  <main>
+
+    <!-- ============================================================
+         PAGE HEADER
+         FILL IN: category, pill type, title, publish date, read time
+    ============================================================ -->
+    <section class="post-header" aria-label="Article header">
+      <div class="container">
+        <div class="post-header__inner">
+
+          <a href="articles.html" class="post-header__back">Back to Articles</a>
+
+          <div class="post-header__meta-top">
+            <!-- REPLACE: Category (Financial Strategy / Academic Planning / School Selection / Financial Aid / Planning / Admissions) -->
+            <span class="post-header__category">Financial Strategy</span>
+            <!-- REPLACE: Pill type — use either "Guide" or "Article" -->
+            <span class="post-header__pill">Guide</span>
+          </div>
+
+          <!-- REPLACE: Full article title -->
+          <h1 class="post-header__title">A Family's Complete Guide to Understanding the FAFSA</h1>
+
+          <!-- REPLACE: Publish date and estimated read time -->
+          <div class="post-header__meta">
+            <span class="post-header__meta-item">February 12, 2026</span>
+            <span class="post-header__meta-dot" aria-hidden="true"></span>
+            <span class="post-header__meta-item">13 min read</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         ARTICLE BODY
+         Instructions:
+         — .post-type-badge shows at the top of the reading column (Guide or Article)
+         — .post-intro is the opening paragraph (renders larger)
+         — Add as many .post-section blocks as needed
+         — Use .post-callout for key takeaways
+         — Use .post-list for bullet lists
+         — Use .post-definition for key term definitions (optional, delete if not needed)
+         — Use .post-section__subheading for H3-level subheadings within a section
+         — Delete any blocks you don't need
+    ============================================================ -->
+    <article class="post-body">
+      <div class="post-body__content">
+
+        <!-- Type badge — matches pill in header. Use "Guide" or "Article" -->
+        <div class="post-type-badge">Guide</div>
+
+        <!-- ── INTRO PARAGRAPH ── -->
+        <p class="post-intro">
+          The FAFSA is the single most consequential financial form most families will fill out during the college planning process. Yet every year, millions of families skip it, file it late, or complete it with errors that cost them thousands of dollars in aid they would have otherwise received. This guide explains how the FAFSA actually works, what recently changed under the FAFSA Simplification Act, and how to approach it as a strategic tool rather than a bureaucratic task.
+        </p>
+
+
+        <!-- ── SECTION 1 ── -->
+        <div class="post-section">
+          <h2 class="post-section__heading">What the FAFSA Actually Is (And What It Determines)</h2>
+          <p>FAFSA stands for the Free Application for Federal Student Aid. It is a standardized form administered by the U.S. Department of Education that determines a student's eligibility for federal, state, and most institutional financial aid.</p>
+          <p>Most families think of the FAFSA as a federal loan application. That is a common and costly misunderstanding. The FAFSA is the gateway document for a much broader set of resources, including Federal Pell Grants (need-based grants that do not have to be repaid), Federal Work-Study programs, Federal Supplemental Educational Opportunity Grants (FSEOG), Federal Direct Loans, Parent PLUS Loans, most state grant programs, and most institutional grants and scholarships awarded directly by colleges.</p>
+          <p>The output of the FAFSA is a single number called the Student Aid Index, or SAI. Schools use your SAI, along with their cost of attendance and their own institutional policies, to build your financial aid package. In practical terms, the FAFSA is the first domino. Nearly every other financial conversation with a college flows from it.</p>
+          <p>The FAFSA must also be filed every year your student is enrolled. Aid from one academic year does not carry forward.</p>
+        </div>
+
+
+        <!-- ── SECTION 2 ── -->
+        <div class="post-section">
+          <h2 class="post-section__heading">Why Every Family Should File, Even If You Think You Won't Qualify</h2>
+          <p>The most common reason families skip the FAFSA is the assumption that their household income is too high to qualify for aid. This assumption costs families more money than almost any other planning decision we see.</p>
+          <p>There is no income cap on FAFSA eligibility. Families at every income level should file, and here is why it matters.</p>
+
+          <h3 class="post-section__subheading">Institutional aid decisions depend on it</h3>
+          <p>FAFSA data is used by colleges to make institutional aid decisions that go far beyond federal need-based programs. Many colleges will not consider a student for their own merit-based scholarships, endowed awards, or tuition discounts unless a current FAFSA is on file. Filing is often a prerequisite for being evaluated, even when the aid itself is not technically need-based.</p>
+
+          <h3 class="post-section__subheading">Federal loan options require it</h3>
+          <p>Unsubsidized Federal Direct Loans and Parent PLUS Loans are available to families at any income level, but only if a FAFSA has been submitted. These loan products often carry more favorable terms than private alternatives, and they remain a meaningful option for families who want to preserve cash flow or spread costs.</p>
+
+          <h3 class="post-section__subheading">State programs and future appeals</h3>
+          <p>State-level aid programs frequently use FAFSA data to evaluate eligibility. Several states now offer free or reduced-tuition initiatives that require a submitted FAFSA regardless of household income. Just as importantly, families who already have a FAFSA on file are in a significantly better position to appeal if a job loss, medical event, or other financial shift occurs later. Schools cannot process an appeal without a baseline FAFSA.</p>
+        </div>
+
+
+        <!-- ── CALLOUT BOX ── -->
+        <div class="post-callout">
+          <p><strong>File even if you expect nothing:</strong> Submitting the FAFSA takes roughly 30 minutes and costs nothing. Families who assume they will not qualify often leave tens of thousands of dollars in merit aid, state grants, and favorable federal loan options on the table over four years.</p>
+        </div>
+
+
+        <!-- ── SECTION 3 ── -->
+        <div class="post-section">
+          <h2 class="post-section__heading">What Changed: The Student Aid Index (SAI) Explained</h2>
+          <p>For decades, the FAFSA produced a number called the Expected Family Contribution, or EFC. Under the FAFSA Simplification Act, which was fully implemented starting with the 2024-25 cycle, the EFC was replaced by the Student Aid Index (SAI).</p>
+          <p>This is not just a name change. The reframing matters. The term "Expected Family Contribution" suggested that the number represented what a family would actually pay. It never did. The old EFC was a measure of financial strength used in an aid formula, not a bill. Families often saw a number that looked larger than their budget and panicked. The new SAI terminology is more honest about what the number actually represents.</p>
+        </div>
+
+
+        <!-- ── DEFINITION BLOCK ── -->
+        <div class="post-definition">
+          <div class="post-definition__term">Student Aid Index (SAI)</div>
+          <p class="post-definition__desc">A federal index number calculated from your FAFSA that measures your family's financial capacity to contribute to college costs. Schools combine the SAI with their cost of attendance to determine financial need and build an aid package. It is not a bill or a required payment.</p>
+        </div>
+
+
+        <div class="post-section">
+          <p>Several other meaningful changes came with the SAI transition.</p>
+
+          <h3 class="post-section__subheading">The SAI can now be negative</h3>
+          <p>The SAI can go as low as negative 1,500, which helps very low-income students access aid they previously could not. Under the old EFC, the floor was zero, which obscured meaningful differences in financial need among the lowest-income families.</p>
+
+          <h3 class="post-section__subheading">The form itself is much shorter</h3>
+          <p>The FAFSA went from more than 100 questions in prior years to roughly 36 questions under the new format. Much of that reduction is driven by direct integration with the IRS, which pulls income data automatically once all contributors consent.</p>
+
+          <h3 class="post-section__subheading">Multiple students in college is no longer counted federally</h3>
+          <p>One change has hurt some families. The number of children a family has enrolled in college at the same time is no longer factored into the SAI calculation. Under the old EFC formula, families with two or more students in college simultaneously would see their expected contribution roughly cut in half per student. That benefit no longer applies at the federal level, although many individual colleges still consider it when making institutional aid decisions.</p>
+        </div>
+
+
+        <!-- ── SECTION 4 ── -->
+        <div class="post-section">
+          <h2 class="post-section__heading">FAFSA Timing: When to File and Why Early Matters</h2>
+          <p>The 2026-27 FAFSA opened on September 24, 2025. This was the first on-time open in three years, following two cycles of federal delays that disrupted aid processing for millions of families.</p>
+          <p>The federal deadline for the 2026-27 FAFSA is June 30, 2027. For most families, that deadline is a formality. The real deadlines are set by your state and by each college on your list.</p>
+          <p>State deadlines vary widely. Some require submission by early January or February. Others use rolling or priority-based windows. Many state grant programs operate on a first-come, first-served basis. Once the funding pool is empty, no further awards are made for that cycle, regardless of eligibility.</p>
+          <p>College priority deadlines typically fall between November and February. Missing a priority deadline does not automatically disqualify a student from aid, but it can remove them from consideration for certain institutional funds that are awarded early in the cycle.</p>
+
+          <h3 class="post-section__subheading">Why timing matters beyond the deadlines themselves</h3>
+          <p>Several forms of aid are allocated to schools in fixed amounts and run out once distributed:</p>
+
+          <ul class="post-list">
+            <li>Federal Supplemental Educational Opportunity Grants (FSEOG) are allocated to schools in fixed pools. Once a school distributes its allocation, no additional FSEOG awards are made that year.</li>
+            <li>Federal Work-Study funding is similarly limited at the institutional level.</li>
+            <li>Schools with early-arrival packaging may offer stronger aid offers to students who file earlier in the cycle.</li>
+            <li>State grant programs with fixed annual budgets award on a rolling basis until depleted.</li>
+          </ul>
+
+          <p>Research from the Department of Education has consistently shown that students who file the FAFSA in the first three months of availability receive meaningfully more aid on average than those who file later in the same cycle.</p>
+        </div>
+
+
+        <!-- ── CALLOUT BOX ── -->
+        <div class="post-callout">
+          <p><strong>The 45-day rule:</strong> Incomplete FAFSA applications are deleted after 45 days of inactivity. Families who start the form but pause to track down a missing document can lose their progress entirely. Start the FAFSA when you have a continuous block of time and all contributors available to complete it in one session.</p>
+        </div>
+
+
+        <!-- ── SECTION 5 ── -->
+        <div class="post-section">
+          <h2 class="post-section__heading">What You'll Need Before You Start the FAFSA</h2>
+          <p>The FAFSA requires coordinated input from every contributor to the student's application. Gathering what you need in advance turns a multi-session ordeal into a 30-minute task.</p>
+        </div>
+
+
+        <!-- ── DEFINITION BLOCK ── -->
+        <div class="post-definition">
+          <div class="post-definition__term">Contributor</div>
+          <p class="post-definition__desc">Under the current FAFSA, a contributor is anyone whose financial information is required on the form. For dependent students, this typically includes the student and the parent who provided more than half of the student's financial support in the past 12 months. It may also include stepparents or a spouse, depending on the family's circumstances.</p>
+        </div>
+
+
+        <div class="post-section">
+          <p>Before you begin, assemble the following:</p>
+
+          <ul class="post-list">
+            <li>An FSA ID for the student and an FSA ID for each required contributor. Each person needs their own. Setting up an FSA ID can take several days for identity verification, so do not wait until filing day.</li>
+            <li>A list of every college your student is considering. You can include up to 20 schools on a single FAFSA.</li>
+            <li>2024 federal tax returns and W-2s for each contributor. The 2026-27 FAFSA uses income data from the 2024 tax year, which is known as the prior-prior year standard.</li>
+            <li>Social Security numbers for all contributors.</li>
+            <li>Records of untaxed income, such as child support received or veterans non-education benefits.</li>
+            <li>Current balances for checking and savings accounts.</li>
+            <li>Current value of non-retirement investments, including 529 accounts owned by a parent.</li>
+            <li>Records of any real estate owned other than the primary residence.</li>
+          </ul>
+
+          <p>Two important exclusions are worth noting. Retirement accounts such as 401(k) plans, IRAs, and pension funds are not reported as assets on the FAFSA. Equity in your primary residence is also excluded from the FAFSA formula. These distinctions catch families off guard every year and are often misreported, which can inflate the SAI unnecessarily.</p>
+        </div>
+
+
+        <!-- ── SECTION 6 ── -->
+        <div class="post-section">
+          <h2 class="post-section__heading">The Most Common FAFSA Mistakes We See Families Make</h2>
+          <p>Across thousands of FAFSA filings we have reviewed, a small set of errors repeats itself every single year. Most are entirely avoidable. For a broader look at the strategic errors that affect college planning outcomes, see our <a href="blogs.html" style="color: var(--gold); font-weight: 600;">breakdown of the seven biggest college planning mistakes</a>.</p>
+
+          <h3 class="post-section__subheading">1. Assuming your income disqualifies you</h3>
+          <p>There is no income cap. This is the single most expensive FAFSA mistake, and it is entirely self-imposed.</p>
+
+          <h3 class="post-section__subheading">2. Missing the contributor consent step</h3>
+          <p>Every contributor must consent to the IRS Direct Data Exchange. Without consent, the student is ineligible for federal aid for that cycle, regardless of what the underlying numbers look like. This is a newer requirement and one of the most common errors in the post-simplification FAFSA.</p>
+
+          <h3 class="post-section__subheading">3. Mismatched names or Social Security numbers</h3>
+          <p>The system cross-references against IRS and Social Security records. A name typed slightly differently than it appears on official documents will delay or halt processing.</p>
+
+          <h3 class="post-section__subheading">4. Reporting the wrong assets</h3>
+          <p>Families commonly report retirement accounts or home equity, neither of which belongs on the FAFSA. Others forget to report 529 accounts held by the custodial parent, which do count. Asset reporting errors flow directly into the SAI calculation.</p>
+
+          <h3 class="post-section__subheading">5. Not listing enough schools</h3>
+          <p>The FAFSA allows 20 schools per cycle. Families often list only three or four, then have to return to add more when the student applies to additional institutions. Use all your slots at the start.</p>
+
+          <h3 class="post-section__subheading">6. Sharing FSA IDs between contributors</h3>
+          <p>FSA IDs are tied to an individual. Sharing them causes processing issues and can compromise account security. Each contributor needs their own.</p>
+
+          <h3 class="post-section__subheading">7. Waiting until after state or college priority deadlines</h3>
+          <p>The federal deadline is not the one that matters for most families. Know your state deadline and every college's priority deadline, and target the earliest of them.</p>
+
+          <h3 class="post-section__subheading">8. Not filing again the following year</h3>
+          <p>Each academic year requires a fresh FAFSA. Aid does not carry forward, and families who forget to re-file lose access to federal programs entirely for that year.</p>
+        </div>
+
+
+        <!-- ── SECTION 7 ── -->
+        <div class="post-section">
+          <h2 class="post-section__heading">FAFSA vs CSS Profile: Understanding the Difference</h2>
+          <p>The FAFSA is not the only financial aid application your family may need to complete. Roughly 400 colleges, most of them private, require a second form called the CSS Profile.</p>
+          <p>The CSS Profile is administered by the College Board, not the federal government. It is significantly more detailed than the FAFSA and uses a different methodology to assess a family's ability to pay.</p>
+
+          <h3 class="post-section__subheading">Key differences between the two forms</h3>
+
+          <ul class="post-list">
+            <li>The CSS Profile considers equity in the family's primary residence. The FAFSA does not.</li>
+            <li>The CSS Profile often requests information from the noncustodial parent in divorced or separated families. The FAFSA, in most cases, does not.</li>
+            <li>The CSS Profile asks about small business ownership, medical expenses, and other factors that can meaningfully adjust the assessment of need.</li>
+            <li>The CSS Profile charges a per-school fee, with waivers available for families who qualify.</li>
+          </ul>
+
+          <p>If your student is applying to any school that requires the CSS Profile, both forms must be completed. Schools that use the CSS Profile typically have larger institutional aid budgets and meet a higher percentage of demonstrated financial need, which can make the additional work worthwhile for the right families.</p>
+        </div>
+
+
+        <!-- ── SECTION 8 ── -->
+        <div class="post-section">
+          <h2 class="post-section__heading">What Happens After You Submit</h2>
+          <p>Once the FAFSA is submitted, federal processing typically takes one to three business days for online applications.</p>
+          <p>Within that window, several things happen. The student and contributors receive a confirmation email, which should be saved as proof of submission. The student then receives a Student Aid Report (SAR), which summarizes the data on the FAFSA and confirms the calculated SAI. Each college listed on the FAFSA receives an Institutional Student Information Record (ISIR), which is the school's version of the same data.</p>
+          <p>Aid packaging then happens on each school's individual timeline. Most schools begin packaging aid for new students in January and release financial aid award letters between February and April, alongside or shortly after admissions decisions.</p>
+          <p>If any information on your FAFSA changes, or if your family's financial circumstances shift significantly after submission, you can file corrections through the StudentAid.gov portal. You can also contact individual financial aid offices to request a professional judgment review, which is the formal mechanism for <a href="article-appealing-financial-aid-award.html" style="color: var(--gold); font-weight: 600;">appealing a financial aid decision</a> based on circumstances not reflected on the original FAFSA.</p>
+        </div>
+
+
+        <!-- ── SECTION 9 (FAQ) ── -->
+        <div class="post-section">
+          <h2 class="post-section__heading">Frequently Asked Questions</h2>
+
+          <p><strong>Do I need to file the FAFSA every year?</strong><br>
+          Yes. Each academic year requires a new FAFSA submission. Aid from one year does not carry forward to the next.</p>
+
+          <p><strong>Which year's tax information is used for the 2026-27 FAFSA?</strong><br>
+          The 2026-27 FAFSA uses income and tax information from the 2024 tax year. This is the prior-prior year standard, and it means families do not need to rush to complete their current-year taxes before filing.</p>
+
+          <p><strong>What if my parents are divorced or separated?</strong><br>
+          Under the current FAFSA rules, the parent who provided more than half of the student's financial support in the past 12 months is the required contributor. This is different from the old rule, which used the custodial parent. If that parent has remarried, the stepparent is also a contributor.</p>
+
+          <p><strong>Will filing the FAFSA affect my taxes in any way?</strong><br>
+          No. The FAFSA is an aid application, not a tax document. It does not alter or trigger any tax consequences. The IRS Direct Data Exchange only imports data you already reported to the IRS.</p>
+
+          <p><strong>Is there a cost to submit the FAFSA?</strong><br>
+          No. The first "F" in FAFSA stands for "Free." Any site that asks you to pay to submit the form is not the official application. The only official site is StudentAid.gov.</p>
+
+          <p><strong>What if I miss a deadline?</strong><br>
+          If you miss a state or institutional priority deadline, you may still be eligible for federal aid and some forms of institutional aid. File as soon as possible even if you are late. Missing the federal deadline of June 30, 2027 for the 2026-27 cycle means you lose eligibility for federal aid entirely for that year.</p>
+        </div>
+
+
+        <!-- ── CLOSING CTA BOX — Do not remove ── -->
+        <div class="post-cta">
+          <span class="post-cta__eyebrow">Ready to Take Action?</span>
+          <h2 class="post-cta__title">Get a Plan Built Around Your Family</h2>
+          <p class="post-cta__body">
+            Every family's situation is different. A strategy session with an advisor gives you a clear, personalized roadmap for your student's college journey.
+          </p>
+          <div class="post-cta__buttons">
+            <a href="https://meetings-na2.hubspot.com/will-smethurst/cfs-website-meeting" class="btn btn--primary btn--large btn--arrow" target="_blank" rel="noopener">Schedule a Consultation</a>
+            <a href="webinar-library.html" class="btn btn--ghost btn--large">Watch the Free Workshop</a>
+          </div>
+        </div>
+
+      </div>
+    </article>
+
+  </main>
+
+
+  <!-- ============================================================
+       RELATED ARTICLES SECTION
+       Instructions:
+       — Change "More in CATEGORY" heading to match this article's category
+       — Link to other articles in the same category
+       — Max 3 cards. Never link an article to itself.
+       — If fewer than 3 related articles exist, delete the extra card blocks
+       — When a new article in this category is published, come back and
+         replace the oldest placeholder card with the live link
+  ============================================================ -->
+  <section class="related-posts" aria-label="Related articles">
+    <div class="container">
+
+      <div class="related-posts__header">
+        <div>
+          <span class="related-posts__eyebrow">Keep Reading</span>
+          <!-- REPLACE: category name -->
+          <h2 class="related-posts__title">More in Financial Strategy</h2>
+        </div>
+        <a href="articles.html" class="related-posts__all">All Articles</a>
+      </div>
+
+      <div class="related-posts__grid">
+
+        <!-- Related Card 1 -->
+        <a href="articles.html" class="related-card">
+          <span class="related-card__category">Financial Strategy</span>
+          <h3 class="related-card__title">529 Plans, Savings Strategies, and What the CSS Profile Sees</h3>
+          <p class="related-card__excerpt">How college savings are structured can have meaningful implications for institutional aid eligibility. Learn where families have room to plan strategically.</p>
+          <div class="related-card__footer">
+            <span class="related-card__date">Coming Soon</span>
+            <span class="related-card__link">Read More</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__brand-name">Strategy West</div>
+          <div class="footer__brand-tagline">College Planning</div>
+          <p class="footer__brand-desc">Expert, advisor-led guidance for families navigating the college planning process, from freshman year through enrollment.</p>
+        </div>
+        <div class="footer__col">
+          <span class="footer__col-label">Navigate</span>
+          <nav class="footer__links" aria-label="Footer navigation">
+            <a href="index.html"        class="footer__link">Home</a>
+            <a href="how-it-works.html" class="footer__link">How It Works</a>
+            <a href="our-process.html"  class="footer__link">Our Process</a>
+            <a href="pillars.html"      class="footer__link">The 3 Pillars</a>
+            <a href="about.html"        class="footer__link">About</a>
+          </nav>
+        </div>
+        <div class="footer__col">
+          <span class="footer__col-label">Resources</span>
+          <nav class="footer__links" aria-label="Resources navigation">
+            <a href="blogs.html"          class="footer__link">Blogs</a>
+            <a href="articles.html"       class="footer__link">Articles</a>
+            <a href="timeline.html"       class="footer__link">Timeline</a>
+            <a href="webinar-library.html" class="footer__link">Free Workshop</a>
+            <a href="packages.html"       class="footer__link">Packages</a>
+          </nav>
+        </div>
+        <div class="footer__col">
+          <span class="footer__col-label">Get in Touch</span>
+          <div class="footer__contact-line">
+            <span class="footer__contact-icon" aria-hidden="true">✉</span>
+            <span class="footer__contact-text">info@swfcollegeplanning.com</span>
+          </div>
+          <div class="footer__contact-line">
+            <span class="footer__contact-icon" aria-hidden="true">◎</span>
+            <span class="footer__contact-text">Serving families nationwide<br>via virtual consultation &amp; in-person in Utah</span>
+          </div>
+          <a href="https://meetings-na2.hubspot.com/will-smethurst/cfs-website-meeting" class="footer__cta-link" target="_blank" rel="noopener">Schedule a Consultation</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span class="footer__copyright">&copy; <span id="footer-year"></span> Strategy West College Planning. All rights reserved.</span>
+        <div class="footer__legal-links">
+          <a href="privacy.html" class="footer__legal-link">Privacy Policy</a>
+          <a href="terms.html"   class="footer__legal-link">Terms of Use</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ============================================================
+       JAVASCRIPT
+  ============================================================ -->
+  <script>
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+    const toggle   = document.getElementById('nav-toggle');
+    const drawer   = document.getElementById('nav-drawer');
+    const overlay  = document.getElementById('nav-overlay');
+    const closeBtn = document.getElementById('nav-close');
+
+    function openDrawer() { drawer.classList.add('is-open'); toggle.setAttribute('aria-expanded', 'true'); document.body.style.overflow = 'hidden'; }
+    function closeDrawer() { drawer.classList.remove('is-open'); toggle.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; }
+
+    toggle.addEventListener('click', openDrawer);
+    closeBtn.addEventListener('click', closeDrawer);
+    overlay.addEventListener('click', closeDrawer);
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && drawer.classList.contains('is-open')) closeDrawer(); });
+    drawer.querySelectorAll('.nav__drawer-link, .nav__drawer-ctas .btn').forEach(link => { link.addEventListener('click', closeDrawer); });
+
+    const accordionBtn   = document.getElementById('resources-accordion-btn');
+    const accordionPanel = document.getElementById('resources-accordion-panel');
+    if (accordionBtn && accordionPanel) {
+      accordionBtn.addEventListener('click', function () {
+        const isOpen = accordionPanel.classList.toggle('is-open');
+        accordionBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+    }
+  </script>
+
+</body>
+</html>
