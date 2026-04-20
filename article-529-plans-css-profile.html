@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ============================================================
+       SEO — FILL IN FOR EVERY ARTICLE
+       Title:       Keep under 60 characters
+       Description: Keep under 155 characters
+  ============================================================ -->
+  <title>529 Plans, Savings Strategies, and the CSS Profile | Strategy West College Planning</title>
+  <meta name="description" content="How you structure college savings affects institutional aid eligibility. Learn how 529 plans, ownership, and the CSS Profile interact under 2026 rules." />
+
+  <!-- Canonical URL — replace slug below, keep domain as-is -->
+  <link rel="canonical" href="https://www.swfcollegeplanning.com/article-529-plans-css-profile" />
+
+  <!-- Open Graph (social sharing) -->
+  <meta property="og:type"        content="article" />
+  <meta property="og:title"       content="529 Plans, Savings Strategies, and the CSS Profile" />
+  <meta property="og:description" content="How you structure college savings affects institutional aid eligibility. Learn how 529 plans, ownership, and the CSS Profile interact under 2026 rules." />
+  <meta property="og:url"         content="https://www.swfcollegeplanning.com/article-529-plans-css-profile" />
+  <meta property="og:site_name"   content="Strategy West College Planning" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet" />
+
+  <style>
+
+    /* ============================================================
+       CSS CUSTOM PROPERTIES
+    ============================================================ */
+    :root {
+      --navy:           #064E3B;
+      --navy-mid:       #152540;
+      --navy-light:     #1E3357;
+      --gold:           #C4963A;
+      --gold-light:     #D4A84B;
+      --gold-pale:      #F0E2C4;
+      --ivory:          #F7F4EE;
+      --ivory-warm:     #EDE9DF;
+      --white:          #FFFFFF;
+      --text-dark:      #1A1A2E;
+      --text-body:      #3A3A4A;
+      --text-muted:     #6B6B7E;
+      --text-light:     #9A9AAA;
+      --border:         #E2DDD4;
+      --shadow-sm:      0 2px 12px rgba(13, 27, 46, 0.08);
+      --shadow-md:      0 8px 32px rgba(13, 27, 46, 0.12);
+      --shadow-lg:      0 20px 60px rgba(13, 27, 46, 0.18);
+      --shadow-gold:    0 4px 18px rgba(196, 150, 58, 0.38);
+      --font-display:   'Cormorant Garamond', Georgia, serif;
+      --font-body:      'DM Sans', system-ui, -apple-system, sans-serif;
+      --radius-sm:      6px;
+      --radius-md:      12px;
+      --radius-lg:      20px;
+      --container-max:    1080px;
+      --container-narrow: 740px;
+      --gutter:           24px;
+      --transition:      all 0.25s ease;
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text-body);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ============================================================
+       LAYOUT
+    ============================================================ */
+    .container {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+    .container--narrow {
+      max-width: var(--container-narrow);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    /* ============================================================
+       BUTTONS
+    ============================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      padding: 16px 34px;
+      border-radius: var(--radius-sm);
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+      white-space: nowrap;
+      line-height: 1;
+    }
+    .btn--primary { background: var(--gold); color: var(--white); box-shadow: var(--shadow-gold); }
+    .btn--primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn--outline { background: transparent; color: var(--gold); border: 1.5px solid var(--gold); }
+    .btn--outline:hover { background: var(--gold); color: var(--white); transform: translateY(-2px); }
+    .btn--ghost { background: transparent; color: var(--navy); border: 1.5px solid var(--border); }
+    .btn--ghost:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+    .btn--white-outline { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,0.45); }
+    .btn--white-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.08); transform: translateY(-2px); }
+    .btn--large { font-size: 16px; padding: 18px 42px; }
+    .btn--small { font-size: 13px; padding: 10px 22px; }
+    .btn--arrow::after { content: '→'; font-size: 17px; line-height: 1; transition: transform 0.2s ease; }
+    .btn--arrow:hover::after { transform: translateX(4px); }
+
+    /* ============================================================
+       NAVIGATION
+    ============================================================ */
+    .nav {
+      background: var(--navy);
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      box-shadow: 0 2px 20px rgba(6, 78, 59, 0.3);
+    }
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+      gap: 24px;
+    }
+    .nav__brand { display: flex; flex-direction: column; gap: 2px; flex-shrink: 0; text-decoration: none; }
+    .nav__brand-name { font-family: var(--font-display); font-size: 18px; font-weight: 600; color: var(--white); letter-spacing: 0.01em; line-height: 1.2; }
+    .nav__brand-tagline { font-family: var(--font-body); font-size: 9.5px; font-weight: 400; color: var(--gold-pale); letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.7; }
+    .nav__links { display: none; align-items: center; gap: 2px; }
+    @media (min-width: 960px) { .nav__links { display: flex; } }
+    .nav__link { font-family: var(--font-body); font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.72); padding: 6px 14px; border-radius: var(--radius-sm); transition: var(--transition); white-space: nowrap; }
+    .nav__link:hover { color: var(--white); background: rgba(255,255,255,0.07); }
+    .nav__ctas { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    @media (max-width: 959px) { .nav__ctas { display: none; } }
+    .nav__cta-webinar { display: none; }
+    @media (min-width: 640px) { .nav__cta-webinar { display: inline-flex; } }
+    .nav__hamburger { display: flex; flex-direction: column; justify-content: center; gap: 5px; width: 36px; height: 36px; background: none; border: none; cursor: pointer; padding: 6px; border-radius: var(--radius-sm); transition: var(--transition); }
+    .nav__hamburger:hover { background: rgba(255,255,255,0.08); }
+    .nav__hamburger span { display: block; height: 1.5px; width: 100%; background: var(--gold); border-radius: 2px; transition: var(--transition); }
+    @media (min-width: 960px) { .nav__hamburger { display: none; } }
+
+    /* Dropdown */
+    .nav__dropdown { position: relative; padding-bottom: 12px; margin-bottom: -12px; }
+    .nav__dropdown-trigger { display: inline-flex; align-items: center; gap: 5px; font-family: var(--font-body); font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.72); padding: 6px 14px; border-radius: var(--radius-sm); background: none; border: none; cursor: pointer; transition: var(--transition); white-space: nowrap; line-height: 1.7; }
+    .nav__dropdown-trigger:hover, .nav__dropdown:hover .nav__dropdown-trigger, .nav__dropdown:focus-within .nav__dropdown-trigger { color: var(--white); background: rgba(255,255,255,0.07); }
+    .nav__dropdown-chevron { display: inline-block; width: 10px; height: 10px; flex-shrink: 0; opacity: 0.55; transition: transform 0.22s ease, opacity 0.22s ease; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23ffffff' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: center; background-size: contain; }
+    .nav__dropdown:hover .nav__dropdown-chevron, .nav__dropdown:focus-within .nav__dropdown-chevron { transform: rotate(180deg); opacity: 0.9; }
+    .nav__dropdown-panel { position: absolute; top: calc(100% + 2px); left: 50%; transform: translateX(-50%) translateY(-4px); min-width: 180px; background: var(--navy); border: 1px solid rgba(255,255,255,0.09); border-radius: var(--radius-md); box-shadow: 0 12px 40px rgba(6,20,46,0.38), 0 2px 8px rgba(6,20,46,0.18); padding: 8px; opacity: 0; pointer-events: none; transition: opacity 0.2s ease, transform 0.2s ease; z-index: 400; }
+    .nav__dropdown-panel::before { content: ''; position: absolute; top: -5px; left: 50%; transform: translateX(-50%); width: 10px; height: 10px; background: var(--navy); border-left: 1px solid rgba(255,255,255,0.09); border-top: 1px solid rgba(255,255,255,0.09); clip-path: polygon(0 100%, 50% 0, 100% 100%); }
+    .nav__dropdown:hover .nav__dropdown-panel, .nav__dropdown:focus-within .nav__dropdown-panel { opacity: 1; pointer-events: all; transform: translateX(-50%) translateY(0); }
+    .nav__dropdown-link { display: block; font-family: var(--font-body); font-size: 14px; font-weight: 400; color: rgba(255,255,255,0.68); padding: 9px 16px; border-radius: var(--radius-sm); transition: var(--transition); white-space: nowrap; }
+    .nav__dropdown-link:hover { color: var(--white); background: rgba(255,255,255,0.07); padding-left: 20px; border-left: 2px solid var(--gold); margin-left: -2px; }
+    .nav__dropdown-divider { height: 1px; background: rgba(255,255,255,0.06); margin: 4px 8px; }
+
+    /* Mobile Accordion */
+    .nav__accordion { width: 100%; }
+    .nav__accordion-trigger { display: flex; align-items: center; justify-content: space-between; width: 100%; font-family: var(--font-body); font-size: 16px; font-weight: 500; color: rgba(255,255,255,0.8); padding: 12px 16px; border-radius: var(--radius-sm); background: none; border: none; cursor: pointer; transition: var(--transition); text-align: left; }
+    .nav__accordion-trigger:hover { color: var(--white); background: rgba(255,255,255,0.07); }
+    .nav__accordion-chevron { display: inline-block; width: 12px; height: 12px; flex-shrink: 0; opacity: 0.45; transition: transform 0.25s ease, opacity 0.25s ease; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23ffffff' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: center; background-size: contain; }
+    .nav__accordion-trigger[aria-expanded="true"] .nav__accordion-chevron { transform: rotate(180deg); opacity: 0.85; }
+    .nav__accordion-panel { display: none; padding: 4px 0 4px 12px; }
+    .nav__accordion-panel.is-open { display: block; }
+    .nav__accordion-links { display: flex; flex-direction: column; gap: 2px; padding: 4px 0; }
+    .nav__accordion-link { font-family: var(--font-body); font-size: 14.5px; font-weight: 400; color: rgba(255,255,255,0.6); padding: 8px 12px; border-radius: var(--radius-sm); transition: var(--transition); text-decoration: none; display: block; }
+    .nav__accordion-link:hover { color: var(--white); background: rgba(255,255,255,0.06); }
+
+    /* Drawer */
+    .nav__drawer { position: fixed; inset: 0; z-index: 300; pointer-events: none; }
+    .nav__drawer-overlay { position: absolute; inset: 0; background: rgba(6,20,46,0.65); opacity: 0; transition: opacity 0.3s ease; }
+    .nav__drawer-panel { position: absolute; top: 0; right: 0; bottom: 0; width: min(320px, 85vw); background: var(--navy); padding: 28px 28px 40px; display: flex; flex-direction: column; transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); box-shadow: var(--shadow-lg); }
+    .nav__drawer.is-open { pointer-events: all; }
+    .nav__drawer.is-open .nav__drawer-overlay { opacity: 1; }
+    .nav__drawer.is-open .nav__drawer-panel { transform: translateX(0); }
+    .nav__drawer-close { align-self: flex-end; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.07); border: none; border-radius: 50%; color: var(--white); font-size: 20px; cursor: pointer; margin-bottom: 32px; transition: var(--transition); }
+    .nav__drawer-close:hover { background: rgba(255,255,255,0.14); }
+    .nav__drawer-links { display: flex; flex-direction: column; gap: 4px; flex: 1; }
+    .nav__drawer-link { font-family: var(--font-body); font-size: 16px; font-weight: 500; color: rgba(255,255,255,0.8); padding: 12px 16px; border-radius: var(--radius-sm); transition: var(--transition); }
+    .nav__drawer-link:hover { color: var(--white); background: rgba(255,255,255,0.07); }
+    .nav__drawer-ctas { display: flex; flex-direction: column; gap: 10px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); }
+    .nav__drawer-ctas .btn { width: 100%; justify-content: center; }
+
+    /* ============================================================
+       PAGE HEADER
+    ============================================================ */
+    .post-header {
+      background: var(--navy);
+      padding: 64px 0 72px;
+      position: relative;
+      overflow: hidden;
+    }
+    .post-header::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -8%;
+      width: 480px;
+      height: 480px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(196,150,58,0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .post-header__inner { position: relative; z-index: 2; animation: fadeUp 0.6s ease both; }
+    .post-header__back { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.5); margin-bottom: 32px; transition: var(--transition); }
+    .post-header__back::before { content: '←'; font-size: 14px; transition: transform 0.2s ease; }
+    .post-header__back:hover { color: rgba(255,255,255,0.8); }
+    .post-header__back:hover::before { transform: translateX(-4px); }
+    .post-header__meta-top { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+    .post-header__category { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
+    .post-header__pill { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy); background: var(--gold); border-radius: 100px; padding: 4px 12px; }
+    .post-header__title { font-family: var(--font-display); font-size: clamp(32px, 5vw, 54px); font-weight: 600; line-height: 1.12; color: var(--white); letter-spacing: -0.01em; margin-bottom: 24px; max-width: 820px; }
+    .post-header__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 20px; }
+    .post-header__meta-item { font-size: 13px; color: rgba(255,255,255,0.45); display: flex; align-items: center; gap: 6px; }
+    .post-header__meta-dot { display: inline-block; width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.25); }
+
+    /* ============================================================
+       ARTICLE BODY
+    ============================================================ */
+    .post-body {
+      background: var(--white);
+      padding: 72px 0 80px;
+    }
+    .post-body__content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    /* Article type badge */
+    .post-type-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--ivory);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 36px;
+    }
+
+    /* Intro paragraph */
+    .post-intro {
+      font-size: 18px;
+      line-height: 1.78;
+      color: var(--text-body);
+      margin-bottom: 48px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Sections */
+    .post-section { margin-bottom: 52px; }
+    .post-section__heading {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 3vw, 30px);
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 18px;
+      padding-top: 8px;
+    }
+    .post-section__heading::after {
+      content: '';
+      display: block;
+      width: 36px;
+      height: 2px;
+      background: var(--gold);
+      border-radius: 2px;
+      margin-top: 12px;
+    }
+    .post-section__subheading {
+      font-family: var(--font-display);
+      font-size: clamp(18px, 2.5vw, 22px);
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.3;
+      margin-top: 32px;
+      margin-bottom: 12px;
+    }
+    .post-section p { font-size: 16.5px; line-height: 1.78; color: var(--text-body); margin-bottom: 20px; }
+    .post-section p:last-child { margin-bottom: 0; }
+
+    /* Callout box */
+    .post-callout {
+      background: var(--ivory);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: 24px 28px;
+      margin: 36px 0;
+    }
+    .post-callout p { font-size: 16px; line-height: 1.72; color: var(--text-body); margin: 0; }
+    .post-callout strong { color: var(--navy); font-weight: 600; }
+
+    /* Bulleted list */
+    .post-list { list-style: none; margin: 20px 0 28px; display: flex; flex-direction: column; gap: 12px; }
+    .post-list li { display: flex; align-items: flex-start; gap: 14px; font-size: 16px; line-height: 1.7; color: var(--text-body); }
+    .post-list li::before { content: ''; display: block; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 10px; }
+
+    /* Key terms / definition block */
+    .post-definition {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 24px 28px;
+      margin: 36px 0;
+      background: var(--white);
+    }
+    .post-definition__term {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .post-definition__desc {
+      font-size: 15.5px;
+      line-height: 1.7;
+      color: var(--text-body);
+      margin: 0;
+    }
+
+    /* Bottom CTA */
+    .post-cta {
+      background: var(--ivory);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 48px 40px;
+      text-align: center;
+      margin-top: 64px;
+    }
+    .post-cta__eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; display: block; }
+    .post-cta__title { font-family: var(--font-display); font-size: clamp(22px, 3vw, 30px); font-weight: 600; color: var(--navy); line-height: 1.2; margin-bottom: 14px; }
+    .post-cta__body { font-size: 15.5px; line-height: 1.7; color: var(--text-muted); margin-bottom: 28px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .post-cta__buttons { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px; }
+
+    /* ============================================================
+       RELATED POSTS — Same as blog template
+    ============================================================ */
+    .related-posts {
+      background: var(--ivory);
+      padding: 64px 0;
+      border-top: 1px solid var(--border);
+    }
+    .related-posts__header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 36px;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .related-posts__eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 8px; }
+    .related-posts__title { font-family: var(--font-display); font-size: clamp(22px, 3vw, 28px); font-weight: 600; color: var(--navy); line-height: 1.2; }
+    .related-posts__all { font-size: 13px; font-weight: 600; color: var(--gold); white-space: nowrap; transition: var(--transition); display: inline-flex; align-items: center; gap: 6px; }
+    .related-posts__all::after { content: '→'; transition: transform 0.2s ease; }
+    .related-posts__all:hover::after { transform: translateX(4px); }
+    .related-posts__grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+    @media (min-width: 640px) { .related-posts__grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 960px) { .related-posts__grid { grid-template-columns: repeat(3, 1fr); } }
+    .related-card {
+      display: flex;
+      flex-direction: column;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      transition: var(--transition);
+      text-decoration: none;
+    }
+    .related-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: rgba(196,150,58,0.3); }
+    .related-card__category { font-size: 10px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; display: block; }
+    .related-card__title { font-family: var(--font-display); font-size: 18px; font-weight: 600; color: var(--navy); line-height: 1.3; margin-bottom: 10px; flex: 1; }
+    .related-card__excerpt { font-size: 13.5px; line-height: 1.65; color: var(--text-muted); margin-bottom: 16px; }
+    .related-card__footer { display: flex; align-items: center; justify-content: space-between; padding-top: 14px; border-top: 1px solid var(--border); margin-top: auto; }
+    .related-card__date { font-size: 12px; color: var(--text-light); }
+    .related-card__link { font-size: 12px; font-weight: 600; color: var(--gold); display: inline-flex; align-items: center; gap: 4px; }
+    .related-card__link::after { content: '→'; transition: transform 0.2s ease; }
+    .related-card:hover .related-card__link::after { transform: translateX(3px); }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    .footer { background: #0a3528; padding: 64px 0 0; border-top: 1px solid rgba(255,255,255,0.06); }
+    .footer__grid { display: grid; grid-template-columns: 1fr; gap: 40px; }
+    @media (min-width: 640px) { .footer__grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 960px) { .footer__grid { grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 48px; } }
+    .footer__brand-name { font-family: var(--font-display); font-size: 20px; font-weight: 600; color: var(--white); margin-bottom: 4px; letter-spacing: 0.01em; }
+    .footer__brand-tagline { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-pale); opacity: 0.6; margin-bottom: 16px; }
+    .footer__brand-desc { font-size: 14px; line-height: 1.65; color: rgba(255,255,255,0.4); max-width: 280px; }
+    .footer__col-label { font-size: 10.5px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; display: block; }
+    .footer__links { display: flex; flex-direction: column; gap: 4px; }
+    .footer__link { font-size: 14px; color: rgba(255,255,255,0.55); padding: 5px 0; transition: var(--transition); }
+    .footer__link:hover { color: var(--white); }
+    .footer__contact-line { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; }
+    .footer__contact-icon { font-size: 14px; color: var(--gold); opacity: 0.7; flex-shrink: 0; margin-top: 2px; }
+    .footer__contact-text { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.5; }
+    .footer__cta-link { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 500; color: var(--gold); margin-top: 16px; transition: var(--transition); }
+    .footer__cta-link:hover { color: var(--gold-light); }
+    .footer__cta-link::after { content: '→'; transition: transform 0.2s ease; }
+    .footer__cta-link:hover::after { transform: translateX(3px); }
+    .footer__bottom { margin-top: 56px; padding: 24px 0; border-top: 1px solid rgba(255,255,255,0.07); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+    .footer__copyright { font-size: 12px; color: rgba(255,255,255,0.3); }
+    .footer__legal-links { display: flex; gap: 20px; }
+    .footer__legal-link { font-size: 12px; color: rgba(255,255,255,0.3); transition: var(--transition); }
+    .footer__legal-link:hover { color: rgba(255,255,255,0.6); }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 599px) {
+      .post-header { padding: 48px 0 56px; }
+      .post-body { padding: 48px 0 56px; }
+      .post-cta { padding: 36px 24px; }
+      .post-cta__buttons { flex-direction: column; align-items: stretch; }
+      .post-cta__buttons .btn { justify-content: center; }
+      .footer__bottom { flex-direction: column; align-items: flex-start; }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+  </style>
+</head>
+
+<body id="top">
+
+  <!-- ============================================================
+       NAVIGATION
+  ============================================================ -->
+  <header class="nav" role="banner">
+    <div class="container">
+      <div class="nav__inner">
+
+        <a href="index.html" class="nav__brand" aria-label="Strategy West College Planning, Home">
+          <img src="images/logo.png" alt="Strategy West College Planning" style="height: 120px; width: auto; display: block;">
+        </a>
+
+        <nav class="nav__links" aria-label="Primary navigation">
+          <a href="how-it-works.html" class="nav__link">How It Works</a>
+          <a href="our-process.html" class="nav__link">Our Process</a>
+          <a href="pillars.html" class="nav__link">The 3 Pillars</a>
+
+          <div class="nav__dropdown" role="navigation" aria-label="Resources submenu">
+            <button class="nav__dropdown-trigger" aria-haspopup="true" aria-expanded="false" id="resources-dropdown-btn" type="button">
+              Resources
+              <span class="nav__dropdown-chevron" aria-hidden="true"></span>
+            </button>
+            <div class="nav__dropdown-panel" role="menu" aria-labelledby="resources-dropdown-btn">
+              <a href="blogs.html"    class="nav__dropdown-link" role="menuitem">Blogs</a>
+              <a href="articles.html" class="nav__dropdown-link nav__dropdown-link--active" role="menuitem">Articles</a>
+              <div class="nav__dropdown-divider" role="separator" aria-hidden="true"></div>
+              <a href="timeline.html" class="nav__dropdown-link" role="menuitem">Timeline</a>
+              <a href="packages.html" class="nav__dropdown-link" role="menuitem">Packages</a>
+              <div class="nav__dropdown-divider" role="separator" aria-hidden="true"></div>
+              <a href="webinar-library.html" class="nav__dropdown-link" role="menuitem">Free Workshop</a>
+            </div>
+          </div>
+
+          <a href="about.html" class="nav__link">About</a>
+        </nav>
+
+        <div class="nav__ctas">
+          <a href="webinar-library.html" class="btn btn--outline btn--small nav__cta-webinar">Free Workshop</a>
+          <a href="https://meetings-na2.hubspot.com/will-smethurst/cfs-website-meeting" class="btn btn--primary btn--small" target="_blank" rel="noopener">Schedule a Consultation</a>
+        </div>
+
+        <button class="nav__hamburger" id="nav-toggle" aria-label="Open navigation menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="nav__drawer" id="nav-drawer" role="dialog" aria-label="Navigation menu" aria-modal="true">
+    <div class="nav__drawer-overlay" id="nav-overlay"></div>
+    <div class="nav__drawer-panel">
+      <button class="nav__drawer-close" id="nav-close" aria-label="Close navigation">✕</button>
+      <nav class="nav__drawer-links" aria-label="Mobile navigation">
+        <a href="index.html" class="nav__drawer-link">Home</a>
+        <a href="how-it-works.html" class="nav__drawer-link">How It Works</a>
+        <a href="our-process.html" class="nav__drawer-link">Our Process</a>
+        <a href="pillars.html" class="nav__drawer-link">The 3 Pillars</a>
+        <div class="nav__accordion">
+          <button class="nav__accordion-trigger" aria-expanded="false" aria-controls="resources-accordion-panel" id="resources-accordion-btn" type="button">
+            Resources
+            <span class="nav__accordion-chevron" aria-hidden="true"></span>
+          </button>
+          <div class="nav__accordion-panel" id="resources-accordion-panel" role="region" aria-labelledby="resources-accordion-btn">
+            <div class="nav__accordion-links">
+              <a href="blogs.html"    class="nav__accordion-link nav__drawer-link">Blogs</a>
+              <a href="articles.html" class="nav__accordion-link nav__drawer-link">Articles</a>
+              <a href="timeline.html" class="nav__accordion-link nav__drawer-link">Timeline</a>
+              <a href="packages.html" class="nav__accordion-link nav__drawer-link">Packages</a>
+              <a href="webinar-library.html" class="nav__accordion-link nav__drawer-link">Free Workshop</a>
+            </div>
+          </div>
+        </div>
+        <a href="about.html" class="nav__drawer-link">About</a>
+      </nav>
+      <div class="nav__drawer-ctas">
+        <a href="webinar-library.html" class="btn btn--outline">Free Workshop</a>
+        <a href="https://meetings-na2.hubspot.com/will-smethurst/cfs-website-meeting" class="btn btn--primary" target="_blank" rel="noopener">Schedule a Consultation</a>
+      </div>
+    </div>
+  </div>
+
+
+  <main>
+
+    <!-- ============================================================
+         PAGE HEADER
+         FILL IN: category, pill type, title, publish date, read time
+    ============================================================ -->
+    <section class="post-header" aria-label="Article header">
+      <div class="container">
+        <div class="post-header__inner">
+
+          <a href="articles.html" class="post-header__back">Back to Articles</a>
+
+          <div class="post-header__meta-top">
+            <!-- REPLACE: Category (Financial Strategy / Academic Planning / School Selection / Financial Aid / Planning / Admissions) -->
+            <span class="post-header__category">Financial Strategy</span>
+            <!-- REPLACE: Pill type — use either "Guide" or "Article" -->
+            <span class="post-header__pill">Guide</span>
+          </div>
+
+          <!-- REPLACE: Full article title -->
+          <h1 class="post-header__title">529 Plans, Savings Strategies, and What the CSS Profile Sees</h1>
+
+          <!-- REPLACE: Publish date and estimated read time -->
+          <div class="post-header__meta">
+            <span class="post-header__meta-item">May 7, 2026</span>
+            <span class="post-header__meta-dot" aria-hidden="true"></span>
+            <span class="post-header__meta-item">18 min read</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         ARTICLE BODY
+         Instructions:
+         — .post-type-badge shows at the top of the reading column (Guide or Article)
+         — .post-intro is the opening paragraph (renders larger)
+         — Add as many .post-section blocks as needed
+         — Use .post-callout for key takeaways
+         — Use .post-list for bullet lists
+         — Use .post-definition for key term definitions (optional, delete if not needed)
+         — Use .post-section__subheading for H3-level subheadings within a section
+         — Delete any blocks you don't need
+    ============================================================ -->
+    <article class="post-body">
+      <div class="post-body__content">
+
+        <!-- Type badge — matches pill in header. Use "Guide" or "Article" -->
+        <div class="post-type-badge">Guide</div>
+
+        <!-- ── INTRO PARAGRAPH ── -->
+        <p class="post-intro">
+          College savings decisions are usually made years before a student ever submits a FAFSA. Yet the structure of those savings, where the money lives, who owns the account, and how assets are titled, has meaningful consequences when aid time comes. Two families with identical savings totals can end up with very different aid packages simply because of how the money was set up. This guide explains how 529 plans and other college savings vehicles are treated under the current FAFSA rules, how the CSS Profile sees things differently, and where families have room to plan strategically.
+        </p>
+
+
+        <!-- ── SECTION 1 ── -->
+        <div class="post-section">
+          <h2 class="post-section__heading">Most Families Misunderstand How College Savings Affect Aid</h2>
+          <p>There is a pervasive belief among families that saving for college actively hurts financial aid. The logic goes that if a family has $50,000 in a 529 plan, colleges will expect them to spend that money and reduce aid accordingly, dollar for dollar. The reality is much more forgiving.</p>
+          <p>Under the current FAFSA, a parent-owned 529 plan is assessed at a maximum rate of 5.64% of its value. That means a $50,000 account increases the Student Aid Index by roughly $2,820, not $50,000. The impact on aid eligibility is a small fraction of the account balance, not the full amount. Families who let this misconception drive their savings decisions often save less than they should, lose out on meaningful tax advantages, and end up no better off on aid than families who saved aggressively.</p>
+          <p>The more important question is not whether to save, but how to structure savings for maximum effectiveness. That is where strategy begins to matter.</p>
+        </div>
+
+
+        <!-- ── SECTION 2 ── -->
+        <div class="post-section">
+          <h2 class="post-section__heading">What a 529 Plan Actually Is</h2>
+          <p>A 529 plan is a tax-advantaged savings account designed specifically for education expenses. The accounts are authorized under Section 529 of the Internal Revenue Code, which is where the name comes from. They are administered by individual states, with each state offering one or more plan options that families can choose from regardless of where they live.</p>
+        </div>
+
+
+        <!-- ── DEFINITION BLOCK 1 ── -->
+        <div class="post-definition">
+          <div class="post-definition__term">529 Plan</div>
+          <p class="post-definition__desc">A state-administered, tax-advantaged investment account designed for education expenses. Contributions are made with after-tax dollars. Earnings grow tax-free, and withdrawals used for qualified education expenses (tuition, fees, room and board, books, required equipment) are not subject to federal income tax. Many states also offer income tax deductions for contributions to their own state plan.</p>
+        </div>
+
+
+        <div class="post-section">
+          <h3 class="post-section__subheading">Key advantages of a 529 plan</h3>
+          <ul class="post-list">
+            <li>Earnings grow federal income tax-free when used for qualified education expenses</li>
+            <li>Most states offer a tax deduction or credit on contributions to that state's plan</li>
+            <li>Contributions count toward the annual gift tax exclusion, which is $19,000 per donor per beneficiary in 2026</li>
+            <li>A lump-sum contribution of up to $95,000 ($190,000 for married couples) can be made in one year and treated as a five-year gift, a strategy known as superfunding</li>
+            <li>Under SECURE Act 2.0, up to $35,000 in unused 529 funds can now be rolled over into a Roth IRA for the beneficiary over their lifetime, subject to eligibility rules including a 15-year account minimum</li>
+            <li>Account owners retain control over the funds, even though the beneficiary is named as the intended user</li>
+          </ul>
+
+          <h3 class="post-section__subheading">What counts as a qualified expense</h3>
+          <p>Qualified education expenses include tuition, fees, room and board for at least half-time enrollment, books, supplies, required equipment, and up to $10,000 per year in K-12 tuition. Student loan repayment up to a $10,000 lifetime limit per beneficiary also qualifies under current rules. Non-qualified withdrawals are subject to income tax on the earnings plus a 10% federal penalty.</p>
+        </div>
+
+
+        <!-- ── SECTION 3 ── -->
+        <div class="post-section">
+          <h2 class="post-section__heading">The Three Types of 529 Ownership and Why Ownership Matters</h2>
+          <p>The single most important variable in how a 529 plan is treated for financial aid purposes is who owns the account. The same dollar amount of savings can receive three different treatments depending on which of three ownership categories applies.</p>
+
+          <h3 class="post-section__subheading">Parent-owned 529 plans</h3>
+          <p>The parent is the account owner. The student is typically named as the beneficiary. This is the most common ownership structure, and it receives the most favorable standard treatment on the FAFSA.</p>
+
+          <h3 class="post-section__subheading">Student-owned 529 plans</h3>
+          <p>Less common, but sometimes arises when a custodial account is converted into a 529 or when a student opens an account in their own name. For dependent students, these are still treated as parent assets on the FAFSA under current rules, not as student assets.</p>
+
+          <h3 class="post-section__subheading">Third-party owned 529 plans</h3>
+          <p>Owned by a grandparent, aunt, uncle, non-custodial parent, or any other relative, with the student named as beneficiary. These accounts get dramatically different treatment than parent-owned accounts, and the treatment changed significantly with the FAFSA Simplification Act.</p>
+        </div>
+
+
+        <!-- ── SECTION 4 ── -->
+        <div class="post-section">
+          <h2 class="post-section__heading">How the FAFSA Treats 529 Plans in 2026</h2>
+          <p>The current FAFSA, which has been in effect since the 2024-25 cycle following the full implementation of the FAFSA Simplification Act, treats 529 plans quite differently from the way it did before.</p>
+
+          <h3 class="post-section__subheading">Parent-owned 529s are assessed at up to 5.64%</h3>
+          <p>Parent assets are assessed on a bracketed scale that tops out at 5.64%, after a small asset protection allowance. A $100,000 parent-owned 529 plan increases the Student Aid Index by roughly $5,640. This is the standard treatment, and it applies regardless of how many 529 accounts the parent owns, as long as the student is a beneficiary of the one being reported.</p>
+
+          <h3 class="post-section__subheading">Only the applicant's own 529 account is reported</h3>
+          <p>Under current FAFSA rules, parents only report the 529 plan balance for the student applying for aid that year, not the balances of 529 accounts held for the student's siblings. This is a change from the pre-simplification FAFSA, which required reporting all parent-owned 529 accounts combined. Families with multiple children should understand that sibling 529 accounts are no longer visible to the FAFSA.</p>
+
+          <h3 class="post-section__subheading">Grandparent-owned 529s are now invisible to the FAFSA</h3>
+          <p>This is the biggest change and the most strategically significant one. Under the simplified FAFSA, grandparent-owned 529 plans are not reported as assets, and distributions from those plans are not reported as student income. Both the account value and the distributions are effectively invisible to the FAFSA. This is a substantial shift from the old rules, where distributions from grandparent 529s could reduce student aid by up to 50% of the distribution amount.</p>
+
+          <h3 class="post-section__subheading">Student-owned 529s are treated as parent assets</h3>
+          <p>For dependent students, a 529 plan owned by the student is still treated as a parent asset on the FAFSA, assessed at the same 5.64% rate. This differs from other student-owned assets like a checking account, which are assessed at 20%. Ownership of a 529 by a dependent student does not create the aid disadvantage that ownership of other assets would.</p>
+        </div>
+
+
+        <!-- ── CALLOUT BOX 1 ── -->
+        <div class="post-callout">
+          <p><strong>The grandparent 529 opportunity:</strong> Under current FAFSA rules, a grandparent-owned 529 plan is neither reported as an asset nor counted as student income when distributions are made. For families whose college-bound student will attend a FAFSA-only school, a grandparent 529 is effectively the most tax-efficient way to fund college without any aid consequence. The same treatment applies to 529s owned by aunts, uncles, non-custodial parents, and other non-custodial relatives.</p>
+        </div>
+
+
+        <!-- ── SECTION 5 ── -->
+        <div class="post-section">
+          <h2 class="post-section__heading">The Grandparent Loophole Explained</h2>
+          <p>Before the FAFSA Simplification Act, grandparent-owned 529 plans carried a subtle but significant penalty. The accounts themselves were not reported as assets on the FAFSA, but distributions from those accounts had to be reported as untaxed student income the following year. Student income was assessed at up to 50% in the FAFSA formula. So a $10,000 distribution from Grandma's 529 to pay for tuition could reduce the student's aid eligibility by up to $5,000 the next cycle.</p>
+          <p>The old workaround was timing. Families would wait to use grandparent 529 funds until the student's junior or senior year of college, after which no further FAFSA would be filed that could count the distribution against aid. This worked but added real complexity to college funding.</p>
+          <p>The current FAFSA eliminates this problem entirely. Grandparent 529 distributions are no longer reported anywhere on the form. For federal aid, they are treated as if they did not happen. For families at FAFSA-only schools, this means grandparents can fund college directly with no aid penalty, in any year, at any amount.</p>
+        </div>
+
+
+        <!-- ── SECTION 6 ── -->
+        <div class="post-section">
+          <h2 class="post-section__heading">How the CSS Profile Sees 529 Plans</h2>
+          <p>Roughly 200 colleges, most of them private, require a second financial aid application called the CSS Profile. The CSS Profile is administered by the College Board, not the federal government, and it takes a much more comprehensive view of a family's finances than the FAFSA does.</p>
+          <p>For 529 plans specifically, the CSS Profile treats things quite differently.</p>
+        </div>
+
+
+        <!-- ── DEFINITION BLOCK 2 ── -->
+        <div class="post-definition">
+          <div class="post-definition__term">CSS Profile</div>
+          <p class="post-definition__desc">A more detailed financial aid application used by approximately 200 colleges, mostly private, to award their own institutional aid. The CSS Profile requests information the FAFSA does not, including primary home equity, small business value, sibling assets, non-custodial parent information, and all 529 plans that list the student as a beneficiary, regardless of who owns them.</p>
+        </div>
+
+
+        <div class="post-section">
+          <h3 class="post-section__subheading">All 529 plans are visible, regardless of owner</h3>
+          <p>The CSS Profile asks about every 529 plan on which the student is a beneficiary. This includes grandparent-owned accounts, aunt or uncle accounts, non-custodial parent accounts, and accounts owned by anyone else. The grandparent loophole that makes these accounts invisible to the FAFSA does not apply to the CSS Profile.</p>
+
+          <h3 class="post-section__subheading">Sibling 529 plans must be reported</h3>
+          <p>Unlike the FAFSA, which now only asks about 529 balances held for the specific applicant, the CSS Profile requires reporting 529 account balances for every child in the family. A family with three children and three 529 accounts must report all three on any CSS Profile they file.</p>
+
+          <h3 class="post-section__subheading">Parent assets are assessed differently</h3>
+          <p>The CSS Profile assesses parent assets on a bracketed scale with a top bracket of 5%, slightly lower than the FAFSA's 5.64%. The Profile also subtracts allowances for cumulative education savings and for an emergency reserve, which the FAFSA does not. The net result depends on the specific family's income and asset profile.</p>
+
+          <h3 class="post-section__subheading">Student assets are assessed at 25%</h3>
+          <p>Student assets, other than those held in 529 plans owned by the student, are assessed at 25% on the CSS Profile, compared to 20% on the FAFSA. For families with significant assets in a student's name outside of a 529, this is another structural reason to prefer 529 ownership where possible.</p>
+
+          <h3 class="post-section__subheading">Home equity and small business value enter the picture</h3>
+          <p>The CSS Profile asks about primary home equity, which the FAFSA does not. Schools vary significantly in how they treat this. Some use the full value, some cap home equity at a multiple of income (commonly 1.2 to 2.4 times income), and a growing number of schools, including some highly resourced institutions, do not factor it in at all. Small business value, which the FAFSA also ignores, is typically reported on the CSS Profile as well.</p>
+        </div>
+
+
+        <!-- ── SECTION 7 ── -->
+        <div class="post-section">
+          <h2 class="post-section__heading">The FAFSA vs CSS Profile Comparison for 529 Plans</h2>
+          <p>A side-by-side view makes the strategic implications clearer.</p>
+
+          <ul class="post-list">
+            <li><strong>Parent-owned 529 for the applicant:</strong> Both forms count it as a parent asset. FAFSA at up to 5.64%, CSS Profile at up to 5%.</li>
+            <li><strong>Parent-owned 529 for a sibling:</strong> FAFSA does not count it. CSS Profile counts the full balance.</li>
+            <li><strong>Student-owned 529 (dependent student):</strong> Both forms count it as a parent asset at the parent rate.</li>
+            <li><strong>Grandparent-owned 529 assets:</strong> FAFSA does not count them. CSS Profile may count them depending on the specific school's policy.</li>
+            <li><strong>Grandparent-owned 529 distributions:</strong> FAFSA does not count them. CSS Profile schools may still consider them, often classifying them as resources available to pay for college.</li>
+            <li><strong>Home equity:</strong> FAFSA does not count it. CSS Profile schools generally do, with varying caps.</li>
+            <li><strong>Small business value:</strong> FAFSA excludes small businesses with 100 or fewer employees if owned by the family. CSS Profile generally includes them.</li>
+          </ul>
+        </div>
+
+
+        <!-- ── SECTION 8 ── -->
+        <div class="post-section">
+          <h2 class="post-section__heading">Other Savings Vehicles and Their Aid Treatment</h2>
+          <p>529 plans are the most common college savings vehicle, but they are not the only one. Understanding how other accounts are treated helps families decide where to save what.</p>
+
+          <h3 class="post-section__subheading">UGMA and UTMA custodial accounts</h3>
+          <p>Uniform Gifts to Minors Act and Uniform Transfers to Minors Act accounts are custodial accounts held in the name of a minor, managed by a custodian until the student reaches the age of majority. These are treated as student assets on both the FAFSA and the CSS Profile. That means they are assessed at 20% on the FAFSA and 25% on the CSS Profile, a meaningfully higher hit than a 529 plan would take. Families with significant UGMA or UTMA balances sometimes convert them to custodial 529 plans to reduce the aid penalty, though this conversion has its own rules and tax implications.</p>
+
+          <h3 class="post-section__subheading">Retirement accounts</h3>
+          <p>Retirement accounts, including 401(k) plans, traditional IRAs, Roth IRAs, and pensions, are not reported as assets on either the FAFSA or the CSS Profile. Contributions made in the FAFSA base year can affect the income figures, but the account balances themselves are excluded. This is why retirement accounts are often described as "aid-invisible" savings vehicles.</p>
+
+          <h3 class="post-section__subheading">Taxable brokerage accounts</h3>
+          <p>Money held in a parent's name in a standard taxable investment account is treated as a parent asset on both forms. The treatment is the same as a parent-owned 529, up to 5.64% on the FAFSA. The difference is that a brokerage account offers no tax advantages for education expenses and no shelter from capital gains taxes on growth.</p>
+
+          <h3 class="post-section__subheading">Savings bonds and CDs</h3>
+          <p>Series EE and Series I savings bonds have specific education tax advantages when used for qualified expenses and when the bond owner meets income thresholds. They are reported as parent assets if the parent is the owner. CDs and standard savings accounts are straightforward parent assets assessed at the standard rate.</p>
+
+          <h3 class="post-section__subheading">Home equity</h3>
+          <p>Home equity is not reported on the FAFSA. On the CSS Profile, it is, with significant variation in how schools treat it. Families considering using a home equity line of credit to fund college should be aware that the borrowed amount does not change the equity the school can see, because the debt offsets the value.</p>
+        </div>
+
+
+        <!-- ── CALLOUT BOX 2 ── -->
+        <div class="post-callout">
+          <p><strong>The ownership hierarchy that generally works:</strong> Parent-owned 529 plans for the student and siblings. Retirement accounts for anything parents want to save without aid exposure. Grandparent-owned 529 plans for additional support where grandparents are willing and able, with an eye on whether target schools use the CSS Profile. Minimize student-owned assets outside of 529 plans.</p>
+        </div>
+
+
+        <!-- ── SECTION 9 ── -->
+        <div class="post-section">
+          <h2 class="post-section__heading">Advanced Strategies for Different Family Situations</h2>
+          <p>The right strategy depends heavily on the specific family's situation, income level, and the schools the student is considering. A few patterns come up consistently.</p>
+
+          <h3 class="post-section__subheading">If the student is likely to attend FAFSA-only schools</h3>
+          <p>If the student's college list is likely to consist entirely of FAFSA-only schools (most public universities and many private ones), the grandparent 529 loophole is genuinely powerful. Grandparents who want to help fund college can do so through their own 529 accounts without any aid consequence. The simplest approach is often for grandparents to contribute directly to accounts they own, rather than adding money to parent-owned accounts, because of the flexibility that ownership structure preserves.</p>
+
+          <h3 class="post-section__subheading">If CSS Profile schools are likely</h3>
+          <p>When the college list includes CSS Profile schools, grandparent 529 treatment depends on the specific school's policy. Some will count them, others will not. Timing can still matter: using grandparent funds in the student's senior year of college (after the last CSS Profile is filed) reduces exposure. Families in this position often benefit from consulting with an advisor on specific school policies before deciding how to structure distributions.</p>
+
+          <h3 class="post-section__subheading">Superfunding and gift tax planning</h3>
+          <p>Families or grandparents who want to make a large contribution in a single year can superfund a 529 by contributing up to $95,000 ($190,000 for married couples) and electing to treat it as five equal annual gifts for tax purposes. This allows meaningful amounts to move into a 529 without triggering gift tax reporting, while preserving the rest of the family's annual gift tax exclusion for other purposes.</p>
+
+          <h3 class="post-section__subheading">Rolling unused funds to a Roth IRA</h3>
+          <p>Under SECURE Act 2.0, up to $35,000 in unused 529 funds can be rolled into a Roth IRA in the beneficiary's name over their lifetime. The 529 account must have been open for at least 15 years, contributions made in the last five years are not eligible for rollover, and annual rollover amounts are limited to the annual Roth IRA contribution limit. This provision removes one of the longstanding concerns about 529 plans: what happens to leftover money if the student does not need all of it.</p>
+
+          <h3 class="post-section__subheading">Changing beneficiaries</h3>
+          <p>529 plans allow the account owner to change the beneficiary to another qualifying family member at any time without tax consequences. Families with multiple children often use a single 529 account for each child as needed, or reassign funds between children when one child's needs are met and another's are not.</p>
+        </div>
+
+
+        <!-- ── SECTION 10 ── -->
+        <div class="post-section">
+          <h2 class="post-section__heading">Common 529 Planning Mistakes</h2>
+          <p>Across the families we work with, a handful of 529-related errors come up repeatedly. Most are avoidable with some awareness.</p>
+
+          <h3 class="post-section__subheading">1. Not saving because of aid concerns</h3>
+          <p>The belief that savings destroy aid eligibility leads some families to save nothing in a 529, or to save only modest amounts. Given that the maximum aid impact of a parent-owned 529 is 5.64% of the balance, the aid cost of saving is small compared to the tax benefits and the general value of having the money available.</p>
+
+          <h3 class="post-section__subheading">2. Using the wrong state's plan without reason</h3>
+          <p>Every state offers at least one 529 plan, and many offer in-state tax deductions to residents who use their own state's plan. Families who open a plan in a different state without a specific reason often leave meaningful state tax savings on the table. Research the in-state plan first, and use an out-of-state plan only if it offers a clear advantage in investment options or fees that outweighs the lost tax benefit.</p>
+
+          <h3 class="post-section__subheading">3. Putting a 529 in the student's name unnecessarily</h3>
+          <p>For dependent students, student-owned 529s are treated as parent assets on the FAFSA, so ownership does not hurt on the federal form. On the CSS Profile, though, student-owned accounts can be treated less favorably than parent-owned ones. Unless there is a specific reason to put the account in the student's name, parent ownership is usually cleaner.</p>
+
+          <h3 class="post-section__subheading">4. Misunderstanding grandparent account treatment</h3>
+          <p>Some families still operate on pre-simplification knowledge about grandparent 529 plans. The old rules penalized distributions; the current rules do not for FAFSA purposes. Families who delay grandparent contributions out of concern about the old treatment may be missing years of tax-advantaged growth.</p>
+
+          <h3 class="post-section__subheading">5. Ignoring the CSS Profile when it applies</h3>
+          <p>Families who plan strategies around FAFSA treatment alone can get caught off guard at CSS Profile schools. Before committing to a specific savings structure, verify which schools on the student's list use the CSS Profile and how they specifically handle grandparent 529s and home equity.</p>
+
+          <h3 class="post-section__subheading">6. Not filing the FAFSA because of a 529 balance</h3>
+          <p>Some families with meaningful 529 balances assume they are not eligible for aid and skip the FAFSA entirely. This is one of the costliest assumptions in the college planning process. Filing the FAFSA is the gateway to federal loans, some merit programs, and the ability to appeal later. If you have not yet read our guide to <a href="article-understanding-the-fafsa.html" style="color: var(--navy); font-weight: 600; text-decoration: underline;">understanding the FAFSA</a>, that is the starting point.</p>
+        </div>
+
+
+        <!-- ── SECTION 11 (FAQ) ── -->
+        <div class="post-section">
+          <h2 class="post-section__heading">Frequently Asked Questions</h2>
+
+          <p><strong>How much does a 529 plan actually reduce my aid eligibility?</strong><br>
+          For parent-owned 529s, the maximum FAFSA impact is 5.64% of the account value. A $100,000 account increases the Student Aid Index by roughly $5,640, not $100,000. This is the most important number to anchor to when weighing the aid cost of savings.</p>
+
+          <p><strong>Does the grandparent loophole apply to CSS Profile schools?</strong><br>
+          Partially. The CSS Profile asks about 529 plans owned by all relatives where the student is a beneficiary, so grandparent 529s are visible to CSS Profile schools in a way they are not to the FAFSA. Each CSS Profile school handles this differently. Some will count the assets, some will not. This is worth checking on a school-by-school basis before making large distribution decisions.</p>
+
+          <p><strong>Can I change the beneficiary on a 529 plan?</strong><br>
+          Yes. The account owner can change the beneficiary to another qualifying family member at any time without tax consequences. Qualifying family members include siblings, cousins, and even the account owner themselves if they plan to go back to school.</p>
+
+          <p><strong>What happens to unused 529 funds?</strong><br>
+          Several options. The beneficiary can be changed to another family member. Funds can remain in the account for graduate school or future use. Up to $35,000 can be rolled over to a Roth IRA in the beneficiary's name under SECURE Act 2.0 rules. Non-qualified withdrawals are also allowed, though they are subject to income tax on earnings plus a 10% federal penalty.</p>
+
+          <p><strong>Should I use a 529 plan or a Roth IRA for college savings?</strong><br>
+          They serve different purposes. A 529 has higher contribution limits and state tax benefits specifically for education. A Roth IRA has broader flexibility but much lower contribution limits. Many families use both, with the 529 as the primary education savings vehicle and the Roth IRA as a longer-term retirement-focused account. Roth IRAs have the additional advantage of being invisible to both the FAFSA and the CSS Profile as retirement accounts.</p>
+
+          <p><strong>Do I report my other children's 529 accounts on the FAFSA?</strong><br>
+          No. Under the current FAFSA rules, only the 529 plan balance for the student applicant needs to be reported. Accounts held for the applicant's siblings are not reported on the FAFSA. The CSS Profile, however, does ask about all children's 529 accounts.</p>
+
+          <p><strong>What is the gift tax limit for 529 contributions in 2026?</strong><br>
+          The annual gift tax exclusion is $19,000 per donor per beneficiary in 2026, or $38,000 for a married couple contributing jointly. Contributions beyond this amount may trigger a gift tax filing requirement. The superfunding provision allows a five-year front-load of up to $95,000 ($190,000 for married couples) in a single year, treated as five equal annual gifts.</p>
+        </div>
+
+
+        <!-- ── CLOSING CTA BOX — Do not remove ── -->
+        <div class="post-cta">
+          <span class="post-cta__eyebrow">Ready to Take Action?</span>
+          <h2 class="post-cta__title">Get a Plan Built Around Your Family</h2>
+          <p class="post-cta__body">
+            Every family's situation is different. A strategy session with an advisor gives you a clear, personalized roadmap for your student's college journey.
+          </p>
+          <div class="post-cta__buttons">
+            <a href="https://meetings-na2.hubspot.com/will-smethurst/cfs-website-meeting" class="btn btn--primary btn--large btn--arrow" target="_blank" rel="noopener">Schedule a Consultation</a>
+            <a href="webinar-library.html" class="btn btn--ghost btn--large">Watch the Free Workshop</a>
+          </div>
+        </div>
+
+      </div>
+    </article>
+
+  </main>
+
+
+  <!-- ============================================================
+       RELATED ARTICLES SECTION
+       Instructions:
+       — Change "More in CATEGORY" heading to match this article's category
+       — Link to other articles in the same category
+       — Max 3 cards. Never link an article to itself.
+       — If fewer than 3 related articles exist, delete the extra card blocks
+       — When a new article in this category is published, come back and
+         replace the oldest placeholder card with the live link
+  ============================================================ -->
+  <section class="related-posts" aria-label="Related articles">
+    <div class="container">
+
+      <div class="related-posts__header">
+        <div>
+          <span class="related-posts__eyebrow">Keep Reading</span>
+          <!-- REPLACE: category name -->
+          <h2 class="related-posts__title">More in Financial Strategy</h2>
+        </div>
+        <a href="articles.html" class="related-posts__all">All Articles</a>
+      </div>
+
+      <div class="related-posts__grid">
+
+        <!-- Related Card 1 -->
+        <a href="article-understanding-the-fafsa.html" class="related-card">
+          <span class="related-card__category">Financial Strategy</span>
+          <h3 class="related-card__title">A Family's Complete Guide to Understanding the FAFSA</h3>
+          <p class="related-card__excerpt">A clear, step-by-step guide to the FAFSA for families. Learn how the form works, what the Student Aid Index means, and the mistakes to avoid.</p>
+          <div class="related-card__footer">
+            <span class="related-card__date">February 12, 2026</span>
+            <span class="related-card__link">Read More</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__brand-name">Strategy West</div>
+          <div class="footer__brand-tagline">College Planning</div>
+          <p class="footer__brand-desc">Expert, advisor-led guidance for families navigating the college planning process, from freshman year through enrollment.</p>
+        </div>
+        <div class="footer__col">
+          <span class="footer__col-label">Navigate</span>
+          <nav class="footer__links" aria-label="Footer navigation">
+            <a href="index.html"        class="footer__link">Home</a>
+            <a href="how-it-works.html" class="footer__link">How It Works</a>
+            <a href="our-process.html"  class="footer__link">Our Process</a>
+            <a href="pillars.html"      class="footer__link">The 3 Pillars</a>
+            <a href="about.html"        class="footer__link">About</a>
+          </nav>
+        </div>
+        <div class="footer__col">
+          <span class="footer__col-label">Resources</span>
+          <nav class="footer__links" aria-label="Resources navigation">
+            <a href="blogs.html"          class="footer__link">Blogs</a>
+            <a href="articles.html"       class="footer__link">Articles</a>
+            <a href="timeline.html"       class="footer__link">Timeline</a>
+            <a href="webinar-library.html" class="footer__link">Free Workshop</a>
+            <a href="packages.html"       class="footer__link">Packages</a>
+          </nav>
+        </div>
+        <div class="footer__col">
+          <span class="footer__col-label">Get in Touch</span>
+          <div class="footer__contact-line">
+            <span class="footer__contact-icon" aria-hidden="true">✉</span>
+            <span class="footer__contact-text">info@swfcollegeplanning.com</span>
+          </div>
+          <div class="footer__contact-line">
+            <span class="footer__contact-icon" aria-hidden="true">◎</span>
+            <span class="footer__contact-text">Serving families nationwide<br>via virtual consultation &amp; in-person in Utah</span>
+          </div>
+          <a href="https://meetings-na2.hubspot.com/will-smethurst/cfs-website-meeting" class="footer__cta-link" target="_blank" rel="noopener">Schedule a Consultation</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span class="footer__copyright">&copy; <span id="footer-year"></span> Strategy West College Planning. All rights reserved.</span>
+        <div class="footer__legal-links">
+          <a href="privacy.html" class="footer__legal-link">Privacy Policy</a>
+          <a href="terms.html"   class="footer__legal-link">Terms of Use</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ============================================================
+       JAVASCRIPT
+  ============================================================ -->
+  <script>
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+    const toggle   = document.getElementById('nav-toggle');
+    const drawer   = document.getElementById('nav-drawer');
+    const overlay  = document.getElementById('nav-overlay');
+    const closeBtn = document.getElementById('nav-close');
+
+    function openDrawer() { drawer.classList.add('is-open'); toggle.setAttribute('aria-expanded', 'true'); document.body.style.overflow = 'hidden'; }
+    function closeDrawer() { drawer.classList.remove('is-open'); toggle.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; }
+
+    toggle.addEventListener('click', openDrawer);
+    closeBtn.addEventListener('click', closeDrawer);
+    overlay.addEventListener('click', closeDrawer);
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && drawer.classList.contains('is-open')) closeDrawer(); });
+    drawer.querySelectorAll('.nav__drawer-link, .nav__drawer-ctas .btn').forEach(link => { link.addEventListener('click', closeDrawer); });
+
+    const accordionBtn   = document.getElementById('resources-accordion-btn');
+    const accordionPanel = document.getElementById('resources-accordion-panel');
+    if (accordionBtn && accordionPanel) {
+      accordionBtn.addEventListener('click', function () {
+        const isOpen = accordionPanel.classList.toggle('is-open');
+        accordionBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+    }
+  </script>
+
+</body>
+</html>
