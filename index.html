@@ -903,6 +903,126 @@
       line-height: 1.45;
     }
 
+    /* ── Trusted Partnerships row ── */
+    .trust-bar__partnerships {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      margin-top: 32px;
+    }
+
+    @media (min-width: 768px) {
+      .trust-bar__partnerships {
+        grid-template-columns: 1.3fr 1fr 1fr;
+        margin-top: 40px;
+      }
+    }
+
+    .trust-bar__partner-col {
+      padding: 28px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      min-height: 140px;
+    }
+
+    .trust-bar__partner-col--intro {
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    @media (min-width: 768px) {
+      .trust-bar__partner-col:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 20%;
+        height: 60%;
+        width: 1px;
+        background: var(--border);
+      }
+    }
+
+    .trust-bar__partnerships-eyebrow {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 600;
+      color: #C4963A;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .trust-bar__partnerships-rule {
+      display: block;
+      width: 32px;
+      height: 2px;
+      background: #C4963A;
+      margin-bottom: 14px;
+    }
+
+    .trust-bar__partnerships-text {
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--text-body);
+      margin: 0;
+      max-width: 280px;
+    }
+
+    .trust-bar__partner-col--logo {
+      text-decoration: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .trust-bar__partner-col--logo:hover .trust-bar__partner-img {
+      opacity: 0.85;
+    }
+
+    .trust-bar__partner-col--logo:focus-visible {
+      outline: 2px solid #C4963A;
+      outline-offset: -2px;
+    }
+
+    .trust-bar__partner-img {
+      max-height: 72px;
+      max-width: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      transition: opacity 0.25s ease;
+    }
+
+    /* Mobile: intro full-width on row 1, logos 2-up on row 2 */
+    @media (max-width: 767px) {
+      .trust-bar__partner-col--intro {
+        grid-column: 1 / -1;
+        align-items: center;
+        text-align: center;
+        border-bottom: 1px solid var(--border);
+      }
+      .trust-bar__partnerships-text {
+        max-width: 380px;
+      }
+      .trust-bar__partner-col--logo:first-of-type {
+        border-right: 1px solid var(--border);
+      }
+      .trust-bar__partner-col {
+        padding: 24px 20px;
+        min-height: 120px;
+      }
+      .trust-bar__partner-img {
+        max-height: 60px;
+      }
+    }
+
     /* ============================================================
        ═══════════════════════════════════════════════════════════
        SECTION 4: THE PROBLEM
@@ -2073,10 +2193,12 @@
 
 
     <!-- ============================================================
-         TRUST / CREDIBILITY BAR — Quiet social proof
+         TRUST / CREDIBILITY BAR — Quiet social proof + partnerships
     ============================================================ -->
-    <section class="trust-bar" aria-label="Firm credentials">
+    <section class="trust-bar" aria-label="Firm credentials and partnerships">
       <div class="container">
+
+        <!-- Row 1: Stat line (unchanged) -->
         <div class="trust-bar__grid" role="list">
 
           <div class="trust-bar__item" role="listitem">
@@ -2091,7 +2213,7 @@
 
           <div class="trust-bar__item" role="listitem">
             <span class="trust-bar__value">3</span>
-            <span class="trust-bar__label">Integrated Pillars:<br>Academic, Social, Financial</span>
+            <span class="trust-bar__label">Integrated Pillars —<br>Academic, Social, Financial</span>
           </div>
 
           <div class="trust-bar__item" role="listitem">
@@ -2100,6 +2222,31 @@
           </div>
 
         </div>
+
+        <!-- Row 2: Trusted Partnerships -->
+        <div class="trust-bar__partnerships" aria-label="Trusted partner organizations">
+
+          <!-- Intro column -->
+          <div class="trust-bar__partner-col trust-bar__partner-col--intro">
+            <span class="trust-bar__partnerships-eyebrow">Trusted Partnerships</span>
+            <span class="trust-bar__partnerships-rule" aria-hidden="true"></span>
+            <p class="trust-bar__partnerships-text">
+              We work alongside established organizations dedicated to helping families navigate college planning with clarity.
+            </p>
+          </div>
+
+          <!-- Partner: American College Foundation -->
+          <a href="https://americancollegefoundation.org/" target="_blank" rel="noopener noreferrer" class="trust-bar__partner-col trust-bar__partner-col--logo" aria-label="Visit American College Foundation (opens in new tab)">
+            <img src="images/acf-logo.png" alt="American College Foundation" class="trust-bar__partner-img">
+          </a>
+
+          <!-- Partner: College Funding Solutions -->
+          <a href="https://mycollegeinfo.com/" target="_blank" rel="noopener noreferrer" class="trust-bar__partner-col trust-bar__partner-col--logo" aria-label="Visit College Funding Solutions (opens in new tab)">
+            <img src="images/cfs-logo.png" alt="College Funding Solutions" class="trust-bar__partner-img">
+          </a>
+
+        </div>
+
       </div>
     </section>
 
