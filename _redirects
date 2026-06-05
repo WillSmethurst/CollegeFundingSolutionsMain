@@ -1,2 +1,42 @@
-/articles.html   /insights.html   301
-/blogs.html      /insights.html   301
+# Legacy index → unified Insights
+/articles.html                                              /insights                                              301
+/blogs.html                                                 /insights                                              301
+
+# Homepage canonicalization
+/index.html                                                 /                                                      301!
+
+# Forced .html → clean for marketing + legal pages
+/about.html                                                 /about                                                 301!
+/how-it-works.html                                          /how-it-works                                          301!
+/our-process.html                                           /our-process                                           301!
+/pillars.html                                               /pillars                                               301!
+/packages.html                                              /packages                                              301!
+/timeline.html                                              /timeline                                              301!
+/webinar-library.html                                       /webinar-library                                       301!
+/insights.html                                              /insights                                              301!
+/privacy.html                                               /privacy                                               301!
+/terms.html                                                 /terms                                                 301!
+
+# Forced .html → clean for article detail pages
+/article-529-plans-css-profile.html                         /article-529-plans-css-profile                         301!
+/article-appealing-financial-aid-award.html                 /article-appealing-financial-aid-award                 301!
+/article-decoding-financial-aid-award-letter.html           /article-decoding-financial-aid-award-letter           301!
+/article-demonstrated-interest-admissions.html              /article-demonstrated-interest-admissions              301!
+/article-early-decision-early-action.html                   /article-early-decision-early-action                   301!
+/article-how-colleges-evaluate-course-rigor.html            /article-how-colleges-evaluate-course-rigor            301!
+/article-how-to-evaluate-net-price.html                     /article-how-to-evaluate-net-price                     301!
+/article-senior-year-decision-timeline.html                 /article-senior-year-decision-timeline                 301!
+/article-sophomore-year-roadmap.html                        /article-sophomore-year-roadmap                        301!
+/article-test-optional-policies-explained.html              /article-test-optional-policies-explained              301!
+/article-understanding-the-fafsa.html                       /article-understanding-the-fafsa                       301!
+/article-what-families-wish-they-had-done-differently.html  /article-what-families-wish-they-had-done-differently  301!
+/article-why-school-fit-matters-more-than-rankings.html     /article-why-school-fit-matters-more-than-rankings     301!
+
+# Forced .html → clean for blog detail pages
+/blog-freshman-year-advantage.html                          /blog-freshman-year-advantage                          301!
+/blog-how-extracurriculars-are-evaluated-by-colleges.html   /blog-how-extracurriculars-are-evaluated-by-colleges   301!
+/blog-how-to-build-a-college-list.html                      /blog-how-to-build-a-college-list                      301!
+/blog-how-to-read-a-financial-aid-award-letter.html         /blog-how-to-read-a-financial-aid-award-letter         301!
+/blog-merit-aid-vs-need-based-aid.html                      /blog-merit-aid-vs-need-based-aid                      301!
+/blog-understanding-the-true-cost-of-college.html           /blog-understanding-the-true-cost-of-college           301!
+/blog-what-high-school-transcript-decisions-signal.html     /blog-what-high-school-transcript-decisions-signal     301!

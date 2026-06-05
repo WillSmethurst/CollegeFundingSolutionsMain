@@ -20,6 +20,22 @@ Public marketing site for **Strategy West College Planning**, a premium, advisor
 - Prefer targeted find-and-replace edits for single-element surgical changes. Only do a full file rebuild when several layers of a file genuinely change at once.
 - **For critical colors (e.g. footer background) hardcode the hex value rather than relying on a CSS variable.** CSS variable definitions are not consistent across files — see "Color Variable Inconsistencies" below.
 
+## URL Convention
+
+Internal page URLs across the site use the clean, root-relative, extensionless form. The repo (links + redirects) is the source of truth; Netlify Pretty URLs is enabled but every internal link in the codebase is already extensionless, so behavior does not depend on the Netlify setting.
+
+- **Internal links:** root-relative, no `.html` extension. Example: `href="/about"`, `href="/insights"`, `href="/article-understanding-the-fafsa"`.
+- **Home link:** `href="/"` (not `href="/index"` or `href="/index.html"`).
+- **SEO tags** (`<link rel="canonical">` and `<meta property="og:url">`) and **`sitemap.xml`** also use clean URLs (no `.html`).
+- **Redirect enforcement (`_redirects`):**
+  - `/index.html → / 301!` (forced — canonicalizes the homepage).
+  - `/page.html → /page 301!` (forced) for every other public page. The `!` is required because the source `.html` file exists in the repo; without it Netlify would serve the file directly and never run the redirect.
+  - Legacy `/articles.html → /insights 301` and `/blogs.html → /insights 301` (plain `301`, no `!`) — the source files were deleted, so no force flag is needed.
+
+**Exception — `swfcpintakeform.html`:** intentionally keeps its `.html` extension and is excluded from the clean-URL convention. It is not linked from any public page, is reached only via Stripe's post-payment redirect, has no canonical/og:url tags, is not in `sitemap.xml`, and has no `_redirects` rule. Do not strip its extension, do not add a redirect for it, and do not add it to the sitemap.
+
+**Known follow-up — not yet done:** the 10 marketing/legal pages (`about`, `how-it-works`, `index`, `our-process`, `packages`, `pillars`, `privacy`, `terms`, `timeline`, `webinar-library`) still lack `<link rel="canonical">` and `<meta property="og:url">` tags. Adding them is a separate task. The 20 detail pages and `insights.html` already carry clean canonicals.
+
 ## Brand
 
 - **Firm name (full):** Strategy West College Planning
@@ -184,4 +200,4 @@ Insights index: `insights.html`.
 Insight detail pages: `article-*.html` (13 files) + `blog-*.html` (7 files), all using the unified no-hero Insight template. New insight detail pages should use `insight-*.html`; the legacy `article-*` / `blog-*` prefixes on the existing 20 are retained only for URL/SEO preservation and carry no type meaning anymore.
 Legal: `privacy.html`, `terms.html`.
 Out-of-band onboarding: `swfcpintakeform.html` (not linked from public nav).
-Redirects: `_redirects` at the repo root issues 301 forwards from `/articles.html` and `/blogs.html` to `/insights.html`. Do not recreate the old index files.
+Redirects: `_redirects` at the repo root issues 301 forwards from `/articles.html` and `/blogs.html` to `/insights` (legacy index retirement), plus a forced `/index.html → / 301!` rule and a forced `/page.html → /page 301!` rule for every other public page. See the "URL Convention" section above for the full convention. Do not recreate the deleted `articles.html` / `blogs.html` files.
