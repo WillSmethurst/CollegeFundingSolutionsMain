@@ -73,7 +73,7 @@ These are the hex values used in `:root` CSS custom properties across pages:
 `--navy-mid` and `--navy-light` are **defined differently in different files**:
 
 - `about.html`: `--navy-mid: #0a3528`, `--navy-light: #0f4535` (green family)
-- `articles.html`, `blogs.html`, `article-*.html`, `blog-*.html`: `--navy-mid: #152540`, `--navy-light: #1E3357` (blue family)
+- `insights.html`, `article-*.html`, `blog-*.html`: `--navy-mid: #152540`, `--navy-light: #1E3357` (blue family)
 - `packages.html`: `--navy-mid: #0A3D2E`, `--navy-light: #0D5C45` (green family)
 
 This is why the footer background is hardcoded `#0a3528` rather than referencing `--navy-mid`. **When touching any color that needs to look identical across pages, hardcode the hex.**
@@ -96,89 +96,75 @@ This is why the footer background is hardcoded `#0a3528` rather than referencing
 
 ## Publishing Mechanics
 
-### Articles (`articles.html`)
+### Unified Insights Index (`insights.html`)
 
-Articles are activated by editing the article-row block inside `<div class="articles-list" id="articles-list">`.
+The site has **one** content index page: `insights.html`. The old `articles.html` and `blogs.html` were retired and **deleted**; a `_redirects` file at the repo root issues 301 redirects from `/articles.html` and `/blogs.html` to `/insights.html`. Do not recreate either old file.
 
-The page currently contains **13 article rows**. The first 3 render visible by default; rows 4 through 13 carry the `data-article-hidden` attribute and are revealed three at a time by the "See More Articles" button. **Rule: the first three `.article-row` elements must NOT have `data-article-hidden`. The fourth and beyond MUST have `data-article-hidden`.**
+`insights.html` uses the editorial-list look (`.article-row` and friends — class names retained from the original articles template) but the list is **driven by a JavaScript data array** at the bottom of the page, rendered into `<div class="articles-list" id="articles-list">` by `renderInsights()`. Each entry is one insight. The page provides a working **category filter** (chips) and a **See More** progressive-reveal control that share state — clicking a chip filters the array and resets the visible count to 6; clicking See More reveals 3 more rows within the active filter.
 
-Note: the visible count label and the JS-collected total use `document.querySelectorAll('.article-row').length` for the total, but the static fallback text on the page reads `Showing 3 of 13 articles` in two places (`#articles-count-label` and `#visible-count` / hardcoded `13`). If the total count changes, update both static fallbacks as well as any article numbering.
-
-Exact structure of an article row:
-
-```html
-<article class="article-row" role="listitem" aria-label="Article N" data-article-hidden>
-  <div class="article-row__aside">
-    <span class="article-row__number">NN</span>
-    <span class="article-row__category">Category Name</span>
-  </div>
-  <div class="article-row__content">
-    <h2 class="article-row__title">Article Title</h2>
-    <p class="article-row__excerpt">Excerpt copy…</p>
-    <div class="article-row__footer">
-      <a href="article-slug.html" class="article-row__read-more">Read More</a>
-      <span class="article-row__pill">Article</span>   <!-- or "Guide" -->
-    </div>
-  </div>
-</article>
-```
-
-Remove the `data-article-hidden` attribute to make an article render in the initial visible set. The `__number` is a two-digit string (`01`, `02`, …). The `__pill` text is either `Article` or `Guide` and should match the pill shown inside the post header on the target page.
-
-Article category values seen in use: `Financial Strategy`, `School Selection`, `Admissions`, `Financial Aid`, `Planning`. The filter tags rendered above the list currently include `All Topics`, `Financial Aid`, `Admissions`, `Planning` (note: the filter UI is presentational only — filtering is not yet wired up).
-
-### Article Page Template (e.g. `article-understanding-the-fafsa.html`)
-
-Each article page is self-contained with its own `<style>` block. Key building blocks inside `<article class="post-body">`:
-
-- `.post-type-badge` — small pill at top of reading column ("Article" or "Guide"), matches the header pill.
-- `.post-intro` — opening paragraph, larger type, ends with a divider rule.
-- `.post-section` with `.post-section__heading` (H2) and optional `.post-section__subheading` (H3).
-- `.post-callout` — gold-bordered key-takeaway box.
-- `.post-list` — bulleted list with gold dots.
-- `.post-definition` — boxed key-term definition.
-- `.post-cta` — closing CTA box (do not remove — it's the conversion point).
-- The page header (`<section class="post-header">`) carries the category eyebrow, pill (Article/Guide), title, publish date, and read-time estimate.
-- SEO fields at the top: `<title>`, `<meta name="description">`, canonical URL, and OG tags. Update all four when changing the title or slug.
-
-### Blog Posts (`blogs.html`)
-
-Blog posts are activated by editing the `blogPosts` JavaScript data array inside the `<script>` block in `blogs.html`. Cards are rendered into `#blog-grid` by the `renderBlogs()` function. Six cards per page, with prev/next arrow pagination and an in-page filter tag row.
-
-Exact field shape of a `blogPosts` entry:
+Exact field shape of an `insights` entry:
 
 ```js
 {
-  category: 'Financial Strategy',     // must match a filter tag label exactly
-  title:    'Card headline',
-  excerpt:  'Short description shown on the card.',
-  meta:     'Month DD, YYYY',          // or 'Coming Soon' for placeholders
-  link:     'blog-slug.html',          // or null for placeholders
-  status:   'live',                    // 'live' or 'placeholder'
-  icon:     '<svg-inner-paths-or-fragment>'  // legacy field; not used by the current renderer
+  number:   '01',                    // two-digit string; sequential by display order (newest first)
+  category: 'Financial Strategy',    // must match a filter chip exactly
+  title:    'Insight headline',
+  excerpt:  'Short description shown on the row.',
+  meta:     'Month DD, YYYY',        // publish date
+  link:     'article-slug.html'      // or 'blog-slug.html' or 'insight-slug.html' — see filename rule below
 }
 ```
 
-Categories currently in use (must match filter tags exactly): `Financial Strategy`, `Academic Planning`, `School Selection`, `Financial Aid`, `Timelines & Process`.
+The unified filter chips are: `All Topics`, `Financial Strategy`, `Admissions`, `School Selection`, `Planning`. These collapsed the legacy article categories (Financial Strategy, School Selection, Admissions, Financial Aid, Planning) and the legacy blog categories (Financial Strategy, Academic Planning, School Selection, Financial Aid, Timelines & Process) into 4 working categories: the legacy `Financial Aid` tag was absorbed into `Financial Strategy`, and `Academic Planning` + `Timelines & Process` both fold into `Planning`.
 
-The renderer maps each category to an SVG icon file in `images/` via the `categoryIcons` object (`financial-strategy-symbol-transparent.svg`, `academic-planning-transparent.svg`, `school-selection-transparent.svg`, `financial-aid-transparent.svg`, `timeline-and-process-transparent.svg`). The legacy inline `icon` SVG string on each entry is preserved but not rendered.
+Insights are displayed in **newest-first order** with their `number` field incrementing sequentially down the visible list (`01`, `02`, `03`, …).
 
-Placeholders (`status: 'placeholder'`) get a "Coming Soon" ribbon and a non-clickable "Read More" — the `link` should be `null`.
+### Detail-Page Format — The "Insight" Template
 
-### Blog Post Template (e.g. `blog-merit-aid-vs-need-based-aid.html`)
+All 20 existing detail pages (13 `article-*.html` + 7 `blog-*.html`) were migrated in place to a single uniform **no-hero Insight template**. The old article-vs-blog template differences are gone:
 
-Same shell as article pages (own `<style>`, own nav/footer, own SEO block) but simpler body — typically just `.post-intro`, `.post-section`s, `.post-callout`s, `.post-list`s, and the closing `.post-cta`. No `.post-type-badge` and no `.post-definition` block by default.
+- **No navy hero, no gold radial glow.** `.post-header` sits on the normal page background with `padding: 64px 0 0` (desktop) / `padding: 40px 0 0` (mobile, `<600px`). No background color, no `::before` glow.
+- **No back link.** The `.post-header__back` markup is removed (the surrounding dead CSS rules are left in place — harmless).
+- **Plain title block** at the top of `.post-header__inner`: a single `.post-header__category` (gold-on-light eyebrow), then `<h1 class="post-header__title">` (Cormorant Garamond, `color: var(--navy)`), then `.post-header__meta` with date · 3px dot · read-time (`color: var(--text-muted)`, dot `var(--text-light)`).
+- **No `.post-header__pill`** and **no `.post-type-badge`** anywhere. The article/guide pill system has been retired; the category eyebrow is the sole taxonomy badge.
+- **Body blocks** stay as they were: `.post-intro`, `.post-section` (with `.post-section__heading` / `__subheading`), `.post-callout`, `.post-list`, and `.post-definition` (the key-term boxes the article template used — preserved where present on the relevant detail pages).
+- **Closing CTA** (`.post-cta`) is unchanged. Do not remove — this is the page's conversion point. Standard buttons: "Schedule a Consultation" (HubSpot) + "Watch the Free Workshop" (→ `webinar-library.html`).
+- **Related-posts** (`.related-posts`) is unchanged structurally; the "All" link reads **"All Insights"** and points to **`insights.html`** on every detail page.
+
+### Publishing a New Insight
+
+1. **Create the detail page** in the no-hero Insight template — clone any existing detail page, then replace its content. The recommended filename for new pieces is **`insight-<slug>.html`**. The 20 existing pages keep their original `article-*.html` / `blog-*.html` filenames **purely to preserve their SEO**; those prefixes are legacy markers, not type indicators, and should not be carried into new files.
+2. **Add one entry to the `insights` data array** at the bottom of `insights.html`. Place it at the top of the array if it's the newest, then renumber subsequent entries (or simply bump downward). The filter and pagination handle the rest automatically.
+
+That's the whole flow. There is no separate articles-list HTML to update, no `data-article-hidden` attribute to manage, no per-page count labels to keep in sync. Retire any older instructions referencing those mechanics.
 
 ### Related-Card Cross-Linking
 
-Both article and blog pages end with a `<section class="related-posts">` block:
+Each detail page ends with a `<section class="related-posts">` containing up to 3 `<a class="related-card">` items pointing to other detail pages, plus an `.related-posts__all` link reading **"All Insights"** that points to `insights.html`.
 
-- Heading reads `More in {Category}` and is scoped to the current page's category.
-- Up to 3 `<a class="related-card">` items, each containing `.related-card__category`, `.related-card__title`, `.related-card__excerpt`, `.related-card__footer` with `.related-card__date` and `.related-card__link`.
-- "All Articles" link in the header points to `articles.html` from article pages and to `blogs.html` from blog pages.
-- **Articles only link to other articles, blogs only link to other blogs.** Inline body-copy links inside an article may reference other articles by relative URL (e.g. the FAFSA article links inline to `article-appealing-financial-aid-award.html`).
-- Never link a page to itself. When fewer than 3 related items exist in a category, delete the extra card blocks rather than leaving empty ones (a placeholder card pointing back to `blogs.html` is used as a temporary fallback in some blog pages — see `blog-merit-aid-vs-need-based-aid.html`).
-- When a new article or blog in a given category is published, revisit the related-posts blocks of existing posts in the same category and swap the oldest placeholder for the new live link.
+**Known follow-up — not yet done.** The related-card cross-links currently still respect the **original article-vs-blog groupings**: `article-*.html` pages link only to other `article-*.html` pages, `blog-*.html` pages link only to other `blog-*.html` pages, and the heading still reads `More in {Category}` scoped to that single legacy bucket. Broadening these cards to draw freely across the full Insights pool — so any insight can link to any other regardless of legacy prefix — is a future enhancement. When making other changes to a detail page, leave its related-card scoping as-is until that broader pass happens.
+
+When a new insight is published in an existing category, revisit the related-posts blocks of other insights in the same category and swap any placeholder card for the new live link.
+
+### Nav + Footer Item
+
+A single **Insights** item is wired in three places on every surviving page:
+
+- **Desktop dropdown** (`.nav__dropdown-panel`): `<a href="insights.html" class="nav__dropdown-link" role="menuitem">Insights</a>` — sits above the first divider, ahead of `Timeline`, `Packages`, divider, `Webinars`.
+- **Mobile accordion** (`.nav__accordion-links`): `<a href="insights.html" class="nav__accordion-link …">Insights</a>` — top of the accordion list.
+- **Footer Resources column**: `<a href="insights.html" class="footer__link">Insights</a>` — top of the column, above `Timeline`, `Free Workshop`, `Packages`.
+
+On `insights.html` only, the dropdown item carries the additional `nav__dropdown-link--active` class. No other page marks Insights active.
+
+### Webinar Labeling Convention
+
+The webinar entry has two different labels depending on context — keep this consistent in future edits:
+
+- **Nav dropdown** and **mobile accordion** Resources items: **"Webinars"** (every page).
+- **Footer Resources column** link: **"Free Workshop"** (every page).
+- **Nav CTA button** (`.nav__cta-webinar` and the equivalent mobile-drawer button): **"Free Workshop"** (every page).
+
+All three point to `webinar-library.html`.
 
 ## Assets
 
@@ -193,7 +179,8 @@ Both article and blog pages end with a `<section class="related-posts">` block:
 ## Page Inventory (repo root)
 
 Marketing: `index.html`, `about.html`, `how-it-works.html`, `our-process.html`, `pillars.html`, `packages.html`, `timeline.html`, `webinar-library.html`.
-Resources index: `articles.html`, `blogs.html`.
-Long-form: `article-*.html` (13 files), `blog-*.html` (7 files).
+Insights index: `insights.html`.
+Insight detail pages: `article-*.html` (13 files) + `blog-*.html` (7 files), all using the unified no-hero Insight template. New insight detail pages should use `insight-*.html`; the legacy `article-*` / `blog-*` prefixes on the existing 20 are retained only for URL/SEO preservation and carry no type meaning anymore.
 Legal: `privacy.html`, `terms.html`.
 Out-of-band onboarding: `swfcpintakeform.html` (not linked from public nav).
+Redirects: `_redirects` at the repo root issues 301 forwards from `/articles.html` and `/blogs.html` to `/insights.html`. Do not recreate the old index files.
