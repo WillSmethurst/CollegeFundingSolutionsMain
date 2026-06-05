@@ -141,8 +141,7 @@
     .nav__drawer-ctas { display: flex; flex-direction: column; gap: 10px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); }
     .nav__drawer-ctas .btn { width: 100%; justify-content: center; }
 
-    .post-header { background: var(--navy); padding: 64px 0 72px; position: relative; overflow: hidden; }
-    .post-header::before { content: ''; position: absolute; top: -20%; right: -8%; width: 480px; height: 480px; border-radius: 50%; background: radial-gradient(circle, rgba(196,150,58,0.07) 0%, transparent 65%); pointer-events: none; }
+    .post-header { padding: 64px 0 0; }
     .post-header__inner { position: relative; z-index: 2; animation: fadeUp 0.6s ease both; }
     .post-header__back { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.5); margin-bottom: 32px; transition: var(--transition); }
     .post-header__back::before { content: '←'; font-size: 14px; transition: transform 0.2s ease; }
@@ -151,10 +150,10 @@
     .post-header__meta-top { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
     .post-header__category { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
     .post-header__pill { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy); background: var(--gold); border-radius: 100px; padding: 4px 12px; }
-    .post-header__title { font-family: var(--font-display); font-size: clamp(32px, 5vw, 54px); font-weight: 600; line-height: 1.12; color: var(--white); letter-spacing: -0.01em; margin-bottom: 24px; max-width: 820px; }
+    .post-header__title { font-family: var(--font-display); font-size: clamp(32px, 5vw, 54px); font-weight: 600; line-height: 1.12; color: var(--navy); letter-spacing: -0.01em; margin-bottom: 24px; max-width: 820px; }
     .post-header__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 20px; }
-    .post-header__meta-item { font-size: 13px; color: rgba(255,255,255,0.45); }
-    .post-header__meta-dot { display: inline-block; width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.25); }
+    .post-header__meta-item { font-size: 13px; color: var(--text-muted); }
+    .post-header__meta-dot { display: inline-block; width: 3px; height: 3px; border-radius: 50%; background: var(--text-light); }
 
     .post-body { background: var(--white); padding: 72px 0 80px; }
     .post-body__content { max-width: 720px; margin: 0 auto; padding: 0 var(--gutter); }
@@ -234,7 +233,7 @@
     .footer__legal-link:hover { color: rgba(255,255,255,0.6); }
 
     @media (max-width: 599px) {
-      .post-header { padding: 48px 0 56px; }
+      .post-header { padding: 40px 0 0; }
       .post-body { padding: 48px 0 56px; }
       .post-cta { padding: 36px 24px; }
       .post-cta__buttons { flex-direction: column; align-items: stretch; }
@@ -329,11 +328,8 @@
       <div class="container">
         <div class="post-header__inner">
 
-          <a href="articles.html" class="post-header__back">Back to Articles</a>
-
           <div class="post-header__meta-top">
             <span class="post-header__category">Financial Aid</span>
-            <span class="post-header__pill">Article</span>
           </div>
 
           <h1 class="post-header__title">Decoding Your Financial Aid Award Letter: A Line-by-Line Guide</h1>
@@ -351,8 +347,6 @@
 
     <article class="post-body">
       <div class="post-body__content">
-
-        <div class="post-type-badge">Article</div>
 
         <p class="post-intro">
           The financial aid award letter is one of the most important documents a family receives during the college process. It is also one of the most poorly designed. There is no federal standard for how schools must format or label their offers, which means two letters from two different schools can present essentially the same financial package in ways that look nothing alike, and in ways that make comparison genuinely difficult without knowing what to look for. This article walks through the major components of a typical award letter, explains what each one actually means, and flags the places where families most commonly misread what they are being offered.
@@ -477,7 +471,7 @@
           <span class="related-posts__eyebrow">Keep Reading</span>
           <h2 class="related-posts__title">More in Financial Aid</h2>
         </div>
-        <a href="articles.html" class="related-posts__all">All Articles</a>
+        <a href="insights.html" class="related-posts__all">All Insights</a>
       </div>
 
       <div class="related-posts__grid">
