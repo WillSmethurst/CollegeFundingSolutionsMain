@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /swfcpintakeform.html
+Sitemap: https://www.swfcollegeplanning.com/sitemap.xml
