@@ -1,0 +1,1710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Insights, Strategy West College Planning</title>
+  <meta name="description" content="Guidance from Strategy West College Planning across financial strategy, admissions, school selection, and year-by-year planning, written for families navigating the college process from freshman year through enrollment." />
+
+  <!-- Google Fonts: Cormorant Garamond (display) + DM Sans (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       CSS CUSTOM PROPERTIES — Site-wide design system
+    ============================================================ */
+    :root {
+      --navy:            #064E3B;
+      --navy-mid:        #152540;
+      --navy-light:      #1E3357;
+      --gold:            #C4963A;
+      --gold-light:      #D4A84B;
+      --gold-pale:       #F0E2C4;
+
+      --ivory:           #F7F4EE;
+      --ivory-warm:      #EDE9DF;
+      --white:           #FFFFFF;
+
+      --text-dark:       #1A1A2E;
+      --text-body:       #3A3A4A;
+      --text-muted:      #6B6B7E;
+      --text-light:      #9A9AAA;
+
+      --border:          #E2DDD4;
+
+      --shadow-sm:       0 2px 12px rgba(13, 27, 46, 0.08);
+      --shadow-md:       0 8px 32px rgba(13, 27, 46, 0.12);
+      --shadow-lg:       0 20px 60px rgba(13, 27, 46, 0.18);
+      --shadow-gold:     0 4px 18px rgba(196, 150, 58, 0.38);
+
+      --font-display:    'Cormorant Garamond', Georgia, serif;
+      --font-body:       'DM Sans', system-ui, -apple-system, sans-serif;
+
+      --radius-sm:       6px;
+      --radius-md:       12px;
+      --radius-lg:       20px;
+
+      --section-pad:     96px 0;
+      --section-pad-md:  64px 0;
+      --section-pad-sm:  48px 0;
+
+      --container-max:    1080px;
+      --container-narrow: 740px;
+      --gutter:           24px;
+
+      --transition:       all 0.25s ease;
+      --transition-slow:  all 0.4s ease;
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text-body);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ============================================================
+       LAYOUT UTILITIES
+    ============================================================ */
+    .container {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    .container--narrow {
+      max-width: var(--container-narrow);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    /* ============================================================
+       TYPOGRAPHY UTILITIES
+    ============================================================ */
+    .section-label {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 14px;
+    }
+
+    .gold-rule {
+      display: block;
+      width: 48px;
+      height: 2px;
+      background: var(--gold);
+      border-radius: 2px;
+      margin-bottom: 28px;
+    }
+
+    .gold-rule--center { margin-left: auto; margin-right: auto; }
+
+    /* ============================================================
+       BUTTON STYLES
+    ============================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      padding: 16px 34px;
+      border-radius: var(--radius-sm);
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+      white-space: nowrap;
+      line-height: 1;
+    }
+
+    .btn--primary {
+      background: var(--gold);
+      color: var(--white);
+      box-shadow: var(--shadow-gold);
+    }
+    .btn--primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(196, 150, 58, 0.48);
+    }
+    .btn--primary:active { transform: translateY(0); }
+
+    .btn--outline {
+      background: transparent;
+      color: var(--gold);
+      border: 1.5px solid var(--gold);
+    }
+    .btn--outline:hover {
+      background: var(--gold);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .btn--white {
+      background: var(--white);
+      color: var(--navy);
+      box-shadow: var(--shadow-md);
+    }
+    .btn--white:hover {
+      background: var(--ivory);
+      transform: translateY(-2px);
+    }
+
+    .btn--white-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1.5px solid rgba(255,255,255,0.45);
+    }
+    .btn--white-outline:hover {
+      border-color: var(--white);
+      background: rgba(255,255,255,0.08);
+      transform: translateY(-2px);
+    }
+
+    .btn--ghost {
+      background: transparent;
+      color: var(--navy);
+      border: 1.5px solid var(--border);
+    }
+    .btn--ghost:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    .btn--large  { font-size: 16px; padding: 18px 42px; }
+    .btn--small  { font-size: 16px; padding: 14px 28px; }
+
+    .btn--arrow::after {
+      content: '→';
+      font-size: 17px;
+      line-height: 1;
+      transition: transform 0.2s ease;
+    }
+    .btn--arrow:hover::after { transform: translateX(4px); }
+
+    /* ============================================================
+       NAVIGATION — Identical to index.html
+    ============================================================ */
+    .nav {
+      background: var(--navy);
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      box-shadow: 0 2px 20px rgba(6, 78, 59, 0.3);
+    }
+
+    .nav .container { max-width: 1320px; }
+
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 112px;
+      gap: 24px;
+    }
+
+    @media (max-width: 959px) {
+      .nav__inner { height: 88px; }
+      .nav__brand img { height: 108px !important; }
+    }
+    @media (max-width: 639px) {
+      .nav__inner { height: 72px; }
+      .nav__brand img { height: 90px !important; }
+    }
+
+    .nav__brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      flex-shrink: 0;
+      text-decoration: none;
+    }
+
+    .nav__brand-name {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.01em;
+      line-height: 1.2;
+    }
+
+    .nav__brand-tagline {
+      font-family: var(--font-body);
+      font-size: 9.5px;
+      font-weight: 400;
+      color: var(--gold-pale);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      opacity: 0.7;
+    }
+
+    .nav__links {
+      display: none;
+      align-items: center;
+      gap: 2px;
+    }
+
+    @media (min-width: 960px) { .nav__links { display: flex; } }
+
+    .nav__link {
+      font-family: var(--font-body);
+      font-size: 17px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.72);
+      padding: 10px 16px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .nav__link:hover {
+      color: var(--white);
+      background: rgba(255,255,255,0.07);
+    }
+
+    .nav__ctas {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    @media (max-width: 959px) { .nav__ctas { display: none; } }
+
+    .nav__cta-webinar { display: none; }
+
+    @media (min-width: 640px) { .nav__cta-webinar { display: inline-flex; } }
+@media (max-width: 959px) { .nav__ctas { display: none; } }
+
+    .nav__hamburger {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 36px;
+      height: 36px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+    }
+
+    .nav__hamburger:hover { background: rgba(255,255,255,0.08); }
+
+    .nav__hamburger span {
+      display: block;
+      height: 1.5px;
+      width: 100%;
+      background: var(--gold);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    @media (min-width: 960px) { .nav__hamburger { display: none; } }
+
+    /* Desktop Dropdown */
+    .nav__dropdown {
+  position: relative;
+  padding-bottom: 12px;
+  margin-bottom: -12px;
+}
+
+    .nav__dropdown-trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: var(--font-body);
+      font-size: 17px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.72);
+      padding: 10px 16px;
+      border-radius: var(--radius-sm);
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      white-space: nowrap;
+      line-height: 1.7;
+    }
+
+    .nav__dropdown-trigger:hover,
+    .nav__dropdown:hover .nav__dropdown-trigger,
+    .nav__dropdown:focus-within .nav__dropdown-trigger {
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .nav__dropdown-chevron {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      flex-shrink: 0;
+      opacity: 0.55;
+      transition: transform 0.22s ease, opacity 0.22s ease;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23ffffff' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+    }
+
+    .nav__dropdown:hover .nav__dropdown-chevron,
+    .nav__dropdown:focus-within .nav__dropdown-chevron {
+      transform: rotate(180deg);
+      opacity: 0.9;
+    }
+
+    .nav__dropdown-panel {
+  position: absolute;
+  top: calc(100% + 2px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-4px);
+  min-width: 180px;
+  background: var(--navy);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: var(--radius-md);
+  box-shadow: 0 12px 40px rgba(6, 20, 46, 0.38), 0 2px 8px rgba(6, 20, 46, 0.18);
+  padding: 8px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 400;
+}
+
+    .nav__dropdown-panel::before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 10px;
+      height: 10px;
+      background: var(--navy);
+      border-left: 1px solid rgba(255, 255, 255, 0.09);
+      border-top: 1px solid rgba(255, 255, 255, 0.09);
+      clip-path: polygon(0 100%, 50% 0, 100% 100%);
+    }
+
+    .nav__dropdown:hover .nav__dropdown-panel,
+    .nav__dropdown:focus-within .nav__dropdown-panel {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .nav__dropdown-link {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.68);
+      padding: 9px 16px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+      white-space: nowrap;
+      text-decoration: none;
+    }
+
+    .nav__dropdown-link:hover {
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.07);
+      padding-left: 20px;
+      border-left: 2px solid var(--gold);
+      margin-left: -2px;
+    }
+
+    .nav__dropdown-link--active {
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .nav__dropdown-divider {
+      height: 1px;
+      background: rgba(255, 255, 255, 0.06);
+      margin: 4px 8px;
+    }
+
+    /* Mobile Accordion */
+    .nav__accordion { width: 100%; }
+
+    .nav__accordion-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.8);
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      text-align: left;
+    }
+
+    .nav__accordion-trigger:hover {
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .nav__accordion-chevron {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      flex-shrink: 0;
+      opacity: 0.45;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23ffffff' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+    }
+
+    .nav__accordion-trigger[aria-expanded="true"] .nav__accordion-chevron {
+      transform: rotate(180deg);
+      opacity: 0.85;
+    }
+
+    .nav__accordion-panel {
+      display: none;
+      padding: 4px 0 4px 12px;
+    }
+
+    .nav__accordion-panel.is-open { display: block; }
+
+    .nav__accordion-links {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding: 4px 0;
+    }
+
+    .nav__accordion-link {
+      font-family: var(--font-body);
+      font-size: 14.5px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.6);
+      padding: 8px 12px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+      text-decoration: none;
+      display: block;
+    }
+
+    .nav__accordion-link:hover {
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    /* Mobile Drawer */
+    .nav__drawer {
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      pointer-events: none;
+    }
+
+    .nav__drawer-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(6, 20, 46, 0.65);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .nav__drawer-panel {
+      position: absolute;
+      top: 0; right: 0; bottom: 0;
+      width: min(320px, 85vw);
+      background: var(--navy);
+      padding: 28px 28px 40px;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .nav__drawer.is-open { pointer-events: all; }
+    .nav__drawer.is-open .nav__drawer-overlay { opacity: 1; }
+    .nav__drawer.is-open .nav__drawer-panel { transform: translateX(0); }
+
+    .nav__drawer-close {
+      align-self: flex-end;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.07);
+      border: none;
+      border-radius: 50%;
+      color: var(--white);
+      font-size: 20px;
+      cursor: pointer;
+      margin-bottom: 32px;
+      transition: var(--transition);
+    }
+
+    .nav__drawer-close:hover { background: rgba(255,255,255,0.14); }
+
+    .nav__drawer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex: 1;
+    }
+
+    .nav__drawer-link {
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.8);
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+    }
+
+    .nav__drawer-link:hover {
+      color: var(--white);
+      background: rgba(255,255,255,0.07);
+    }
+
+    .nav__drawer-ctas {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .nav__drawer-ctas .btn { width: 100%; justify-content: center; }
+
+    /* ============================================================
+       PAGE HEADER — Minimal, intentional; matches blogs.html family
+    ============================================================ */
+    .page-header {
+      background-image: url('images/articles-hero-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+      overflow: hidden;
+      padding: 72px 0 80px;
+    }
+
+    .page-header::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -10%;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(196, 150, 58, 0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .page-header::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.62);
+      pointer-events: none;
+    }
+
+    .page-header__inner {
+      position: relative;
+      z-index: 2;
+    }
+
+    .page-header__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .page-header__eyebrow-line {
+      display: block;
+      width: 28px;
+      height: 1.5px;
+      background: var(--gold);
+      border-radius: 2px;
+    }
+
+    .page-header__eyebrow-text {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.65);
+    }
+
+    .page-header__title {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 58px);
+      font-weight: 600;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 18px;
+      letter-spacing: -0.01em;
+    }
+
+    .page-header__subtitle {
+      font-size: clamp(15px, 1.8vw, 17px);
+      line-height: 1.72;
+      color: var(--white);
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+      max-width: 540px;
+    }
+
+    /* ============================================================
+       ARTICLES SECTION — Centered editorial list
+    ============================================================ */
+    .articles-section {
+      background: var(--ivory);
+      padding: var(--section-pad);
+    }
+
+    /* Constrained center column for editorial feel */
+    .articles-list-wrap {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    /* Section header above list */
+    .articles-list-header {
+      margin-bottom: 52px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .articles-list-header__text {}
+
+    .articles-list-header__title {
+      font-family: var(--font-display);
+      font-size: clamp(24px, 3vw, 32px);
+      font-weight: 600;
+      color: var(--text-dark);
+      line-height: 1.2;
+    }
+
+    .articles-list-header__count {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    .articles-list-header__filter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .filter-tag {
+      display: inline-flex;
+      align-items: center;
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--text-muted);
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 5px 14px;
+      cursor: pointer;
+      transition: var(--transition);
+      user-select: none;
+    }
+
+    .filter-tag:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .filter-tag--active {
+      background: var(--navy);
+      color: var(--white);
+      border-color: var(--navy);
+    }
+
+    .filter-tag--active:hover {
+      color: var(--gold-pale);
+      border-color: var(--navy);
+    }
+
+    /* ============================================================
+       ARTICLE ROW — Stacked editorial layout
+    ============================================================ */
+    .articles-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    /* Hidden state — JS removes this to reveal */
+    .article-row[data-article-hidden] {
+      display: none;
+    }
+
+    /* Reveal animation when shown */
+    .article-row.is-revealed {
+      animation: articleReveal 0.4s ease both;
+    }
+
+    @keyframes articleReveal {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .article-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+      padding: 32px 0;
+      border-bottom: 1px solid var(--border);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    /* Light hover tint */
+    .article-row:hover {
+      background: rgba(196, 150, 58, 0.025);
+    }
+
+    /* First item — no top border needed since header provides it */
+    .article-row:first-child {
+      border-top: none;
+    }
+
+    @media (min-width: 600px) {
+      .article-row {
+        grid-template-columns: 140px 1fr;
+        gap: 0 32px;
+        align-items: start;
+        padding: 36px 0;
+      }
+    }
+
+    /* Left column: number + category */
+    .article-row__aside {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    @media (min-width: 600px) {
+      .article-row__aside {
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 8px;
+        min-width: 80px;
+        padding-top: 4px;
+        margin-bottom: 0;
+      }
+    }
+
+    .article-row__number {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gold);
+      opacity: 0.5;
+      line-height: 1;
+      letter-spacing: 0.04em;
+    }
+
+    .article-row__category {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      white-space: nowrap;
+    }
+
+    @media (min-width: 600px) {
+      .article-row__category {
+        writing-mode: horizontal-tb;
+        text-align: right;
+        font-size: 10px;
+      }
+    }
+
+    /* Right column: content */
+    .article-row__content {}
+
+    .article-row__title {
+      font-family: var(--font-display);
+      font-size: clamp(20px, 2.4vw, 26px);
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.28;
+      margin-bottom: 12px;
+      transition: color 0.2s ease;
+    }
+
+    .article-row:hover .article-row__title {
+      color: var(--text-dark);
+    }
+
+    .article-row__excerpt {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      max-width: 580px;
+    }
+
+    .article-row__footer {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .article-row__read-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.02em;
+      transition: var(--transition);
+    }
+
+    .article-row__read-more::after {
+      content: '→';
+      font-size: 14px;
+      transition: transform 0.2s ease;
+    }
+
+    .article-row__read-more:hover { color: var(--gold-light); }
+    .article-row__read-more:hover::after { transform: translateX(4px); }
+
+    /* Placeholder read-more — muted, non-interactive */
+    .article-row__read-more--placeholder {
+      color: var(--text-light);
+      pointer-events: none;
+      cursor: default;
+    }
+
+    .article-row__read-more--placeholder::after { display: none; }
+
+    .article-row__meta {
+      font-size: 12px;
+      color: var(--text-light);
+      letter-spacing: 0.01em;
+    }
+
+    /* Coming Soon pill */
+    .article-row__pill {
+      display: inline-flex;
+      align-items: center;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 3px 10px;
+    }
+
+    /* ============================================================
+       SEE MORE / END OF LIST
+    ============================================================ */
+    .articles-more {
+      max-width: 780px;
+      margin: 0 auto;
+      padding-top: 48px;
+      text-align: center;
+    }
+
+    .articles-more__btn-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .articles-more__sub {
+      font-size: 13px;
+      color: var(--text-light);
+    }
+
+    /* End of list message — hidden until JS shows it */
+    .articles-end {
+      display: none;
+      text-align: center;
+      padding-top: 32px;
+    }
+
+    .articles-end.is-visible { display: block; }
+
+    .articles-end__text {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-style: italic;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .articles-end__rule {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      max-width: 320px;
+      margin: 16px auto 0;
+    }
+
+    .articles-end__rule::before,
+    .articles-end__rule::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .articles-end__rule-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0.5;
+    }
+
+    /* ============================================================
+       CTA STRIP — Navy, matches site-wide pattern
+    ============================================================ */
+    .articles-cta {
+      background: var(--navy);
+      padding: 72px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .articles-cta::before {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      right: -10%;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(196, 150, 58, 0.06) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .articles-cta__inner {
+      position: relative;
+      z-index: 2;
+      max-width: 620px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .articles-cta .section-label {
+      display: block;
+      text-align: center;
+      margin-bottom: 14px;
+    }
+
+    .articles-cta__title {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 3.5vw, 36px);
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .articles-cta__body {
+      font-size: 16px;
+      line-height: 1.72;
+      color: rgba(255, 255, 255, 0.55);
+      margin-bottom: 36px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .articles-cta__ctas {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    /* ============================================================
+       FOOTER — Identical to site-wide standard
+    ============================================================ */
+    .footer {
+      background: #0a3528;
+      padding: 64px 0 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    @media (min-width: 640px)  { .footer__grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 960px)  { .footer__grid { grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 48px; } }
+
+    .footer__brand-name {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 4px;
+      letter-spacing: 0.01em;
+    }
+
+    .footer__brand-tagline {
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold-pale);
+      opacity: 0.6;
+      margin-bottom: 16px;
+    }
+
+    .footer__brand-desc {
+      font-size: 14px;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.4);
+      max-width: 280px;
+    }
+
+    .footer__col-label {
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .footer__links {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .footer__link {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      padding: 5px 0;
+      transition: var(--transition);
+    }
+
+    .footer__link:hover { color: var(--white); }
+
+    .footer__contact-line {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .footer__contact-icon {
+      font-size: 14px;
+      color: var(--gold);
+      opacity: 0.7;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .footer__contact-text {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.5;
+    }
+
+    .footer__cta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--gold);
+      margin-top: 16px;
+      transition: var(--transition);
+    }
+
+    .footer__cta-link:hover { color: var(--gold-light); }
+    .footer__cta-link::after { content: '→'; transition: transform 0.2s ease; }
+    .footer__cta-link:hover::after { transform: translateX(3px); }
+
+    .footer__bottom {
+      margin-top: 56px;
+      padding: 24px 0;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .footer__copyright { font-size: 12px; color: rgba(255,255,255,0.3); }
+
+    .footer__legal-links { display: flex; gap: 20px; }
+
+    .footer__legal-link {
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+      transition: var(--transition);
+    }
+
+    .footer__legal-link:hover { color: rgba(255,255,255,0.6); }
+
+    /* ============================================================
+       RESPONSIVE OVERRIDES
+    ============================================================ */
+    @media (max-width: 599px) {
+      :root { --section-pad: 56px 0; }
+
+      .page-header { padding: 52px 0 60px; }
+
+      .articles-list-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+      }
+
+      .articles-cta__ctas { flex-direction: column; align-items: stretch; }
+      .articles-cta__ctas .btn { justify-content: center; }
+
+      .footer__grid { gap: 32px; }
+      .footer__bottom { flex-direction: column; align-items: flex-start; }
+    }
+
+    /* ============================================================
+       ENTRANCE ANIMATION
+    ============================================================ */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .page-header__inner { animation: fadeUp 0.65s ease both; }
+
+  </style>
+</head>
+
+<body id="top">
+
+  <!-- ============================================================
+       NAVIGATION — Sticky, consistent with site-wide pattern
+  ============================================================ -->
+  <header class="nav" role="banner">
+    <div class="container">
+      <div class="nav__inner">
+
+        <!-- Brand / Logo -->
+        <a href="index.html" class="nav__brand" aria-label="Strategy West College Planning, Home">
+          <img src="images/logo.png" alt="Strategy West College Planning" style="height: 140px; width: auto; display: block;">
+        </a>
+
+        <!-- Desktop Nav Links -->
+        <nav class="nav__links" aria-label="Primary navigation">
+          <a href="how-it-works.html" class="nav__link">How It Works</a>
+          <a href="our-process.html" class="nav__link">Our Process</a>
+          <a href="pillars.html" class="nav__link">The 3 Pillars</a>
+
+          <!-- Resources Dropdown — Articles now active/linked -->
+          <div class="nav__dropdown" role="navigation" aria-label="Resources submenu">
+            <button class="nav__dropdown-trigger" aria-haspopup="true" aria-expanded="false" id="resources-dropdown-btn" type="button">
+              Resources
+              <span class="nav__dropdown-chevron" aria-hidden="true"></span>
+            </button>
+            <div class="nav__dropdown-panel" role="menu" aria-labelledby="resources-dropdown-btn">
+              <a href="blogs.html"    class="nav__dropdown-link" role="menuitem">Blogs</a>
+              <a href="articles.html" class="nav__dropdown-link nav__dropdown-link--active" role="menuitem">Articles</a>
+              <div class="nav__dropdown-divider" role="separator" aria-hidden="true"></div>
+              <a href="timeline.html" class="nav__dropdown-link" role="menuitem">Timeline</a>
+              <a href="packages.html" class="nav__dropdown-link" role="menuitem">Packages</a>
+              <div class="nav__dropdown-divider" role="separator" aria-hidden="true"></div>
+              <a href="webinar-library.html" class="nav__dropdown-link" role="menuitem">Webinars</a>
+            </div>
+          </div>
+
+          <a href="about.html" class="nav__link">About</a>
+        </nav>
+
+        <!-- Desktop CTAs -->
+        <div class="nav__ctas">
+          <a href="webinar-library.html" class="btn btn--outline btn--small nav__cta-webinar">Free Workshop</a>
+          <a href="https://meetings-na2.hubspot.com/will-smethurst/cfs-website-meeting" class="btn btn--primary btn--small" target="_blank" rel="noopener">Schedule a Consultation</a>
+        </div>
+
+        <!-- Mobile Hamburger -->
+        <button class="nav__hamburger" id="nav-toggle" aria-label="Open navigation menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="nav__drawer" id="nav-drawer" role="dialog" aria-label="Navigation menu" aria-modal="true">
+    <div class="nav__drawer-overlay" id="nav-overlay"></div>
+    <div class="nav__drawer-panel">
+      <button class="nav__drawer-close" id="nav-close" aria-label="Close navigation">✕</button>
+      <nav class="nav__drawer-links" aria-label="Mobile navigation">
+        <a href="index.html"       class="nav__drawer-link">Home</a>
+        <a href="how-it-works.html" class="nav__drawer-link">How It Works</a>
+        <a href="our-process.html" class="nav__drawer-link">Our Process</a>
+        <a href="pillars.html"     class="nav__drawer-link">The 3 Pillars</a>
+
+        <!-- Resources Accordion — Articles now linked -->
+        <div class="nav__accordion">
+          <button class="nav__accordion-trigger" aria-expanded="false" aria-controls="resources-accordion-panel" id="resources-accordion-btn" type="button">
+            Resources
+            <span class="nav__accordion-chevron" aria-hidden="true"></span>
+          </button>
+          <div class="nav__accordion-panel" id="resources-accordion-panel" role="region" aria-labelledby="resources-accordion-btn">
+            <div class="nav__accordion-links">
+              <a href="blogs.html"    class="nav__accordion-link nav__drawer-link">Blogs</a>
+              <a href="articles.html" class="nav__accordion-link nav__drawer-link">Articles</a>
+              <a href="our-process.html" class="nav__accordion-link nav__drawer-link">Timeline</a>
+              <a href="packages.html" class="nav__accordion-link nav__drawer-link">Packages</a>
+              <a href="webinar-library.html"  class="nav__accordion-link nav__drawer-link">Webinars</a>
+            </div>
+          </div>
+        </div>
+
+        <a href="about.html"  class="nav__drawer-link">About</a>
+      </nav>
+      <div class="nav__drawer-ctas">
+        <a href="webinar-library.html"  class="btn btn--outline">Free Workshop</a>
+        <a href="https://meetings-na2.hubspot.com/will-smethurst/cfs-website-meeting"  class="btn btn--primary" target="_blank" rel="noopener">Schedule a Consultation</a>
+      </div>
+    </div>
+  </div>
+
+
+  <main>
+
+    <!-- ============================================================
+         PAGE HEADER — Minimal, intentional; same family as blogs.html
+    ============================================================ -->
+    <section class="page-header" aria-label="Articles and Guides">
+      <div class="container">
+        <div class="page-header__inner">
+
+          <div class="page-header__eyebrow">
+            <span class="page-header__eyebrow-line" aria-hidden="true"></span>
+            <span class="page-header__eyebrow-text">Resources &amp; Insights</span>
+          </div>
+
+          <h1 class="page-header__title">Insights</h1>
+
+          <p class="page-header__subtitle">
+            Calm, advisor-led guidance across financial strategy, admissions, school selection, and the year-by-year planning that shapes how a family's college process actually unfolds.
+          </p>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         ARTICLES LIST — Centered editorial layout, progressive reveal
+    ============================================================ -->
+    <section class="articles-section" aria-labelledby="articles-heading">
+      <div class="container">
+
+        <div class="articles-list-wrap">
+
+          <!-- List header -->
+          <div class="articles-list-header">
+            <div class="articles-list-header__text">
+              <span class="section-label" style="margin-bottom:8px;">The Library</span>
+              <h2 class="articles-list-header__title" id="articles-heading">All Insights</h2>
+              <p class="articles-list-header__count" id="insights-count-label">Showing 6 of 20 insights</p>
+            </div>
+            <div class="articles-list-header__filter" role="list" aria-label="Filter by topic">
+              <span class="filter-tag filter-tag--active" role="listitem">All Topics</span>
+              <span class="filter-tag" role="listitem">Financial Strategy</span>
+              <span class="filter-tag" role="listitem">Admissions</span>
+              <span class="filter-tag" role="listitem">School Selection</span>
+              <span class="filter-tag" role="listitem">Planning</span>
+            </div>
+          </div>
+
+          <!-- ──────────────────────────────────────────
+               ARTICLE LIST — 12 placeholders total
+               First 3 visible; 4–12 hidden via data-article-hidden
+          ────────────────────────────────────────── -->
+          <div class="articles-list" id="articles-list" role="list">
+            <!-- Insights rendered by JS — see <script> at bottom -->
+          </div>
+          <!-- /articles-list -->
+
+          <!-- See More / End of List -->
+          <div class="articles-more" id="articles-more">
+            <div class="articles-more__btn-wrap" id="see-more-wrap">
+              <button class="btn btn--ghost btn--large" id="see-more-btn" aria-controls="articles-list">
+                See More Insights
+              </button>
+              <p class="articles-more__sub" id="see-more-sub">Showing <span id="visible-count">6</span> of <span id="see-more-total">20</span> insights</p>
+            </div>
+            <div class="articles-end" id="articles-end" aria-live="polite">
+              <p class="articles-end__text">You've reached the end of our current library.</p>
+              <div class="articles-end__rule" aria-hidden="true">
+                <span class="articles-end__rule-dot"></span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- /articles-list-wrap -->
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         CTA STRIP — Consistent with site-wide bottom conversion
+    ============================================================ -->
+    <section class="articles-cta" aria-labelledby="articles-cta-heading">
+      <div class="container">
+        <div class="articles-cta__inner">
+
+          <span class="section-label">Take the Next Step</span>
+          <span class="gold-rule gold-rule--center" aria-hidden="true"></span>
+
+          <h2 class="articles-cta__title" id="articles-cta-heading">
+            Reading Is a Starting Point.<br>Strategy Is What Moves the Needle.
+          </h2>
+
+          <p class="articles-cta__body">
+            Our free workshop walks families through the full three-pillar planning framework, the same approach that guides every family we work with. Or, if you're ready to talk through your family's specific situation, schedule a consultation directly.
+          </p>
+
+          <div class="articles-cta__ctas">
+            <a href="webinar-library.html" class="btn btn--primary btn--large btn--arrow">Register for the Free Workshop</a>
+            <a href="https://meetings-na2.hubspot.com/will-smethurst/cfs-website-meeting"  class="btn btn--white-outline btn--large" target="_blank" rel="noopener">Schedule a Consultation</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ============================================================
+       FOOTER — Identical structure to index.html
+  ============================================================ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+
+      <div class="footer__grid">
+
+        <!-- Column 1: Brand -->
+        <div class="footer__brand">
+          <div class="footer__brand-name">Strategy West</div>
+          <div class="footer__brand-tagline">College Planning</div>
+          <p class="footer__brand-desc">
+            Expert, advisor-led guidance for families navigating the college planning process, from freshman year through enrollment.
+          </p>
+        </div>
+
+        <!-- Column 2: Site Pages -->
+        <div class="footer__col">
+          <span class="footer__col-label">Navigate</span>
+          <nav class="footer__links" aria-label="Footer navigation">
+            <a href="index.html"        class="footer__link">Home</a>
+            <a href="how-it-works.html" class="footer__link">How It Works</a>
+            <a href="our-process.html"  class="footer__link">Our Process</a>
+            <a href="pillars.html"      class="footer__link">The 3 Pillars</a>
+            <a href="about.html"        class="footer__link">About</a>
+          </nav>
+        </div>
+
+        <!-- Column 3: Resources -->
+        <div class="footer__col">
+          <span class="footer__col-label">Resources</span>
+          <nav class="footer__links" aria-label="Resources navigation">
+            <a href="blogs.html" class="footer__link">Blogs</a>
+            <a href="articles.html" class="footer__link">Articles</a>
+            <a href="timeline.html" class="footer__link">Timeline</a>
+            <a href="webinar-library.html" class="footer__link">Free Workshop</a>
+            <a href="packages.html" class="footer__link">Packages</a>
+          </nav>
+        </div>
+
+        <!-- Column 4: Contact -->
+        <div class="footer__col">
+          <span class="footer__col-label">Get in Touch</span>
+
+          <div class="footer__contact-line">
+            <span class="footer__contact-icon" aria-hidden="true">✉</span>
+            <span class="footer__contact-text">info@swfcollegeplanning.com</span>
+          </div>
+
+          <div class="footer__contact-line">
+            <span class="footer__contact-icon" aria-hidden="true">◎</span>
+            <span class="footer__contact-text">
+              Serving families nationwide<br>via virtual consultation & in-person in Utah
+            </span>
+          </div>
+
+          <a href="https://meetings-na2.hubspot.com/will-smethurst/cfs-website-meeting" class="footer__cta-link" target="_blank" rel="noopener">Schedule a Consultation</a>
+        </div>
+
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="footer__bottom">
+        <span class="footer__copyright">
+          &copy; <span id="footer-year"></span> Strategy West College Planning. All rights reserved.
+        </span>
+        <div class="footer__legal-links">
+          <a href="privacy.html" class="footer__legal-link">Privacy Policy</a>
+          <a href="terms.html"   class="footer__legal-link">Terms of Use</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- ============================================================
+       JAVASCRIPT
+       1. Nav drawer open/close
+       2. Mobile accordion
+       3. "See More" progressive reveal (3 at a time)
+       4. Dynamic footer year
+  ============================================================ -->
+  <script>
+    // ── Dynamic copyright year ────────────────────────────────────
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+    // ── Mobile navigation drawer ──────────────────────────────────
+    const toggle   = document.getElementById('nav-toggle');
+    const drawer   = document.getElementById('nav-drawer');
+    const overlay  = document.getElementById('nav-overlay');
+    const closeBtn = document.getElementById('nav-close');
+
+    function openDrawer() {
+      drawer.classList.add('is-open');
+      toggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDrawer() {
+      drawer.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    toggle.addEventListener('click', openDrawer);
+    closeBtn.addEventListener('click', closeDrawer);
+    overlay.addEventListener('click', closeDrawer);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && drawer.classList.contains('is-open')) closeDrawer();
+    });
+
+    drawer.querySelectorAll('.nav__drawer-link, .nav__drawer-ctas .btn').forEach(link => {
+      link.addEventListener('click', closeDrawer);
+    });
+
+    // ── Resources accordion (mobile drawer) ──────────────────────
+    const accordionBtn   = document.getElementById('resources-accordion-btn');
+    const accordionPanel = document.getElementById('resources-accordion-panel');
+
+    if (accordionBtn && accordionPanel) {
+      accordionBtn.addEventListener('click', function () {
+        const isOpen = accordionPanel.classList.toggle('is-open');
+        accordionBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+    }
+
+    // ── Insights data ─────────────────────────────────────────────
+    // To add a new insight, prepend a new entry at the top of this array
+    // (newest first), bump the numbers, and the filter + see-more controls
+    // will handle the rest. Category must match one of the filter chips
+    // above (otherwise the entry only shows under "All Topics").
+    const insights = [
+      { number: '01', category: 'Admissions', title: 'How Colleges Actually Evaluate Course Rigor: The Complete Guide for Families', excerpt: 'Course rigor consistently ranks among the top three factors in college admissions decisions, sitting just behind grades themselves. Yet most families still approach course selection as a year-by-year scheduling decision rather than a strategic one. This guide explains how admissions offices actually evaluate rigor, why context matters more than absolute difficulty, and how to plan a strategic four-year academic path that strengthens both admissions positioning and merit aid eligibility.', meta: 'May 4, 2026', link: 'article-how-colleges-evaluate-course-rigor.html' },
+      { number: '02', category: 'Planning', title: 'What Families Wish They Had Done Differently: Lessons From the College Planning Process', excerpt: 'Every family finishes the college process with some mix of relief and regret. The regret almost always falls into the same recurring patterns. This article pulls together the most common ones so families still in the middle of the process can learn from them before the window closes.', meta: 'April 28, 2026', link: 'article-what-families-wish-they-had-done-differently.html' },
+      { number: '03', category: 'Admissions', title: 'Early Decision, Early Action, and Restrictive Early Action: Understanding the Difference', excerpt: 'Early application plans carry very different commitments and consequences. Families who misuse them often end up locked into decisions they did not fully understand. This article walks through all three plans and the situations where each one fits.', meta: 'April 23, 2026', link: 'article-early-decision-early-action.html' },
+      { number: '04', category: 'School Selection', title: 'Understanding the True Cost of College', excerpt: 'Sticker price is rarely what families actually pay. Learn how to break down the real numbers, what drives cost differences between schools, and how net price changes everything.', meta: 'April 17, 2026', link: 'blog-understanding-the-true-cost-of-college.html' },
+      { number: '05', category: 'Planning', title: 'What High School Transcript Decisions Signal to Colleges', excerpt: 'Your student\'s transcript says more than grades. Learn what course choices, rigor, and GPA trends signal to colleges and how to position wisely from the start.', meta: 'April 17, 2026', link: 'blog-what-high-school-transcript-decisions-signal.html' },
+      { number: '06', category: 'Financial Strategy', title: 'Merit Aid vs. Need-Based Aid: What Every Family Should Know', excerpt: 'One of the most persistent myths in college planning is that financial aid is only for families who cannot afford to pay. Understanding how both types of aid work changes everything.', meta: 'April 17, 2026', link: 'blog-merit-aid-vs-need-based-aid.html' },
+      { number: '07', category: 'School Selection', title: 'How to Build a College List That Actually Works for Your Family', excerpt: 'Most families build their college list backwards. A strategic list is built around fit, financial yield, and realistic positioning, not rankings and name recognition alone.', meta: 'April 17, 2026', link: 'blog-how-to-build-a-college-list.html' },
+      { number: '08', category: 'Planning', title: 'The Freshman Year Advantage: Why Starting Early Changes Everything', excerpt: 'The families who get the best outcomes academically and financially tend to share one thing in common: they started earlier than everyone else. Here is what that looks like in practice.', meta: 'April 17, 2026', link: 'blog-freshman-year-advantage.html' },
+      { number: '09', category: 'Admissions', title: 'How Extracurriculars Are Actually Evaluated by Colleges', excerpt: 'Colleges are not looking for a full calendar of activities. They are looking for a story. Here is how admissions readers actually evaluate extracurricular records and what depth really means.', meta: 'April 17, 2026', link: 'blog-how-extracurriculars-are-evaluated-by-colleges.html' },
+      { number: '10', category: 'Financial Strategy', title: 'How to Read a Financial Aid Award Letter (And What It Really Means)', excerpt: 'Most families misread their financial aid award letter. Learn how to break down each section, calculate your real cost, and avoid overpaying for college.', meta: 'April 14, 2026', link: 'blog-how-to-read-a-financial-aid-award-letter.html' },
+      { number: '11', category: 'Financial Strategy', title: 'Decoding Your Financial Aid Award Letter: A Line-by-Line Guide', excerpt: 'There is no federal standard for how schools must format award letters, which means two offers for the same package can look completely different. Learn what each section actually means and what families most commonly miss when comparing offers.', meta: 'April 13, 2026', link: 'article-decoding-financial-aid-award-letter.html' },
+      { number: '12', category: 'Planning', title: 'The Senior Year Decision Timeline: From Applications to Enrollment', excerpt: 'Applications, financial aid filings, award letters, and enrollment decisions all compress into an eight-month window. This article walks through the full senior year calendar month by month and the decisions that matter most at each stage.', meta: 'April 2, 2026', link: 'article-senior-year-decision-timeline.html' },
+      { number: '13', category: 'Admissions', title: 'How Demonstrated Interest Affects Admissions Decisions', excerpt: 'At a meaningful number of colleges, demonstrated interest is a tracked, measurable factor in the admissions decision. This article walks through the mechanics, which schools use it, and what signaling genuine interest actually looks like in practice.', meta: 'March 23, 2026', link: 'article-demonstrated-interest-admissions.html' },
+      { number: '14', category: 'Financial Strategy', title: '529 Plans, Savings Strategies, and What the CSS Profile Sees', excerpt: 'Two families with identical savings totals can end up with very different aid packages based on how the money was structured. This article explains how 529 plans are treated under FAFSA rules, how the CSS Profile sees things differently, and where families have room to plan strategically.', meta: 'March 12, 2026', link: 'article-529-plans-css-profile.html' },
+      { number: '15', category: 'School Selection', title: 'Why School Fit Matters More Than School Rankings', excerpt: 'Rankings are built to answer a question almost no family is actually asking. Understanding the difference between a high-ranked school and the right school is one of the most important shifts a family can make in the college planning process.', meta: 'March 3, 2026', link: 'article-why-school-fit-matters-more-than-rankings.html' },
+      { number: '16', category: 'Planning', title: 'The Sophomore Year Roadmap: Setting the Foundation Before Junior Year Rush', excerpt: 'Sophomore year is the most underutilized year in high school for college preparation. Families who use it well establish academic patterns, begin extracurricular intentionality, and set up financial conversations that make every subsequent step easier. This article outlines what that looks like semester by semester.', meta: 'February 18, 2026', link: 'article-sophomore-year-roadmap.html' },
+      { number: '17', category: 'Financial Strategy', title: 'Appealing a Financial Aid Award: What Families Need to Know', excerpt: 'Most families treat a financial aid award letter as the final word. It rarely is. Schools routinely adjust awards when families document a change in circumstances or make a well-supported case for reconsideration. This article explains how appeals work, when to pursue one, and what realistic outcomes look like.', meta: 'February 9, 2026', link: 'article-appealing-financial-aid-award.html' },
+      { number: '18', category: 'Admissions', title: 'What Test-Optional Policies Actually Mean for Your Student\'s Application', excerpt: 'Test-optional admissions changed the landscape for thousands of students, but the implications are more nuanced than headlines suggest. This article clarifies when submitting scores helps, when it doesn\'t, and how to make that call for your student.', meta: 'January 29, 2026', link: 'article-test-optional-policies-explained.html' },
+      { number: '19', category: 'School Selection', title: 'How to Evaluate a College\'s Net Price, Not Its Sticker Price', excerpt: 'Published tuition figures are rarely what families pay. The net price, what your family actually owes after grants and scholarships, is the only number that truly matters. This article explains how net price calculators work, why they vary in accuracy, and how to use them as a strategic planning tool.', meta: 'January 19, 2026', link: 'article-how-to-evaluate-net-price.html' },
+      { number: '20', category: 'Financial Strategy', title: 'A Family\'s Complete Guide to Understanding the FAFSA', excerpt: 'The FAFSA is the gateway to most forms of financial assistance, yet many families complete it late, incompletely, or without understanding how their answers affect their aid package. This guide walks through every major section, common errors to avoid, and timing decisions that can materially affect your outcome.', meta: 'January 7, 2026', link: 'article-understanding-the-fafsa.html' },
+    ];
+
+    // ── State ─────────────────────────────────────────────────────
+    const INITIAL_VISIBLE = 6;
+    const REVEAL_STEP     = 3;
+    let activeFilter = 'All Topics';
+    let visibleCount = INITIAL_VISIBLE;
+
+    // ── DOM refs ──────────────────────────────────────────────────
+    const insightsList   = document.getElementById('articles-list');
+    const countLabel     = document.getElementById('insights-count-label');
+    const seeMoreBtn     = document.getElementById('see-more-btn');
+    const seeMoreWrap    = document.getElementById('see-more-wrap');
+    const insightsEnd    = document.getElementById('articles-end');
+    const visibleCountEl = document.getElementById('visible-count');
+    const seeMoreTotal   = document.getElementById('see-more-total');
+    const filterTags     = document.querySelectorAll('.filter-tag');
+
+    // ── Helpers ───────────────────────────────────────────────────
+    function getFiltered() {
+      return activeFilter === 'All Topics'
+        ? insights
+        : insights.filter(p => p.category === activeFilter);
+    }
+
+    function escapeHtml(s) {
+      return s.replace(/&/g, '&amp;')
+              .replace(/</g, '&lt;')
+              .replace(/>/g, '&gt;')
+              .replace(/\"/g, '&quot;');
+    }
+
+    function renderRow(p) {
+      return (
+        '<article class="article-row" role="listitem" aria-label="Insight ' + p.number + '">' +
+          '<div class="article-row__aside">' +
+            '<span class="article-row__number">' + p.number + '</span>' +
+            '<span class="article-row__category">' + escapeHtml(p.category) + '</span>' +
+          '</div>' +
+          '<div class="article-row__content">' +
+            '<h2 class="article-row__title">' + escapeHtml(p.title) + '</h2>' +
+            '<p class="article-row__excerpt">' + escapeHtml(p.excerpt) + '</p>' +
+            '<div class="article-row__footer">' +
+              '<a href="' + p.link + '" class="article-row__read-more">Read More</a>' +
+              '<span class="article-row__meta">' + escapeHtml(p.meta) + '</span>' +
+            '</div>' +
+          '</div>' +
+        '</article>'
+      );
+    }
+
+    function renderInsights() {
+      const filtered = getFiltered();
+      const total    = filtered.length;
+      const shown    = filtered.slice(0, visibleCount);
+
+      insightsList.innerHTML = shown.map(renderRow).join('');
+
+      const noun = total === 1 ? 'insight' : 'insights';
+      countLabel.textContent = 'Showing ' + shown.length + ' of ' + total + ' ' + noun;
+
+      if (shown.length >= total) {
+        seeMoreWrap.style.display = 'none';
+        insightsEnd.classList.add('is-visible');
+      } else {
+        seeMoreWrap.style.display = '';
+        insightsEnd.classList.remove('is-visible');
+        if (visibleCountEl) visibleCountEl.textContent = shown.length;
+        if (seeMoreTotal)   seeMoreTotal.textContent = total;
+      }
+    }
+
+    // ── Filter chip clicks ────────────────────────────────────────
+    filterTags.forEach(tag => {
+      tag.style.cursor = 'pointer';
+      tag.addEventListener('click', () => {
+        filterTags.forEach(t => t.classList.remove('filter-tag--active'));
+        tag.classList.add('filter-tag--active');
+        activeFilter  = tag.textContent.trim();
+        visibleCount  = INITIAL_VISIBLE;
+        renderInsights();
+        // Scroll the list header into view so the reset is visible
+        document.querySelector('.articles-list-header').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    // ── See More reveal ───────────────────────────────────────────
+    seeMoreBtn.addEventListener('click', () => {
+      const filtered = getFiltered();
+      const prevShown = Math.min(visibleCount, filtered.length);
+      visibleCount += REVEAL_STEP;
+      renderInsights();
+      // Scroll to the first newly revealed row
+      const rows = insightsList.querySelectorAll('.article-row');
+      if (rows[prevShown]) {
+        setTimeout(() => rows[prevShown].scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 80);
+      }
+    });
+
+    // ── Initial render ────────────────────────────────────────────
+    renderInsights();
+
+  </script>
+
+</body>
+</html>
