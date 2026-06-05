@@ -231,7 +231,7 @@
 
     .btn--small {
       font-size: 13px;
-      padding: 10px 22px;
+      padding: 12px 22px;
     }
 
     .btn--arrow::after {
@@ -257,8 +257,17 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 68px;
+      height: 112px;
       gap: 24px;
+    }
+
+    @media (max-width: 959px) {
+      .nav__inner { height: 88px; }
+      .nav__brand img { height: 100px !important; }
+    }
+    @media (max-width: 639px) {
+      .nav__inner { height: 72px; }
+      .nav__brand img { height: 84px !important; }
     }
 
     .nav__brand {
@@ -303,7 +312,7 @@
       font-size: 14px;
       font-weight: 500;
       color: rgba(255, 255, 255, 0.72);
-      padding: 6px 14px;
+      padding: 8px 14px;
       border-radius: var(--radius-sm);
       transition: var(--transition);
       white-space: nowrap;
@@ -377,7 +386,7 @@
       font-size: 14px;
       font-weight: 500;
       color: rgba(255, 255, 255, 0.72);
-      padding: 6px 14px;
+      padding: 8px 14px;
       border-radius: var(--radius-sm);
       background: none;
       border: none;
@@ -1276,7 +1285,7 @@
 
         <!-- Brand / Logo -->
         <a href="index.html" class="nav__brand" aria-label="Strategy West College Planning, Home">
-          <img src="images/logo.png" alt="Strategy West College Planning" style="height: 120px; width: auto; display: block;">
+          <img src="images/logo.png" alt="Strategy West College Planning" style="height: 130px; width: auto; display: block;">
         </a>
 
         <!-- Desktop Nav Links -->
