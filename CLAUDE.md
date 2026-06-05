@@ -150,7 +150,7 @@ When a new insight is published in an existing category, revisit the related-pos
 
 A single **Insights** item is wired in three places on every surviving page:
 
-- **Desktop dropdown** (`.nav__dropdown-panel`): `<a href="insights.html" class="nav__dropdown-link" role="menuitem">Insights</a>` — sits above the first divider, ahead of `Timeline`, `Packages`, divider, `Webinars`.
+- **Desktop dropdown** (`.nav__dropdown-panel`): `<a href="insights.html" class="nav__dropdown-link" role="menuitem">Insights</a>` — sits above the first divider, ahead of `Timeline`, `Packages`, divider, `Free Workshop`.
 - **Mobile accordion** (`.nav__accordion-links`): `<a href="insights.html" class="nav__accordion-link …">Insights</a>` — top of the accordion list.
 - **Footer Resources column**: `<a href="insights.html" class="footer__link">Insights</a>` — top of the column, above `Timeline`, `Free Workshop`, `Packages`.
 
@@ -158,13 +158,14 @@ On `insights.html` only, the dropdown item carries the additional `nav__dropdown
 
 ### Webinar Labeling Convention
 
-The webinar entry has two different labels depending on context — keep this consistent in future edits:
+The workshop entry reads **"Free Workshop"** consistently in all four places — keep this uniform in future edits:
 
-- **Nav dropdown** and **mobile accordion** Resources items: **"Webinars"** (every page).
+- **Nav dropdown** (`.nav__dropdown-panel`) Resources item: **"Free Workshop"** (every page).
+- **Mobile accordion** (`.nav__accordion-links`) Resources item: **"Free Workshop"** (every page).
 - **Footer Resources column** link: **"Free Workshop"** (every page).
 - **Nav CTA button** (`.nav__cta-webinar` and the equivalent mobile-drawer button): **"Free Workshop"** (every page).
 
-All three point to `webinar-library.html`.
+All four point to `webinar-library.html`.
 
 ## Assets
 
