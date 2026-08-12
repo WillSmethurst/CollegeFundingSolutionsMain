@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Planning Library, Strategy West College Planning</title>
-  <meta name="description" content="Watch our free on-demand workshop from Strategy West College Planning. Learn how our three-pillar planning framework helps families navigate college admissions, financial aid, and costs." />
+  <meta name="description" content="Free college planning guides from Strategy West College Planning. The Complete College Planning Guide and How to Lower the True Cost of College, covering academics, admissions, financial aid, and cost." />
 
   <!-- Google Fonts: Cormorant Garamond (display) + DM Sans (body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -12,7 +12,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet" />
 
   <!-- HubSpot form embed (loaded async) -->
-  <script src="https://js-na2.hsforms.net/forms/embed/23792532.js" defer></script>
 
   <style>
     /* ============================================================
@@ -286,6 +285,9 @@
         align-items: start;
         gap: 64px;
       }
+      .reg-form-card {
+        margin-top: -45px;
+      }
     }
 
     /* ── Left: what to expect ── */
@@ -361,66 +363,31 @@
 
     /* ── Right: form card ── */
     .reg-form-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-md);
-      padding: 40px 36px 44px;
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+      padding: 0;
     }
 
-    @media (max-width: 499px) {
-      .reg-form-card { padding: 28px 20px 32px; }
-    }
-
-    .reg-form-card__heading {
-      font-family: var(--font-display);
-      font-size: 22px;
-      font-weight: 600;
-      color: var(--navy);
-      margin-bottom: 6px;
-    }
-
-    .reg-form-card__sub {
-      font-size: 14px;
-      color: var(--text-muted);
-      margin-bottom: 28px;
-      line-height: 1.55;
-    }
-
-    .reg-form-card__divider {
-      height: 1px;
-      background: var(--border);
-      margin-bottom: 28px;
-    }
-
-    /* HubSpot form wrapper */
-    .reg-hs-wrap {
-      min-height: 200px;
-    }
-
-    /* ── Confirmation state (shown after successful submission) ── */
-    .reg-confirmation {
-      display: none;
-      text-align: center;
-      padding: 40px 0;
-    }
-    .reg-confirmation__icon {
-      font-size: 44px;
-      margin-bottom: 16px;
+    /* GoHighLevel form wrapper */
+    .reg-form-embed iframe {
       display: block;
-      color: var(--gold);
+      width: 100%;
+      border: none;
     }
-    .reg-confirmation__title {
-      font-family: var(--font-display);
-      font-size: 28px;
-      font-weight: 600;
-      color: var(--navy);
-      margin-bottom: 12px;
-    }
-    .reg-confirmation__body {
-      font-size: 15px;
-      color: var(--text-muted);
-      line-height: 1.65;
+
+    /* Desktop: constrain form to a scrollable region matching sidebar height.
+       Mobile keeps full natural height so it scrolls with the page. */
+    @media (min-width: 780px) {
+      .reg-form-embed {
+        height: 860px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        overscroll-behavior: contain;
+        border-radius: 11px;
+        -webkit-overflow-scrolling: touch;
+      }
     }
 
     /* ============================================================
@@ -596,13 +563,13 @@
           <h1 class="page-header__title">Planning Library</h1>
 
           <p class="page-header__subtitle">
-            Our complete three-pillar planning framework, recorded and ready to watch on your schedule, at no cost and no obligation.
+            A growing collection of planning resources from our advisors, covering academic, social, and financial strategy. Free to download and yours to keep.
           </p>
 
           <div class="page-header__meta">
             <div class="page-header__meta-item">
               <span class="page-header__meta-icon" aria-hidden="true">◎</span>
-              <span class="page-header__meta-text">Watch on demand, anytime</span>
+              <span class="page-header__meta-text">Read anytime, on any device</span>
             </div>
             <div class="page-header__meta-item">
               <span class="page-header__meta-icon" aria-hidden="true">◆</span>
@@ -622,67 +589,56 @@
     <!-- ============================================================
          REGISTRATION SECTION — HubSpot form + what you'll learn
     ============================================================ -->
-    <section class="reg-section" aria-label="Workshop access form">
+    <section class="reg-section" aria-label="Guide access form">
       <div class="container">
         <div class="reg-layout">
 
           <!-- Left: what to expect -->
           <aside class="reg-sidebar" aria-label="What to expect">
-            <span class="section-label">What You'll Learn</span>
+            <span class="section-label">What's Inside</span>
             <span class="gold-rule"></span>
-            <h2 class="reg-sidebar__title">A practical framework for navigating the entire college process</h2>
-            <p class="reg-sidebar__body">In this free workshop, we walk through our complete three-pillar approach, the same framework that guides every family we work with, so you can see exactly where your planning stands and what's possible.</p>
+            <h2 class="reg-sidebar__title">Two guides drawn from the same framework we use with every family we advise</h2>
+            <p class="reg-sidebar__body">Both are written by our advisors and cover academic, social, and financial strategy as one connected plan. Start with either. Most families find the shorter one answers their first question and the longer one answers the rest.</p>
 
             <div class="reg-sidebar__points">
               <div class="reg-sidebar__point">
                 <div class="reg-sidebar__point-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
                 </div>
-                <p class="reg-sidebar__point-text">How academic positioning from 9th grade forward affects college options and scholarship eligibility</p>
+                <p class="reg-sidebar__point-text"><strong>The Complete College Planning Guide.</strong> A parent's roadmap from eighth grade through enrollment day. Twenty-five chapters covering academic, social, and financial strategy as one connected plan, with guidance on where to start based on your student's grade.</p>
               </div>
               <div class="reg-sidebar__point">
                 <div class="reg-sidebar__point-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
                 </div>
-                <p class="reg-sidebar__point-text">How the FAFSA, CSS Profile, and merit aid work together, and where most families leave money behind</p>
-              </div>
-              <div class="reg-sidebar__point">
-                <div class="reg-sidebar__point-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-                </div>
-                <p class="reg-sidebar__point-text">School selection strategies that balance fit, admissions probability, and real net cost</p>
-              </div>
-              <div class="reg-sidebar__point">
-                <div class="reg-sidebar__point-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-                </div>
-                <p class="reg-sidebar__point-text">What the year-by-year planning timeline looks like, and the decisions that cannot be made late</p>
+                <p class="reg-sidebar__point-text"><strong>How to Lower the True Cost of College.</strong> Most of what a family can do about college cost comes down to a small number of decisions. This walks through the ten that matter most, from reading the true price to paying for fewer semesters.</p>
               </div>
             </div>
 
-            <p class="reg-sidebar__note">No sales pitch. No pressure. Just a clear walkthrough of the planning process so your family can make more informed decisions, wherever you are in the timeline.</p>
+            <p class="reg-sidebar__note">No sales pitch. No pressure. Just the planning process laid out clearly so your family can make more informed decisions, wherever you are in the timeline.</p>
           </aside>
 
-          <!-- Right: HubSpot form card -->
+          <!-- Right: GoHighLevel form embed -->
           <div class="reg-form-card">
-            <h2 class="reg-form-card__heading">Access the Planning Library</h2>
-            <p class="reg-form-card__sub">Enter your details below and we'll send the workshop link directly to your inbox.</p>
-            <div class="reg-form-card__divider" aria-hidden="true"></div>
-
-            <!-- HubSpot form embed -->
-            <div class="reg-hs-wrap">
-              <div class="hs-form-frame"
-                   data-region="na2"
-                   data-form-id="8e63ffb9-f763-470c-8a1d-76a4759260bb"
-                   data-portal-id="23792532"></div>
+            <div class="reg-form-embed">
+              <iframe
+                src="https://api.leadconnectorhq.com/widget/form/G5y7ng28SAVC3bnixU8t"
+                style="width:100%;height:1621px;border:none;border-radius:11px"
+                id="inline-G5y7ng28SAVC3bnixU8t"
+                data-layout="{'id':'INLINE'}"
+                data-trigger-type="alwaysShow"
+                data-trigger-value=""
+                data-activation-type="alwaysActivated"
+                data-activation-value=""
+                data-deactivation-type="neverDeactivate"
+                data-deactivation-value=""
+                data-form-name="Request"
+                data-height="1621"
+                data-layout-iframe-id="inline-G5y7ng28SAVC3bnixU8t"
+                data-form-id="G5y7ng28SAVC3bnixU8t"
+                title="Request"></iframe>
             </div>
-
-            <!-- Confirmation state (shown after successful submission) -->
-            <div class="reg-confirmation" id="reg-confirmation" role="status" aria-live="polite">
-              <span class="reg-confirmation__icon" aria-hidden="true">✓</span>
-              <h3 class="reg-confirmation__title">You're all set!</h3>
-              <p class="reg-confirmation__body">Check your inbox. The workshop link is on its way to you now.</p>
-            </div>
+            <script src="https://link.msgsndr.com/js/form_embed.js"></script>
           </div>
 
         </div>
@@ -699,10 +655,10 @@
           <span class="section-label">Ready to Go Further?</span>
           <span class="gold-rule gold-rule--center" aria-hidden="true"></span>
           <h2 class="webinar-cta-strip__title" id="webinar-cta-heading">
-            The workshop is the start.<br>The strategy is what changes outcomes.
+            The guides are the start.<br>The strategy is what changes outcomes.
           </h2>
           <p class="webinar-cta-strip__body">
-            Families who watch, then act, see the biggest difference. A brief consultation with our team is the fastest way to move from informed to prepared, at no cost and no obligation.
+            Families who read, then act, see the biggest difference. A brief consultation with our team is the fastest way to move from informed to prepared, at no cost and no obligation.
           </p>
           <div class="webinar-cta-strip__ctas">
             <a href="https://meetings-na2.hubspot.com/will-smethurst/cfs-website-meeting" class="btn btn--primary btn--large btn--arrow" target="_blank" rel="noopener">Schedule a Free Consultation</a>
@@ -808,38 +764,6 @@
         resBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
       });
     }
-
-    /* ── HubSpot form submission confirmation ────────────────────
-       Listens for HubSpot's success event, then hides the form
-       and shows the confirmation message in the card.
-    ─────────────────────────────────────────────────────────── */
-    (function () {
-      var confirmed = false;
-
-      function handleSuccess() {
-        if (confirmed) return;
-        confirmed = true;
-
-        var hsWrap  = document.querySelector('.reg-hs-wrap');
-        var confirm = document.getElementById('reg-confirmation');
-        if (hsWrap)  hsWrap.style.display  = 'none';
-        if (confirm) confirm.style.display = 'block';
-      }
-
-      /* HubSpot embed v1 — postMessage event */
-      window.addEventListener('message', function (event) {
-        if (typeof event.data !== 'object' || !event.data) return;
-        if (
-          (event.data.type || '') === 'hsFormCallback' &&
-          (event.data.eventName || '') === 'onFormSubmitted'
-        ) {
-          handleSuccess();
-        }
-      });
-
-      /* HubSpot embed v2 — custom DOM event */
-      document.addEventListener('hs-form-event:on-submission:success', handleSuccess);
-    })();
   </script>
 
 </body>
