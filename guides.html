@@ -593,6 +593,21 @@
     if (formSubmitted) return;
     formSubmitted = true;
     leadSuccess.classList.add('show');
+
+    // Conversion tracking: mark this as a real, distinct URL (not just a
+    // fake path — a hash is part of the real page, so refreshing or sharing
+    // this link can never 404) and tell Meta's pixel about it, since it has
+    // no way to notice a client-side URL change on its own. The Lead event
+    // alongside it is the more reliable signal for actually optimizing ad
+    // campaigns; the URL change is there so a simple "URL contains" custom
+    // conversion also works, matching the Ads Manager rule already set up
+    // for this page.
+    history.pushState({}, '', location.pathname + '#step-3');
+    if (typeof fbq === 'function'){
+      fbq('track', 'PageView');
+      fbq('track', 'Lead');
+    }
+
     setTimeout(function(){ goTo(FORM_SLIDE_INDEX + 1); }, 900);
   }
 
