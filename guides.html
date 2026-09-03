@@ -1,0 +1,626 @@
+<title>Free College Planning Guides</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=DM+Sans:ital,wght@0,400;0,500;0,700;0,800;1,700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --forest-deep:#0A3528;
+    --forest:#0C4A38;
+    --gold:#C4963A;
+    --gold-light:#E3C989;
+    --parchment-2:#EDE9DF;
+    --ink:#16181D;
+    --body:#3D4148;
+    --red:#D3372C;
+    --white:#FFFFFF;
+    --ring-gap:#FFFFFF;
+    --font:'DM Sans', system-ui, -apple-system, sans-serif;
+    --font-display:'Cormorant Garamond', Georgia, serif;
+    --container:1180px;
+    color-scheme: light;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;background:var(--white);color:var(--body);
+    font-family:var(--font);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block;}
+  h1,h2{font-family:var(--font-display);color:var(--ink);margin:0;text-wrap:balance;font-weight:600;}
+  p{margin:0;}
+  button,input{font-family:inherit;}
+  .wrap{max-width:var(--container);margin:0 auto;padding:0 32px;}
+  @media (max-width:720px){.wrap{padding:0 20px;}}
+
+  .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:.001ms !important; transition-duration:.001ms !important;}
+  }
+
+  /* ---------------- header ---------------- */
+  header.site{background:var(--forest-deep);padding:18px 0;}
+  header.site .wrap{display:flex;justify-content:center;}
+  .brand{display:flex;align-items:center;text-decoration:none;}
+  .brand-logo{height:38px;width:auto;}
+
+  /* ---------------- progress ---------------- */
+  .progress{padding:36px 0 8px;}
+  .dots{display:flex;align-items:center;justify-content:center;gap:0;max-width:820px;margin:0 auto;flex-wrap:wrap;}
+  .dot-btn{
+    background:none;border:none;padding:6px;cursor:pointer;display:flex;align-items:center;justify-content:center;
+    border-radius:50%;flex:none;
+  }
+  .dot-btn[disabled]{cursor:not-allowed;}
+  .dot-circle{
+    width:52px;height:52px;border-radius:50%;
+    background:var(--gold-light);color:var(--ink);
+    display:flex;align-items:center;justify-content:center;
+    font-weight:800;font-size:20px;
+    transition:box-shadow .2s ease, transform .2s ease, background .2s ease;
+  }
+  .dot-btn.done .dot-circle{background:var(--gold);}
+  .dot-btn.active .dot-circle{
+    background:var(--gold);
+    box-shadow:0 0 0 4px var(--ring-gap), 0 0 0 7px var(--forest);
+    transform:scale(1.06);
+  }
+  .dot-line{width:44px;height:0;border-top:3px dotted var(--gold-light);margin:0 4px;flex:none;}
+  @media (max-width:640px){
+    .dots{flex-wrap:nowrap;overflow-x:auto;justify-content:center;padding:0 16px;}
+    .dot-btn{padding:2px;}
+    .dot-circle{width:28px;height:28px;font-size:12px;}
+    .dot-btn.active .dot-circle{box-shadow:0 0 0 3px var(--ring-gap), 0 0 0 5px var(--forest);}
+    .dot-line{width:10px;margin:0 2px;}
+  }
+
+  /* ---------------- stage ---------------- */
+  .stage{padding:40px 0 96px;}
+  .slide{display:none;}
+  .slide.current{display:block;animation:fadeIn .35s ease;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+
+  .slide-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center;}
+  .slide--packages .slide-grid,
+  .slide--form .slide-grid{display:block;}
+  @media (max-width:860px){
+    .slide-grid{grid-template-columns:1fr;gap:32px;}
+  }
+
+  /* slide 3: guides + form — heading + form stacked on the left (both
+     capped at 560px by the column itself), image spans that full height
+     on the right */
+  .slide--form h1{margin-bottom:24px;}
+
+  .lead-row{display:grid;grid-template-columns:560px 1fr;gap:40px;}
+  .lead-row .lead-form-col{min-width:0;}
+
+  /* The iframe renders at its native 760x420 (the width GHL needs to keep
+     Name/Email/Phone on one line) and gets visually scaled down via CSS
+     transform, then clipped to that scaled size, so GHL always sees a
+     760px-wide iframe internally (its own layout never collapses) while the
+     on-screen footprint shrinks to fit. The wrapper's width is fluid
+     (max-width:560px, but 100% below that) and JS recalculates the exact
+     transform + wrapper height to match on load, on resize, and whenever
+     this slide becomes visible — see resizeScaledForm() at the bottom —
+     rather than using one fixed scale number that only fit one screen size. */
+  .ghl-form-scale{
+    width:100%;max-width:560px;
+    position:relative;overflow:hidden;
+    border-radius:11px;border:1px solid #E4E8EC;
+    box-shadow:0 10px 30px rgba(10,53,40,.08);background:#fff;
+  }
+  .ghl-form-scale .ghl-form-card{
+    position:absolute;top:0;left:0;width:760px;height:420px;
+    transform-origin:top left;
+  }
+
+  /* right column stretches to the row's height (set by the form) and the
+     image fills it completely via object-fit:cover */
+  .lead-media-col{height:100%;}
+  .lead-media-col .ph-img{min-height:0;height:100%;aspect-ratio:auto;}
+
+  @media (max-width:950px){
+    .lead-row{grid-template-columns:1fr;gap:24px;text-align:center;}
+    .lead-row .lead-form-col{max-width:560px;margin:0 auto;}
+    .ghl-form-scale{margin:0 auto;}
+    .lead-media-col{width:100%;max-width:560px;height:240px;margin:0 auto;}
+  }
+
+  .eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:inline-block;}
+  .slide h1{font-size:clamp(30px,4.2vw,44px);line-height:1.15;letter-spacing:-.01em;}
+  .slide h1 .hl{color:var(--red);font-style:italic;}
+  .slide .body-copy{margin-top:22px;display:flex;flex-direction:column;gap:16px;font-size:16.5px;color:var(--body);max-width:52ch;}
+  .slide .body-copy strong{color:var(--ink);font-weight:800;}
+
+  .mistake-list{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column;gap:10px;}
+  .mistake-list li{display:flex;gap:10px;align-items:flex-start;font-size:15.5px;}
+  .mistake-list .x{flex:none;color:var(--red);font-weight:800;margin-top:1px;}
+
+  .continue-btn{
+    margin-top:34px;
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--gold);color:var(--ink);
+    font-weight:800;font-size:17px;
+    padding:15px 34px;border-radius:999px;border:none;cursor:pointer;
+    box-shadow:0 4px 16px rgba(196,150,58,.35);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .continue-btn:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(196,150,58,.42);}
+  .continue-btn:focus-visible{outline:2px solid var(--forest);outline-offset:3px;}
+
+  .media .ph-img{
+    position:relative;border-radius:16px;overflow:hidden;min-height:300px;
+    background:linear-gradient(135deg, var(--parchment-2), var(--gold-light));
+    display:flex;align-items:center;justify-content:center;text-align:center;
+    box-shadow:0 18px 40px rgba(10,53,40,.14);
+  }
+  .media .ph-img::after{
+    content:attr(data-label);
+    font:600 12.5px var(--font);color:var(--forest);
+    background:rgba(255,255,255,.88);padding:6px 14px;border-radius:20px;
+  }
+  .media .ph-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .media .ph-img.aspect-square{aspect-ratio:1/1;}
+  .media .ph-img.aspect-wide{aspect-ratio:4/3;}
+
+  /* ---------------- guides + form slide ---------------- */
+  .lead-success{display:none;align-items:center;gap:12px;background:#EEF7F1;border:1px solid #BEE0C9;border-radius:10px;padding:16px 18px;color:var(--forest);font-weight:700;margin-top:14px;}
+  .lead-success.show{display:flex;}
+  .lead-success .tick{flex:none;width:26px;height:26px;border-radius:50%;background:var(--forest);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;}
+
+  /* ---------------- packages slide ---------------- */
+  .slide--packages .head{text-align:center;max-width:640px;margin:0 auto 44px;}
+  .package-row{display:flex;gap:32px;justify-content:center;flex-wrap:wrap;align-items:stretch;}
+  .package{
+    width:380px;background:var(--white);border:1px solid #E6E1D2;border-radius:14px;
+    overflow:hidden;box-shadow:0 16px 36px rgba(10,53,40,.08);
+    display:flex;flex-direction:column;
+  }
+  .package .top-strip{height:6px;background:var(--gold);}
+  .package-body{padding:26px 26px 28px;display:flex;flex-direction:column;flex:1;}
+  .package h3{font-family:var(--font-display);font-size:25px;font-weight:600;color:var(--forest);}
+  .package .tagline{font-size:13.5px;font-style:italic;color:#6B6F78;margin-top:10px;}
+  .package-details{margin-top:16px;}
+  .package ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;}
+  .package li{display:flex;gap:10px;font-size:14px;color:var(--body);align-items:flex-start;}
+  .package li::before{content:"";flex:none;width:6px;height:6px;border-radius:50%;background:var(--gold);margin-top:7px;}
+  .package .footnote{font-size:13px;font-style:italic;color:#8A8F98;margin-top:18px;border-top:1px solid #EFEBDD;padding-top:14px;}
+  .package .term{font-size:12.5px;color:#8A8F98;text-align:center;margin-top:4px;}
+  .package .cta{
+    margin-top:14px;text-align:center;border-radius:8px;padding:15px 18px;font-weight:800;font-size:14.5px;
+    text-decoration:none;display:flex;align-items:center;justify-content:center;gap:8px;
+    transition:transform .15s ease;
+  }
+  .package .cta:hover{transform:translateY(-1px);}
+  .package .cta.dark-text{background:var(--gold);color:var(--ink);}
+  .package .cta.light-text{background:var(--forest);color:#fff;}
+
+  footer.site{background:var(--forest-deep);padding:28px 0;text-align:center;}
+  footer.site p{color:rgba(255,255,255,.5);font-size:12px;}
+</style>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="#" aria-label="Strategy West College Planning">
+      <img src="images/guides-logo.png" alt="Strategy West College Planning" class="brand-logo">
+    </a>
+  </div>
+</header>
+
+<nav class="progress" aria-label="Guide progress">
+  <div class="dots" id="dots"></div>
+</nav>
+
+<main class="stage">
+  <div class="wrap">
+
+    <!-- SLIDE 1 -->
+    <section class="slide current" data-slide="0">
+      <div class="slide-grid">
+        <div>
+          <h1>Welcome to Strategy West College Planning!</h1>
+          <div class="body-copy">
+            <p>My name is Will Smethurst, and over the years our team has helped <strong><em>thousands</em></strong> of families navigate the pains of college planning and financing.</p>
+            <p>I want to give you some free resources so that you and your family are ready for this journey.</p>
+            <p><strong>My goal?</strong> Educate and take away the stress you are currently feeling.</p>
+          </div>
+          <button type="button" class="continue-btn js-continue">Continue &gt;&gt;&gt;</button>
+        </div>
+        <div class="media">
+          <div class="ph-img aspect-square" data-label="images/guides-slide-1-will.jpg">
+            <img src="images/guides-slide-1-will.jpg" alt="Will Smethurst presenting a family's award letter breakdown on a whiteboard" onerror="this.style.display='none'">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 2 -->
+    <section class="slide" data-slide="1">
+      <div class="slide-grid">
+        <div>
+          <h1>One Change Saved a Family <span class="hl">$21,532</span> on their child's college.</h1>
+          <div class="body-copy">
+            <p>Let's face it. College's make the financial planning aspect so confusing because they have <strong>one goal:</strong></p>
+            <p><strong>Extract as much money from YOU as possible</strong>.</p>
+            <p>And we've seen this time and time again. It's the reason most applications are filled out wrong. It's the reason one tiny detail can be the difference between saving or spending an additional $10,000!</p>
+          </div>
+          <button type="button" class="continue-btn js-continue">Continue &gt;&gt;&gt;</button>
+        </div>
+        <div class="media">
+          <div class="ph-img aspect-square" data-label="images/guides-slide-2-planning.jpg">
+            <img src="images/guides-slide-2-planning.jpg" alt="Parent reviewing financial planning notes by hand" onerror="this.style.display='none'">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 3: GUIDES + FORM (gated) -->
+    <section class="slide slide--form" data-slide="2">
+      <div class="lead-row">
+        <div class="lead-form-col">
+          <h1>Here are two free guides on everything you need to know about College Planning.</h1>
+          <!--
+            The GHL iframe is built to render at 760px wide (that's the width
+            its two-column Name/Email/Phone layout needs to avoid collapsing —
+            see earlier notes). Rather than shrinking the iframe itself and
+            risking that collapse again, this wrapper displays it at its
+            native width and visually scales the whole thing down to 560px
+            (scale factor 560/760 = 0.736842, fixed regardless of height) via
+            CSS transform, then clips the wrapper to the scaled size. GHL
+            still sees a 760px-wide iframe internally either way.
+
+            True height was 478 (GHL's own reported number), but the real
+            rendered content plus a bottom scrollbar showed it needed less —
+            trimmed to 420 true / 309 scaled (420 * 0.736842 = 309.4). If this
+            still shows a gap or a scrollbar, report the size and I'll retune
+            both numbers together.
+          -->
+          <div class="ghl-form-scale">
+            <div class="ghl-form-card">
+              <iframe
+                src="https://api.leadconnectorhq.com/widget/form/SNfQjmJafD0Kt0eHBSGs"
+                style="width:760px;height:420px;border:none;display:block"
+                id="inline-SNfQjmJafD0Kt0eHBSGs"
+                scrolling="no"
+                data-layout="{'id':'INLINE'}"
+                data-trigger-type="alwaysShow"
+                data-trigger-value=""
+                data-activation-type="alwaysActivated"
+                data-activation-value=""
+                data-deactivation-type="neverDeactivate"
+                data-deactivation-value=""
+                data-form-name="Custom Landing Guides Form"
+                data-height="420"
+                data-layout-iframe-id="inline-SNfQjmJafD0Kt0eHBSGs"
+                data-form-id="SNfQjmJafD0Kt0eHBSGs"
+                data-cookie-consent="true"
+                data-cookie-consent-provider="auto"
+                title="Custom Landing Guides Form"
+              ></iframe>
+            </div>
+          </div>
+          <div class="lead-success" id="leadSuccess" style="max-width:560px;margin-top:14px;">
+            <span class="tick">&#10003;</span>
+            <span>Guides sent! Redirecting you to the next step&hellip;</span>
+          </div>
+        </div>
+
+        <div class="lead-media-col">
+          <div class="ph-img" data-label="images/guides-cover.jpg">
+            <img src="images/guides-cover.jpg" alt="The Complete College Planning Guide and How to Lower the True Cost of College guide covers" onerror="this.style.display='none'">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 4 -->
+    <section class="slide" data-slide="3">
+      <div class="slide-grid">
+        <div>
+          <h1>90% of FAFSA Applications Are Filled out <span class="hl">WRONG</span></h1>
+          <div class="body-copy">
+            <p>The financial aid offices are not automatically alerted when you make mistakes that hurt your own aid eligibility.</p>
+            <p>This could cost some families <strong>$25,000 A YEAR!</strong></p>
+            <p>That myth is expensive. Families routinely:</p>
+            <ul class="mistake-list">
+              <li><span class="x">&#10007;</span><span>Report retirement accounts as assets (they're exempt)</span></li>
+              <li><span class="x">&#10007;</span><span>Include their primary home's value (not counted)</span></li>
+              <li><span class="x">&#10007;</span><span>Misreport 529 plans as student assets &mdash; quadrupling their impact on aid</span></li>
+            </ul>
+          </div>
+          <button type="button" class="continue-btn js-continue">Continue &gt;&gt;&gt;</button>
+        </div>
+        <div class="media">
+          <div class="ph-img aspect-square" data-label="images/guides-slide-4-campus.jpg">
+            <img src="images/guides-slide-4-campus.jpg" alt="Aerial view of a university campus" onerror="this.style.display='none'">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 5 -->
+    <section class="slide" data-slide="4">
+      <div class="slide-grid">
+        <div>
+          <h1>We Fixed 3 Mistakes That Saved <span class="hl">$4344 A Year!</span></h1>
+          <div class="body-copy">
+            <p>A family came to me with one question about their older student, already enrolled in college: <strong>had they paid too much?</strong></p>
+            <p>We reviewed the form they'd already submitted and found three small, honest mistakes.</p>
+            <p>Corrected, those three items would have changed their aid by $4,344 a year, which comes to <strong>$17,376 across four years.</strong></p>
+          </div>
+          <button type="button" class="continue-btn js-continue">Continue &gt;&gt;&gt;</button>
+        </div>
+        <div class="media">
+          <div class="ph-img aspect-square" data-label="images/guides-slide-5-review.jpg">
+            <img src="images/guides-slide-5-review.jpg" alt="Advisor reviewing an award letter with a family" onerror="this.style.display='none'">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 6 -->
+    <section class="slide" data-slide="5">
+      <div class="slide-grid">
+        <div>
+          <h1>What Should You Do To Ensure Success?</h1>
+          <div class="body-copy">
+            <p>I sent you those two guides via email (check your SPAM).</p>
+            <p>Make sure to read over those guides to ensure that you have all the knowledge about how to navigate the world of college planning.</p>
+            <p>Your child going to college should be a beautiful experience.</p>
+            <p>Use our guides, and also use me as a resource throughout this process.</p>
+          </div>
+          <button type="button" class="continue-btn js-continue">Continue &gt;&gt;&gt;</button>
+        </div>
+        <div class="media">
+          <div class="ph-img aspect-square" data-label="images/guides-slide-6-hug.jpg">
+            <img src="images/guides-slide-6-hug.jpg" alt="Student embracing a friend, backpack on, holding an acceptance letter" onerror="this.style.display='none'">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 7 -->
+    <section class="slide" data-slide="6">
+      <div class="slide-grid">
+        <div>
+          <h1>Here's How I Can Help You Today for Immediate Impact</h1>
+          <div class="body-copy">
+            <p>We will build you a tailored, line-by-line answer sheet, based on your family's <strong>specific</strong> situation (academic and financial).</p>
+            <p>Then, once your award letter arrives, we will evaluate them, and compare those to other award letters that were sent to students applying to that school <strong>this year</strong> and see if your award is higher, lower, or exactly where it should be. If it's not up to par, we will help you appeal.</p>
+            <p>We can also jump on a <strong>1:1 Consultation call</strong> that is <strong>100% Complimentary</strong> to go over more strategies or questions you may have.</p>
+          </div>
+          <button type="button" class="continue-btn js-continue">Continue &gt;&gt;&gt;</button>
+        </div>
+        <div class="media">
+          <div class="ph-img aspect-square" data-label="images/guides-slide-7-students.jpg">
+            <img src="images/guides-slide-7-students.jpg" alt="Students studying together outdoors on campus" onerror="this.style.display='none'">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 8: PACKAGES -->
+    <section class="slide slide--packages" data-slide="7">
+      <div class="head">
+        <p class="eyebrow">Choose Your Next Step</p>
+        <h2 style="font-size:clamp(28px,3.4vw,38px);">Two ways we can help right now.</h2>
+      </div>
+      <div class="package-row">
+
+        <div class="package">
+          <div class="top-strip"></div>
+          <div class="package-body">
+            <h3>Financial Analysis</h3>
+            <p class="tagline">Leave Nothing to Chance: A Strategic Blueprint to Ensure You're Not Overpaying for College</p>
+            <div class="package-details">
+              <div>
+                <ul>
+                  <li>FAFSA &amp; CSS Profile Line-by-Line Answer Sheet</li>
+                  <li>Submission Summary Analysis &amp; Verification</li>
+                  <li>Award Letter Evaluation &amp; Appeal Strategy</li>
+                </ul>
+                <p class="footnote">For families who want financial clarity, at any stage of the process.</p>
+              </div>
+            </div>
+            <p class="term">One-time investment</p>
+            <a href="https://buy.stripe.com/7sYdR26zA1g16Ykf5nbo400" target="_blank" rel="noopener" class="cta dark-text">Get My Analysis &amp; Funding Report &middot; $249</a>
+          </div>
+        </div>
+
+        <div class="package">
+          <div class="top-strip"></div>
+          <div class="package-body">
+            <h3>Schedule 1:1 Planning Call</h3>
+            <p class="tagline">Not sure which is right for your family?</p>
+            <p style="font-size:14.5px;line-height:1.6;color:var(--body);margin-top:14px;">Every family&rsquo;s timeline, financial situation, and planning needs are different.</p>
+            <p style="font-size:14.5px;line-height:1.6;color:var(--body);margin-top:14px;">Our free planning guides walk through the full framework, and a brief consultation call helps us understand exactly where your family is, so we can recommend the level of support that fits best.</p>
+            <a href="https://meetings-na2.hubspot.com/will-smethurst/cfs-website-meeting?uuid=d57c5a3d-da0c-44cd-8a4a-9e7bcf1ae695" target="_blank" rel="noopener" class="cta light-text" style="margin-top:auto;">Schedule My Consultation</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site">
+  <p>&copy; Strategy West College Planning</p>
+</footer>
+
+<script>
+(function(){
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var total = slides.length;
+  var current = 0;
+  var maxUnlocked = 0;      // highest slide index the visitor may view
+  var FORM_SLIDE_INDEX = 2; // slide 3 (0-based) — locked until lead form succeeds
+  var formSubmitted = false;
+
+  // The $21,532 stat slide (index 1) and the guides/form slide (index 2) are
+  // one step in the visible timeline — both show as step 2. Every other slide
+  // is its own step, so 8 slides collapse to 7 dots.
+  var STEP_OF_SLIDE = [1, 2, 2, 3, 4, 5, 6, 7];
+  var totalSteps = Math.max.apply(null, STEP_OF_SLIDE);
+  var firstSlideOfStep = STEP_OF_SLIDE.map(function(step, idx){ return idx; })
+    .reduce(function(acc, idx){
+      var step = STEP_OF_SLIDE[idx];
+      if (!(step in acc)) acc[step] = idx;
+      return acc;
+    }, {});
+
+  var dotsEl = document.getElementById('dots');
+
+  function buildDots(){
+    dotsEl.innerHTML = '';
+    for (var s = 1; s <= totalSteps; s++){
+      if (s > 1){
+        var line = document.createElement('span');
+        line.className = 'dot-line';
+        dotsEl.appendChild(line);
+      }
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'dot-btn';
+      btn.dataset.step = s;
+      var circle = document.createElement('span');
+      circle.className = 'dot-circle';
+      circle.textContent = s;
+      btn.appendChild(circle);
+      btn.addEventListener('click', function(){
+        var step = parseInt(this.dataset.step, 10);
+        var target = firstSlideOfStep[step];
+        if (target <= maxUnlocked) goTo(target);
+      });
+      dotsEl.appendChild(btn);
+    }
+    refreshDots();
+  }
+
+  function refreshDots(){
+    var currentStep = STEP_OF_SLIDE[current];
+    var maxUnlockedStep = STEP_OF_SLIDE[maxUnlocked];
+    var buttons = dotsEl.querySelectorAll('.dot-btn');
+    buttons.forEach(function(btn){
+      var step = parseInt(btn.dataset.step, 10);
+      btn.classList.toggle('active', step === currentStep);
+      btn.classList.toggle('done', step < currentStep);
+      btn.disabled = step > maxUnlockedStep;
+      if (step === currentStep) btn.setAttribute('aria-current', 'step'); else btn.removeAttribute('aria-current');
+    });
+  }
+
+  function goTo(index){
+    if (index < 0 || index >= total) return;
+    slides[current].classList.remove('current');
+    current = index;
+    slides[current].classList.add('current');
+    if (current > maxUnlocked) maxUnlocked = current;
+    refreshDots();
+    resizeScaledForm();
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+
+  // The GHL form iframe always renders at its true 760x420 (see the note on
+  // .ghl-form-scale in the CSS for why), then gets visually scaled down to
+  // fit whatever width is actually available — a fixed scale number only
+  // ever fits one screen size, so this recalculates it for real on load,
+  // on resize, and every time this slide becomes visible (its wrapper
+  // measures 0 while hidden, so it has to be recomputed once it's shown).
+  var ghlScaleWrap = document.querySelector('.ghl-form-scale');
+  var ghlScaleCard = ghlScaleWrap && ghlScaleWrap.querySelector('.ghl-form-card');
+  function resizeScaledForm(){
+    if (!ghlScaleWrap || !ghlScaleCard) return;
+    var w = ghlScaleWrap.clientWidth;
+    if (!w) return;
+    var scale = w / 760;
+    ghlScaleCard.style.transform = 'scale(' + scale + ')';
+    ghlScaleWrap.style.height = Math.round(420 * scale) + 'px';
+  }
+  window.addEventListener('resize', resizeScaledForm);
+
+  document.querySelectorAll('.js-continue').forEach(function(btn){
+    btn.addEventListener('click', function(){ goTo(current + 1); });
+  });
+
+  buildDots();
+
+  // TESTING ONLY — open the page with ?preview appended to the URL
+  // (e.g. guides.html?preview) to skip the form gate and unlock every slide
+  // for review. Real visitors will never type this; remove this block before
+  // going live if you'd rather it not exist at all, but it's harmless to
+  // leave — it does nothing unless that exact query param is present.
+  if (new URLSearchParams(location.search).has('preview')){
+    formSubmitted = true;
+    maxUnlocked = total - 1;
+    refreshDots();
+  }
+
+  /* ---------------- lead form gate (slide 3) ---------------- */
+  var leadSuccess = document.getElementById('leadSuccess');
+
+  // Flip to true if this ever needs re-diagnosing — logs every message this
+  // page receives from the GHL iframe to the console.
+  var GHL_DEBUG = false;
+
+  function unlockAfterForm(){
+    if (formSubmitted) return;
+    formSubmitted = true;
+    leadSuccess.classList.add('show');
+    setTimeout(function(){ goTo(FORM_SLIDE_INDEX + 1); }, 900);
+  }
+
+  // NOTE: an earlier version of this gate counted the iframe's `load` events,
+  // assuming a 2nd load only happens after a post-submit redirect. Confirmed
+  // false positive on real testing — this iframe fires a 2nd `load` on its own
+  // during normal startup (before any user interaction), so that approach is
+  // removed. Detection is postMessage-only below until we confirm an exact
+  // signal with GHL_DEBUG.
+
+  // GHL_POSTMESSAGE_GATE — confirmed exact signal, captured via GHL_DEBUG on
+  // a real test submission: right after the Cloudflare captcha completes
+  // (i.e. right at actual submit time, never on plain page load), GHL posts
+  // an array tagged 'set-sticky-contacts' carrying the submitted contact's
+  // own data back to the parent. That's what we watch for now — no more
+  // guessing at wording.
+  window.addEventListener('message', function(event){
+    var origin = event.origin || '';
+    if (!/^https:\/\/(api\.leadconnectorhq\.com|link\.msgsndr\.com)$/.test(origin)) return;
+
+    if (GHL_DEBUG) console.log('[GHL message]', origin, event.data);
+
+    var data = event.data;
+    if (Array.isArray(data) && data[0] === 'set-sticky-contacts') unlockAfterForm();
+  });
+
+  /* ---------------- keyboard nav (left/right within unlocked range) ---------------- */
+  document.addEventListener('keydown', function(e){
+    var active = document.activeElement;
+    if (active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA')) return;
+    if (e.key === 'ArrowRight' && current < maxUnlocked) goTo(current + 1);
+    if (e.key === 'ArrowLeft' && current > 0) goTo(current - 1);
+  });
+})();
+</script>
+<!--
+  form_embed.js is back (it was removed earlier because it actively
+  overwrites the iframe's height with its own auto-resize measurement,
+  fighting our fixed 760x420 scaled-down design). It's needed after all: the
+  iframe's submit event reaching us as a postMessage (GHL_POSTMESSAGE_GATE
+  above) appears to depend on it. So instead of leaving it out, we load it
+  and immediately undo any size it tries to apply, below.
+-->
+<script src="https://link.msgsndr.com/js/form_embed.js"></script>
+<script>
+(function(){
+  var iframe = document.getElementById('inline-SNfQjmJafD0Kt0eHBSGs');
+  if (!iframe) return;
+  function enforceSize(){
+    iframe.style.width = '760px';
+    iframe.style.height = '420px';
+  }
+  enforceSize();
+  new MutationObserver(enforceSize).observe(iframe, {attributes:true, attributeFilter:['style']});
+})();
+</script>
+
