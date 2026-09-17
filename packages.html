@@ -393,6 +393,18 @@
       font-style: italic; color: var(--text-muted);
       line-height: 1.5; margin-bottom: 18px;
     }
+
+    /* Click hint */
+    .pkg-tile__hint {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 16px; opacity: 0.8;
+      transition: opacity 0.25s ease;
+    }
+    .pkg-tile:hover .pkg-tile__hint { opacity: 1; }
+    .pkg-tile.is-active .pkg-tile__hint { opacity: 0; }
+
     .pkg-tile__divider { height: 1px; background: var(--border); margin-bottom: 16px; flex-shrink: 0; }
 
     /* Preview bullets */
@@ -866,6 +878,7 @@
                 </span>
               </div>
               <p class="pkg-tile__subtitle">Leave Nothing to Chance: A Strategic Blueprint to Ensure You're Not Overpaying for College</p>
+              <p class="pkg-tile__hint" aria-hidden="true">Click for full details <span>&darr;</span></p>
               <div class="pkg-tile__divider" aria-hidden="true"></div>
               <ul class="pkg-tile__bullets" aria-label="Package highlights">
                 <li class="pkg-tile__bullet"><span class="pkg-tile__bullet-dot" aria-hidden="true"></span><span>FAFSA &amp; CSS Profile Line-by-Line Answer Sheet</span></li>
@@ -905,6 +918,7 @@
                 </span>
               </div>
               <p class="pkg-tile__subtitle">Beyond the Financials: Aligning Admissions, Academics, and Aid</p>
+              <p class="pkg-tile__hint" aria-hidden="true">Click for full details <span>&darr;</span></p>
               <div class="pkg-tile__divider" aria-hidden="true"></div>
               <ul class="pkg-tile__bullets" aria-label="Package highlights">
                 <li class="pkg-tile__bullet"><span class="pkg-tile__bullet-dot" aria-hidden="true"></span><span>Unlimited personalized test prep (PSAT, SAT &amp; ACT)</span></li>
@@ -950,6 +964,7 @@
                 </span>
               </div>
               <p class="pkg-tile__subtitle">The Complete 3-Pillar Partnership: Expert 1-on-1 Guidance for Every Step of the Journey</p>
+              <p class="pkg-tile__hint" aria-hidden="true">Click for full details <span>&darr;</span></p>
               <div class="pkg-tile__divider" aria-hidden="true"></div>
               <ul class="pkg-tile__bullets" aria-label="Package highlights">
                 <li class="pkg-tile__bullet"><span class="pkg-tile__bullet-dot" aria-hidden="true"></span><span>Dedicated 1-on-1 mentorship with a certified counselor</span></li>
